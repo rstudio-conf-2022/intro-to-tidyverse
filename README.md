@@ -1,4 +1,4 @@
-Introduction to the tidyverse
+RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and othersntroduction to the tidyverse
 ================
 
 ### rstudio::conf 2022
