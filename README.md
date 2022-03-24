@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Introduction to the tidyverse
 ================
 
 ### rstudio::conf 2022
