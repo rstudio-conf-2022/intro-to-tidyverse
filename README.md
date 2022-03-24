@@ -35,7 +35,7 @@ LEARNING_OBJECTIVES
 
 ## Is this course for me?
 
-THREE_QUESTIONS
+You will learn the basics of R and data science, and practice using the RStudio IDE.
 
 ## Prework
 
