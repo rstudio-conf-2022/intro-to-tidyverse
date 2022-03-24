@@ -1,4 +1,4 @@
-RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and othersntroduction to the tidyverse
+Introduction to the tidyverse 
 ================
 
 ### rstudio::conf 2022
@@ -72,7 +72,7 @@ RSTUDIO.CLOUD ACCOUNT, ETC.\]
 
 ## Instructor
 
-\[ADD INSTRUCTOR BIO\]
+RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and othersntroduction to the tidyverse
 
 -----
 
