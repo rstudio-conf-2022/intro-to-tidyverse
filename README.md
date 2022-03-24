@@ -25,7 +25,9 @@ can remove these instructions from the README.
 
 ## Overview
 
-ABSTRACT
+Join RStudio Academy for a unique 6-week data science apprenticeship where you’ll develop the skills necessary to do data science with the R language. This program focuses on completing a hands-on project that you tackle one week at a time under the close guidance of a mentor.
+
+Academy is designed to build skills that you retain long-term: through a combination of interactive lessons, applied project work, group sessions, and check-ins with a mentor – each of which occurs on a weekly basis – you will gain comfort with R and its fundamental Tidyverse packages. This learning experience is primarily virtual, with two in-person days during rstudio::conf2022. It will be taught by the RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others. Subjects will include importing, tidying, and transforming data with the Tidyverse, visualizing data with ggplot2, modeling data with base R, and reporting findings reproducibly with R Markdown. Begins last week of June 2022. No knowledge of R required.
 
 ## Learning objectives
 
