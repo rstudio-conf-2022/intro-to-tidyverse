@@ -31,7 +31,7 @@ Academy is designed to build skills that you retain long-term: through a combina
 
 ## Learning objectives
 
-LEARNING_OBJECTIVES
+[ADD AN ITEMIZED LIST OF LEARNING OBJECTIVES.]
 
 ## Is this course for me?
 
