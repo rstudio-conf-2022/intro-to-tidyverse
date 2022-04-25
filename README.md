@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3202a4bc-272d-4ac9-b80a-64a3bb294c94/deploy-status)](https://app.netlify.com/sites/conf22-intro-tidyverse/deploys)
+
 Introduction to the tidyverse 
 ================
 
