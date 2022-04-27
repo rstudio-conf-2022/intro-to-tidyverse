@@ -1,0 +1,69 @@
+/*-- scss:defaults --*/
+
+
+
+//## Brand colors for use across Bootstrap.
+
+$primary:               #2d70a5;
+
+$brand-primary:         #404040 !default;
+$brand-success:         #b8d3cc !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #ff9982 !default;
+
+
+//== nav
+
+$navbar-bg:     #faf7f5;
+$navbar-fg:     #404040;
+
+// Body
+
+$body-bg:                 #F5EFEB !default;
+$body-color:              $brand-primary;
+
+$headings-color:          #000000 !default;
+$headings-font-weight:    600 !default;
+$headings-small-color:    #7b736c !default;
+
+$table-border-color:            #ffffff90 !default;
+
+$code-bg: #ffffff90;
+$code-color: #e47259;
+
+// Buttons
+
+$btn-default-color:              #FFFFFF !default;
+$btn-default-bg:                 #000000 !default;
+$btn-default-border:             #000000 !default;
+
+// Global textual link color.
+
+$link-color:            $brand-primary !default;
+
+// Link hover color set via `darken()` function.
+
+$link-hover-color:      darken($link-color, 15%) !default;
+
+
+/*-- scss:rules --*/
+
+/* Code */
+
+div.sourceCode {
+  background-color: white;
+  border: none;
+}
+
+/* Nav */
+
+.navbar-brand>img {
+    max-height: 50px;
+}
+
+/* table */
+
+th {
+  color: #7b736c;
+}
