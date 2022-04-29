@@ -1,11 +1,29 @@
 ---
-title: "site"
+title: "Introduction to the tidyverse"
 ---
 
-This is a Quarto website.
+Welcome! This is the website for **Introduction to the tidyverse**, a unique 6-week data science apprenticeship with RStudio Academy that begins July 5th, 2022 and goes through the week of August 16th, 2022.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## How to register
 
-```{r}
-1 + 1
-```
+In addition to registering for the conference workshop [here](https://www.rstudio.com/conference/), you MUST:
+
+(1) enroll in a weekly group session [here](https://forms.gle/e3zh6wsEJ6hhn4rU8) and
+(2) commit to attending all scheduled group sessions.
+
+Workshop registrants without group session enrollment will not be allowed to participate in the workshop at conf.
+
+## Timeline
+
+This learning experience is primarily virtual, with two in-person days during [rstudio::conf(2022)](https://www.rstudio.com/conference/) in Washington, DC.
+
+| **Week**   | **Session(s)**               | **Date/time**                |
+|------------|------------------------------|------------------------------|
+| July 4-8   | Virtual kickoff              | Tuesday, July 5th - 12pm EST |
+| July 11-15 | Virtual group session        | Varies by group              |
+| July 18-22 | Virtual group session        | Varies by group              |
+| July 25-29 | In-person sessions at conf   | July 25-26th, 9am - 5pm EST  |
+| Aug 1-5    | Break week: No group session | None                         |
+| Aug 8-12   | Virtual group session        | Varies by group              |
+| Aug 15-19  | Virtual group session        | Varies by group              |
+

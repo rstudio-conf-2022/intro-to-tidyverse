@@ -1,0 +1,20 @@
+---
+title: "Join a group session"
+---
+
+First, make sure you've registered for this workshop through the [rstudio::conf(2022)](https://www.rstudio.com/conference/) website. 
+
+Once you've registered, you'll be ready to select a group session time that works for you. **Please use [this form](https://forms.gle/e3zh6wsEJ6hhn4rU8) to select a group session.** Note that you'll need your reference number from the conference registration in order to complete the form (alternatively, check your email for a copy of the form with the number pre-filled). 
+
+Plan to attend these sessions each week starting July 5th, 2022, and concluding the week of August 16th. Note that group sessions will not take place during the week of July 25th, during the conference, nor the following week of August 1st, which will be a break week.
+
+| **Week**   | **Session(s)**               | **Date/time**                |
+|------------|------------------------------|------------------------------|
+| July 4-8   | Virtual kickoff              | Tuesday, July 5th - 12pm EST |
+| July 11-15 | Virtual group session        | Varies by group              |
+| July 18-22 | Virtual group session        | Varies by group              |
+| July 25-29 | In-person sessions at conf   | July 25-26th, 9am - 5pm EST  |
+| Aug 1-5    | Break week: No group session | None                         |
+| Aug 8-12   | Virtual group session        | Varies by group              |
+| Aug 15-19  | Virtual group session        | Varies by group              |
+

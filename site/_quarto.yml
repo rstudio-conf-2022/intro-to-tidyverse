@@ -4,18 +4,28 @@ project:
   output-dir: _site
 
 website:
-  title: "site"
+  title: "Introduction to the tidyverse"
+  repo-url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  repo-actions: [edit, source, issue]
+  page-navigation: true
+  
   navbar:
-    background: primary
+    logo: "images/rstudio-logo.png"
+    favicon: "images/rstudio-logo.png"
+    background: light
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "About"
+        file: about.qmd
+      - text: "Sessions"
+        file: sessions.qmd
+      - text: "Pre-work"
+        file: prework.qmd
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - cosmo
+      - styles.scss
 
 editor: visual
 
