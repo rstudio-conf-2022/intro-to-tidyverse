@@ -10,7 +10,9 @@ website:
   page-navigation: true
   
   navbar:
-    background: primary
+    logo: "images/rstudio-logo.png"
+    favicon: "images/rstudio-logo.png"
+    background: light
     left:
       - text: "About"
         file: about.qmd
@@ -22,12 +24,13 @@ website:
       - icon: github
         aria-label: intro-to-tidyverse on GitHub
         href: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-
+    
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - cosmo
+      - styles.scss
 
 editor: visual
 
