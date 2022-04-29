@@ -4,14 +4,14 @@
     "href": "sessions.html",
     "title": "Join a group session",
     "section": "",
-    "text": "Once you’ve registered, you’ll be ready to select a group session time that works for you! Plan to attend these sessions each week starting July 5th, 2022, and concluding the week of August 16th. Note that group sessions will not take place during the week of July 25th, during the conference, nor the following week of August 1st, which will be a break week.\nIf you can only attend a session that is listed as full, please email desiree@rstudio.com."
+    "text": "Once you’ve registered, you’ll be ready to select a group session time that works for you. Please use this form to select a group session. Note that you’ll need your reference number from the conference registration in order to complete the form (alternatively, check your email for a copy of the form with the number pre-filled).\nPlan to attend these sessions each week starting July 5th, 2022, and concluding the week of August 16th. Note that group sessions will not take place during the week of July 25th, during the conference, nor the following week of August 1st, which will be a break week.\n\n\n\n\n\n\n\n\nWeek\nSession(s)\nDate/time\n\n\n\n\nJuly 4-8\nVirtual kickoff\nTuesday, July 5th - 12pm EST\n\n\nJuly 11-15\nVirtual group session\nVaries by group\n\n\nJuly 18-22\nVirtual group session\nVaries by group\n\n\nJuly 25-29\nIn-person sessions at conf\nJuly 25-26th, 9am - 5pm EST\n\n\nAug 1-5\nBreak week: No group session\nNone\n\n\nAug 8-12\nVirtual group session\nVaries by group\n\n\nAug 15-19\nVirtual group session\nVaries by group"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Introduction to the tidyverse",
     "section": "",
-    "text": "This learning experience is primarily virtual, with two in-person days during rstudio::conf(2022) in Washington, DC.\n\nVirtual kickoff: July 5th, 2022\nIn-person sessions at rstudio::conf(2022): July 25-26th, 2022"
+    "text": "Welcome! This is the website for Introduction to the tidyverse, a unique 6-week data science apprenticeship with RStudio Academy that begins July 5th, 2022 and goes through the week of August 16th, 2022."
   },
   {
     "objectID": "about.html",
@@ -40,5 +40,19 @@
     "title": "Pre-work",
     "section": "",
     "text": "Stay tuned for information about pre-work to be completed before rstudio::conf(2022)."
+  },
+  {
+    "objectID": "index.html#how-to-register",
+    "href": "index.html#how-to-register",
+    "title": "Introduction to the tidyverse",
+    "section": "How to register",
+    "text": "How to register\nIn addition to registering for the conference workshop here, you MUST:\n\nenroll in a weekly group session here and\ncommit to attending all scheduled group sessions.\n\nWorkshop registrants without group session enrollment will not be allowed to participate in the workshop at conf."
+  },
+  {
+    "objectID": "index.html#timeline",
+    "href": "index.html#timeline",
+    "title": "Introduction to the tidyverse",
+    "section": "Timeline",
+    "text": "Timeline\nThis learning experience is primarily virtual, with two in-person days during rstudio::conf(2022) in Washington, DC.\n\n\n\n\n\n\n\n\nWeek\nSession(s)\nDate/time\n\n\n\n\nJuly 4-8\nVirtual kickoff\nTuesday, July 5th - 12pm EST\n\n\nJuly 11-15\nVirtual group session\nVaries by group\n\n\nJuly 18-22\nVirtual group session\nVaries by group\n\n\nJuly 25-29\nIn-person sessions at conf\nJuly 25-26th, 9am - 5pm EST\n\n\nAug 1-5\nBreak week: No group session\nNone\n\n\nAug 8-12\nVirtual group session\nVaries by group\n\n\nAug 15-19\nVirtual group session\nVaries by group"
   }
 ]
