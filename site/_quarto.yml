@@ -20,11 +20,6 @@ website:
         file: sessions.qmd
       - text: "Pre-work"
         file: prework.qmd
-    right:
-      - icon: github
-        aria-label: intro-to-tidyverse on GitHub
-        href: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-    
 
 format:
   html:
