@@ -1,9 +1,20 @@
 ---
-title: "About"
+title: "About this experience"
 ---
 
-About this site
+RStudio Academy is designed to build skills that you retain long-term: through a combination of interactive lessons, applied project work, group sessions, and check-ins with a mentor -- each of which occurs on a weekly basis -- you will gain comfort with R and its fundamental Tidyverse packages.
 
-```{r}
-1 + 1
-```
+## What to expect
+
+Following our kickoff on July 5th, 2022, we will be spending 6 weeks together as we guide you through the process of learning data science with R. So, what can you expect?
+
+-   You will use R to complete a data science project which will serve as the motivating focus for the R content we cover.
+-   You will learn the core skills you need to complete your project via an online platform with weekly tutorials and practice exercises to explore asynchronously.
+-   You will attend weekly Office Hours with your mentor and peers, a space to get help or brainstorm ideas for tailoring the project to your own interests.
+-   Additionally, you will attend weekly Project Sessions facilitated by your mentors where you'll share your milestones with your groupmates and learn from one another.
+
+## Time commitment
+
+This course requires a time commitment of three to five hours of asynchronous learning per week, plus weekly group sessions that meet for one hour.
+
+Additionally, we will meet for two days of in-person learning at [rstudio::conf(2022)](https://www.rstudio.com/conference/), from 9am to 5pm on July 25th and 26th.
