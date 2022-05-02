@@ -1,0 +1,135 @@
+---
+title: "Academy Presentation Template"
+subtitle: "Day 1, Session 1"
+author: "Your Name"
+date: "July 25, 2022"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+layout: true
+
+<a class="footer-link" href="https://github.com/rstudio-conf-2022/intro-to-tidyverse">shortlink here</a>
+
+
+???
+
+Speaker notes go under question mark headers
+
+---
+class: title-slide
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+---
+
+class: middle
+
+# Agenda slide • title
+
+1. Chapter title
+1. Chapter title
+1. Chapter title
+1. Chapter title
+
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# Chapter slide * title
+
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Chapter slide * title 
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# Chapter slide * title 
+
+---
+class: middle chapter-slide tan
+
+.big-white-number[4.]
+
+# Chapter slide * title 
+
+
+---
+.pull-left[
+
+```{r eval=FALSE}
+.
+├── directory tree example
+├── _site/ #<<
+├── _site.yml 
+├── index.Rmd 
+├── schedule.Rmd 
+├── lab01.Rmd 
+└── lab02.Rmd 
+```
+]
+
+.pull-right[
+<img src="https://www.rstudio.com/academy/academy-steps-milestones.jpg">
+]
+
+
+---
+class: your-turn
+
+# Your Turn
+Instructions for a "`Your Turn`" Exercise
+
+```{r}
+# some code
+1 + 1
+```
+
+---
+
+class: inverse
+
+# This is an inverse slide
+## And a second level header
+Some text and some `inline code`
+
+---
+
+# A regular slide
+
+A code block. 
+
+```{r}
+2 + 3
+```
+
+And `some inline code`.
