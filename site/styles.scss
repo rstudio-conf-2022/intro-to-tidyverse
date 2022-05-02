@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap');
+
+
 /*-- scss:defaults --*/
-
-
 
 //## Brand colors for use across Bootstrap.
 
@@ -18,6 +19,7 @@ $brand-danger:          #ff9982 !default;
 $navbar-bg:     #faf7f5;
 $navbar-fg:     #404040;
 
+
 // Body
 
 $body-bg:                 #F5EFEB !default;
@@ -27,7 +29,7 @@ $headings-color:          #000000 !default;
 $headings-font-weight:    600 !default;
 $headings-small-color:    #7b736c !default;
 
-$table-border-color:            #ffffff90 !default;
+$table-border-color:      #ffffff90 !default;
 
 $code-bg: #ffffff90;
 $code-color: #e47259;
@@ -40,7 +42,7 @@ $btn-default-border:             #000000 !default;
 
 // Global textual link color.
 
-$link-color:            $brand-primary !default;
+$link-color: #ba4900;
 
 // Link hover color set via `darken()` function.
 
@@ -59,11 +61,58 @@ div.sourceCode {
 /* Nav */
 
 .navbar-brand>img {
-    max-height: 50px;
+    max-height: 45px;
+}
+
+.navbar-brand:hover {
+  color: black !important;
+  font-weight: 600;
+  font-size: 1.21rem;
+}
+
+
+a.nav-link {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.7pt;
+  font-weight: 600;
+}
+
+a.nav-link:hover {
+  font-weight: 700;
+  color: #7b736c !important;
+}
+
+a.nav-link.active {
+  font-weight: 900;
+  color: #7b736c !important;
 }
 
 /* table */
 
 th {
   color: #7b736c;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5pt;
+  font-size: 0.9em;
+  background-color: #ede7e3 !important;
+  border: none;
 }
+
+.table > thead {
+  border-bottom: none !important;
+}
+
+tbody {
+  background: #ffffff5c;
+  font-size: 0.9em;
+  letter-spacing: .1pt;
+}
+
+
+/* Body Links */
+
+#quarto-content a {
+  font-weight: bold;
+} 
