@@ -10,10 +10,10 @@ Plan to attend these sessions each week starting July 5th, 2022, and concluding 
 
 | **Week**   | **Session(s)**               | **Date/time**                |
 |------------|------------------------------|------------------------------|
-| July 4-8   | Virtual kickoff              | Tuesday, July 5th - 12pm EST |
+| July 4-8   | Virtual kickoff              | July 5th, 12pm EDT           |
 | July 11-15 | Virtual group session        | Varies by group              |
 | July 18-22 | Virtual group session        | Varies by group              |
-| July 25-29 | In-person sessions at conf   | July 25-26th, 9am - 5pm EST  |
+| July 25-29 | In-person sessions at conf   | July 25-26th, 9am-5pm EDT    |
 | Aug 1-5    | Break week: No group session | None                         |
 | Aug 8-12   | Virtual group session        | Varies by group              |
 | Aug 15-19  | Virtual group session        | Varies by group              |
