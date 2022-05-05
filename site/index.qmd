@@ -4,6 +4,8 @@ title: "Introduction to the tidyverse"
 
 Welcome! This is the website for **Introduction to the tidyverse**, a unique 6-week data science apprenticeship with RStudio Academy that begins July 5th, 2022 and goes through the week of August 16th, 2022.
 
+This learning experience is primarily virtual, with two in-person days during [rstudio::conf(2022)](https://www.rstudio.com/conference/) in Washington, DC.
+
 ## How to register
 
 In addition to registering for the conference workshop [here](https://www.rstudio.com/conference/), **you must**:
@@ -14,8 +16,6 @@ In addition to registering for the conference workshop [here](https://www.rstudi
 Workshop registrants without group session enrollment will not be allowed to participate in the workshop at conf.
 
 ## Timeline
-
-This learning experience is primarily virtual, with two in-person days during [rstudio::conf(2022)](https://www.rstudio.com/conference/) in Washington, DC.
 
 | **Week**   | **Session(s)**               | **Date/time**                |
 |------------|------------------------------|------------------------------|
