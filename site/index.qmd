@@ -6,7 +6,7 @@ Welcome! This is the website for **Introduction to the tidyverse**, a unique 6-w
 
 ## How to register
 
-In addition to registering for the conference workshop [here](https://www.rstudio.com/conference/), you MUST:
+In addition to registering for the conference workshop [here](https://www.rstudio.com/conference/), **you must**:
 
 (1) enroll in a weekly group session [here](https://forms.gle/e3zh6wsEJ6hhn4rU8) and
 (2) commit to attending all scheduled group sessions.
@@ -19,10 +19,10 @@ This learning experience is primarily virtual, with two in-person days during [r
 
 | **Week**   | **Session(s)**               | **Date/time**                |
 |------------|------------------------------|------------------------------|
-| July 4-8   | Virtual kickoff              | Tuesday, July 5th - 12pm EST |
+| July 4-8   | Virtual kickoff              | July 5th, 12pm EDT           |
 | July 11-15 | Virtual group session        | Varies by group              |
 | July 18-22 | Virtual group session        | Varies by group              |
-| July 25-29 | In-person sessions at conf   | July 25-26th, 9am - 5pm EST  |
+| July 25-29 | In-person sessions at conf   | July 25-26th, 9am-5pm EDT    |
 | Aug 1-5    | Break week: No group session | None                         |
 | Aug 8-12   | Virtual group session        | Varies by group              |
 | Aug 15-19  | Virtual group session        | Varies by group              |
