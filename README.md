@@ -77,6 +77,14 @@ RSTUDIO.CLOUD ACCOUNT, ETC.\]
 RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and othersntroduction to the tidyverse
 
 -----
+## Website instructions
+To preview this website locally, you will first need to [install Quarto](https://quarto.org/docs/get-started/). Then run the following in your RStudio Console:
+
+```
+quarto::quarto_preview(file = "site")
+```
+
+-----
 
 ![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is
 licensed under a [Creative Commons Attribution 4.0 International
