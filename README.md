@@ -5,20 +5,11 @@ Introduction to the tidyverse
 
 ### rstudio::conf 2022
 
-by RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others
+by the RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others
 
 -----
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your
-workshop below. Then, add workshop content in the materials folder and
-link to each session’s materials from the schedule below. You are
-welcomed to add more rows to the schedule. We just ask that you take
-breaks at the specified times. Once you are done adding information, you
-can remove these instructions from the README.
-
------
-
-:spiral_calendar: July 25 and 26, 2022  
+:spiral_calendar: In-person workshop: July 25 and 26, 2022  
 :alarm_clock:     09:00 - 17:00  
 :hotel:           \[ADD ROOM\]  
 :writing_hand:    [rstd.io/conf](http://rstd.io/conf)
@@ -27,7 +18,7 @@ can remove these instructions from the README.
 
 ## Overview
 
-Join RStudio Academy for a unique 6-week data science apprenticeship where you’ll develop the skills necessary to do data science with the R language. This program focuses on completing a hands-on project that you tackle one week at a time under the close guidance of a mentor.
+**Important: This event is a 6 week experience that requires weekly virtual meetings from the weeks of July 5 to August 16.** Join RStudio Academy for a unique 6-week data science apprenticeship where you’ll develop the skills necessary to do data science with the R language. This program focuses on completing a hands-on project that you tackle one week at a time under the close guidance of a mentor.
 
 Academy is designed to build skills that you retain long-term: through a combination of interactive lessons, applied project work, group sessions, and check-ins with a mentor – each of which occurs on a weekly basis – you will gain comfort with R and its fundamental Tidyverse packages. This learning experience is primarily virtual, with two in-person days during rstudio::conf2022. It will be taught by the RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others. Subjects will include importing, tidying, and transforming data with the Tidyverse, visualizing data with ggplot2, modeling data with base R, and reporting findings reproducibly with R Markdown. Begins last week of June 2022. No knowledge of R required.
 
@@ -37,14 +28,26 @@ Academy is designed to build skills that you retain long-term: through a combina
 
 ## Is this course for me?
 
-You will learn the basics of R and data science, and practice using the RStudio IDE.
+**Time commitment:**
+
+This is a 6 week course that runs from July 5 through the week of August 16, and includes two in-person days. This course requires:
+
+* A virtual kickoff event on July 5, 2022 at 12p EDT
+* 3 - 5 hours of asynchronous learning per week
+* Group sessions that meet each week for 1 hour over Zoom
+* After registration, you will be able to sign up for a recurring Group Session time on our workshop website as they become available. Enrolling in a Group Session is required to complete your registration for this workshop.
+
+**Consider these questions:**
+
+* You have a dataset of prices of diamonds, as well as their size. Could you make a scatterplot of the two variables using ggplot2?
+* You have two datasets, one with information on music genres and age ranges, the other with genres and radio station call names. Can you imagine how you would join them together with a dplyr verb?
+* We want to model the wages of people in the United States, using their height and education as predictors. Then, we would like to plot model predictions for each level of educational attainment. Can you imagine how to do this in R?
+
+If you answered "no" to any/all of those questions... great! This Academy experience is for you. By the end of the 6 weeks, you should be able to accomplish all those tasks. If you answered "yes" to all three questions, you may want to consider taking a different workshop.
 
 ## Prework
 
-\[ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.\]
+Please refer to the [course website](https://conf22-intro-tidyverse.netlify.app/prework.html) for pre-work to be completed before rstudio::conf(2022). 
 
 ## Schedule
 
@@ -74,11 +77,11 @@ RSTUDIO.CLOUD ACCOUNT, ETC.\]
 
 ## Instructor
 
-RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and othersntroduction to the tidyverse
+The RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others.
 
 -----
 ## Website instructions
-To preview this website locally, you will first need to [install Quarto](https://quarto.org/docs/get-started/). Then run the following in your RStudio Console:
+To preview the course website locally, you will first need to [install Quarto](https://quarto.org/docs/get-started/). Then run the following in your RStudio Console:
 
 ```
 quarto::quarto_preview(file = "site")
