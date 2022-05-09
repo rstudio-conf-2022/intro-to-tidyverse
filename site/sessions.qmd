@@ -6,6 +6,13 @@ First, make sure you've registered for this workshop through the [rstudio::conf(
 
 **Once you've registered, please use [this form](https://forms.gle/e3zh6wsEJ6hhn4rU8) to select a group session that works for you.** Note that you'll need your reference number from the conference registration in order to complete the form (alternatively, check your email for a copy of the form with the number pre-filled). 
 
+You can select from the following session times:
+
+* Mondays, 12-1 PM EDT
+* Tuesdays, 12-1 PM EDT
+* Mondays, 4-5 PM EDT
+* Tuesdays, 4-5 PM EDT
+
 Plan to attend these sessions each week starting July 5th, 2022, and concluding the week of August 16th. Note that group sessions will not take place during the week of July 25th, during the conference, nor the following week of August 1st, which will be a break week.
 
 | **Week**   | **Session(s)**               | **Date/time**                |
