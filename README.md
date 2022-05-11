@@ -18,13 +18,22 @@ by the RStudio Academy team of data science educators, including Garrett Grolemu
 
 ## Overview
 
-**Important: This event is a 6 week experience that requires weekly virtual meetings from the weeks of July 5 to August 16.** Join RStudio Academy for a unique 6-week data science apprenticeship where you’ll develop the skills necessary to do data science with the R language. This program focuses on completing a hands-on project that you tackle one week at a time under the close guidance of a mentor.
+**Important: This event is a 6 week experience that requires weekly virtual meetings from the weeks of July 5 to August 16.** 
+
+Join RStudio Academy for a unique 6-week data science apprenticeship where you’ll develop the skills necessary to do data science with the R language. This program focuses on completing a hands-on project that you tackle one week at a time under the close guidance of a mentor.
 
 Academy is designed to build skills that you retain long-term: through a combination of interactive lessons, applied project work, group sessions, and check-ins with a mentor – each of which occurs on a weekly basis – you will gain comfort with R and its fundamental Tidyverse packages. This learning experience is primarily virtual, with two in-person days during rstudio::conf2022. It will be taught by the RStudio Academy team of data science educators, including Garrett Grolemund, Desirée De Leon, and others. Subjects will include importing, tidying, and transforming data with the Tidyverse, visualizing data with ggplot2, modeling data with base R, and reporting findings reproducibly with R Markdown. Begins last week of June 2022. No knowledge of R required.
 
 ## Learning objectives
 
-[ADD AN ITEMIZED LIST OF LEARNING OBJECTIVES.]
+Each week of this course will give you practice with a new set of tools from R and the tidyverse:
+
+1. **R Basics** - Explore the basic components of R, including objects, functions, and packages.
+2. **Read and visualize** - Import and visualize data with readr and ggplot2.
+3. **Transform tables** - Transform data with dplyr.
+4. **Conf in-person practice** - Perform exploratory data analysis with the tools of the tidyverse.
+5. **Joins and tidying** - Join datasets and tidy data with dplyr and tidyr.
+6. **Model and publish** - Fit a basic model and build polished reports with R Markdown.
 
 ## Is this course for me?
 
