@@ -8,19 +8,19 @@ First, make sure you've registered for this workshop through the [rstudio::conf(
 
 You can select from the following session times:
 
-* Mondays, 12-1 PM EDT
-* Tuesdays, 12-1 PM EDT
-* Mondays, 4-5 PM EDT
-* Tuesdays, 4-5 PM EDT
+* Mondays, 12-1pm EDT
+* Tuesdays, 12-1pm EDT
+* Mondays, 4-5pm EDT
+* Tuesdays, 4-5pm EDT
 
-Following the kickoff session on July 5th, plan to attend your weekly group session starting the week of July 11th and concluding the week of August 16th. Note that group sessions will not take place during the week of July 25th, during the conference, nor the following week of August 1st, which will be a break week.
+Following the kickoff session on July 5, plan to attend your weekly group session starting the week of July 11 and concluding the week of August 16. Note that group sessions will not take place during the week of July 25, during the conference, nor the following week of August 1, which will be a break week.
 
 | **Week**   | **Session(s)**               | **Date/time**                |
 |------------|------------------------------|------------------------------|
-| July 4-8   | Virtual kickoff              | July 5th, 12pm EDT           |
+| July 4-8   | Virtual kickoff              | July 5, 12pm EDT           |
 | July 11-15 | Virtual group session        | Varies by group              |
 | July 18-22 | Virtual group session        | Varies by group              |
-| July 25-29 | In-person sessions at conf   | July 25-26th, 9am-5pm EDT    |
+| July 25-29 | In-person sessions at conf   | July 25-26, 9am-5pm EDT    |
 | Aug 1-5    | Break week: No group session | None                         |
 | Aug 8-12   | Virtual group session        | Varies by group              |
 | Aug 15-19  | Virtual group session        | Varies by group              |
