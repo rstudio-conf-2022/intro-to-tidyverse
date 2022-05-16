@@ -1,0 +1,342 @@
+---
+title: "Recode variables with `if_else()` and `case_when()`"
+subtitle: "Day 2, Session 2"
+author: "Deirdre Francks"
+date: "July 26, 2022"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+# Load packages
+library(dplyr)
+
+# Load data
+dem <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DEMO_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    age = RIDAGEYR,
+    sex = if_else(RIAGENDR == 1, "male", "female"),
+  ) 
+
+body <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BMX_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    bmi = BMXBMI
+  ) 
+
+bp <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BPX_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    sys_bp = BPXSY2,
+    dias_bp = BPXDI2
+  )
+
+fasting <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/GLU_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    glucose = LBXGLU
+  )
+
+set.seed(123)
+ 
+patients <- 
+  inner_join(dem, body, by = "seq_no") %>%
+  inner_join(bp) %>%
+  inner_join(fasting) %>%
+  # inner_join(nhanes_glucose) %>%
+  tidyr::drop_na() %>%
+  slice_sample(n = 30) %>%
+  mutate(
+   seq_no = row_number()
+  ) %>%
+  rename(id = seq_no) %>%
+  relocate(
+    glucose, .after = "bmi"
+  )
+```
+
+layout: true
+
+<a class="footer-link" href="https://github.com/rstudio-conf-2022/intro-to-tidyverse">shortlink here</a>
+
+---
+class: title-slide
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$date`</div>
+</div>
+
+???
+
+Welcome to today's session on recoding variables with `if_else()` and `case_when()`, two functions from the dplyr package. Let's get started.
+
+---
+
+class: middle
+
+# Agenda
+
+1. Review `dplyr::mutate()`
+1. Recode with `dplyr::if_else()`
+1. Recode with `dplyr::case_when()`
+1. Work time: milestone recreation
+
+???
+
+Here's our agenda for this session. You’ve previously learned how to create and modify variables with `mutate()`. In this lesson, you’ll extend this skill by learning several new functions to use inside of `mutate()` to recode a variable based on its existing values.
+
+Specifically, we'll practice:
+
+* Recoding data using two logical conditions with `if_else()`
+* Recoding a variable using multiple conditions with `case_when()`
+
+By the end of this lesson, you should be able to complete your milestone recreation using the hotels dataset. 
+
+---
+class: your-turn
+
+# Your turn #1
+Complete this code.
+
+```{r eval = FALSE}
+# mutate() review
+
+```
+
+???
+
+Let's begin with some review.
+
+---
+
+# `patients` dataset
+
+```{r}
+patients
+```
+???
+
+Today we'll work with the `patients` dataset. We have information about age, sex, body mass index (BMI), fasting blood glucose level (mg/dL), and systolic and diastolic blood pressure (mmHg) for 30 patients. 
+
+Imagine you are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). Let's see about doing that.
+
+---
+class: your-turn
+
+# Your turn #2
+
+Complete the code to create a column called `sex_recode`.
+
+```{r eval = FALSE}
+patients %>% 
+  mutate(
+    sex_recode = ____(sex == "male", true = 0, false = 1)
+  )
+```
+
+
+???
+
+You can complete that task by using `if_else()` to recode the variable `sex`.
+
+Does this code modify the column `sex`?
+
+---
+class: your-turn
+
+# Your turn #2
+
+Complete the code to create a column called `sex_recode`.
+
+```{r}
+patients %>% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = 0, false = 1)
+  )
+```
+
+
+---
+
+# Using `if_else()`
+
+---
+
+class: your-turn
+
+# Your turn #3
+
+Recode something else with `if_else()`.
+
+```{r}
+
+```
+
+
+---
+
+# Debug `if_else()`
+
+
+---
+
+# Complex logical conditions
+
+Imagine that we want to identify which patients require medical intervention based on their age, weight, and blood glucose level. Patients eligible for intervention must meet three criteria:
+
+1. Age 40 or older
+1. Blood glucose is 126 mg/dL or greater
+1. A BMI of 30 or greater
+
+---
+
+class: your-turn
+
+# Your turn #4
+
+Recode using more complicated logical conditions within `if_else()`.
+
+```{r}
+
+```
+
+---
+
+# Complex TRUE and FALSE conditions
+
+Consider the patients_interventions dataset you created in a previous exercise. Imagine that you predict the medical intervention will lower a patient’s BMI by 10% (i.e., bmi * 0.90), and you want to add these predicted values as a new variable.
+
+
+---
+
+class: your-turn
+
+# Your turn #5
+
+Recode using more complicated TRUE and FALSE conditions within `if_else()`.
+
+```{r}
+
+```
+
+---
+
+# Takeaway
+
+Use this template to recode values with `if_else()`
+
+
+---
+
+# Multiple conditions
+
+
+---
+
+# `case_when()`
+
+
+---
+class: your-turn
+
+# Your turn #6
+
+Use `case_when()` to recode a variable.
+
+```{r}
+
+```
+
+---
+
+# Using `case_when()`
+
+
+
+---
+class: your-turn
+
+# Your turn #7
+
+More practice with `case_when()`
+
+```{r}
+
+```
+
+---
+
+# Debug `case_when()`
+
+
+---
+
+# Catch-all conditions
+
+
+---
+class: your-turn 
+
+# Your turn #8
+
+Practice using catch-all conditions inside of `case_when()`
+
+```{r}
+
+```
+
+---
+
+# Recoding to `NA`
+
+
+---
+class: your-turn
+
+# Your turn #9
+
+Use `case_when()` to recode with `NA`s.
+
+```{r}
+
+```
+
+---
+
+# Takeaway
+
+Use this template to recode values with `case_when()`.
+
+
+---
+
+
+
+
+
+
