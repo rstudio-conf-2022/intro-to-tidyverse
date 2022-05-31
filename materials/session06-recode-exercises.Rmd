@@ -1,0 +1,109 @@
+---
+title: "Session 6: Recode variables"
+date: "`r lubridate::today()`"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+# Load packages
+library(dplyr)
+
+# Load data
+# TODO: Replace with prepared data from separate script
+dem <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DEMO_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    age = RIDAGEYR,
+    sex = if_else(RIAGENDR == 1, "male", "female"),
+  ) 
+
+body <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BMX_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    bmi = BMXBMI
+  ) 
+
+bp <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BPX_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    sys_bp = BPXSY2,
+    dias_bp = BPXDI2
+  )
+
+fasting <- 
+  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/GLU_E.XPT") %>%
+  haven::zap_label() %>%
+  transmute(
+    seq_no = SEQN,
+    glucose = LBXGLU
+  )
+
+set.seed(123)
+ 
+patients <- 
+  inner_join(dem, body, by = "seq_no") %>%
+  inner_join(bp) %>%
+  inner_join(fasting) %>%
+  # inner_join(nhanes_glucose) %>%
+  tidyr::drop_na() %>%
+  slice_sample(n = 30) %>%
+  mutate(
+   seq_no = row_number()
+  ) %>%
+  rename(id = seq_no) %>%
+  relocate(
+    glucose, .after = "bmi"
+  )
+```
+
+```{r review-1}
+
+```
+
+```{r review-2}
+
+```
+
+```{r your-turn-1}
+patients
+```
+
+```{r your-turn-2}
+patients
+```
+
+```{r your-turn-3}
+patients_interventions
+```
+
+```{r your-turn-4}
+patients_interventions
+```
+
+```{r your-turn-5}
+
+```
+
+```{r your-turn-6}
+
+```
+
+```{r your-turn-7}
+
+```
+
+```{r your-turn-8}
+
+```
+
+
+
+
+
+
