@@ -71,19 +71,19 @@ patients <-
 ```
 
 ```{r your-turn-1}
-patients
+
 ```
 
 ```{r your-turn-2}
-patients
+
 ```
 
 ```{r your-turn-3}
-patients_interventions
+
 ```
 
 ```{r your-turn-4}
-patients_interventions
+
 ```
 
 ```{r your-turn-5}
