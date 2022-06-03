@@ -36,7 +36,7 @@ options(htmltools.dir.version = FALSE)
 
 
 ```{r xaringanExtra, echo=FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "panelset"))
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset"))
 xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
 
 if (!is.null(rmarkdown::metadata$shortlink)) {
