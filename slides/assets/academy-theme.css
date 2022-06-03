@@ -108,8 +108,23 @@ a.footer-link {
   padding-top: 20px;
 }
 
+/* Speaker slides ==================================== */
 
+.speaker-slide {
+  vertical-align: middle;
+  text-align: center;
+}
 
+.speaker-slide .speaker-links a {
+  text-decoration: none;
+}
+
+.speaker-slide .speaker-links {
+  width: max-content;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Chapter slides ==================================== */
 

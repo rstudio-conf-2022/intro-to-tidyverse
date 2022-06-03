@@ -42,7 +42,7 @@ class: title-slide
 </div>
 
 ---
-class: middle, center
+class: speaker-slide
 
 # `r rmarkdown::metadata$author`
 
@@ -50,9 +50,12 @@ class: middle, center
 
 <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
 
-[`r fontawesome::fa("github")` @dcossyleon](https://github.com/dcossyleon)    
-[`r fontawesome::fa("twitter")` @dcossyle](https://twitter.com/dcossyle)   
+.speaker-links[
+[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
+[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
 [`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
+]
+
 ---
 
 class: middle
