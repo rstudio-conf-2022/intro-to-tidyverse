@@ -3,6 +3,9 @@ title: "Academy Presentation Template"
 subtitle: "Day 1, Session 1"
 author: "Your Name"
 date: "July 25, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  text: shortlink
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css"]
@@ -15,22 +18,12 @@ output:
       ratio: "16:9"
 ---
 
+---
+class: title-slide
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
-
-layout: true
-
-<a class="footer-link" href="https://github.com/rstudio-conf-2022/intro-to-tidyverse">shortlink here</a>
-
-
-???
-
-Speaker notes go under question mark headers
-
----
-class: title-slide
 
 # `r rmarkdown::metadata$title`
 
@@ -41,8 +34,39 @@ class: title-slide
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
 
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  htmltools::HTML(sprintf(
+    '<script>document.addEventListener("DOMContentLoaded", function() {
+  document
+    .querySelectorAll(".remark-slides-area .remark-slide-content")
+    .forEach(function(el) {
+      const link = document.createElement("a")
+      link.classList = "footer-link"
+      link.href = "%s"
+      link.innerText = "%s"
+      el.appendChild(link)
+    })
+  })</script>',
+    shortlink$url,
+    shortlink$text
+  ))
+}
+```
+
 ---
-class: middle, center
+class: speaker-slide
 
 # `r rmarkdown::metadata$author`
 
@@ -50,9 +74,12 @@ class: middle, center
 
 <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
 
-[`r fontawesome::fa("github")` @dcossyleon](https://github.com/dcossyleon)    
-[`r fontawesome::fa("twitter")` @dcossyle](https://twitter.com/dcossyle)   
+.speaker-links[
+[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
+[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
 [`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
+]
+
 ---
 
 class: middle
