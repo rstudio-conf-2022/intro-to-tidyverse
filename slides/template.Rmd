@@ -42,6 +42,18 @@ class: title-slide
 </div>
 
 ---
+class: middle, center
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
+
+[`r fontawesome::fa("github")` @dcossyleon](https://github.com/dcossyleon)    
+[`r fontawesome::fa("twitter")` @dcossyle](https://twitter.com/dcossyle)   
+[`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
+---
 
 class: middle
 
