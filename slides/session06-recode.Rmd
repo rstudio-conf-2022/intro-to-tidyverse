@@ -104,7 +104,7 @@ class: middle
 1. Review `dplyr::mutate()`
 1. Recode with `dplyr::if_else()`
 1. Recode with `dplyr::case_when()`
-1. Work time: milestone recreation
+1. Milestone recreation work time
 
 ???
 
@@ -121,18 +121,16 @@ By the end of this lesson, you should be able to complete your milestone recreat
 class: your-turn
 
 # Review #1
+
 Complete this code.
 
 ```{r eval = FALSE}
 # mutate() review
-# TODO: Need dataset for mutate() practice problems
 ```
 
 ???
 
-Let's begin with some review.
-
-**Prompt**: Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-1` chunk to complete this review.
+Let's begin with some review. Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-1` chunk to complete this review.
 
 ---
 
@@ -141,6 +139,7 @@ Let's begin with some review.
 ```{r patients}
 patients
 ```
+
 ???
 
 Today we'll work with the `patients` dataset. We have information about age, sex, body mass index (BMI), fasting blood glucose level (mg/dL), and systolic and diastolic blood pressure (mmHg) for 30 patients. 
@@ -150,15 +149,7 @@ class: your-turn
 
 # Your turn #1
 
-Complete the code to create a column called `sex_recode`, recoding `male` as `0` and `female` as `1`.
-
-```{r your-turn-1, eval = FALSE}
-patients %>% 
-  mutate(
-    sex_recode = ____(sex == "male", true = 0, false = 1)
-  )
-```
-
+Complete the code to create a column called `sex_recode`, recoding `"male"` as `0` and `"female"` as `1`.
 
 ???
 
@@ -171,7 +162,7 @@ class: your-turn
 
 # Your turn #1
 
-Complete the code to create a column called `sex_recode`, recoding `male` as `0` and `female` as `1`.
+Complete the code to create a column called `sex_recode`, recoding `"male"` as `0` and `"female"` as `1`.
 
 ```{r your-turn-1-solution}
 patients %>% 
@@ -179,7 +170,6 @@ patients %>%
     sex_recode = if_else(sex == "male", true = 0, false = 1)
   )
 ```
-
 
 ???
 
@@ -211,12 +201,9 @@ class: your-turn
 
 # Your turn #2
 
-**Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.** Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
+Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
 
-```{r your-turn-2, eval = FALSE}
-patients %>% 
-  mutate(____)
-```
+Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
 
 ???
 
@@ -227,7 +214,7 @@ class: your-turn
 
 # Your turn #2
 
-**Recode the values of systolic  blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.** Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
+Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
 
 ```{r your-turn-2-solution}
 patients %>% 
@@ -242,7 +229,7 @@ Let's do some more practice with `if_else()`.
 
 ---
 
-# Debug #1
+# Debug `if_else()`
 
 ```{r debug-1, error = TRUE}
 patients %>%
@@ -253,41 +240,13 @@ patients %>%
 
 ???
 
-What went wrong with this call to `if_else()`? Discuss at your table.
-
----
-
-# Debug #2
-
-```{r debug-2, error = TRUE}
-patients %>% 
-    sys_bp_status = if_else(sys_bp >= 130, "high", "normal")
-```
-
-???
-
-What is the problem with this call?
-
----
-
-# Debug #3
-
-```{r debug-3}
-patients %>%
-  mutate(
-    sex_recode = if_else(sex == "male", 1, 0)
-  )
-```
-
-???
-
-The code intends to recode males as `0`s and females as `1`s. The code runs, but it's not quite what we wanted. Why?
+What's gone wrong?
 
 ---
 
 # Complex logical conditions
 
-We want to identify which patients require medical intervention based on their age, weight, and blood glucose level. Patients eligible for intervention must meet three criteria:
+We want to identify which patients require medical intervention. Patients eligible for intervention must meet three criteria:
 
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
@@ -303,22 +262,11 @@ class: your-turn
 
 # Your turn #3
 
-**Add a variable named `intervene` which takes the value `“yes”` for patients who meet the following criteria, and `"no"` for all others.** Save the result as a new tibble called `patients_interventions`.
+Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
 
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
 1. A BMI of 30 or greater
-
-```{r your-turn-3, eval = FALSE}
-patients_interventions <-
-  patients %>% 
-  mutate(
-    ____ = ____(
-      ____ & ____ & ____, 
-      "yes", 
-      "no"
-    )
-```
 
 ---
 
@@ -326,11 +274,7 @@ class: your-turn
 
 # Your turn #3
 
-**Add a variable named `intervene` which takes the value `“yes”` for patients who meet the following criteria, and `"no"` for all others.** Save the result as a new tibble called `patients_interventions`.
-
-1. Age 40 or older
-1. Blood glucose is 126 mg/dL or greater
-1. A BMI of 30 or greater
+Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
 
 ```{r your-turn-3-solution}
 patients_interventions <- 
@@ -361,12 +305,7 @@ class: your-turn
 
 # Your turn #4
 
-**Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.**
-
-```{r your-turn-4, eval = FALSE}
-patients_interventions %>% 
-  ____
-```
+Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
 
 ---
 
@@ -374,7 +313,7 @@ class: your-turn
 
 # Your turn #4
 
-**Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.**
+Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
 
 ```{r your-turn-4-solution}
 patients_interventions %>% 
@@ -428,26 +367,14 @@ class: your-turn
 
 # Your turn #5
 
-**Fill in the blanks below to create a new column called `sys_bp_status` using the function `case_when()`.** 
-
-```{r your-turn-5, eval = FALSE}
-patients %>% 
-  mutate(
-    ____ = ____(
-      sys_bp >= 140           ~ "stage 2",
-      sys_bp >= 130 & sys_bp  ~ "stage 1",
-      sys_bp >= 120 & sys_bp  ~ "elevated",
-      sys_bp < 120            ~ "normal"
-    )
-  )
-```
+Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
 
 ---
 class: your-turn
 
 # Your turn #5
 
-**Fill in the blanks below to create a new column called `sys_bp_status` using the function `case_when()`.** 
+Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
 
 ```{r your-turn-5-solution}
 patients %>% 
@@ -479,7 +406,7 @@ class: your-turn
 
 # Your turn #6
 
-**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.**
+Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
 | Diabetes status | Fasting blood glucose |
 |:----------------|:----------------------|
@@ -497,7 +424,7 @@ class: your-turn
 
 # Your turn #6
 
-**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.**
+Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
 ```{r your-turn-6-solution, eval = TRUE}
 patients_2 <-
@@ -517,7 +444,7 @@ patients_2 <-
 
 ---
 
-# Debug #1
+# Debug `case_when()`
 
 ```{r debug-cw-1, error = TRUE}
 patients %>% 
@@ -534,24 +461,6 @@ patients %>%
 ???
 
 The code intends to recode `sys_bp` into four categories, as we did before. What has gone wrong?
-
----
-
-# Debug #2
-
-```{r debug-cw-2, error = TRUE}
-patients %>% 
-  sys_bp_status = case_when(
-    sys_bp >= 140           ~ "stage 2",
-    sys_bp >= 130           ~ "stage 1",
-    sys_bp >= 120           ~ "elevated",
-    sys_bp < 120            ~ "normal"
-  )
-```
-
-???
-
-What's gone wrong here?
 
 ---
 
@@ -588,7 +497,7 @@ class: your-turn
 
 # Your turn #7
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
+Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -605,7 +514,7 @@ class: your-turn
 
 # Your turn #7
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
+Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
 
 ```{r your-turn-7-solution}
 patients_2 %>% 
@@ -638,7 +547,7 @@ patients_2 %>%
 
 You learn that a new policy is in place and only diabetic and pre-diabetic patients will have follow up visits, regardless of BMI. Follow up visits for all other patients have been cancelled and should be coded as `NA` instead. The variable `followup` needs to be changed accordingly. 
 
-When you want to recode some values to `NA`, filling in the right hand side of the `case_when()` formula with `NA` will usually *NOT* work. **Discuss with your group why that might be.**
+When you want to recode some values to `NA`, filling in the right hand side of the `case_when()` formula with `NA` will usually *NOT* work.
 
 The error message gives us a hint why. All right hand side values need to be the same type of data. `NA` is a `logical`, but `followup` needs to be a double.
 
@@ -663,18 +572,7 @@ class: your-turn
 
 # Your turn #8
 
-**Complete the code to recode `followup` with the appropriate type of missing value.**
-
-```{r your-turn-8, eval = FALSE}
-patients_2 %>% 
-  mutate(
-     followup = case_when(
-       diabetes_status == "diabetic" ~ 1, 
-       diabetes_status == "pre-diabetic" ~ 1.5,
-       TRUE ~ ____,
-    )
-  )
-```
+Complete the code to recode `followup` with the appropriate type of missing value.
 
 ???
 
@@ -685,7 +583,7 @@ class: your-turn
 
 # Your turn #8
 
-**Complete the code to recode `followup` with the appropriate type of missing value.**
+Complete the code to recode `followup` with the appropriate type of missing value.
 
 ```{r your-turn-8-solution}
 patients_2 %>% 
