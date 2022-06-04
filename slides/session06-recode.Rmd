@@ -93,10 +93,23 @@ class: title-slide
 
 ???
 
-Welcome to today's session on recoding variables with `if_else()` and `case_when()`, two functions from the dplyr package. Let's get started.
+Welcome to today's session on recoding variables with `if_else()` and `case_when()`, two functions from the dplyr package.
 
 ---
+class: speaker-slide
 
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/49049415?s=400&u=cb56cfb40062f9be0a8202a2b8073ba7107cf465&v=4" width="200px"/>
+
+.speaker-links[
+[`r fontawesome::fa("github")` deirdrefrancks](https://github.com/deirdrefrancks)    
+[`r fontawesome::fa("twitter")` deirdrefrancks](https://twitter.com/deirdrefrancks) 
+]
+
+---
 class: middle
 
 # Agenda
