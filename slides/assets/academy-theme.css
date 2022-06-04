@@ -44,14 +44,14 @@ div.my-footer span {
     bottom: 2px;
 }
 
-a.footer-link {
+.footer-link {
     position: absolute;
-    bottom: 3px;
+    bottom: 1em;
     left: 2em;
-    height: 40px;
     width: 150px;
     color: #E7553C;
     font-size: 14px;
+    text-align: left;
 }
 
 /* Title slide ====================================== */ 
@@ -108,8 +108,23 @@ a.footer-link {
   padding-top: 20px;
 }
 
+/* Speaker slides ==================================== */
 
+.speaker-slide {
+  vertical-align: middle;
+  text-align: center;
+}
 
+.speaker-slide .speaker-links a {
+  text-decoration: none;
+}
+
+.speaker-slide .speaker-links {
+  width: max-content;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Chapter slides ==================================== */
 
