@@ -3,6 +3,9 @@ title: "Recode variables with `if_else()` and `case_when()`"
 subtitle: "Day 2, Session 2"
 author: "Deirdre Francks"
 date: "July 26, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  text: shortlink
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css"]
@@ -15,72 +18,23 @@ output:
       ratio: "16:9"
 ---
 
+---
+class: title-slide
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 
 # Load packages
 library(dplyr)
+library(readr)
+library(countdown)
 
-# Load data
-dem <- 
-  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DEMO_E.XPT") %>%
-  haven::zap_label() %>%
-  transmute(
-    seq_no = SEQN,
-    age = RIDAGEYR,
-    sex = if_else(RIAGENDR == 1, "male", "female"),
-  ) 
+# Parameters
+file_patients <- here::here("slides/session06-recode/data/patients.csv")
 
-body <- 
-  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BMX_E.XPT") %>%
-  haven::zap_label() %>%
-  transmute(
-    seq_no = SEQN,
-    bmi = BMXBMI
-  ) 
-
-bp <- 
-  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BPX_E.XPT") %>%
-  haven::zap_label() %>%
-  transmute(
-    seq_no = SEQN,
-    sys_bp = BPXSY2,
-    dias_bp = BPXDI2
-  )
-
-fasting <- 
-  haven::read_xpt("https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/GLU_E.XPT") %>%
-  haven::zap_label() %>%
-  transmute(
-    seq_no = SEQN,
-    glucose = LBXGLU
-  )
-
-set.seed(123)
- 
-patients <- 
-  inner_join(dem, body, by = "seq_no") %>%
-  inner_join(bp) %>%
-  inner_join(fasting) %>%
-  # inner_join(nhanes_glucose) %>%
-  tidyr::drop_na() %>%
-  slice_sample(n = 30) %>%
-  mutate(
-   seq_no = row_number()
-  ) %>%
-  rename(id = seq_no) %>%
-  relocate(
-    glucose, .after = "bmi"
-  )
+# Load patients dataset
+patients <- read_csv(file_patients)
 ```
-
-layout: true
-
-<a class="footer-link" href="https://github.com/rstudio-conf-2022/intro-to-tidyverse">shortlink here</a>
-
----
-class: title-slide
 
 # `r rmarkdown::metadata$title`
 
@@ -88,8 +42,37 @@ class: title-slide
 
 <div class="title-footer">
   <img src="images/academy-logo.png">
-  <div> `r rmarkdown::metadata$date`</div>
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  htmltools::HTML(sprintf(
+    '<script>document.addEventListener("DOMContentLoaded", function() {
+  document
+    .querySelectorAll(".remark-slides-area .remark-slide-content")
+    .forEach(function(el) {
+      const link = document.createElement("a")
+      link.classList = "footer-link"
+      link.href = "%s"
+      link.innerText = "%s"
+      el.appendChild(link)
+    })
+  })</script>',
+    shortlink$url,
+    shortlink$text
+  ))
+}
+```
 
 ???
 
@@ -99,8 +82,6 @@ Welcome to today's session on recoding variables with `if_else()` and `case_when
 class: speaker-slide
 
 # `r rmarkdown::metadata$author`
-
-<!-- You can copy the image link address from your github profile to use as the src link below --> 
 
 <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/49049415?s=400&u=cb56cfb40062f9be0a8202a2b8073ba7107cf465&v=4" width="200px"/>
 
@@ -133,17 +114,21 @@ By the end of this lesson, you should be able to complete your milestone recreat
 ---
 class: your-turn
 
-# Review #1
+# Review `mutate()`
 
-Complete this code.
+Open this session's milestone file and complete the code in the chunk labelled `review-mutate`.
 
 ```{r eval = FALSE}
 # mutate() review
 ```
 
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
+
 ???
 
-Let's begin with some review. Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-1` chunk to complete this review.
+Let's begin with some review. Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-mutate` chunk to complete this review.
 
 ---
 
@@ -158,26 +143,62 @@ patients
 Today we'll work with the `patients` dataset. We have information about age, sex, body mass index (BMI), fasting blood glucose level (mg/dL), and systolic and diastolic blood pressure (mmHg) for 30 patients. 
 
 ---
-class: your-turn
 
-# Your turn #1
+# Recoding with `if_else()`
 
-Complete the code to create a column called `sex_recode`, recoding `"male"` as `0` and `"female"` as `1`.
+```{r eval = FALSE}
+patients %>% 
+  mutate(
+    sex_recode = if_else(condition = ____, true = ____, false = ____)
+  )
+```
+
 
 ???
 
-Imagine you are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). You can complete that task by using `if_else()` to recode the variable `sex`.
+Imagine we are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). We can complete this task by using `if_else()` to recode the variable `sex`.
 
-Think about how `mutate()` will affect your dataset. Will this code modify the column `sex`?
+`if_else()` takes three arguments to recode its values:
+
+1. The first argument is a logical test to apply to each element of a vector.
+1. The second argument is a value to output if the result of the logical test is TRUE.
+1. The third argument is a value to output if the result of the logical test is FALSE.
 
 ---
-class: your-turn
 
-# Your turn #1
+# Recoding with `if_else()`
 
-Complete the code to create a column called `sex_recode`, recoding `"male"` as `0` and `"female"` as `1`.
+```{r eval = FALSE}
+patients %>% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = ____, false = ____)
+  )
+```
 
-```{r your-turn-1-solution}
+???
+ 
+The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out.
+
+---
+
+# Recoding with `if_else()`
+
+```{r eval = FALSE}
+patients %>% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = 0, false = ____)
+  )
+```
+
+???
+ 
+Next we'll add the value our variable should take if the condition is `true`.
+
+---
+
+# Recoding with `if_else()`
+
+```{r}
 patients %>% 
   mutate(
     sex_recode = if_else(sex == "male", true = 0, false = 1)
@@ -186,37 +207,20 @@ patients %>%
 
 ???
 
-The call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
-
----
-
-# Using `if_else()`
-
-```{r if-else, eval = FALSE}
-patients %>% 
-  mutate(
-    sex_recode = if_else(sex == "male", 0, 1)
-  )
-```
-
-???
-
-`if_else()` takes three arguments to recode its values:
-
-1. The first argument is a logical test to apply to each element of a vector.
-1. The second argument is a value to output if the result of the logical test is TRUE.
-1. The third argument is a value to output if the result of the logical test is FALSE.
-
-You can explicitly write out `true =` or `false =` for the second and third arguments, but it is more common to see these `if_else()` arguments unlabelled.
+Finally we'll add the value the variable should take if the condition is `false`. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
 
 ---
 class: your-turn
 
-# Your turn #2
+# Your turn #1
 
 Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
 
 Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
+
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
 
 ???
 
@@ -225,7 +229,7 @@ Let's do some more practice with `if_else()`.
 ---
 class: your-turn
 
-# Your turn #2
+# Your turn #1
 
 Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
 
@@ -273,7 +277,7 @@ So far you have used `if_else()` with basic logical conditions, but you can reco
 
 class: your-turn
 
-# Your turn #3
+# Your turn #2
 
 Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
 
@@ -281,11 +285,15 @@ Add a variable named `intervene` which takes the value `“yes”` for patients 
 1. Blood glucose is 126 mg/dL or greater
 1. A BMI of 30 or greater
 
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
+
 ---
 
 class: your-turn
 
-# Your turn #3
+# Your turn #2
 
 Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
 
@@ -316,15 +324,19 @@ Consider the `patients_interventions` dataset you created in a previous exercise
 
 class: your-turn
 
-# Your turn #4
+# Your turn #3
 
 Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
+
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
 
 ---
 
 class: your-turn
 
-# Your turn #4
+# Your turn #3
 
 Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
 
@@ -378,14 +390,14 @@ Can we use `if_else()` to recode a variable under more than two conditions? Disc
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn #4
 
 Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
 
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn #4
 
 Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
 
@@ -405,7 +417,7 @@ patients %>%
 
 # Using `case_when()`
 
-TODO: Insert `case_when()` image
+![](session06-recode/images/case_when.png)
 
 ???
 
@@ -417,7 +429,7 @@ TODO: Insert `case_when()` image
 ---
 class: your-turn
 
-# Your turn #6
+# Your turn #5
 
 Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -427,6 +439,9 @@ Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabet
 | Pre-diabetic    | 100 - 125 mg/dL       |
 | Diabetic        | 126 mg/dL or above    |
 
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
 
 ???
 
@@ -435,7 +450,7 @@ Let's practice using `case_when()` with the `patients` dataset. Fasting blood gl
 ---
 class: your-turn
 
-# Your turn #6
+# Your turn #5
 
 Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -508,7 +523,7 @@ When writing the logical test for everyone or everything else, replace the left 
 ---
 class: your-turn 
 
-# Your turn #7
+# Your turn #6
 
 Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
 
@@ -518,6 +533,10 @@ Add a new variable to `patients_2` called `followup` that displays the recommend
 | Pre-diabetic and BMI >= 30 | 1.5                            |
 | All others                 | 2                              |
 
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
+
 ???
 
 Practice using a catch-all condition.
@@ -525,7 +544,7 @@ Practice using a catch-all condition.
 ---
 class: your-turn
 
-# Your turn #7
+# Your turn #6
 
 Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
 
@@ -583,9 +602,13 @@ We must use a special type of `NA` value to match the other data type for the co
 ---
 class: your-turn
 
-# Your turn #8
+# Your turn #7
 
 Complete the code to recode `followup` with the appropriate type of missing value.
+
+```{r echo = FALSE}
+countdown(minutes = 4)
+```
 
 ???
 
@@ -594,7 +617,7 @@ Fix the code from earlier using the appropriate `NA` value.
 ---
 class: your-turn
 
-# Your turn #8
+# Your turn #7
 
 Complete the code to recode `followup` with the appropriate type of missing value.
 
