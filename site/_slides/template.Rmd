@@ -18,7 +18,6 @@ output:
       ratio: "16:9"
 ---
 
----
 class: title-slide
 
 ```{r setup, include=FALSE}
@@ -36,32 +35,24 @@ options(htmltools.dir.version = FALSE)
 
 
 ```{r xaringanExtra, echo=FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "panelset"))
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
 xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
 
 if (!is.null(rmarkdown::metadata$shortlink)) {
   shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
   stopifnot(!is.null(shortlink$url))
   
   if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
     shortlink$text <- basename(shortlink$url)
   }
   
-  htmltools::HTML(sprintf(
-    '<script>document.addEventListener("DOMContentLoaded", function() {
-  document
-    .querySelectorAll(".remark-slides-area .remark-slide-content")
-    .forEach(function(el) {
-      const link = document.createElement("a")
-      link.classList = "footer-link"
-      link.href = "%s"
-      link.innerText = "%s"
-      el.appendChild(link)
-    })
-  })</script>',
-    shortlink$url,
-    shortlink$text
-  ))
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
 }
 ```
 
