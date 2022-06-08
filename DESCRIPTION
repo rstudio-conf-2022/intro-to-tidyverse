@@ -20,6 +20,7 @@ Imports:
     knitr,
     rmarkdown
 Suggests:
+    fontawesome,
     quarto,
     xaringan,
     xaringanExtra
