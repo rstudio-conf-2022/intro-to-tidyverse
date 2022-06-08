@@ -209,17 +209,16 @@ babynames %>%
 
 A name is popular if a large number of children have the name when you sum across years
 
----
-# Name popularity 
-
-A name is popular if a large number of children have the name when you sum across years
+--
 
 ```{r}
 babynames %>% 
   filter(name == "Sara") %>% 
   summarize(total = sum(n))
 ```
-What if we want to do this for every name? 
+--
+
+What if we want to do this for every name?
 
 ---
 class: middle chapter-slide green
