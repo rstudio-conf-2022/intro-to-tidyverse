@@ -167,4 +167,10 @@ babynames %>%
   )
 ```
 
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Summary functions
 
