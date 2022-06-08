@@ -1,0 +1,359 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&display=swap');
+
+:root {
+  --xe-banner-font-size: 0.9em;
+}
+.xe-banner a {
+  text-decoration: none;
+}
+
+/* General =================================*/
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #404040;
+}
+
+.remark-slide-content {
+    background-color: #F5EFEB;
+}
+
+.remark-slide-content p, 
+.remark-slide-content ol {
+  font-size: 2em;
+}
+
+
+.remark-slide-content h1{
+    color: #534c48;
+}
+
+
+
+
+/* Footer ================================== */
+
+div.my-footer {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 20px;
+    width: 100%;
+}
+
+div.my-footer span {
+    font-size: 10pt;
+    color: #ffffff;
+    position: absolute;
+    left: 15px;
+    bottom: 2px;
+}
+
+.footer-link {
+    position: absolute;
+    bottom: 1em;
+    left: 2em;
+    width: 150px;
+    color: #E7553C;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Title slide ====================================== */ 
+
+
+@page { margin: 0; }
+
+.title-slide {
+}
+
+.title-slide h1 {
+  color: black;
+  font-weight: 700;
+  font-size: 4rem;
+  word-wrap: break-word;
+  letter-spacing: 0.5pt;
+}
+
+.title-slide h2 {
+  font-weight: 400;
+  font-size: 1.35em;
+  color: #3b4245;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+
+.title-slide h3 {
+  font-weight: 900;
+  font-size: 1.5em;
+  color: #7c736c;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+}
+
+.title-footer {
+  display: block;
+  background-color: #FAF7F5;
+  text-align: left;
+  font-weight: bold;
+  font-size: 2em;
+  padding: 1em 2em 0 2em;
+  height: 120px;
+  line-height: 90px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.title-footer img {
+  height: 60px;
+  float: right;
+  padding-top: 20px;
+}
+
+/* Speaker slides ==================================== */
+
+.speaker-slide {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.speaker-slide .speaker-links a {
+  text-decoration: none;
+}
+
+.speaker-slide .speaker-links {
+  width: max-content;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Chapter slides ==================================== */
+
+.chapter-slide {
+  text-align: left;
+}
+
+.big-white-number {
+  font-size: 6em;
+  float: left;
+  width: 20%;
+  color: white;
+  font-weight: 900;
+}
+
+.red {
+  background-color: #ffb3a2;
+}
+
+.green {
+  background-color: #b8d3cb;
+}
+
+.blue {
+  background-color: #94bbdf;
+}
+
+.tan {
+  background-color: #e2d8d2;
+}
+
+
+
+
+.chapter-slide.red h1,
+.chapter-slide.blue h1,
+.chapter-slide.green h1,
+.chapter-slide.tan h1 {
+  font-size: 5em;
+  color: black;
+  float: right;
+  display: inline-block;
+  width: 70%;
+}
+
+.chapter-slide a {
+  color: white;
+}
+
+/* Your Turn Exercises =============================== */
+
+.your-turn {
+  background-color: #d0e1db;
+  color: #404040;
+}
+
+.your-turn h1 {
+  color: black;
+  font-size: 3em;
+}
+
+.your-turn h1:before {
+    content: "";
+    display: inline-block;
+    background-image: url("../images/your-turn.png");
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    float: left;
+    background-size: contain;
+    padding-right: 10px;
+}
+
+.your-turn a {
+  color: #4d695f!important;
+}
+
+.your-turn a:hover,
+.your-turn a:active {
+  color: #7ba398!important;
+}
+
+.your-turn .remark-inline-code {
+  color: #27352a;
+  background-color: #ffffff70;
+}
+
+
+
+/* code ====================================*/
+
+pre {
+  font-family: "Source Code Pro";
+  padding: 0.25em;
+  overflow-x: auto;
+}
+
+pre code { 
+  background: none; 
+  font-size: 1rem;
+}
+
+.remark-code {
+  font-size: 26px;
+}
+
+.remark-inline-code {
+  color: #847d79;
+  background-color: #847d7910;
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 90%;
+}
+
+
+
+
+/* link color =======================================*/
+
+
+:any-link {
+    color: #E7553C;
+    text-decoration: underline;
+}
+
+
+
+.remark-code-line-highlighted { 
+  background-color:  #bed3eca1; 
+}
+
+
+
+
+/* Inverse color scheme ===========================*/ 
+
+.inverse {
+  background-color: #282a36;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+.inverse .remark-inline-code {
+  color: #bed3ec;
+  background-color: #ffffff10;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.inverse h1 {
+  color: #cfbfb4;
+}
+
+.inverse a {
+  color: #fff;
+}
+
+.inverse a:hover {
+  color: #bed3ec;
+}
+
+
+
+/* Two column layout ============================/*
+
+/* Two-column layout */
+.left-column {
+  color: #777;
+  width: 30%;
+  height: 92%;
+  float: left;
+  font-size: 18px;
+}
+
+.left-column h2:last-of-type, .left-column h3:last-child {
+  color: #000;
+}
+
+.left-column1 {
+  color: #777;
+  width: 34%;
+  height: 92%;
+  float: left;
+  font-size: 18px;
+}
+
+.right-column {
+  width: 67%;
+  float: right;
+  padding-top: 0em;
+}
+
+.right-column1 {
+  width: 63%;
+  float: right;
+  padding-top: 0em;
+}
+
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+.pull-right ~ * {
+  clear: both;
+}
+
+img, video, iframe {
+  max-width: 100%;
+}
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+}
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee }

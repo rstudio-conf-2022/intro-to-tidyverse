@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Session 1 Review</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Desirée De Leon" />
+    <meta name="date" content="2022-07-25" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-banner/banner.js"></script>
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+# Session 1 Review
+
+### Day 1, Session 1
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; Desirée De Leon • July 25, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"exclude":["title-slide"],"position":"top"}'))})</script>
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01\\">materials/session01<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
+
+---
+class: speaker-slide
+
+# Desirée De Leon
+
+&lt;!-- You can copy the image link address from your github profile to use as the src link below --&gt; 
+
+&lt;img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/&gt;
+
+.speaker-links[
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> dcossyleon](https://github.com/dcossyleon)    
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> dcossyle](https://twitter.com/dcossyle)   
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> desiree.rbind.io](https://desiree.rbind.io)
+]
+
+---
+class: middle
+
+This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+
+
+
+---
+class: middle
+
+Review activity with small group (new dataset) - 50 min
+
+---
+
+## Outbreaks data
+
+
+```r
+outbreaks &lt;- readr::read_csv("data/session01/outbreaks.csv")
+```
+
+```
+## Rows: 57649 Columns: 21
+## ── Column specification ────────────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (14): state, primary_mode, etiology, serotype_or_genotype, etiology_status, sett...
+## dbl  (7): year, month, illnesses, hospitalizations, info_on_hospitalizations, deaths...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+---
+
+1. First things first -- let's take a look a what's in this dataset. Can you recreate output that looks like this?
+
+
+```r
+glimpse(outbreaks)
+```
+
+```
+## Rows: 57,649
+## Columns: 21
+## $ year                         &lt;dbl&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2…
+## $ month                        &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1…
+## $ state                        &lt;chr&gt; "Minnesota", "Minnesota", "Minnesota", "Minnesota…
+## $ primary_mode                 &lt;chr&gt; "Person-to-person", "Food", "Person-to-person", "…
+## $ etiology                     &lt;chr&gt; "Norovirus Genogroup II", "Norovirus", "Norovirus…
+## $ serotype_or_genotype         &lt;chr&gt; "unknown", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+## $ etiology_status              &lt;chr&gt; "Confirmed", "Suspected", "Suspected", "Confirmed…
+## $ setting                      &lt;chr&gt; "Hotel/motel", "Restaurant - Sit-down dining", "O…
+## $ illnesses                    &lt;dbl&gt; 21, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16, 11, 6,…
+## $ hospitalizations             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 4, 2…
+## $ info_on_hospitalizations     &lt;dbl&gt; 19, 2, 0, 24, 8, 5, 3, 21, 7, 5, 1, 16, 11, 6, 69…
+## $ deaths                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ info_on_deaths               &lt;dbl&gt; 19, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16, 11, 6,…
+## $ food_vehicle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "cookies", "salad, un…
+## $ food_contaminated_ingredient &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ ifsac_category               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "Multiple", "Multiple…
+## $ water_exposure               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_type                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type_specify          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+```
+
+```r
+#str(outbreaks)
+```
+
+---
+
+1.1 What is the earliest year on record in this dataset? Latest?
+
+
+```r
+outbreaks %&gt;%
+  arrange(year)
+```
+
+```
+## # A tibble: 57,649 × 21
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  1971    11 Alaska     Water        Shigell… &lt;NA&gt;             Confirmed       Mobile…
+##  2  1971     6 Alabama    Water        Selenium &lt;NA&gt;             Confirmed       Unknown
+##  3  1971     6 Arkansas   Water        Hepatit… &lt;NA&gt;             Confirmed       Store/…
+##  4  1971     2 California Water        Copper   &lt;NA&gt;             Confirmed       Restau…
+##  5  1971     7 California Water        Unknown  &lt;NA&gt;             Suspected       Commun…
+##  6  1971    12 California Water        Unknown  &lt;NA&gt;             Suspected       Hotel/…
+##  7  1971     7 Kentucky   Water        Unknown  &lt;NA&gt;             Suspected       Park -…
+##  8  1971     6 Missouri   Water        Unknown  &lt;NA&gt;             Suspected       Subdiv…
+##  9  1971     7 Mississip… Water        Shigell… &lt;NA&gt;             Confirmed       Camp/C…
+## 10  1971     9 North Car… Water        Hepatit… &lt;NA&gt;             Confirmed       Privat…
+## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
+## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+```r
+outbreaks %&gt;%
+  arrange(desc(year))
+```
+
+```
+## # A tibble: 57,649 × 21
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  2020     1 Mississip… Person-to-p… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            Long-t…
+##  2  2020     1 Wisconsin  Person-to-p… Norovir… GII.P16 - GII.4… Confirmed       Other …
+##  3  2020     1 Nebraska   Person-to-p… Norovir… GII.P16 - GII.4… Confirmed       Long-t…
+##  4  2020     1 New York   Food         Clostri… &lt;NA&gt;             Suspected       Catere…
+##  5  2020     1 New Mexico Person-to-p… Norovir… unknown          Confirmed       Long-t…
+##  6  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
+##  7  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected; Sus… Long-t…
+##  8  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
+##  9  2020     1 Massachus… Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
+## 10  2020     1 Massachus… Food         Norovir… &lt;NA&gt;             Suspected       Restau…
+## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
+## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+---
+
+1.2 The `state` variable appears to include US locations -- is the data limited to the 50 states?
+
+
+```r
+outbreaks %&gt;%
+  count(state)
+```
+
+```
+## # A tibble: 58 × 2
+##    state                                            n
+##    &lt;chr&gt;                                        &lt;int&gt;
+##  1 Alabama                                        558
+##  2 Alaska                                         217
+##  3 Arizona                                       1035
+##  4 Arkansas                                       164
+##  5 California                                    2844
+##  6 Colorado                                      1212
+##  7 Commonwealth of the Northern Mariana Islands     1
+##  8 Connecticut                                    879
+##  9 Delaware                                       134
+## 10 Florida                                       2962
+## # … with 48 more rows
+```
+
+---
+
+1.3 The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+
+Can you repro
+
+
+```r
+outbreaks %&gt;%
+  filter(primary_mode == "Food") %&gt;% 
+  count(ifsac_category)
+```
+
+```
+## # A tibble: 28 × 2
+##    ifsac_category     n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 Beef             723
+##  2 Chicken          571
+##  3 Crustaceans      111
+##  4 Dairy            356
+##  5 Eggs             197
+##  6 Fish            1019
+##  7 Fruits           268
+##  8 Fungi             45
+##  9 Game              36
+## 10 Grains-Beans     203
+## # … with 18 more rows
+```
+
+---
+
+2. What are the different etiologies that have been recorded? Display them in a table ike the one below.
+
+
+```r
+outbreaks %&gt;%
+  count(etiology)
+```
+
+```
+## # A tibble: 679 × 2
+##    etiology                                                                    n
+##    &lt;chr&gt;                                                                   &lt;int&gt;
+##  1 Acanthamoeba unknown                                                        1
+##  2 Adenovirus                                                                  3
+##  3 Adenovirus B                                                                2
+##  4 Adenovirus F; Escherichia coli, Enteroaggregative                           1
+##  5 Adenovirus F; Escherichia coli, Enteropathogenic                            1
+##  6 Adenovirus F; Escherichia coli, Enteropathogenic; Clostridium difficile     1
+##  7 Adenovirus other; Adenovirus                                                1
+##  8 Adenovirus unknown                                                          1
+##  9 Adenovirus; Clostridium                                                     1
+## 10 Adenovirus; Norovirus Genogroup II                                          1
+## # … with 669 more rows
+```
+
+---
+
+3. Read in + plot
+
+Explore the relationship between month and the number of illnesses with a plot like this one:
+
+
+```r
+outbreaks %&gt;% 
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+---
+
+4. Subset the data before plotting to inspect the outlier in a plot like this:
+
+
+```r
+outbreaks %&gt;%
+  filter(
+    illnesses &gt;= 400000
+  ) %&gt;%
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+---
+
+5. What observation is associated with such a high number of illnesses? Display the observation in a table:
+
+
+```r
+outbreaks %&gt;%
+  filter(
+    illnesses &gt;= 400000
+  )
+```
+
+```
+## # A tibble: 1 × 21
+##    year month state     primary_mode etiology   serotype_or_gen… etiology_status setting
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+## 1  1993     3 Wisconsin Water        Cryptospo… &lt;NA&gt;             Confirmed       Commun…
+## # … with 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
+## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
+## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+---
+
+6. Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+
+
+```r
+outbreaks %&gt;% arrange(desc(illnesses))
+```
+
+```
+## # A tibble: 57,649 × 21
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  1993     3 Wisconsin  Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
+##  2  1987     1 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
+##  3  1983     6 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected       Camp/C…
+##  4  1991     8 Puerto Ri… Water        Unknown  &lt;NA&gt;             Suspected       Commun…
+##  5  1980     6 Texas      Water        Unknown  &lt;NA&gt;             Suspected       Commun…
+##  6  2007     5 Utah       Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
+##  7  1995     7 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed; Con… Park -…
+##  8  1978     3 Colorado   Water        Giardia… &lt;NA&gt;             Confirmed       Commun…
+##  9  1987     9 Multistate Water        Norovir… &lt;NA&gt;             Confirmed       School…
+## 10  1975     8 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected       Commun…
+## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
+## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+---
+
+7. Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
+
+
+```r
+outbreaks %&gt;%
+  filter(
+    illnesses &lt; 400000
+  ) %&gt;% 
+  ggplot(
+    mapping = aes(x = year, y = illnesses)
+  ) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+
+8. How many primary modes of illness are there?
+
+
+```r
+outbreaks %&gt;%
+  count(primary_mode)
+```
+
+```
+## # A tibble: 6 × 2
+##   primary_mode                                          n
+##   &lt;chr&gt;                                             &lt;int&gt;
+## 1 Animal Contact                                      512
+## 2 Environmental contamination other than food/water   111
+## 3 Food                                              23105
+## 4 Indeterminate/Other/Unknown                        4647
+## 5 Person-to-person                                  26561
+## 6 Water                                              2713
+```
+
+---
+
+9. Which primary mode is responsible for the greatest number of reported outbreaks?
+
+
+```r
+outbreaks %&gt;%
+  ggplot(mapping = aes(x = primary_mode)) + 
+  geom_bar()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+
+10. Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+
+
+```r
+outbreaks %&gt;%
+  filter(illnesses &lt; 40000) %&gt;% 
+  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
+  geom_point()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+---
+
+11. Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+
+
+```r
+outbreaks %&gt;%
+  filter(illnesses &lt; 40000) %&gt;% 
+  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
+  geom_point(alpha = 0.01) + 
+  geom_boxplot()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+---
+
+12. Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+
+
+```r
+outbreaks %&gt;% 
+  filter(state == "Washington DC") %&gt;%
+  ggplot(mapping = aes(x = primary_mode)) +
+  geom_bar()
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+---
+
+21. Limit to DC and food-related illnesses --&gt; when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
+
+
+```r
+outbreaks %&gt;% 
+  filter(
+    state == "Washington DC" &amp; 
+    primary_mode == "Food"
+    ) %&gt;%
+  arrange(desc(year), desc(month))
+```
+
+```
+## # A tibble: 44 × 21
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  2019     6 Washingto… Food         Cyclosp… &lt;NA&gt;             Confirmed       "Resta…
+##  2  2019     5 Washingto… Food         Norovir… unknown - unkno… Suspected       "Priva…
+##  3  2019     3 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Resta…
+##  4  2018     9 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Resta…
+##  5  2018     3 Washingto… Food         Norovir… unknown - unkno… Confirmed       "Resta…
+##  6  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected       "Resta…
+##  7  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected       "Resta…
+##  8  2017    12 Washingto… Food         Norovir… unknown - unkno… Confirmed       "Cater…
+##  9  2016     2 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Schoo…
+## 10  2015     9 Washingto… Food         Salmone… Enteritidis      Confirmed       "Resta…
+## # … with 34 more rows, and 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
+## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
+## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+---
+
+30. Harder filter() + select()
+
+Find food-related outbreaks that resulted in at least 1 death, and show the columns from `year` to `deaths`
+
+
+```r
+outbreaks %&gt;% 
+  filter(
+    primary_mode == "Food", 
+    deaths &gt;= 1
+  )
+```
+
+```
+## # A tibble: 265 × 21
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  2009     7 Michigan   Food         Salmone… Newport          Confirmed        &lt;NA&gt;  
+##  2  2009     5 West Virg… Food         Salmone… Enteritidis      Confirmed        &lt;NA&gt;  
+##  3  2010     2 Illinois   Food         Shigell… &lt;NA&gt;             Confirmed       "Resta…
+##  4  2010     5 Louisiana  Food         Clostri… &lt;NA&gt;             Confirmed        &lt;NA&gt;  
+##  5  2010     6 New York   Food         Escheri… O157:H7          Confirmed       "Other"
+##  6  2010    10 Colorado   Food         Norovir… &lt;NA&gt;             Confirmed       "Long-…
+##  7  2011     3 Rhode Isl… Food         Salmone… Heidelberg       Confirmed        &lt;NA&gt;  
+##  8  2009     2 Multistate Food         Salmone… Carrau           Confirmed       "Groce…
+##  9  2009     8 Multistate Food         Escheri… O157:H7          Confirmed       "Other"
+## 10  2010     1 Texas      Food         Listeri… &lt;NA&gt;             Confirmed        &lt;NA&gt;  
+## # … with 255 more rows, and 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
+## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
+## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
+```
+
+---
+
+40. Calculate new variable + plot it (fatality rate)
+
+
+```r
+outbreaks %&gt;% 
+  select(1:3, deaths, illnesses) %&gt;% 
+  mutate(
+    fatality_rate = deaths/illnesses*100
+  ) %&gt;%
+  ggplot(mapping = aes(x = fatality_rate)) + 
+  geom_histogram()
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+```
+## Warning: Removed 7154 rows containing non-finite values (stat_bin).
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
+
+Filter out fatalty rates or 0 --&gt; then plot the distribution of those
+
+
+```r
+outbreaks %&gt;% 
+  select(1:3, deaths, illnesses) %&gt;% 
+  mutate(
+    fatality_rate = deaths/illnesses*100
+  ) %&gt;%
+  filter(fatality_rate &gt; 0) %&gt;%
+  ggplot(mapping = aes(x = fatality_rate)) + 
+  geom_histogram()
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+![](session01-review-slides_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+
+---
+
+Y. Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+
+
+```r
+outbreaks %&gt;% 
+  filter(state == "Washington DC") %&gt;% 
+  mutate(
+    hosp_rate = hospitalizations/illnesses*100
+  ) %&gt;%
+  arrange(desc(hosp_rate), desc(year))
+```
+
+```
+## # A tibble: 99 × 22
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
+##  1  2019     3 Washingto… Environment… Norovir… unknown - unkno… Confirmed       Long-t…
+##  2  2015     3 Washingto… Environment… Norovir… &lt;NA&gt;             Confirmed       Hospit…
+##  3  2014     2 Washingto… Indetermina… Norovir… unknown          Suspected       Long-t…
+##  4  2009     2 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            &lt;NA&gt;   
+##  5  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected       &lt;NA&gt;   
+##  6  2019     7 Washingto… Indetermina… Norovir… &lt;NA&gt;             Suspected       School…
+##  7  2014     2 Washingto… Indetermina… Norovir… unknown          Confirmed       Long-t…
+##  8  2002    10 Washingto… Food         Salmone… &lt;NA&gt;             Confirmed; Con… Catere…
+##  9  2009     3 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            &lt;NA&gt;   
+## 10  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected       &lt;NA&gt;   
+## # … with 89 more rows, and 14 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
+## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
+## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;, hosp_rate &lt;dbl&gt;
+```
+
+
+---
+
+
+5. X Use a window function + plot it
+
+
+
+6. X Mean center something (?) and then plot it
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
