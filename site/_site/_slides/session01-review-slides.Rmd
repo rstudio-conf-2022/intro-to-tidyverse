@@ -1,0 +1,348 @@
+---
+title: "Session 1 Review"
+subtitle: "Day 1, Session 1"
+author: "Desirée De Leon"
+date: "July 25, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01
+  text: materials/session01
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
+
+.speaker-links[
+[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
+[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
+[`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
+]
+
+---
+class: middle
+
+This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+
+```{r load-data, include=FALSE}
+library(tidyverse)
+
+readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet = 1) %>%
+  janitor::clean_names() %>%
+  readr::write_csv("data/session01/outbreaks.csv")
+```
+
+---
+class: middle
+
+Review activity with small group (new dataset) - 50 min
+
+---
+
+## Outbreaks data
+
+```{r read-in-outbreaks}
+outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
+```
+
+---
+
+1. First things first -- let's take a look a what's in this dataset. Can you recreate output that looks like this?
+
+```{r}
+glimpse(outbreaks)
+#str(outbreaks)
+```
+
+---
+
+1.1 What is the earliest year on record in this dataset? Latest?
+
+```{r}
+outbreaks %>%
+  arrange(year)
+
+outbreaks %>%
+  arrange(desc(year))
+```
+
+---
+
+1.2 The `state` variable appears to include US locations -- is the data limited to the 50 states?
+
+```{r}
+outbreaks %>%
+  count(state)
+```
+
+---
+
+1.3 The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+
+Can you repro
+
+```{r}
+outbreaks %>%
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category)
+```
+
+---
+
+2. What are the different etiologies that have been recorded? Display them in a table ike the one below.
+
+```{r}
+outbreaks %>%
+  count(etiology)
+```
+
+---
+
+3. Read in + plot
+
+Explore the relationship between month and the number of illnesses with a plot like this one:
+
+```{r}
+outbreaks %>% 
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+---
+
+4. Subset the data before plotting to inspect the outlier in a plot like this:
+
+```{r}
+outbreaks %>%
+  filter(
+    illnesses >= 400000
+  ) %>%
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+---
+
+5. What observation is associated with such a high number of illnesses? Display the observation in a table:
+
+```{r}
+outbreaks %>%
+  filter(
+    illnesses >= 400000
+  )
+```
+
+---
+
+6. Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+
+```{r}
+outbreaks %>% arrange(desc(illnesses))
+```
+
+---
+
+7. Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
+
+```{r}
+outbreaks %>%
+  filter(
+    illnesses < 400000
+  ) %>% 
+  ggplot(
+    mapping = aes(x = year, y = illnesses)
+  ) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+---
+
+8. How many primary modes of illness are there?
+
+```{r}
+outbreaks %>%
+  count(primary_mode)
+```
+
+---
+
+9. Which primary mode is responsible for the greatest number of reported outbreaks?
+
+```{r}
+outbreaks %>%
+  ggplot(mapping = aes(x = primary_mode)) + 
+  geom_bar()
+```
+
+---
+
+10. Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+
+```{r}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
+  geom_point()
+```
+
+---
+
+11. Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+
+```{r}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
+  geom_point(alpha = 0.01) + 
+  geom_boxplot()
+```
+
+---
+
+12. Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+
+```{r}
+outbreaks %>% 
+  filter(state == "Washington DC") %>%
+  ggplot(mapping = aes(x = primary_mode)) +
+  geom_bar()
+
+```
+
+---
+
+21. Limit to DC and food-related illnesses --> when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
+
+```{r}
+outbreaks %>% 
+  filter(
+    state == "Washington DC" & 
+    primary_mode == "Food"
+    ) %>%
+  arrange(desc(year), desc(month))
+```
+
+---
+
+30. Harder filter() + select()
+
+Find food-related outbreaks that resulted in at least 1 death, and show the columns from `year` to `deaths`
+
+```{r}
+outbreaks %>% 
+  filter(
+    primary_mode == "Food", 
+    deaths >= 1
+  )
+```
+
+---
+
+40. Calculate new variable + plot it (fatality rate)
+
+```{r}
+outbreaks %>% 
+  select(1:3, deaths, illnesses) %>% 
+  mutate(
+    fatality_rate = deaths/illnesses*100
+  ) %>%
+  ggplot(mapping = aes(x = fatality_rate)) + 
+  geom_histogram()
+```
+
+---
+
+Filter out fatalty rates or 0 --> then plot the distribution of those
+
+```{r}
+outbreaks %>% 
+  select(1:3, deaths, illnesses) %>% 
+  mutate(
+    fatality_rate = deaths/illnesses*100
+  ) %>%
+  filter(fatality_rate > 0) %>%
+  ggplot(mapping = aes(x = fatality_rate)) + 
+  geom_histogram()
+```
+
+---
+
+Y. Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+
+```{r}
+outbreaks %>% 
+  filter(state == "Washington DC") %>% 
+  mutate(
+    hosp_rate = hospitalizations/illnesses*100
+  ) %>%
+  arrange(desc(hosp_rate), desc(year))
+```
+
+
+---
+
+
+5. X Use a window function + plot it
+
+```{r}
+
+```
+
+6. X Mean center something (?) and then plot it
+
+```{r}
+
+```
