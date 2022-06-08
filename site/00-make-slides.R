@@ -5,10 +5,10 @@ if (!file.exists("_quarto.yml")) {
 render_all_slides <- function(dir = "_slides") {
   owd <- setwd(dir)
   on.exit(setwd(owd))
-  
 
   # Add Rmd files that should not be auto-rendered to this variable
-  EXCLUDE_RMDS <- c("session01-review-slides.Rmd")
+  # ex. c("not-a-slide-deck.Rmd")
+  EXCLUDE_RMDS <- c()
   
   # Clean up the libs/ directory so we get a clean render
   unlink("libs", recursive = TRUE)
