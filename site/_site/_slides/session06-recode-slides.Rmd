@@ -18,7 +18,6 @@ output:
       ratio: "16:9"
 ---
 
----
 class: title-slide
 
 ```{r setup, include=FALSE}
@@ -30,7 +29,7 @@ library(readr)
 library(countdown)
 
 # Parameters
-file_patients <- here::here("slides/session06-recode/data/patients.csv")
+file_patients <- here::here("site/_site/_slides/data/session06/patients.csv")
 
 # Load patients dataset
 patients <- read_csv(file_patients)
@@ -417,7 +416,7 @@ patients %>%
 
 # Using `case_when()`
 
-![](session06-recode/images/case_when.png)
+![](images/session06/case_when.png)
 
 ???
 
