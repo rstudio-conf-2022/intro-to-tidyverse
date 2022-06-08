@@ -8,7 +8,7 @@ file_dem <- "https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DEMO_E.XPT"
 file_body <- "https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BMX_E.XPT"
 file_bp <- "https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/BPX_E.XPT"
 file_fasting <- "https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/GLU_E.XPT"
-file_out <- here::here("site/_site/_slides/data/session06/patients.csv")
+file_out <- here::here("site/_slides/data/session06/patients.csv")
   
 # Load data
 dem <- 

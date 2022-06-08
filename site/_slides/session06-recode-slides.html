@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Recode variables with if_else() and case_when()</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Deirdre Francks" />
+    <meta name="date" content="2022-07-26" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+# Recode variables with `if_else()` and `case_when()`
+
+### Day 2, Session 2
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; Deirdre Francks • July 26, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+<script>document.addEventListener("DOMContentLoaded", function() {
+  document
+    .querySelectorAll(".remark-slides-area .remark-slide-content")
+    .forEach(function(el) {
+      const link = document.createElement("a")
+      link.classList = "footer-link"
+      link.href = "https://github.com/rstudio-conf-2022/intro-to-tidyverse"
+      link.innerText = "shortlink"
+      el.appendChild(link)
+    })
+  })</script>
+
+???
+
+Welcome to today's session on recoding variables with `if_else()` and `case_when()`, two functions from the dplyr package.
+
+---
+class: speaker-slide
+
+# Deirdre Francks
+
+&lt;img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/49049415?s=400&amp;u=cb56cfb40062f9be0a8202a2b8073ba7107cf465&amp;v=4" width="200px"/&gt;
+
+.speaker-links[
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> deirdrefrancks](https://github.com/deirdrefrancks)    
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> deirdrefrancks](https://twitter.com/deirdrefrancks) 
+]
+
+---
+class: middle
+
+# Agenda
+
+1. Review `dplyr::mutate()`
+1. Recode with `dplyr::if_else()`
+1. Recode with `dplyr::case_when()`
+1. Milestone recreation work time
+
+???
+
+Here's our agenda for this session. You’ve previously learned how to create and modify variables with `mutate()`. In this lesson, you’ll extend this skill by learning several new functions to use inside of `mutate()` to recode a variable based on its existing values.
+
+We'll practice:
+
+* Recoding data using two logical conditions with `if_else()`
+* Recoding a variable using multiple conditions with `case_when()`
+
+By the end of this lesson, you should be able to complete your milestone recreation using the hotels dataset. 
+
+---
+class: your-turn
+
+# Review `mutate()`
+
+Open this session's milestone file and complete the code in the chunk labelled `review-mutate`.
+
+
+```r
+# mutate() review
+```
+
+<div class="countdown" id="timer_62a0ec5a" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+???
+
+Let's begin with some review. Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-mutate` chunk to complete this review.
+
+---
+
+# `patients` dataset
+
+
+```r
+patients
+```
+
+```
+## # A tibble: 30 × 7
+##       id   age sex      bmi glucose sys_bp dias_bp
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1     1    39 female  32.4     124    106      72
+##  2     2    34 female  25.9      79    108      78
+##  3     3    18 male    27.0      73    126      64
+##  4     4    47 male    23.6     114    126      82
+##  5     5    30 female  19.4      89    100      72
+##  6     6    69 female  27.2     165    114      60
+##  7     7    16 female  20.3      81     88      52
+##  8     8    80 female  29.7     112    136      60
+##  9     9    37 male    28.9     135    102      70
+## 10    10    59 male    25.4     104    122      78
+## # … with 20 more rows
+```
+
+???
+
+Today we'll work with the `patients` dataset. We have information about age, sex, body mass index (BMI), fasting blood glucose level (mg/dL), and systolic and diastolic blood pressure (mmHg) for 30 patients. 
+
+---
+
+# Recoding with `if_else()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sex_recode = if_else(condition = ____, true = ____, false = ____)
+  )
+```
+
+
+???
+
+Imagine we are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). We can complete this task by using `if_else()` to recode the variable `sex`.
+
+`if_else()` takes three arguments to recode its values:
+
+1. The first argument is a logical test to apply to each element of a vector.
+1. The second argument is a value to output if the result of the logical test is TRUE.
+1. The third argument is a value to output if the result of the logical test is FALSE.
+
+---
+
+# Recoding with `if_else()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = ____, false = ____)
+  )
+```
+
+???
+ 
+The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out.
+
+---
+
+# Recoding with `if_else()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = 0, false = ____)
+  )
+```
+
+???
+ 
+Next we'll add the value our variable should take if the condition is `true`.
+
+---
+
+# Recoding with `if_else()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sex_recode = if_else(sex == "male", true = 0, false = 1)
+  )
+```
+
+```
+## # A tibble: 30 × 8
+##       id   age sex      bmi glucose sys_bp dias_bp sex_recode
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1    39 female  32.4     124    106      72          1
+##  2     2    34 female  25.9      79    108      78          1
+##  3     3    18 male    27.0      73    126      64          0
+##  4     4    47 male    23.6     114    126      82          0
+##  5     5    30 female  19.4      89    100      72          1
+##  6     6    69 female  27.2     165    114      60          1
+##  7     7    16 female  20.3      81     88      52          1
+##  8     8    80 female  29.7     112    136      60          1
+##  9     9    37 male    28.9     135    102      70          0
+## 10    10    59 male    25.4     104    122      78          0
+## # … with 20 more rows
+```
+
+???
+
+Finally we'll add the value the variable should take if the condition is `false`. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
+
+---
+class: your-turn
+
+# Your turn #1
+
+Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
+
+Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
+
+<div class="countdown" id="timer_62a0eb5c" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+???
+
+Let's do some more practice with `if_else()`. 
+
+---
+class: your-turn
+
+# Your turn #1
+
+Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sys_status = if_else(sys_bp &gt;= 130, "high", "normal")
+  )
+```
+
+```
+## # A tibble: 30 × 8
+##       id   age sex      bmi glucose sys_bp dias_bp sys_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     
+##  1     1    39 female  32.4     124    106      72 normal    
+##  2     2    34 female  25.9      79    108      78 normal    
+##  3     3    18 male    27.0      73    126      64 normal    
+##  4     4    47 male    23.6     114    126      82 normal    
+##  5     5    30 female  19.4      89    100      72 normal    
+##  6     6    69 female  27.2     165    114      60 normal    
+##  7     7    16 female  20.3      81     88      52 normal    
+##  8     8    80 female  29.7     112    136      60 high      
+##  9     9    37 male    28.9     135    102      70 normal    
+## 10    10    59 male    25.4     104    122      78 normal    
+## # … with 20 more rows
+```
+
+???
+
+Let's do some more practice with `if_else()`. 
+
+---
+
+# Debug `if_else()`
+
+
+```r
+patients %&gt;%
+  mutate(
+    sex_recode = if_else(sex == "male", 0, "f")
+  )
+```
+
+```
+## Error in `mutate()`:
+## ! Problem while computing `sex_recode = if_else(sex ==
+##   "male", 0, "f")`.
+## Caused by error in `if_else()`:
+## ! `false` must be a double vector, not a character
+##   vector.
+```
+
+???
+
+What's gone wrong?
+
+---
+
+# Complex logical conditions
+
+We want to identify which patients require medical intervention. Patients eligible for intervention must meet three criteria:
+
+1. Age 40 or older
+1. Blood glucose is 126 mg/dL or greater
+1. A BMI of 30 or greater
+
+???
+
+So far you have used `if_else()` with basic logical conditions, but you can recode values based on more complex logical tests.
+
+---
+
+class: your-turn
+
+# Your turn #2
+
+Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
+
+1. Age 40 or older
+1. Blood glucose is 126 mg/dL or greater
+1. A BMI of 30 or greater
+
+<div class="countdown" id="timer_62a0ea76" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: your-turn
+
+# Your turn #2
+
+Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
+
+
+```r
+patients_interventions &lt;- 
+  patients %&gt;% 
+  mutate(
+    intervene = if_else(
+      age &gt;= 40 &amp; glucose &gt;= 126 &amp; bmi &gt;= 30, 
+      "yes", 
+      "no"
+    )
+  )
+```
+
+---
+# Complex TRUE and FALSE conditions
+
+
+```r
+patients_interventions
+```
+
+```
+## # A tibble: 30 × 8
+##       id   age sex      bmi glucose sys_bp dias_bp intervene
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    
+##  1     1    39 female  32.4     124    106      72 no       
+##  2     2    34 female  25.9      79    108      78 no       
+##  3     3    18 male    27.0      73    126      64 no       
+##  4     4    47 male    23.6     114    126      82 no       
+##  5     5    30 female  19.4      89    100      72 no       
+##  6     6    69 female  27.2     165    114      60 no       
+##  7     7    16 female  20.3      81     88      52 no       
+##  8     8    80 female  29.7     112    136      60 no       
+##  9     9    37 male    28.9     135    102      70 no       
+## 10    10    59 male    25.4     104    122      78 no       
+## # … with 20 more rows
+```
+
+???
+
+Consider the `patients_interventions` dataset you created in a previous exercise. Imagine that you predict the medical intervention will lower a patient’s BMI by 10% (i.e., `bmi * 0.90`), and you want to add these predicted values as a new variable.
+
+---
+
+class: your-turn
+
+# Your turn #3
+
+Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
+
+<div class="countdown" id="timer_62a0eceb" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: your-turn
+
+# Your turn #3
+
+Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
+
+
+```r
+patients_interventions %&gt;% 
+  mutate(
+    bmi_predict = if_else(
+      intervene == "yes", 
+      bmi * 0.90, 
+      bmi
+    )
+  )
+```
+
+```
+## # A tibble: 30 × 9
+##       id   age sex      bmi glucose sys_bp dias_bp intervene
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    
+##  1     1    39 female  32.4     124    106      72 no       
+##  2     2    34 female  25.9      79    108      78 no       
+##  3     3    18 male    27.0      73    126      64 no       
+##  4     4    47 male    23.6     114    126      82 no       
+##  5     5    30 female  19.4      89    100      72 no       
+##  6     6    69 female  27.2     165    114      60 no       
+##  7     7    16 female  20.3      81     88      52 no       
+##  8     8    80 female  29.7     112    136      60 no       
+##  9     9    37 male    28.9     135    102      70 no       
+## 10    10    59 male    25.4     104    122      78 no       
+## # … with 20 more rows, and 1 more variable: bmi_predict &lt;dbl&gt;
+```
+
+---
+
+class: inverse
+
+# Takeaway
+
+Use this template to recode values with `if_else()`
+
+
+```r
+if_else(&lt;LOGICAL TEST&gt;, &lt;DO THIS IF TRUE&gt;, &lt;DO THIS IF FALSE&gt;)
+```
+
+???
+
+* `if_else()` is used with a logical test to recode a variable's values in one of two ways. 
+* The logical tests can be as complex as needed.
+* The `TRUE` and `FALSE` conditions can incorporate R functions and objects.
+* When using `if_else()` to recode a column in a table, it must be used within a `mutate()` call.
+
+---
+
+# Multiple conditions
+
+| Blood pressure category         | Systolic Blood Pressure (mmHg)    |
+|:--------------------------------|:----------------------------------|
+| Normal                          | Below 120                         |
+| Elevated                        | 120 to &lt; 130                      |
+| Stage 1 Hypertension            | 130 to &lt; 140                      |
+| Stage 2 Hypertension            | 140 and above                     |
+
+???
+
+We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official [CDC guidelines](https://www.cdc.gov/bloodpressure/facts.htm){target="_blank" rel="noopener noreferrer"} specify 4 categories:
+
+Can we use `if_else()` to recode a variable under more than two conditions? Discuss with your group.
+
+---
+class: your-turn
+
+# Your turn #4
+
+Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
+
+---
+class: your-turn
+
+# Your turn #4
+
+Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sys_bp_status = case_when(
+      sys_bp &gt;= 140           ~ "stage 2",
+      sys_bp &gt;= 130 &amp; sys_bp  ~ "stage 1",
+      sys_bp &gt;= 120 &amp; sys_bp  ~ "elevated",
+      sys_bp &lt; 120            ~ "normal"
+    )
+  )
+```
+
+```
+## # A tibble: 30 × 8
+##       id   age sex      bmi glucose sys_bp dias_bp sys_bp_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        
+##  1     1    39 female  32.4     124    106      72 normal       
+##  2     2    34 female  25.9      79    108      78 normal       
+##  3     3    18 male    27.0      73    126      64 elevated     
+##  4     4    47 male    23.6     114    126      82 elevated     
+##  5     5    30 female  19.4      89    100      72 normal       
+##  6     6    69 female  27.2     165    114      60 normal       
+##  7     7    16 female  20.3      81     88      52 normal       
+##  8     8    80 female  29.7     112    136      60 stage 1      
+##  9     9    37 male    28.9     135    102      70 normal       
+## 10    10    59 male    25.4     104    122      78 elevated     
+## # … with 20 more rows
+```
+
+---
+
+# Using `case_when()`
+
+![](images/session06/case_when.png)
+
+???
+
+`case_when()` has an unusual syntax. The arguments to this function consist of a series of **formulas**, which are written using a tilde (`~`).
+
+* The **left hand side** of each formula is a logical test, e.g. `sys_bp &lt; 120`.  
+* The **right hand side** indicates the replacement value when the logical test is `TRUE`.
+
+---
+class: your-turn
+
+# Your turn #5
+
+Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
+
+| Diabetes status | Fasting blood glucose |
+|:----------------|:----------------------|
+| Non-diabetic    | below 100 mg/dL       |
+| Pre-diabetic    | 100 - 125 mg/dL       |
+| Diabetic        | 126 mg/dL or above    |
+
+<div class="countdown" id="timer_62a0ea2c" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+???
+
+Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
+
+---
+class: your-turn
+
+# Your turn #5
+
+Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
+
+
+```r
+patients_2 &lt;-
+  patients %&gt;% 
+  mutate(
+    diabetes_status = case_when(
+      glucose &lt; 100                   ~ "non-diabetic",
+      glucose &gt;= 100 &amp; glucose &lt;= 125 ~ "pre-diabetic",
+      glucose &gt;= 126                  ~ "diabetic"
+    )
+  )
+```
+
+???
+
+`case_when()` syntax can be a bit tricky to remember at first, but with more practice it will become second nature.
+
+---
+
+# Debug `case_when()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sys_bp_status = case_when(
+      sys_bp &gt;= 140           = "stage 2",
+      sys_bp &gt;= 130 &amp; sys_bp  = "stage 1",
+      sys_bp &gt;= 120 &amp; sys_bp  = "elevated",
+      sys_bp &lt; 120            = "normal"
+    )
+  )
+```
+
+```
+## Error: &lt;text&gt;:4:31: unexpected '='
+## 3:     sys_bp_status = case_when(
+## 4:       sys_bp &gt;= 140           =
+##                                  ^
+```
+
+???
+
+The code intends to recode `sys_bp` into four categories, as we did before. What has gone wrong?
+
+---
+
+# Catch-all conditions
+
+| Diabetes status            | Follow up schedule (in months) |
+|:---------------------------|:-------------------------------|
+| Diabetic and BMI &gt;= 30     | 1                              |
+| Pre-diabetic and BMI &gt;= 30 | 1.5                            |
+| All others                 | 2                              |
+
+???
+
+In some cases, you may need a "catch all" condition with `case_when()`. For example, imagine patients are recommended to schedule a follow up visit based on a combination of diabetes and BMI.
+
+---
+
+# Catch-all conditions
+
+
+```r
+case_when(
+  &lt;LOGICAL TEST&gt; ~ &lt;DO THIS IF TRUE&gt;, 
+  &lt;LOGICAL TEST&gt; ~ &lt;DO THIS IF TRUE&gt;,
+  TRUE ~ &lt;DO THIS&gt;
+)
+```
+
+???
+
+When writing the logical test for everyone or everything else, replace the left hand side of the `case_when()` formula with `TRUE`, like this.
+
+---
+class: your-turn 
+
+# Your turn #6
+
+Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
+
+| Diabetes status            | Follow up schedule (in months) |
+|:---------------------------|:-------------------------------|
+| Diabetic and BMI &gt;= 30     | 1                              |
+| Pre-diabetic and BMI &gt;= 30 | 1.5                            |
+| All others                 | 2                              |
+
+<div class="countdown" id="timer_62a0ed76" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+???
+
+Practice using a catch-all condition.
+
+---
+class: your-turn
+
+# Your turn #6
+
+Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
+
+
+```r
+patients_2 %&gt;% 
+  mutate(
+     followup = case_when(
+       diabetes_status == "diabetic" &amp; bmi &gt;= 30 ~ 1, 
+       diabetes_status == "pre-diabetic" &amp; bmi &gt;= 30 ~ 1.5,
+       TRUE ~ 2,
+    )
+  )
+```
+
+```
+## # A tibble: 30 × 9
+##       id   age sex     bmi glucose sys_bp dias_bp diabetes_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;          
+##  1     1    39 fema…  32.4     124    106      72 pre-diabetic   
+##  2     2    34 fema…  25.9      79    108      78 non-diabetic   
+##  3     3    18 male   27.0      73    126      64 non-diabetic   
+##  4     4    47 male   23.6     114    126      82 pre-diabetic   
+##  5     5    30 fema…  19.4      89    100      72 non-diabetic   
+##  6     6    69 fema…  27.2     165    114      60 diabetic       
+##  7     7    16 fema…  20.3      81     88      52 non-diabetic   
+##  8     8    80 fema…  29.7     112    136      60 pre-diabetic   
+##  9     9    37 male   28.9     135    102      70 diabetic       
+## 10    10    59 male   25.4     104    122      78 pre-diabetic   
+## # … with 20 more rows, and 1 more variable: followup &lt;dbl&gt;
+```
+
+---
+
+# Recoding to `NA`
+
+
+```r
+patients_2 %&gt;% 
+  mutate(
+     followup = case_when(
+       diabetes_status == "diabetic" ~ 1, 
+       diabetes_status == "pre-diabetic" ~ 1.5,
+       TRUE ~ NA,
+    )
+  )
+```
+
+```
+## Error in `mutate()`:
+## ! Problem while computing `followup = case_when(...)`.
+## Caused by error in `` names(message) &lt;- `*vtmp*` ``:
+## ! 'names' attribute [1] must be the same length as the vector [0]
+```
+
+
+???
+
+You learn that a new policy is in place and only diabetic and pre-diabetic patients will have follow up visits, regardless of BMI. Follow up visits for all other patients have been cancelled and should be coded as `NA` instead. The variable `followup` needs to be changed accordingly. 
+
+When you want to recode some values to `NA`, filling in the right hand side of the `case_when()` formula with `NA` will usually *NOT* work.
+
+The error message gives us a hint why. All right hand side values need to be the same type of data. `NA` is a `logical`, but `followup` needs to be a double.
+
+---
+
+# Recoding to `NA`
+
+|`NA` type          |For use with                     |
+|:------------------|:--------------------------------|
+| `NA_character_`   | character values, i.e. `"a"`    |
+| `NA_real_`        | doubles, i.e. `1`               |
+| `NA_integer_`     | integers, i.e. `1L`             |
+| `NA_complex_`     | complex numbers, i.e. `1+1i`    |
+| `NA`              | logicals, i.e. `TRUE` or `FALSE`|
+
+???
+
+We must use a special type of `NA` value to match the other data type for the column we are creating.
+
+---
+class: your-turn
+
+# Your turn #7
+
+Complete the code to recode `followup` with the appropriate type of missing value.
+
+<div class="countdown" id="timer_62a0edd7" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+???
+
+Fix the code from earlier using the appropriate `NA` value.
+
+---
+class: your-turn
+
+# Your turn #7
+
+Complete the code to recode `followup` with the appropriate type of missing value.
+
+
+```r
+patients_2 %&gt;% 
+  mutate(
+    followup = case_when(
+      diabetes_status == "diabetic" ~ 1, 
+      diabetes_status == "pre-diabetic" ~ 1.5,
+      TRUE ~ NA_real_,
+    )
+  )
+```
+
+```
+## # A tibble: 30 × 9
+##       id   age sex     bmi glucose sys_bp dias_bp diabetes_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;          
+##  1     1    39 fema…  32.4     124    106      72 pre-diabetic   
+##  2     2    34 fema…  25.9      79    108      78 non-diabetic   
+##  3     3    18 male   27.0      73    126      64 non-diabetic   
+##  4     4    47 male   23.6     114    126      82 pre-diabetic   
+##  5     5    30 fema…  19.4      89    100      72 non-diabetic   
+##  6     6    69 fema…  27.2     165    114      60 diabetic       
+##  7     7    16 fema…  20.3      81     88      52 non-diabetic   
+##  8     8    80 fema…  29.7     112    136      60 pre-diabetic   
+##  9     9    37 male   28.9     135    102      70 diabetic       
+## 10    10    59 male   25.4     104    122      78 pre-diabetic   
+## # … with 20 more rows, and 1 more variable: followup &lt;dbl&gt;
+```
+
+???
+---
+class: inverse
+
+# Takeaway
+
+Use this template to recode values with `case_when()`.
+
+
+```r
+case_when(
+  &lt;LOGICAL TEST&gt; ~ &lt;DO THIS IF TRUE&gt;,
+  &lt;LOGICAL TEST&gt; ~ &lt;DO THIS IF TRUE&gt;,
+  &lt;LOGICAL TEST&gt; ~ &lt;DO THIS IF TRUE&gt;
+)
+```
+
+???
+
+* `case_when()` is useful when you want to recode a variable's values using more than logical tests.  
+
+* To create a "catch all" condition, the last logical test should follow the pattern:
+  ```
+  TRUE ~ &lt;DO THIS&gt;
+  ``` 
+* To recode values to `NA`, the type of `NA` should match the data type of the other values in recoded columns, e.g. (`NA_real_`, `NA_integer_`, `NA_complex_`, `NA_character_`)
+
+* When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call.
+    - Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
+---
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

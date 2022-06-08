@@ -29,7 +29,7 @@ library(readr)
 library(countdown)
 
 # Parameters
-file_patients <- here::here("site/_site/_slides/data/session06/patients.csv")
+file_patients <- here::here("site/_slides/data/session06/patients.csv")
 
 # Load patients dataset
 patients <- read_csv(file_patients)
