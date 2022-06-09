@@ -50,7 +50,7 @@ jobs:
           deploy-message:
             'Deploy from GHA: ${{ github.event.pull_request.title || github.event.head_commit.message }} (${{ github.sha }})'
           enable-pull-request-comment: true
-          enable-commit-comment: true
+          enable-commit-comment: false
           enable-commit-status: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
