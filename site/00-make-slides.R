@@ -3,6 +3,7 @@ if (!file.exists("_quarto.yml")) {
 }
 
 copy_slides_to_site <- function(from = "../slides", to = "_slides") {
+  message("Moving ", from, " into ", to)
   if (fs::dir_exists(to)) fs::dir_delete(to)
   fs::dir_copy(from, to)
 }
