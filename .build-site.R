@@ -1,10 +1,13 @@
 #!/usr/bin/env Rscript
 
-message("Building site/")
+message("---- Building workshop website and slides ----")
+message("Entering 'site/'")
 setwd("site")
 source("00-make-slides.R")
-message("Rendering quarto website...")
+message("\nRendering quarto website...")
 quarto::quarto_render()
 
-message("All done.")
-message('Use `quarto::quarto_preview("site")` to preview the site')
+message("Rendering quarto website...done!")
+if (!nzchar(Sys.getenv("CI"))) {
+  message('Use `quarto::quarto_preview("site")` to preview the site')
+}

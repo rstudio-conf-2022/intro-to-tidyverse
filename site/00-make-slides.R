@@ -9,8 +9,14 @@ copy_slides_to_site <- function(from = "../slides", to = "_slides") {
 }
 
 render_all_slides <- function(dir = "_slides") {
+  message("\nRendering slides...")
+  message("Entering '_slides/' to render slides")
   owd <- setwd(dir)
-  on.exit(setwd(owd))
+  on.exit({
+    message("Returning to '", basename(owd), "/'")
+    message("Rendering slides...done!")
+    setwd(owd)
+  })
 
   # Add Rmd files that should not be auto-rendered to this variable
   # ex. c("not-a-slide-deck.Rmd")
