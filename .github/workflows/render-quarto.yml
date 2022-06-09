@@ -37,14 +37,8 @@ jobs:
           # Pin the quarto version
           version: 0.9.550
           
-      - name: "Render slides in 'site/_slides'"
-        working-directory: site
-        run: Rscript 00-make-slides.R
-
-      - name: "Render quarto website in 'site/'"
-        working-directory: site
-        run: |
-          quarto render
+      - name: Render slides and quarto website
+        run: Rscript ./.build-site.R
 
       - name: Deploy to Netlify
         id: netlify-deploy
