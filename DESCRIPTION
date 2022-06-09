@@ -16,6 +16,7 @@ License: MIT + file LICENSE
 Depends:
     tidyverse
 Imports: 
+    babynames,
     janitor,
     knitr,
     rmarkdown
