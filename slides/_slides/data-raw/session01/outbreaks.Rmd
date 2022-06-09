@@ -1,0 +1,87 @@
+---
+title: "outbreaks"
+output: html_document
+date: '2022-03-23'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+library(readxl)
+```
+
+## Pre-course: EDA
+
+```{r eda, options}
+read_excel("data/NationalOutbreakPublicDataTool.xlsx", sheet = 1) %>%
+  clean_names() 
+
+o <- read_excel("data/NationalOutbreakPublicDataTool.xlsx", sheet = 1) %>%
+  janitor::clean_names()
+```
+
+Initial questions as a project author:
+
+* how many etiologies are there?
+* how many "primary mode" types are there?
+* which state has the most infections?
+* which outbreak was the most lethal? (i.e. largest deaths/infections ratio)
+
+### Other thoughts
+
+* What if week 2 was "acquaint yourself with the data" week. It would cover:
+  * importing
+  * ggplot basics
+  * janitor functions
+  * encourage students to check out EDA packages like `DataExplorer`
+  
+  This alleviates having to cram both "Import" and all of ggplot into a single week.
+  
+* one constraint we have traditionally imposed on ourselves is that each week's lessons must be thematically related. It might make more sense if, in a single week, you are taught a little bit of ggplot and a little bit of dplyr. That way you can use both to create something interesting. The next week you do a bit more of those same two topics. 
+
+* But one problem with the above is that it makes it hard for students to know how far to go with an extension after the first week: How do they know that their extension content be taught in a lesson the next week. 
+    + Is it a bad thing ?
+    + Is it *better* if this didn't happen?
+
+## Week 1: R Basics
+
+* Objects & Functions
+* Vectors
+* Strings and Arguments
+* Tables
+* (Logicals? from Noodle)
+
+```{r}
+unique(o$etiology) %>% length() # 679 of these
+hist(o$illnesses) # heeeeeavily right skewed, would need to log transform
+hist(o$year) # left-skewed. Most cases occur after 1995.
+```
+
+## Week 2: Import and Visualize
+
+* Packages
+* Importing data
+* Import excel files
+* ggplot2 intro
+* Aesthetics
+* Optional: Facets
+
+**Milestone:**
+* Read in the data as excel spreadsheet
+* Recast week 1 plot with ggplot2.
+* Any other file to read in (CSVs) available for students to explore for their extension?
+* Would love if students could explore the janitor package and use `clean_names()`
+
+```{r}
+data <- read_excel("data/NationalOutbreakPublicDataTool.xlsx", sheet = 1) %>%
+  janitor::clean_names()
+
+data
+```
+
+
+## Week 3: Transform tables
+
+* Logicals?
+* 
