@@ -2,9 +2,21 @@ if (!file.exists("_quarto.yml")) {
   stop("Please run this script from the quarto site base directory")
 }
 
+copy_slides_to_site <- function(from = "../slides", to = "_slides") {
+  message("Moving ", from, " into ", to)
+  if (fs::dir_exists(to)) fs::dir_delete(to)
+  fs::dir_copy(from, to)
+}
+
 render_all_slides <- function(dir = "_slides") {
+  message("\nRendering slides...")
+  message("Entering '_slides/' to render slides")
   owd <- setwd(dir)
-  on.exit(setwd(owd))
+  on.exit({
+    message("Returning to '", basename(owd), "/'")
+    message("Rendering slides...done!")
+    setwd(owd)
+  })
 
   # Add Rmd files that should not be auto-rendered to this variable
   # ex. c("not-a-slide-deck.Rmd")
@@ -20,10 +32,14 @@ render_all_slides <- function(dir = "_slides") {
   # Render each slide deck
   for (rmd in rmds) {
     message("Rendering ", rmd)
-    rmarkdown::render(rmd, quiet = TRUE)
+    callr::r_safe(
+      function(rmd) rmarkdown::render(rmd, quiet = TRUE),
+      args = list(rmd = rmd)
+    )
   }
   
   invisible(rmds)
 }
 
+copy_slides_to_site()
 render_all_slides()

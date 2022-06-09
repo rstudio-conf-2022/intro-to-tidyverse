@@ -1,0 +1,30 @@
+Package: intro.to.tidyverse
+Title: Dependencies for the Website for "Intro to the Tidyverse"
+Version: 0.0.1
+Authors@R: c(
+    person("Desirée", "De Leon", , "desiree@rstudio.com", role = c("aut", "cre")),
+    person("Brendan", "Cullen", , "brendan.cullen@rstudio.com", role = "aut"),
+    person("Kristin", "Bott", , "kristin.bott@rstudio.com", role = "aut"),
+    person("Deirdre", "Francks", , "deirdre.francks@rstudio.com", role = "aut"),
+    person("Daniel", "Chen", , "daniel.chen@rstudio.com", role = "ctb"),
+    person("Steven", "Smallberg", , "steven.smallberg@rstudio.com", role = "ctb"),
+    person("Laura", "Puckett", , "laura.puckett@rstudio.com", role = "ctb")
+  )
+Description: Dependencies for the "Intro to the Tidyverse" workshop at
+    rstudio::conf(2022).
+License: MIT + file LICENSE
+Depends:
+    tidyverse
+Imports: 
+    janitor,
+    knitr,
+    rmarkdown
+Suggests:
+    fontawesome,
+    quarto,
+    usethis,
+    xaringan,
+    xaringanExtra
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
