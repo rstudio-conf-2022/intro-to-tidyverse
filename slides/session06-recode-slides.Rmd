@@ -122,7 +122,7 @@ Open this session's milestone file and complete the code in the chunk labelled `
 ```
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ???
@@ -218,7 +218,7 @@ Recode the values of systolic blood pressure (`sys_bp`) into two new categories:
 Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ???
@@ -285,7 +285,7 @@ Add a variable named `intervene` which takes the value `“yes”` for patients 
 1. A BMI of 30 or greater
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ---
@@ -328,7 +328,7 @@ class: your-turn
 Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ---
@@ -439,7 +439,7 @@ Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabet
 | Diabetic        | 126 mg/dL or above    |
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ???
@@ -533,7 +533,7 @@ Add a new variable to `patients_2` called `followup` that displays the recommend
 | All others                 | 2                              |
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ???
@@ -606,7 +606,7 @@ class: your-turn
 Complete the code to recode `followup` with the appropriate type of missing value.
 
 ```{r echo = FALSE}
-countdown(minutes = 4)
+countdown::countdown(minutes = 4)
 ```
 
 ???

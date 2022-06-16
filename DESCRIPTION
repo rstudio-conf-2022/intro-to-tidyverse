@@ -20,6 +20,7 @@ Imports:
     knitr,
     rmarkdown
 Suggests:
+    countdown,
     fontawesome,
     quarto,
     usethis,
