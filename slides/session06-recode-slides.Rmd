@@ -97,7 +97,7 @@ class: middle
 1. Review `dplyr::mutate()`
 1. Recode with `dplyr::if_else()`
 1. Recode with `dplyr::case_when()`
-1. Milestone recreation work time
+1. Work time: Milestone recreation
 
 ???
 
@@ -117,12 +117,10 @@ class: your-turn
 
 Open this session's milestone file and complete the code in the chunk labelled `review-mutate`.
 
-```{r eval = FALSE}
-# mutate() review
-```
+**TODO: Add screenshot of academyMilestones directory**
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 4)
+countdown::countdown(minutes = 3)
 ```
 
 ???
@@ -148,7 +146,7 @@ Today we'll work with the `patients` dataset. We have information about age, sex
 ```{r eval = FALSE}
 patients %>% 
   mutate(
-    sex_recode = if_else(condition = ____, true = ____, false = ____)
+    sex_recode = if_else(____, true = ____, false = ____)
   )
 ```
 
@@ -157,11 +155,7 @@ patients %>%
 
 Imagine we are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). We can complete this task by using `if_else()` to recode the variable `sex`.
 
-`if_else()` takes three arguments to recode its values:
-
-1. The first argument is a logical test to apply to each element of a vector.
-1. The second argument is a value to output if the result of the logical test is TRUE.
-1. The third argument is a value to output if the result of the logical test is FALSE.
+`if_else()` takes three arguments to recode its values.
 
 ---
 
@@ -230,9 +224,7 @@ class: your-turn
 
 # Your turn #1
 
-Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
-
-```{r your-turn-2-solution}
+```{r your-turn-1-solution}
 patients %>% 
   mutate(
     sys_status = if_else(sys_bp >= 130, "high", "normal")
@@ -241,7 +233,6 @@ patients %>%
 
 ???
 
-Let's do some more practice with `if_else()`. 
 
 ---
 
@@ -262,41 +253,85 @@ What's gone wrong?
 
 # Complex logical conditions
 
-We want to identify which patients require medical intervention. Patients eligible for intervention must meet three criteria:
-
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
 1. A BMI of 30 or greater
 
 ???
 
+Imagine that we want to identify which patients require medical intervention based on their age, weight, and blood glucose level. Patients eligible for intervention must meet three criteria.
+
 So far you have used `if_else()` with basic logical conditions, but you can recode values based on more complex logical tests.
 
 ---
 
-class: your-turn
-
-# Your turn #2
-
-Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
+# Complex logical conditions
 
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
 1. A BMI of 30 or greater
 
-```{r echo = FALSE}
-countdown::countdown(minutes = 4)
+```{r eval = FALSE}
+patients_interventions <- 
+  patients %>% 
+  mutate(
+    intervene = if_else(
+      ____ & ____ & ____,
+      "yes", 
+      "no"
+    )
+  )
 ```
 
 ---
 
-class: your-turn
+# Complex logical conditions
 
-# Your turn #2
+1. **Age 40 or older**
+1. Blood glucose is 126 mg/dL or greater
+1. A BMI of 30 or greater
 
-Add a variable named `intervene` which takes the value `“yes”` for patients who meet the criteria, and `"no"` for all others. Save the result as a new tibble called `patients_interventions`.
+```{r eval = FALSE}
+patients_interventions <- 
+  patients %>% 
+  mutate(
+    intervene = if_else(
+      age >= 40 & ____ & ____, 
+      "yes", 
+      "no"
+    )
+  )
+```
 
-```{r your-turn-3-solution}
+---
+
+# Complex logical conditions
+
+1. **Age 40 or older**
+1. **Blood glucose is 126 mg/dL or greater**
+1. A BMI of 30 or greater
+
+```{r eval = FALSE}
+patients_interventions <- 
+  patients %>% 
+  mutate(
+    intervene = if_else(
+      age >= 40 & glucose >= 126 & ____, 
+      "yes", 
+      "no"
+    )
+  )
+```
+
+---
+
+# Complex logical conditions
+
+1. **Age 40 or older**
+1. **Blood glucose is 126 mg/dL or greater**
+1. **A BMI of 30 or greater**
+
+```{r}
 patients_interventions <- 
   patients %>% 
   mutate(
@@ -309,6 +344,7 @@ patients_interventions <-
 ```
 
 ---
+
 # Complex TRUE and FALSE conditions
 
 ```{r patients-interventions}
@@ -317,29 +353,27 @@ patients_interventions
 
 ???
 
-Consider the `patients_interventions` dataset you created in a previous exercise. Imagine that you predict the medical intervention will lower a patient’s BMI by 10% (i.e., `bmi * 0.90`), and you want to add these predicted values as a new variable.
+Consider the `patients_interventions` dataset we've just created. Imagine that you predict the medical intervention will lower a patient’s BMI by 10% (i.e., `bmi * 0.90`), and you want to add these predicted values as a new variable.
 
 ---
 
 class: your-turn
 
-# Your turn #3
+# Your turn #2
 
 Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 4)
+countdown::countdown(minutes = 3)
 ```
 
 ---
 
 class: your-turn
 
-# Your turn #3
+# Your turn #2
 
-Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
-
-```{r your-turn-4-solution}
+```{r your-turn-2-solution}
 patients_interventions %>% 
   mutate(
     bmi_predict = if_else(
@@ -380,6 +414,11 @@ if_else(<LOGICAL TEST>, <DO THIS IF TRUE>, <DO THIS IF FALSE>)
 | Stage 1 Hypertension            | 130 to < 140                      |
 | Stage 2 Hypertension            | 140 and above                     |
 
+
+```{r echo = FALSE}
+countdown::countdown(seconds = 30)
+```
+
 ???
 
 We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official [CDC guidelines](https://www.cdc.gov/bloodpressure/facts.htm){target="_blank" rel="noopener noreferrer"} specify 4 categories:
@@ -387,20 +426,34 @@ We previously recoded systolic blood pressure of `patients` into 2 weight catego
 Can we use `if_else()` to recode a variable under more than two conditions? Discuss with your group.
 
 ---
-class: your-turn
 
-# Your turn #4
+# Multiple conditions with `if_else()`?
 
-Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
+```{r}
+patients %>% 
+  mutate(
+    sys_bp_status = 
+      if_else(
+        sys_bp < 120, 
+        "normal",
+        if_else(
+          sys_bp < 130, 
+          "elevated", 
+          if_else(
+            sys_bp < 140, 
+            "stage 1",
+            "stage 2"
+          )
+        )
+      )
+  )
+```
 
 ---
-class: your-turn
 
-# Your turn #4
+# Multiple conditions with `case_when()`
 
-Fill in the blanks to create a new column called `sys_bp_status` using the function `case_when()`.
-
-```{r your-turn-5-solution}
+```{r}
 patients %>% 
   mutate(
     sys_bp_status = case_when(
@@ -428,7 +481,7 @@ patients %>%
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn #3
 
 Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -449,11 +502,9 @@ Let's practice using `case_when()` with the `patients` dataset. Fasting blood gl
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn #3
 
-Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
-
-```{r your-turn-6-solution, eval = TRUE}
+```{r your-turn-3-solution, eval = TRUE}
 patients_2 <-
   patients %>% 
   mutate(
@@ -522,7 +573,7 @@ When writing the logical test for everyone or everything else, replace the left 
 ---
 class: your-turn 
 
-# Your turn #6
+# Your turn #4
 
 Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
 
@@ -543,11 +594,9 @@ Practice using a catch-all condition.
 ---
 class: your-turn
 
-# Your turn #6
+# Your turn #4
 
-Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
-
-```{r your-turn-7-solution}
+```{r your-turn-4-solution}
 patients_2 %>% 
   mutate(
      followup = case_when(
@@ -601,9 +650,15 @@ We must use a special type of `NA` value to match the other data type for the co
 ---
 class: your-turn
 
-# Your turn #7
+# Your turn #5
 
-Complete the code to recode `followup` with the appropriate type of missing value.
+Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient, including the appropriate missing value.
+
+| Diabetes status            | Follow up schedule (in months) |
+|:---------------------------|:-------------------------------|
+| Diabetic and BMI >= 30     | 1                              |
+| Pre-diabetic and BMI >= 30 | 1.5                            |
+| All others                 | NA                             |
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
@@ -616,11 +671,9 @@ Fix the code from earlier using the appropriate `NA` value.
 ---
 class: your-turn
 
-# Your turn #7
+# Your turn #5
 
-Complete the code to recode `followup` with the appropriate type of missing value.
-
-```{r your-turn-8-solution}
+```{r your-turn-5-solution}
 patients_2 %>% 
   mutate(
     followup = case_when(
@@ -643,7 +696,7 @@ Use this template to recode values with `case_when()`.
 case_when(
   <LOGICAL TEST> ~ <DO THIS IF TRUE>,
   <LOGICAL TEST> ~ <DO THIS IF TRUE>,
-  <LOGICAL TEST> ~ <DO THIS IF TRUE>
+  TRUE           ~ <DO THIS>
 )
 ```
 
@@ -657,8 +710,7 @@ case_when(
   ``` 
 * To recode values to `NA`, the type of `NA` should match the data type of the other values in recoded columns, e.g. (`NA_real_`, `NA_integer_`, `NA_complex_`, `NA_character_`)
 
-* When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call.
-    - Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
+* When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call. Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
 ---
 
 
