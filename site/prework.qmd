@@ -6,6 +6,11 @@ Please install the software that you’ll be working with throughout the course 
 
 ## Installation
 
+### Install Zoom
+
+Go to [https://zoom.us/download](https://zoom.us/download) and click Download under Zoom Client for Meetings. This will download a Desktop version of the Zoom app. The desktop version has much better audio and video support than the in-browser versions for the screensharing that we will do during the course.
+
+
 ### Install Slack
 
 Install the Desktop version of the Slack app. Starting at the kickoff, we will use Slack for nearly all course communication. 
