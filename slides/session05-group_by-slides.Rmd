@@ -226,3 +226,5 @@ class: middle chapter-slide green
 .big-white-number[2.]
 
 # Groups
+
+---
