@@ -23,7 +23,7 @@ class: title-slide
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(dplyr)
+library(tidyverse)
 library(babynames)
 ```
 
@@ -73,13 +73,10 @@ class: speaker-slide
 
 <!-- You can copy the image link address from your github profile to use as the src link below --> 
 
-<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/18153457?v=4" width="200px"/>
 
 .speaker-links[
-[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
-[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
-[`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
-]
+[`r fontawesome::fa("github")` dcossyleon](https://github.com/skaltman)]
 
 ---
 
@@ -154,6 +151,10 @@ Complete the code to extract rows where `name == [your name]`. Then, use `summar
 
 (If you don't find your name in the data, try one of these names, which have interesting results: Khaleesi, Anakin)
 
+```{r echo = FALSE}
+countdown::countdown(minutes = 5)
+```
+
 ---
 
 ```{r}
@@ -220,11 +221,222 @@ babynames %>%
 
 What if we want to do this for every name?
 
+???
+We're going to need to group cases together by name. Before we tackle this task, 
+we'll look at groups with a simpler data set. 
+
 ---
 class: middle chapter-slide green
 
 .big-white-number[2.]
 
-# Groups
+# Grouping cases
 
 ---
+
+<img src="images/session05/pollution.png" width="295px"/>
+
+---
+
+```{r echo=FALSE}
+pollution <-
+  tribble(
+    ~city,      ~pollution_size,   ~amount,
+    "New York", "large",           23,
+    "New York", "small",           14,
+    "London",   "large",           22,
+    "London",   "small",           16,
+    "Beijing",  "large",           121,
+    "Beijing",  "small",           56
+  )
+```
+
+--
+
+```{r}
+pollution %>% 
+  summarize(mean = mean(amount))
+```
+
+???
+Earlier, we learned how to use `summarize()` to summarize information in a tibble. 
+For example, we could find the mean amount of pollution by using `summarize()` and `mean()`.
+
+However, this code just tells us these summary facts about the _entire_ dataset. What 
+if we want to know the average for each city? Or by particle size?
+
+---
+# Group and summarize
+
+<img src="images/session05/pollution-group.png" width="295px"/>
+
+???
+We want to _group by_ the name of the city, and calculate the average `amount` 
+for each of these groups, generating three different numbers. One for New York,
+one for London, and one for Beijing. 
+
+---
+# `group_by()` 
+
+```{r eval=FALSE}
+pollution %>% 
+  group_by(city)
+```
+<img src="images/session05/pollution-tibble-groups.png" width="295px"/>
+
+???
+
+To do so, we'll use a function called `group_by()`. When you provide `group_by()`
+with a column, it groups the data by that column. 
+
+You can see these groups in the header of the tibble. 
+
+---
+
+# `group_by()` + `summarize()`
+
+```{r eval=FALSE}
+pollution %>% 
+  group_by(city) %>% 
+  summarize(mean = mean(amount))
+```
+
+<img src="images/session05/pollution-group_by.png" width="295px"/>
+
+???
+Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will
+summarize each of the groups. 
+
+Now, we have three rows, each summarizing the mean amount of pollution in a single city. We've collapsed the two rows
+for each city into a single row for each city. 
+
+---
+
+# Group by multiple columns
+
+```{r}
+pollution %>% 
+  group_by(city, pollution_size) %>% 
+  summarize(mean = mean(amount))
+```
+
+
+???
+We can group by multiple columns as well.
+
+---
+
+# Summarize multiple variables 
+
+```{r}
+pollution %>% 
+  group_by(city, pollution_size) %>% 
+  summarize(
+    mean = mean(amount), 
+    sum = sum(amount)
+  )
+```
+
+???
+As well as summarize multiple variables when grouped
+
+---
+class: your-turn
+
+# Your Turn
+
+Find... (using a pollution2 dataset)
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
+
+---
+
+# Undoing groups
+
+```{r}
+pollution %>% 
+  group_by(city)
+```
+
+```{r}
+pollution %>% 
+  group_by(city) %>% 
+  summarize(mean = mean(amount))
+```
+
+
+???
+`group_by()` groups by common values. `summarize()` undoes the grouping. 
+Notice that the `Groups` box is gone after we `summarize()`. 
+
+---
+# Be careful
+
+```{r}
+pollution %>% 
+  group_by(city, pollution_size) %>% 
+  summarize(mean = mean(amount))
+```
+
+
+???
+`summarize()` only undoes one layer of grouping. We are still grouped by `city`. 
+
+---
+# Ungroup
+
+```{r}
+pollution %>% 
+  group_by(city, pollution_size) %>% 
+  summarize(mean = mean(amount)) %>% 
+  ungroup()
+```
+
+
+???
+To undo any groupings, use the function `ungroup()`.
+
+---
+class: your-turn
+
+# Your Turn
+
+Complete the code with `group_by()`, `summarize()`,  and `arrange()` to display the ten most popular name and sex combinations. Compute popularity as the total number of children with a given name and sex. 
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
+
+---
+
+```{r}
+babynames %>% 
+  group_by(name, sex) %>% 
+  summarize(total = sum(n)) %>% 
+  arrange(desc(total))
+```
+
+---
+
+```{r}
+babynames %>% 
+  group_by(name, sex) %>% 
+  summarize(total = sum(n)) %>% 
+  arrange(desc(total)) %>% 
+  ggplot(aes(name, total, color = sex)) +
+  geom_col()
+```
+
+---
+class: your-turn
+
+# Your Turn
+
+Use `group_by()` to calculate the total number of children born for every year. 
+Plot the results as a line graph: total vs. year. 
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
