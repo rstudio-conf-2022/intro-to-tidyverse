@@ -2,4 +2,34 @@
 title: "Pre-work"
 ---
 
-Stay tuned for information about pre-work to be completed before rstudio::conf(2022).
+Please install the software that you’ll be working with throughout the course by our kickoff date: July 5, 2022. Slack should be installed on the device(s) that you plan to do most of your Academy work from. R and RStudio need only be installed on the laptop that you plan to bring to the in-person workdays at the conference.
+
+## Installation
+
+### Install Zoom
+
+Go to [https://zoom.us/download](https://zoom.us/download) and click Download under Zoom Client for Meetings. This will download a Desktop version of the Zoom app. The desktop version has much better audio and video support than the in-browser versions for the screensharing that we will do during the course.
+
+
+### Install Slack
+
+Install the Desktop version of the Slack app. Starting at the kickoff, we will use Slack for nearly all course communication. 
+
+  * Go to [https://slack.com/downloads](https://slack.com/downloads) and follow installation instructions. Once the app is installed, you’re set. 
+  * We will give you specific sign-in instructions in the coming weeks.
+
+### Install R
+
+At the in-person conference, some of the course work will need to be completed on the laptop that you bring with you to the conference. You will need to install R and RStudio on that device.
+
+* Go to [https://r-project.org/](https://r-project.org/) and click the **Download R** link under “Getting Started”. On the next page, click on the URL for the location that is closest to you.  
+
+* Windows users click **Download R for Windows** and on the next page install R for the first time and finally **Download R 4.2.0** for Windows.  
+
+* Mac users click **Download R for macOS** and on the next page pick the version matching the OS version you are using (for most users **R-4.2.0.pkg** will be the right choice). 
+
+### Install RStudio
+
+* Go to the [https://www.rstudio.com/products/rstudio/](https://www.rstudio.com/products/rstudio/) page  
+* Scroll down until you see a blue button with the text **DOWNLOAD RSTUDIO DESKTOP**. Click to download.
+

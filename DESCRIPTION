@@ -21,7 +21,9 @@ Imports:
     knitr,
     rmarkdown
 Suggests:
+    countdown (>= 0.3.5),
     fontawesome,
+    here,
     quarto,
     usethis,
     xaringan,
@@ -29,3 +31,5 @@ Suggests:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
+Remotes: 
+    gadenbuie/countdown
