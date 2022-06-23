@@ -25,6 +25,8 @@ class: title-slide
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
 library(babynames)
+
+pollution <- read_csv("data/session05/pollution.csv")
 ```
 
 # `r rmarkdown::metadata$title`
@@ -230,40 +232,37 @@ class: middle chapter-slide green
 
 .big-white-number[2.]
 
-# Grouping cases
+# Group cases
 
 ---
+# `pollution`
 
-<img src="images/session05/pollution.png" width="295px"/>
-
----
-
-```{r echo=FALSE}
-pollution <-
-  tribble(
-    ~city,      ~pollution_size,   ~amount,
-    "New York", "large",           23,
-    "New York", "small",           14,
-    "London",   "large",           22,
-    "London",   "small",           16,
-    "Beijing",  "large",           121,
-    "Beijing",  "small",           56
-  )
+```{r}
+pollution
 ```
 
---
+---
+# `pollution`
 
 ```{r}
 pollution %>% 
-  summarize(mean = mean(amount))
+  summarize(median = median(amount), n = n())
 ```
+???
+`pollution` represents air pollution data for three cities in 2019 and 2020.
+
+We already know how to summarize the entire data set to find, for example, the median amount of pollution across all cities and years. 
+
+---
+# `pollution`
+
+<img src="images/session05/pollution-summarize-all.png" width="295px"/>
+
 
 ???
-Earlier, we learned how to use `summarize()` to summarize information in a tibble. 
-For example, we could find the mean amount of pollution by using `summarize()` and `mean()`.
-
-However, this code just tells us these summary facts about the _entire_ dataset. What 
-if we want to know the average for each city? Or by particle size?
+When we summarize, we're taking the entire data set and collapsing it into a single row. 
+But what if,instead of the median pollution for the entire data set, we wanted to find
+the average pollution for each city?
 
 ---
 # Group and summarize
@@ -272,8 +271,7 @@ if we want to know the average for each city? Or by particle size?
 
 ???
 We want to _group by_ the name of the city, and calculate the average `amount` 
-for each of these groups, generating three different numbers. One for New York,
-one for London, and one for Beijing. 
+for each of these groups, generating three different numbers. 
 
 ---
 # `group_by()` 
@@ -286,7 +284,7 @@ pollution %>%
 
 ???
 
-To do so, we'll use a function called `group_by()`. When you provide `group_by()`
+To do so, we'll first use a function called `group_by()`. When you provide `group_by()`
 with a column, it groups the data by that column. 
 
 You can see these groups in the header of the tibble. 
@@ -298,17 +296,52 @@ You can see these groups in the header of the tibble.
 ```{r eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
-  summarize(mean = mean(amount))
+  summarize(median = median(amount))
 ```
 
 <img src="images/session05/pollution-group_by.png" width="295px"/>
 
 ???
-Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will
-summarize each of the groups. 
+Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will summarize each of the groups in turn. 
 
 Now, we have three rows, each summarizing the mean amount of pollution in a single city. We've collapsed the two rows
 for each city into a single row for each city. 
+
+---
+
+# Summarize multiple variables
+
+```{r}
+pollution %>% 
+  group_by(city) %>% 
+  summarize(
+    median = median(amount), 
+    sum = sum(amount)
+  )
+```
+
+???
+
+Just as when we were summarizing the entire dataset, we can still
+summarize multiple variables.
+
+---
+class: your-turn
+
+# Your turn
+
+Find the maximum reported amount of pollution for each continent. 
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
+--
+
+```{r}
+pollution %>% 
+  group_by(continent) %>% 
+  summarize(max = max(amount))
+```
 
 ---
 
@@ -316,40 +349,12 @@ for each city into a single row for each city.
 
 ```{r}
 pollution %>% 
-  group_by(city, pollution_size) %>% 
-  summarize(mean = mean(amount))
-```
-
-
-???
-We can group by multiple columns as well.
-
----
-
-# Summarize multiple variables 
-
-```{r}
-pollution %>% 
-  group_by(city, pollution_size) %>% 
-  summarize(
-    mean = mean(amount), 
-    sum = sum(amount)
-  )
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount))
 ```
 
 ???
-As well as summarize multiple variables when grouped
-
----
-class: your-turn
-
-# Your Turn
-
-Find... (using a pollution2 dataset)
-
-```{r echo = FALSE}
-countdown::countdown(minutes = 3)
-```
+We can also group by multiple columns by adding additional columns to `group_by()`. Here, we find the median amount of pollution for each continent and year combination. 
 
 ---
 
@@ -357,12 +362,13 @@ countdown::countdown(minutes = 3)
 
 ```{r}
 pollution %>% 
-  group_by(city)
+  group_by(continent)
 ```
+--
 
 ```{r}
 pollution %>% 
-  group_by(city) %>% 
+  group_by(continent) %>% 
   summarize(mean = mean(amount))
 ```
 
@@ -376,8 +382,8 @@ Notice that the `Groups` box is gone after we `summarize()`.
 
 ```{r}
 pollution %>% 
-  group_by(city, pollution_size) %>% 
-  summarize(mean = mean(amount))
+  group_by(continent, year) %>% 
+  summarize(median = median(amount))
 ```
 
 
@@ -389,7 +395,7 @@ pollution %>%
 
 ```{r}
 pollution %>% 
-  group_by(city, pollution_size) %>% 
+  group_by(continent, year) %>% 
   summarize(mean = mean(amount)) %>% 
   ungroup()
 ```

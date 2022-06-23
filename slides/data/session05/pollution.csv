@@ -1,7 +1,7 @@
-city,year,amount
-Dubai,2019,105.93
-Dubai,2020,91.93
-Seoul,2019,42
-Seoul,2020,35
-Casablanca,2019,42.38
-Casablanca,2020,51.32
+city,continent,year,amount
+Dubai,Asia,2019,105.93
+Dubai,Asia,2020,91.93
+Seoul,Asia,2019,42
+Seoul,Asia,2020,35
+Casablanca,Africa,2019,42.38
+Casablanca,Africa,2020,51.32

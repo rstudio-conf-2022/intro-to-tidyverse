@@ -11,6 +11,13 @@ file_out <- here::here("slides/data/session05/pollution.csv")
 
 cities <- c("Seoul", "Dubai", "Casablanca")
 years <- 2019:2020
+
+continents <-
+  c(
+    Seoul = "Asia",
+    Dubai = "Asia",
+    Casablanca = "Africa"
+  )
 # ==============================================================================
 
 download.file(url_data, file_raw)
@@ -24,4 +31,5 @@ pollution <-
     year = measurement_year,
     amount = pm10_mg_m3
   ) %>% 
+  mutate(continent = map_chr(city, ~ continents[[.]]), .after = city) %>% 
   write_csv(file_out)
