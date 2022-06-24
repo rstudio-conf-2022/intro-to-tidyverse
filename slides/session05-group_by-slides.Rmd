@@ -78,7 +78,7 @@ class: speaker-slide
 <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/18153457?v=4" width="200px"/>
 
 .speaker-links[
-[`r fontawesome::fa("github")` dcossyleon](https://github.com/skaltman)]
+[`r fontawesome::fa("github")` skaltman](https://github.com/skaltman)]
 
 ---
 
@@ -144,12 +144,12 @@ We can use other functions like `max()` and `min()` to find the minimum and maxi
 ---
 class: your-turn
 
-# Your Turn
+# Your Turn 1
 
 Complete the code to extract rows where `name == [your name]`. Then, use `summarize()`, `sum()`, and `min()` to find:
 
-2. The total number of children with your name.
-3. The first year your name appeared in the data.
+1. The total number of children with your name.
+2. The first year your name appeared in the data.
 
 (If you don't find your name in the data, try one of these names, which have interesting results: Khaleesi, Anakin)
 
@@ -176,18 +176,18 @@ class: middle chapter-slide blue
 # Summary functions
 
 ---
+
+# Summary functions
+
 - Take a vector as input
 - Return a single value as output
 
-[diagram]
-
----
-<img src="images/summary-functions.png" width="295px"/>
+<img src="images/session05/summary-functions.png"/>
 
 ---
 # `n()`
 
-Find the number of rows in a datas et or group
+Find the number of rows in a dataset or group
 
 ```{r}
 babynames %>% 
@@ -256,7 +256,7 @@ We already know how to summarize the entire data set to find, for example, the m
 ---
 # `pollution`
 
-<img src="images/session05/pollution-summarize-all.png" width="295px"/>
+<img src="images/session05/pollution-summarize-all.png"/>
 
 
 ???
@@ -267,7 +267,7 @@ the average pollution for each city?
 ---
 # Group and summarize
 
-<img src="images/session05/pollution-group.png" width="295px"/>
+<img src="images/session05/pollution-group.png"/>
 
 ???
 We want to _group by_ the name of the city, and calculate the average `amount` 
@@ -328,9 +328,9 @@ summarize multiple variables.
 ---
 class: your-turn
 
-# Your turn
+# Your turn 2
 
-Find the maximum reported amount of pollution for each continent. 
+Use `group_by()` and `summarize()` the maximum reported amount of pollution for each continent. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
@@ -407,9 +407,9 @@ To undo any groupings, use the function `ungroup()`.
 ---
 class: your-turn
 
-# Your Turn
+# Your Turn 3
 
-Complete the code with `group_by()`, `summarize()`,  and `arrange()` to display the ten most popular name and sex combinations. Compute popularity as the total number of children with a given name and sex. 
+Complete the code with `group_by()`, `summarize()`,  and `arrange()` to find the most popular name and sex combinations. Compute popularity as the total number of children with a given name and sex. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
@@ -438,11 +438,32 @@ babynames %>%
 ---
 class: your-turn
 
-# Your Turn
+# Your Turn 4
 
 Use `group_by()` to calculate the total number of children born for every year. 
+
 Plot the results as a line graph: total vs. year. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
 ```
+
+---
+
+```{r}
+babynames %>% 
+  group_by(year) %>% 
+  summarize(n = sum(n))
+```
+
+--
+
+```{r}
+babynames %>% 
+  group_by(year) %>% 
+  summarize(n = sum(n)) %>% 
+  ggplot(aes(year, n)) +
+  geom_line()
+```
+
+
