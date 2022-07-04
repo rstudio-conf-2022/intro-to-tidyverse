@@ -1,0 +1,160 @@
+---
+title: "R Markdown"
+subtitle: "Day 1, Session 3"
+author: "Brendan Cullen"
+date: "July 25, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  text: shortlink
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/32279312?v=4" width="200px"/>
+
+.speaker-links[
+[`r fontawesome::fa("github")` brendanhcullen](https://github.com/brendanhcullen)    
+[`r fontawesome::fa("twitter")` _bcullen](https://twitter.com/_bcullen)   
+[`r fontawesome::fa("link")` bcullen.rbind.io](https://bcullen.rbind.io/)
+]
+
+---
+
+class: middle
+
+# Agenda
+
+1. What is R Markdown?
+1. Why do we use R Markdown?
+1. The 3 essential ingredients: Text, Code, Metadata (YAML)
+
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# What is R Markdown?
+
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Why R Markdown? 
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# The 3 essential ingredients
+
+---
+
+# TODO: Image of 3 components of R Markdown files
+
+---
+
+class: inverse middle center
+
+# Text (Markdown)
+
+---
+
+class: inverse middle center
+
+# Code (& Output)
+
+---
+
+class: inverse middle center
+
+# Metadata (YAML)
+
+---
+
+class: middle
+
+# Takeaways
+
+1. X
+1. Y
+1. Z
+
+---
+
+class: your-turn
+
+# Your Turn
+Instructions for a "`Your Turn`" Exercise
+
+```{r}
+# some code
+1 + 1
+```
+
+
+# A regular slide
+
+A code block. 
+
+```{r}
+2 + 3
+```
+
+And `some inline code`.
