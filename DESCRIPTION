@@ -20,8 +20,8 @@ Imports:
     knitr,
     rmarkdown
 Suggests:
+    emo (>= 0.0.0.9000),
     countdown (>= 0.3.5),
-    emo,
     fontawesome,
     here,
     quarto,
@@ -32,6 +32,6 @@ Suggests:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
-Remotes: 
-    gadenbuie/countdown
-    hadley/emo@3f03b11491ce3d6fc5601e210927eff73bf8e350
+Remotes:  
+    gadenbuie/countdown,
+    hadley/emo
