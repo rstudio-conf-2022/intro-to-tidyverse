@@ -21,6 +21,7 @@ Imports:
     rmarkdown
 Suggests:
     countdown (>= 0.3.5),
+    emo,
     fontawesome,
     here,
     quarto,
@@ -33,3 +34,4 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Remotes: 
     gadenbuie/countdown
+    hadley/emo
