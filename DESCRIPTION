@@ -34,4 +34,4 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Remotes: 
     gadenbuie/countdown
-    hadley/emo
+    hadley/emo@3f03b11491ce3d6fc5601e210927eff73bf8e350
