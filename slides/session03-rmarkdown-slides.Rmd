@@ -13,7 +13,7 @@ output:
     lib_dir: libs
     nature:
       highlightStyle: github
-      highlightLines: true
+      highlightLines: false
       countIncrementalSlides: false
       ratio: "16:9"
 ---
@@ -22,6 +22,13 @@ class: title-slide
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+
+# Load packages
+library(countdown)
+library(ymlthis)
+
+# enable panelset
+xaringanExtra::use_panelset()
 ```
 
 # `r rmarkdown::metadata$title`
@@ -78,9 +85,11 @@ class: middle
 # Agenda
 
 1. What is R Markdown?
-1. Why do we use R Markdown?
-1. The 3 essential ingredients: Text, Code, Metadata (YAML)
-
+1. Why use R Markdown?
+1. The 3 essential ingredients of R Markdown
+  - Text
+  - Code
+  - Metadata
 
 ---
 class: middle chapter-slide red
@@ -89,13 +98,62 @@ class: middle chapter-slide red
 
 # What is R Markdown?
 
+---
+# What is R Markdown?
+
+1. An authoring framework for data science
+
+--
+2. A file format (`.Rmd`)
+
+--
+3. An [R package](https://rmarkdown.rstudio.com/docs/)
+
+--
+4. A tool for integrating prose, code, and results
+
+---
+# What is R Markdown?
+
+.pull-left[
+A single document includes...
+
+1. Text and headers
+1. R code
+1. Output (e.g. plots, tables)
+1. Images
+
+... and more!
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/doc-make.jpg")
+```
+]
+
+---
+
+# Does this look familiar?
+
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("images/session03-rmarkdown/academy-rmd.png")
+```
 
 ---
 class: middle chapter-slide blue
 
 .big-white-number[2.]
 
-# Why R Markdown? 
+# Why use R Markdown? 
+
+---
+# Replication crisis
+
+---
+background-image: url(images/session03-rmarkdown/reproducibility.gif)
+background-position: center;
+background-size: 100% 
 
 ---
 class: middle chapter-slide green
@@ -105,56 +163,461 @@ class: middle chapter-slide green
 # The 3 essential ingredients
 
 ---
+# The 3 essential ingredients
 
-# TODO: Image of 3 components of R Markdown files
+.pull-left[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
+```
+]
 
+---
+
+# The 3 essential ~~ingredients~~ frameworks
+
+.pull-left[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
+```
+]
+
+.pull-right[
+YAML
+
+Markdown
+
+knitr
+]
 ---
 
 class: inverse middle center
 
-# Text (Markdown)
+# Text
+## (Markdown)
 
 ---
 
+
+# Headers
+
+--
+
+.pull-left[
+```markdown
+# Header 1
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6
+```
+]
+
+--
+
+.pull-right[
+# Header 1
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6
+]
+
+---
+
+# Text
+
+--
+
+.pull-left[
+```markdown
+Regular text
+
+_italics_
+
+**bold**  
+
+`code`  
+```
+]
+
+--
+
+.pull-right[
+Regular text  
+_italics_  
+**bold**  
+`code`
+]
+
+---
+# Lists
+
+--
+
+.pull-left[
+
+```markdown
+Bulleted list
+
+* bullet 1
+* bullet 2
+```
+
+]
+
+--
+
+.pull-right[
+
+Bulleted list
+
+* bullet 1
+* bullet 2
+]
+
+---
+# Lists
+
+--
+
+.pull-left[
+
+```markdown
+Numbered list
+
+1. item 1
+1. item 2
+```
+
+]
+
+--
+
+.pull-right[
+Numbered list
+
+1. item 1
+2. item 2
+
+]
+
+---
+# Images
+
+--
+
+```markdown
+![](images/session03-rmarkdown/rmd-hex.png)
+```
+
+--
+
+<img src="images/session03-rmarkdown/rmd-hex.png" width="25%"/>
+
+---
+
+# Links
+
+--
+
+```markdown
+You can learn more about R Markdown [here](https://rmarkdown.rstudio.com/).
+```
+
+--
+
+You can learn more about R Markdown [here](https://rmarkdown.rstudio.com/).
+
+---
+# Resources 
+
+<!-- TODO: update image -->
+
+.pull-left[
+```{r echo=FALSE}
+knitr::include_graphics("images/session03-rmarkdown/markdown-cheatsheet.png")
+```
+]
+
+.pull-right[
+
+```{r echo=FALSE, out.width="60%"}
+knitr::include_graphics("images/session03-rmarkdown/quick-ref.png")
+```
+]
+---
+class: your-turn
+
+# Your Turn
+Starting with an un-formatted .Rmd file, recreate a shown output.
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
+
+---
 class: inverse middle center
 
-# Code (& Output)
+# Code
+## (knitr)
 
 ---
+# Add a code chunk
 
+
+.panelset[
+.panel[.panel-name[Option 1]
+```{r echo=FALSE}
+knitr::include_graphics("images/session03-rmarkdown/rmarkdown-type-backticks.gif")
+```
+]
+
+.panel[.panel-name[Option 2]
+```{r echo=FALSE, out.width="70%"}
+knitr::include_graphics("images/session03-rmarkdown/rmarkdown-insert.gif")
+```
+]
+
+.panel[.panel-name[Option 3]
+```{r echo=FALSE, out.width="70%"}
+knitr::include_graphics("images/session03-rmarkdown/code-chunk-shortcuts.png")
+```
+]
+]
+
+---
+# Chunk labels
+
+---
+# Chunk options
+
+.pull-left[
+
+````
+```{r plot-1, echo=FALSE}`r ''`
+plot(cars)
+```
+````
+]
+
+.pull-right[
+```{r plot-1, echo=FALSE, out.width = "70%"}
+plot(cars)
+```
+]
+
+---
+# `echo`
+
+`echo = FALSE` hides the code. Especially useful for plots!
+
+.pull-left[
+
+````
+```{r plot, echo=FALSE}`r ''`
+plot(cars)
+```
+````
+]
+
+.pull-right[
+```{r plot, echo=FALSE, out.width = "70%"}
+plot(cars)
+```
+]
+
+---
+# `eval`
+
+`eval = FALSE` prevents the code from being run. As a result, no results will be displayed with the code.
+
+---
+# `include`
+
+`include = FALSE` runs the code, but prevents both the code and the results from appearing 
+
+---
+# `r emo::ji("yarn")` Knit
+
+How does it work?
+
+.center[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png")
+```
+]
+
+.footnote[
+Image: [R for Data Science](https://r4ds.had.co.nz/r-markdown.html#r-markdown-basics)
+]
+
+???
+When you knit the document, R Markdown sends the .Rmd file to knitr, which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. 
+
+---
+# `r emo::ji("yarn")` Knit
+
+TODO: Add recorded demo of knitting a .Rmd document
+
+---
+class: your-turn
+
+# Your Turn
+Use chunk options to recreate a shown output.
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
+```
+
+---
+# Resources 
+
+
+---
 class: inverse middle center
 
-# Metadata (YAML)
+# Metadata
+## (YAML)
 
 ---
+# YAML
 
-class: middle
+_"YAML Ain't Markup Language"_
 
-# Takeaways
+A section of key:value pairs separated by dashed lines `———`
 
-1. X
-1. Y
-1. Z
+```yaml
+---
+key: value
+---
+```
+
+---
+# YAML
+
+.pull-left[
+
+Default
+
+```{r echo = FALSE}
+yml_empty() %>% 
+ yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(html_document()) %>% 
+  asis_yaml_output()
+```
+]
+
+.pull-right[
+
+A few more options
+
+```{r echo = FALSE}
+yml_empty() %>%
+  yml_author("Your name here") %>%
+  yml_title("Your title here") %>%
+  yml_output(html_document(
+    toc = TRUE,
+    toc_float = TRUE,
+    theme = "flatly"
+  )) %>%
+  asis_yaml_output()
+```
+]
+
+---
+# Built-in output formats
+
+<!-- TODO: update image -->
+
+.left-column[
+```{r echo=FALSE}
+knitr::include_graphics("images/session03-rmarkdown/output-formats.png")
+```
+]
+
+.right-column[
+```{r echo=FALSE}
+knitr::include_graphics("images/session03-rmarkdown/output-format-cheatsheet.png")
+```
+]
+
+---
+# Extension output formats
+
+```{r echo=FALSE, out.width="32%"}
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png")
+
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png")
+
+knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png")
+```
 
 ---
 
 class: your-turn
 
 # Your Turn
-Instructions for a "`Your Turn`" Exercise
+Adjust the YAML metadata to recreate the shown output.
 
-```{r}
-# some code
-1 + 1
+```{r echo = FALSE}
+countdown::countdown(minutes = 3)
 ```
 
 
-# A regular slide
+---
+# Take-aways
 
-A code block. 
+--
 
-```{r}
-2 + 3
+`r emo::ji("heavy_check_mark")` **Document your document:** use YAML to set up meaningful metadata
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your document:** use YAML to add options to your chosen output format
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your text:** use markdown formatting to include **bold**, _italics_, `code font`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
+
+---
+# Take-aways (cont.)
+
+--
+
+`r emo::ji("heavy_check_mark")` **Style your output:** use knitr chunk options
+
+--
+
+`r emo::ji("heavy_check_mark")` **Organize your text:** use markdown headers with `#`
+
+--
+
+`r emo::ji("heavy_check_mark")` **Organize your code:** use knitr chunk labels
+
+--
+
+`r emo::ji("heavy_check_mark")` **Preview your work:** `r emo::ji("yarn")` early, `r emo::ji("yarn")` often
+
+---
+class: your-turn
+
+# Mini Project
+
+Turn your previous EDA mini project into a customized R Markdown report.
+ 
+```{r echo = FALSE}
+countdown::countdown(minutes = 20)
 ```
-
-And `some inline code`.
