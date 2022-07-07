@@ -55,10 +55,6 @@ if (!is.null(rmarkdown::metadata$shortlink)) {
 }
 ```
 
-???
-
-stringr is your tidyverse companion to all things strings.
-
 ---
 
 class: speaker-slide
@@ -86,7 +82,9 @@ class: middle
 
 ???
 
-The stringr package provides a cohesive set of functions that make working with character data in R as easy as possible. *Most* any task you can think of that involves character data can be accomplished with stringr.
+The stringr package is your tidyverse companion to all things strings.
+
+stringr provides a cohesive set of functions that make working with character data in R as easy as possible. *Most* any task you can think of that involves character data can be accomplished with stringr.
 
 It's part of the core tidyverse, along with packages like dplyr and ggplot2, so stringr functions play really nicely with dplyr functions like `filter()` and `mutate()`.
 
@@ -148,9 +146,11 @@ We want to compare traits across terrier breeds only.
 
 class: middle
 
+.top-fixed[
 # Sniffing out terrier breeds
+]
 
-```{r, eval = FALSE}
+```{r}
 breed_traits %>% 
   filter(breed == "Yorkshire Terriers")
 ```
@@ -165,7 +165,9 @@ Using what we've already know how to do, we can scan through the paginated resul
 
 class: middle
 
+.top-fixed[
 # Sniffing out terrier breeds
+]
 
 ```{r filter}
 breed_traits %>% 
@@ -292,7 +294,9 @@ Let's take a look at a few quicker examples of what stringr can do.
 
 class: middle
 
+.top-fixed[
 # stringr functions
+]
 
 Character manipulation
 
@@ -308,7 +312,9 @@ We can extract (and replace) substrings from a vector using `str_sub()`, in this
 
 class: middle
 
+.top-fixed[
 # stringr functions
+]
 
 Whitespace tools
 
@@ -324,7 +330,9 @@ We can trim whitespace from a string using `str_trim()`, which can be a quick an
 
 class: middle
 
+.top-fixed[
 # stringr functions
+]
 
 Locale-sensitive operations
 
@@ -340,7 +348,9 @@ We can turn convert cases with `str_to_upper()` and turn strings into yells.
 
 class: middle
 
+.top-fixed[
 # stringr functions
+]
 
 Pattern matching
 
