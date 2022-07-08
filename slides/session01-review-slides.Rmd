@@ -21,6 +21,33 @@ params:
   wifi_password: ""
 ---
 class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+xaringanExtra::use_tachyons()
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+
 # Welcome
 
 
@@ -30,8 +57,6 @@ We'll get started shortly after the 9 o'clock hour.
 
 ---
 class: middle, inverse
-
-
 
 # Conference workshop policies
 
@@ -57,12 +82,18 @@ class: middle, inverse
 
 .right-column[
 
-Identify the exits closest to you in case of emergency
+Identify the exits closest to you in case of emergency 
 
-Please do not photograph people wearing .display[red lanyards]
+<br>
+<br>
+
+Please do not photograph people wearing .light-red[red lanyards] 
+
+<br>
+<br>
 
 A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
-]
+] 
 
 ---
 
@@ -161,13 +192,10 @@ But there's an entire team of people behind the work and content that you're see
 class: center, middle, chapter-slide blue
 
 .big-text.white[Let's get to work!]
+
+
 ---
-
 class: title-slide
-
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-```
 
 # `r rmarkdown::metadata$title`
 
@@ -177,29 +205,6 @@ options(htmltools.dir.version = FALSE)
   <img src="images/academy-logo.png">
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
-
-
-```{r xaringanExtra, echo=FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
-xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
-
-if (!is.null(rmarkdown::metadata$shortlink)) {
-  shortlink <- rmarkdown::metadata$shortlink
-  if (is.character(shortlink)) {
-    shortlink <- list(url = shortlink)
-  }
-  stopifnot(!is.null(shortlink$url))
-  
-  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
-    shortlink$text <- basename(shortlink$url)
-  }
-  
-  xaringanExtra::use_banner(
-    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
-    exclude = "title-slide"
-  )
-}
-```
 
 ---
 class: middle
