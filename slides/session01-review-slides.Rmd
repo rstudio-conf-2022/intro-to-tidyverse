@@ -8,7 +8,7 @@ shortlink:
   text: materials/session01
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session01.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -21,19 +21,12 @@ params:
   wifi_password: ""
 ---
 class: middle
-
-<style> 
-  .top-fixed{ 
-    position: absolute;
-    top: 0
-  } 
-</style>
-
-.top-fixed[
 # Welcome
-] 
 
-Find your group's table and make yourself comfortable. We'll get started shortly after the 9 o'clock hour.
+
+Find your group's table and make yourself comfortable. 
+
+We'll get started shortly after the 9 o'clock hour.
 
 ---
 class: middle, inverse
@@ -106,6 +99,70 @@ Wifi password
 ]
 
 ---
+class: top, center
+background-image: url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
+background-position: center
+background-size: contain
+
+# Goals
+
+Drill old wrangling skills and explore new ones
+
+Learn best practices for exploring your data and reporting it reproducibly 
+
+
+???
+
+Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academ course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
+
+1. Drill old wrangling skills and explore new ones
+
+1. Learn best practices for exploring your data and report it reproducibly -- including doing this in your local RStudio IDE, outside of Academy.
+
+In short, we're using these two days to give you sanctioned time to dive deep into the skills you've been learning the past few weeks with a lot of protected time for practice. 
+
+[Will we build in opps for more learning and drilling during downtime?]
+
+
+---
+class: center, middle, chapter-slide blue
+
+.big-text.white[Hello!]
+
+???
+
+And so with that, let me introduce myself...
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
+
+.speaker-links[
+[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
+[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
+[`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
+]
+
+---
+
+Placeholder for team slide...
+
+???
+
+But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that you have been experiencing at Academy. 
+
+
+---
+class: center, middle, chapter-slide blue
+
+.big-text.white[Let's get to work!]
+---
+
 class: title-slide
 
 ```{r setup, include=FALSE}
@@ -145,24 +202,7 @@ if (!is.null(rmarkdown::metadata$shortlink)) {
 ```
 
 ---
-class: speaker-slide
-
-# `r rmarkdown::metadata$author`
-
-<!-- You can copy the image link address from your github profile to use as the src link below --> 
-
-<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/>
-
-.speaker-links[
-[`r fontawesome::fa("github")` dcossyleon](https://github.com/dcossyleon)    
-[`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
-[`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
-]
-
----
 class: middle
-
-This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
 
 ```{r load-data, include=FALSE}
 library(tidyverse)
@@ -172,28 +212,44 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
   readr::write_csv("data/session01/outbreaks.csv")
 ```
 
+
+This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+
 ---
 class: middle
 
 Review activity with small group (new dataset) - 50 min
 
 ---
+class: center, middle
+background-image: url(https://images.unsplash.com/photo-1638490868554-afb2dfd088a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)
+background-position: center
+background-size: cover
 
-## Outbreaks data
+# Outbreaks data
 
-```{r read-in-outbreaks}
+```{r read-in-outbreaks, echo = FALSE}
 outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
 ```
-
 ---
 
-1. First things first -- let's take a look a what's in this dataset. Can you recreate output that looks like this?
 
-```{r}
+---
+class: your-turn
+
+# Your Turn
+
+Can you recreate output that looks like this?
+
+```{r echo = FALSE}
 glimpse(outbreaks)
 #str(outbreaks)
 ```
 
+
+???
+
+First things first, let's take a look a what's in this dataset. 
 ---
 
 1.1 What is the earliest year on record in this dataset? Latest?
