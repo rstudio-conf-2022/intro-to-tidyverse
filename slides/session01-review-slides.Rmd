@@ -56,43 +56,38 @@ Find your group's table and make yourself comfortable.
 We'll get started shortly after the 9 o'clock hour.
 
 ---
-class: middle, inverse
+class: inverse middle
 
 # Conference workshop policies
 
 .left-column[
 
-.center[
+  .center[
 
-`r emo::ji("door")` `r emo::ji("dash")` 
+  `r emo::ji("door")` `r emo::ji("dash")` 
 
-<br>
+  <br>
 
-`r emo::ji("no_entry_sign")` `r emo::ji("camera")` 
+  `r emo::ji("no_entry_sign")` `r emo::ji("camera")` 
 
-<br>
-<br>
+  <br>
+  <br>
 
-`r emo::ji("yoga")` `r emo::ji("tent")`
-
+  `r emo::ji("yoga")` `r emo::ji("tent")`
+  ]
 ]
-
-]
-
 
 .right-column[
 
-Identify the exits closest to you in case of emergency 
+  Identify the exits closest to you in case of emergency 
 
-<br>
-<br>
+  <br>
 
-Please do not photograph people wearing .light-red[red lanyards] 
+  Please do not photograph people wearing .light-red[red lanyards] 
 
-<br>
-<br>
+  <br>
 
-A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
+  A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
 ] 
 
 ---
@@ -164,6 +159,7 @@ class: center, middle, chapter-slide blue
 
 And so with that, let me introduce myself...
 
+
 ---
 class: speaker-slide
 
@@ -187,12 +183,43 @@ Placeholder for team slide...
 
 But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that you have been experiencing at Academy. 
 
+---
+
+line up image
+
+???
+ 
+The lineup for the next couple days...
+
+
+---
+ day 1
+ 
+ day 2
+
+---
+
+day 1 day 2 detailed
+---
+
+schedule
+
+???
+
+Now that we have an overview of the next two days...
+
+---
+
+You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
+
+You can navigate there now...
+
+One exception is Session 4....
 
 ---
 class: center, middle, chapter-slide blue
 
 .big-text.white[Let's get to work!]
-
 
 ---
 class: title-slide
@@ -206,8 +233,49 @@ class: title-slide
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
 
+???
+
+We're going to start off with some review of what we've learned for the past couple weeks.
+
 ---
-class: middle
+
+Screenshot of workspace
+
+for this session, we'll be doing our work in this part of the Academy website. 
+
+Go ahead and open up the milestone for this session.  
+
+
+---
+
+What we'll do:
+
+I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
+
+
+You'll do your work in this RMd, yo ucan create as many code chunks as you like in here. Do you work in the Rmd document so you have a record of your code.
+
+---
+
+RULES:
+
+For each prompt, the first group to have everyone with the answer correct (as verified by your mentor), will win a small prize. 
+
+You must have the correct code and the correct output.
+
+After a few more minutes, we'll go over the answer together. And then move on to the next question. 
+
+???
+
+After the conference, you'll be able to see these slides (with the prompts) linked on our website.
+
+---
+class: center, middle
+background-image: url(https://images.unsplash.com/photo-1638490868554-afb2dfd088a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)
+background-position: center
+background-size: cover
+
+# Outbreaks data
 
 ```{r load-data, include=FALSE}
 library(tidyverse)
@@ -218,46 +286,48 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
 ```
 
 
-This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+???
 
----
-class: middle
+We'll be working with data about water and food borne illnesses. this dataset comes from....
 
-Review activity with small group (new dataset) - 50 min
+First things first, let's take a look a what's in this dataset. 
 
----
-class: center, middle
-background-image: url(https://images.unsplash.com/photo-1638490868554-afb2dfd088a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)
-background-position: center
-background-size: cover
-
-# Outbreaks data
-
-```{r read-in-outbreaks, echo = FALSE}
-outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
-```
----
-
+So here is your first prompt:
 
 ---
 class: your-turn
 
-# Your Turn
+# Your Turn 1
 
 Can you recreate output that looks like this?
+
+```{r read-in-outbreaks, include = FALSE}
+outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
+```
 
 ```{r echo = FALSE}
 glimpse(outbreaks)
 #str(outbreaks)
 ```
 
-
 ???
 
-First things first, let's take a look a what's in this dataset. 
+3 minutes to read in the data and run glimpse()?
 ---
 
-1.1 What is the earliest year on record in this dataset? Latest?
+Show Solution.
+
+Static or live code in box?
+
+---
+
+# Your Turn 2
+
+What is the earliest year on record in this dataset? Latest?
+
+---
+
+Solution
 
 ```{r}
 outbreaks %>%
@@ -269,7 +339,14 @@ outbreaks %>%
 
 ---
 
-1.2 The `state` variable appears to include US locations -- is the data limited to the 50 states?
+# Your Turn 3
+
+The `state` variable appears to include US locations -- is the data limited to the 50 states?
+
+
+---
+
+Solution: 
 
 ```{r}
 outbreaks %>%
@@ -278,9 +355,20 @@ outbreaks %>%
 
 ---
 
-1.3 The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+# Your Turn 4
 
-Can you repro
+The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+
+```{r echo = FALSE}
+outbreaks %>%
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category)
+```
+
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>%
@@ -288,20 +376,44 @@ outbreaks %>%
   count(ifsac_category)
 ```
 
+
 ---
 
-2. What are the different etiologies that have been recorded? Display them in a table ike the one below.
+# Your Turn 5
 
-```{r}
+What are the different etiologies that have been recorded? Display them in a table like the one below.
+
+```{r echo = FALSE}
 outbreaks %>%
   count(etiology)
 ```
 
 ---
 
-3. Read in + plot
+Solution:
 
-Explore the relationship between month and the number of illnesses with a plot like this one:
+```{r echo = TRUE}
+outbreaks %>%
+  count(etiology)
+```
+
+
+--- 
+
+# Your Turn 6
+
+Read in + plot
+
+Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it?
+
+```{r, echo = FALSE}
+outbreaks %>% 
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+---
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -311,7 +423,9 @@ outbreaks %>%
 
 ---
 
-4. Subset the data before plotting to inspect the outlier in a plot like this:
+# Your Turn 7
+
+Subset the data before plotting to inspect the outlier in a plot like this:
 
 ```{r}
 outbreaks %>%
@@ -324,7 +438,9 @@ outbreaks %>%
 
 ---
 
-5. What observation is associated with such a high number of illnesses? Display the observation in a table:
+# Your Turn 8
+
+What observation is associated with such a high number of illnesses? Display the observation in a table:
 
 ```{r}
 outbreaks %>%
@@ -335,7 +451,9 @@ outbreaks %>%
 
 ---
 
-6. Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+# Your Turn 9
+
+Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
 
 ```{r}
 outbreaks %>% arrange(desc(illnesses))
@@ -343,7 +461,9 @@ outbreaks %>% arrange(desc(illnesses))
 
 ---
 
-7. Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
+# Your Turn 10
+
+Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
 
 ```{r}
 outbreaks %>%
@@ -359,7 +479,9 @@ outbreaks %>%
 
 ---
 
-8. How many primary modes of illness are there?
+# Your Turn 11
+
+How many primary modes of illness are there?
 
 ```{r}
 outbreaks %>%
@@ -368,7 +490,9 @@ outbreaks %>%
 
 ---
 
-9. Which primary mode is responsible for the greatest number of reported outbreaks?
+# Your Turn 12
+
+Which primary mode is responsible for the greatest number of reported outbreaks?
 
 ```{r}
 outbreaks %>%
@@ -378,7 +502,9 @@ outbreaks %>%
 
 ---
 
-10. Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+# Your Turn 13
+
+Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
 
 ```{r}
 outbreaks %>%
@@ -389,7 +515,9 @@ outbreaks %>%
 
 ---
 
-11. Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+# Your Turn 14
+
+Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
 
 ```{r}
 outbreaks %>%
@@ -401,7 +529,9 @@ outbreaks %>%
 
 ---
 
-12. Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+# Your Turn 15
+
+Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
 
 ```{r}
 outbreaks %>% 
@@ -413,7 +543,9 @@ outbreaks %>%
 
 ---
 
-21. Limit to DC and food-related illnesses --> when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
+# Your Turn 16 
+
+Limit to DC and food-related illnesses --> when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
 
 ```{r}
 outbreaks %>% 
@@ -426,7 +558,7 @@ outbreaks %>%
 
 ---
 
-30. Harder filter() + select()
+# Your Turn 17
 
 Find food-related outbreaks that resulted in at least 1 death, and show the columns from `year` to `deaths`
 
@@ -440,7 +572,9 @@ outbreaks %>%
 
 ---
 
-40. Calculate new variable + plot it (fatality rate)
+# Your Turn 18
+
+Calculate new variable + plot it (fatality rate)
 
 ```{r}
 outbreaks %>% 
@@ -453,6 +587,8 @@ outbreaks %>%
 ```
 
 ---
+
+# Your Turn 19
 
 Filter out fatalty rates or 0 --> then plot the distribution of those
 
@@ -469,7 +605,9 @@ outbreaks %>%
 
 ---
 
-Y. Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+# Your Turn 20
+
+Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
 
 ```{r}
 outbreaks %>% 
@@ -483,14 +621,20 @@ outbreaks %>%
 
 ---
 
+# Your Turn 21
 
-5. X Use a window function + plot it
+X Use a window function + plot it
 
 ```{r}
 
 ```
 
-6. X Mean center something (?) and then plot it
+---
+
+# Your Turn 22
+
+
+Mean center something (?) and then plot it
 
 ```{r}
 
