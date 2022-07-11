@@ -1,0 +1,296 @@
+---
+title: "Lightning talk • lubridate"
+subtitle: "Day 2, Session 3"
+author: "Laura Puckett"
+date: "July 26, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/slides/lubridate.Rmd
+  text: lubridate-lightning-talk
+output:
+  xaringan::moon_reader:
+    css: ["default", "/assets/academy-theme.css", "/assets/lubridate.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      df_print: kable
+---
+
+class: title-slide
+
+```{r setup, include=FALSE, warning=FALSE}
+options(htmltools.dir.version = FALSE)
+# usethis::use_dev_package("/nycflights13", "Suggests")
+library(lubridate);  library(tidyr); library(dplyr);
+library(ggplot2)
+
+bike_traffic <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-02/bike_traffic.csv")
+
+bike_traffic <- 
+  bike_traffic %>%
+  filter(crossing == "Burke Gilman Trail") %>%
+  drop_na() %>%
+  as_tibble()
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+.pull-right[
+<img src="images/lubridate/lubridate_hex_sticker.png" height="200px"/>
+]
+
+<div class="title-footer">
+  <img src="../images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<img style="border-radius: 50%;" src="https://github.com/Laura-Puckett.png" width="200px"/>
+
+.speaker-links[
+[`r fontawesome::fa("github")` Laura-Puckett](https://github.com/Laura-Puckett)  
+[`r fontawesome::fa("envelope")` laura.puckett@rstudio.com](laura.puckett@rstudio.com)
+]
+
+---
+
+class: middle chapter-slide green
+
+.big-white-number[1.]
+# Overview of Lubridate
+
+---
+
+class: top
+background-image: url(images/lubridate/make_dates_1.png)
+background-size: cover
+
+# Creating Dates and Datetimes
+
+---
+
+class: top
+background-image: url(images/lubridate/make_dates_2.png)
+background-size: cover
+
+# Creating Dates and Datetimes
+
+---
+
+class: top
+background-image: url(images/lubridate/diagram_1.png)
+background-size: cover
+# Extract Information
+
+---
+
+class: top
+background-image: url(images/lubridate/diagram_2.png)
+background-size: cover
+# Extract Information
+
+---
+
+# Other tasks with lubridate
+
+- math with dates/datetimes
+
+--
+
+- time zones
+
+--
+
+- leap seconds, leap years
+
+--
+
+- time intervals
+
+---
+
+class: middle chapter-slide green
+
+.big-white-number[2.] 
+# Example
+
+---
+# Get into a `date` or `datetime` format
+
+```{r, include = TRUE, eval = FALSE, warning = FALSE}
+bike_traffic <- 
+  bike_traffic %>%
+  mutate(timestamp = `mdy_hms`(date,
+                             tz = "US/Pacific"))
+```
+
+--
+
+```{r, echo = FALSE, eval = TRUE, warning = FALSE}
+bike_traffic <- 
+  bike_traffic %>%
+  mutate(timestamp = mdy_hms(date,
+                             tz = "US/Pacific")) %>%
+  select(timestamp, direction, crossing, bike_count)
+
+bike_traffic
+```
+
+
+---
+
+
+
+# Get into a `date` or `datetime` format
+
+```{r, include = TRUE, eval = FALSE}
+labor_day <- `ymd`("2015-09-07")
+```
+
+--
+
+```{r, echo = FALSE, eval = TRUE}
+labor_day <- ymd("2015-09-07")
+labor_day
+```
+
+---
+
+# Get into a `date` or `datetime` format
+```{r}
+bike_traffic
+```
+
+---
+class:top
+
+# Find the day of the week
+```{r month_1, eval = FALSE}
+wday(labor_date, label = TRUE)
+```
+
+--
+
+```{r month, eval = TRUE, echo = FALSE}
+wday(labor_day, label = TRUE)
+```
+
+---
+
+class: top
+# Manipulate Times
+
+```{r weeks}
+labor_day - weeks(1)
+```
+
+
+---
+# Time Intervals
+```{r interval_highighted, eval = FALSE}
+date_interval <- `interval`(labor_day - weeks(1),
+                               labor_day + weeks(1))
+date_interval
+```
+
+--
+
+```{r interval, echo = FALSE, eval = TRUE}
+date_interval <- interval(labor_day - weeks(1),
+                               labor_day + weeks(1))
+date_interval
+```
+
+--
+
+```{r filter_interval_highlighted, eval = FALSE}
+bike_traffic %>%
+  filter(`timestamp %within% date_interval`)
+```
+
+---
+# Time Intervals
+```{r filter_interval, eval = TRUE, echo = FALSE}
+bike_traffic %>%
+  filter(timestamp %within% date_interval)
+```
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+# Resources
+
+---
+class: top
+# Resources
+
+.pull-left[
+- [Lubridate Site](https://lubridate.tidyverse.org/)
+
+- [R for Data Science Ch. 16 - Dates and Times](https://r4ds.had.co.nz/dates-and-times.html)
+]
+
+.pull-right[
+ <img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/>
+]
+
+---
+class: middle chapter-slide green
+
+.big-white-number[4.]
+# Exercises
+
+---
+class: your-turn
+
+# Your Turn
+
+A. What day of the week was the moon landing (September 7, 1969)?
+
+```{r, eval = FALSE}
+ymd(____) %>%
+  ____()
+
+```
+
+B. How many days ago was the moon landing?
+
+```{r, eval = FALSE}
+ymd(____) ____ date(now())
+
+```
+
