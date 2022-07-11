@@ -4,11 +4,11 @@ subtitle: "Day 2, Session 3"
 author: "Laura Puckett"
 date: "July 26, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/slides/lubridate.Rmd
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/blob/main/slides/session07-lubridate-slides.Rmd
   text: lubridate-lightning-talk
 output:
   xaringan::moon_reader:
-    css: ["default", "/assets/academy-theme.css", "/assets/lubridate.css"]
+    css: ["default", "assets/academy-theme.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -24,17 +24,21 @@ class: title-slide
 
 ```{r setup, include=FALSE, warning=FALSE}
 options(htmltools.dir.version = FALSE)
-# usethis::use_dev_package("/nycflights13", "Suggests")
-library(lubridate);  library(tidyr); library(dplyr);
-library(ggplot2)
 
-bike_traffic <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-02/bike_traffic.csv")
+library(lubridate);  library(dplyr);
 
-bike_traffic <- 
-  bike_traffic %>%
-  filter(crossing == "Burke Gilman Trail") %>%
-  drop_na() %>%
-  as_tibble()
+# bike_traffic <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-02/bike_traffic.csv")
+# 
+# bike_traffic <- 
+#   bike_traffic %>%
+#   filter(crossing == "Burke Gilman Trail") %>%
+#   drop_na() %>%
+#   as_tibble()
+# 
+# saveRDS(bike_traffic, './data/session07/bike_traffic.rds')
+
+bike_traffic = readRDS('./data/session07/bike_traffic.rds')
+
 ```
 
 # `r rmarkdown::metadata$title`
@@ -49,7 +53,6 @@ bike_traffic <-
   <img src="../images/academy-logo.png">
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
-
 
 ```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
@@ -92,6 +95,8 @@ class: middle chapter-slide green
 .big-white-number[1.]
 # Overview of Lubridate
 
+??? 
+First I'll give an overview of some of the common uses of lubridate.
 ---
 
 class: top
@@ -100,6 +105,8 @@ background-size: cover
 
 # Creating Dates and Datetimes
 
+???
+One of the key uses of lubridate it to get your data into a date or datetime format more easily. These are standardized formats for storing dates or times. Here we have four different format to express the same date. A lubridate function called `ymd` for year/month/day can handle all of these different formats and will output the Date object shown ont the right. 
 ---
 
 class: top
@@ -108,12 +115,17 @@ background-size: cover
 
 # Creating Dates and Datetimes
 
+???
+There are a number of functions that lubridate includes for creating a date or datetime from almost any format. 
 ---
 
 class: top
 background-image: url(images/lubridate/diagram_1.png)
 background-size: cover
 # Extract Information
+
+???
+Once we have our data in a date or datetime format, we are able to easily access all of the components used to build the object. 
 
 ---
 
@@ -122,9 +134,16 @@ background-image: url(images/lubridate/diagram_2.png)
 background-size: cover
 # Extract Information
 
+???
+And, we can even extract additional information such as the quarter, week or day of the year of weekday. 
 ---
-
+class: top
 # Other tasks with lubridate
+
+???
+Some additional tasks that can be completed using lubridate functions are to convert between different time zones, account for leap time, round times to the nearest week, for example, and work with intervals of time. 
+
+--
 
 - math with dates/datetimes
 
@@ -138,6 +157,10 @@ background-size: cover
 
 --
 
+- round times
+
+--
+
 - time intervals
 
 ---
@@ -147,7 +170,18 @@ class: middle chapter-slide green
 .big-white-number[2.] 
 # Example
 
+???
+Now let's go through a quick example of some of these functions. 
 ---
+# Bike Traffic Dataset
+```{r}
+bike_traffic
+```
+
+???
+Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
+---
+
 # Get into a `date` or `datetime` format
 
 ```{r, include = TRUE, eval = FALSE, warning = FALSE}
@@ -169,10 +203,10 @@ bike_traffic <-
 bike_traffic
 ```
 
+???
 
+We can use a lubridate function to turn this column into a datetime.
 ---
-
-
 
 # Get into a `date` or `datetime` format
 
@@ -187,12 +221,8 @@ labor_day <- ymd("2015-09-07")
 labor_day
 ```
 
----
-
-# Get into a `date` or `datetime` format
-```{r}
-bike_traffic
-```
+???
+Suppose we are interested in the bike traffic around labor day. We can start by creating a date object for our date of interest. 
 
 ---
 class:top
@@ -208,6 +238,8 @@ wday(labor_date, label = TRUE)
 wday(labor_day, label = TRUE)
 ```
 
+???
+We can confirm that the day of week is Monday as expected.
 ---
 
 class: top
@@ -217,6 +249,8 @@ class: top
 labor_day - weeks(1)
 ```
 
+???
+Now we can do math with the date. If we are interested in the bike traffic within a week of labor day, we can easily add or subtact a week from the date.
 
 ---
 # Time Intervals
@@ -234,6 +268,8 @@ date_interval <- interval(labor_day - weeks(1),
 date_interval
 ```
 
+???
+Next, we can create an interval that will span from one week before labor day to one week after using lubridate's interval function.
 --
 
 ```{r filter_interval_highlighted, eval = FALSE}
@@ -241,6 +277,8 @@ bike_traffic %>%
   filter(`timestamp %within% date_interval`)
 ```
 
+???
+And finally we can filter our dataset to that time interval using an operator called within. 
 ---
 # Time Intervals
 ```{r filter_interval, eval = TRUE, echo = FALSE}
@@ -268,6 +306,10 @@ class: top
  <img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/>
 ]
 
+???
+Here are some additional resources for the lubridate package. The site includes links to the cheatsheets and some examples. 
+
+Chapter 16 of R for Data Science includes an in-depth description of lubridate's many features. 
 ---
 class: middle chapter-slide green
 
