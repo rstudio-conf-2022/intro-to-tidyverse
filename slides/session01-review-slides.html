@@ -19,6 +19,7 @@
     <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-banner/banner.js"></script>
     <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
@@ -28,6 +29,10 @@
     <textarea id="source">
 
 class: middle
+
+
+
+
 # Welcome
 
 
@@ -36,40 +41,39 @@ Find your group's table and make yourself comfortable.
 We'll get started shortly after the 9 o'clock hour.
 
 ---
-class: middle, inverse
-
-
+class: inverse middle
 
 # Conference workshop policies
 
 .left-column[
 
-.center[
+  .center[
 
-🚪 💨 
+  🚪 💨 
 
-&lt;br&gt;
+  &lt;br&gt;
 
-🚫 📷 
+  🚫 📷 
 
-&lt;br&gt;
-&lt;br&gt;
+  &lt;br&gt;
+  &lt;br&gt;
 
-🧘‍♀️ ⛺
-
+  🧘‍♂️ ⛺
+  ]
 ]
-
-]
-
 
 .right-column[
 
-Identify the exits closest to you in case of emergency
+  Identify the exits closest to you in case of emergency 
 
-Please do not photograph people wearing .display[red lanyards]
+  &lt;br&gt;
 
-A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
-]
+  Please do not photograph people wearing .light-red[red lanyards] 
+
+  &lt;br&gt;
+
+  A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
+] 
 
 ---
 
@@ -140,6 +144,7 @@ class: center, middle, chapter-slide blue
 
 And so with that, let me introduce myself...
 
+
 ---
 class: speaker-slide
 
@@ -163,16 +168,46 @@ Placeholder for team slide...
 
 But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that you have been experiencing at Academy. 
 
+---
+
+line up image
+
+???
+ 
+The lineup for the next couple days...
+
+
+---
+ day 1
+ 
+ day 2
+
+---
+
+day 1 day 2 detailed
+---
+
+schedule
+
+???
+
+Now that we have an overview of the next two days...
+
+---
+
+You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
+
+You can navigate there now...
+
+One exception is Session 4....
 
 ---
 class: center, middle, chapter-slide blue
 
 .big-text.white[Let's get to work!]
+
 ---
-
 class: title-slide
-
-
 
 # Session 1 Review
 
@@ -183,22 +218,39 @@ class: title-slide
   &lt;div&gt; Desirée De Leon • July 25, 2022&lt;/div&gt;
 &lt;/div&gt;
 
+???
 
-<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"exclude":["title-slide"],"position":"top"}'))})</script>
-<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01\\">materials/session01<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
-
----
-class: middle
-
-
-
-
-This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+We're going to start off with some review of what we've learned for the past couple weeks.
 
 ---
-class: middle
 
-Review activity with small group (new dataset) - 50 min
+Screenshot of workspace
+
+for this session, we'll be doing our work in this part of the Academy website. 
+
+Go ahead and open up the milestone for this session.  
+
+
+---
+
+What we'll do:
+
+I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
+
+
+You'll do your work in this RMd, yo ucan create as many code chunks as you like in here. Do you work in the Rmd document so you have a record of your code.
+
+---
+
+
+For each prompt, the first group to have everyone with the answer correct (as verified by your mentor), will win a small prize. 
+
+
+After a few more minutes, we'll go over the answer together. And then move on to the next question. 
+
+???
+
+After the conference, you'll be able to see these slides (with the prompts) linked on our website.
 
 ---
 class: center, middle
@@ -209,25 +261,24 @@ background-size: cover
 # Outbreaks data
 
 
-```
-## Rows: 57649 Columns: 21
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (14): state, primary_mode, etiology, serotype_or_genotype, etiology_stat...
-## dbl  (7): year, month, illnesses, hospitalizations, info_on_hospitalizations...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
----
 
+
+???
+
+We'll be working with data about water and food borne illnesses. this dataset comes from....
+
+First things first, let's take a look a what's in this dataset. 
+
+So here is your first prompt:
 
 ---
 class: your-turn
 
-# Your Turn
+# Your Turn 1
 
 Can you recreate output that looks like this?
+
+
 
 
 ```
@@ -256,10 +307,15 @@ Can you recreate output that looks like this?
 ## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ```
 
-
 ???
 
-First things first, let's take a look a what's in this dataset. 
+3 minutes to read in the data and run glimpse()?
+---
+
+Show Solution.
+
+Static or live code in box?
+
 ---
 
 1.1 What is the earliest year on record in this dataset? Latest?
@@ -806,19 +862,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
