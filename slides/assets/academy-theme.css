@@ -301,10 +301,10 @@ pre code {
 /* Two column layout ============================/*
 
 /* Two-column layout */
-.left-column {
+.middle .left-column {
   color: #777;
   width: 30%;
-  height: 92%;
+  height: 50%;
   float: left;
   font-size: 18px;
 }
