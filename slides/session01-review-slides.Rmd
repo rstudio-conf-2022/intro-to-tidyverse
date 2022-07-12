@@ -271,11 +271,13 @@ After the conference, you'll be able to see these slides (with the prompts) link
 
 ---
 class: center, middle
-background-image: url(https://images.unsplash.com/photo-1638490868554-afb2dfd088a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)
+background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3bc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80)
 background-position: center
 background-size: cover
 
-# Outbreaks data
+# 
+
+.big-text.white[Outbreaks data]
 
 ```{r load-data, include=FALSE}
 library(tidyverse)
@@ -288,7 +290,8 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
 
 ???
 
-We'll be working with data about water and food borne illnesses. this dataset comes from....
+We'll be working with data about foodborne and waterborne disease outbreaks spread by contact with environmental sources or infected people or animals. This dataset comes from the CDC's National 
+National Outbreak Reporting System (NORS).
 
 First things first, let's take a look a what's in this dataset. 
 
@@ -320,6 +323,7 @@ Show Solution.
 Static or live code in box?
 
 ---
+class: your-turn
 
 # Your Turn 2
 
@@ -338,7 +342,7 @@ outbreaks %>%
 ```
 
 ---
-
+class: your-turn
 # Your Turn 3
 
 The `state` variable appears to include US locations -- is the data limited to the 50 states?
@@ -354,10 +358,10 @@ outbreaks %>%
 ```
 
 ---
-
+class: your-turn
 # Your Turn 4
 
-The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+Let's turn our attention to only observations where the primary mode of infection is Food. Using that criterion, can you reproduce the table below?
 
 ```{r echo = FALSE}
 outbreaks %>%
@@ -365,12 +369,13 @@ outbreaks %>%
   count(ifsac_category)
 ```
 
+???
 
 ---
 
 Solution:
 
-```{r}
+```{r eval = FALSE}
 outbreaks %>%
   filter(primary_mode == "Food") %>% 
   count(ifsac_category)
@@ -378,10 +383,10 @@ outbreaks %>%
 
 
 ---
-
+class: your-turn
 # Your Turn 5
 
-What are the different etiologies that have been recorded? Display them in a table like the one below.
+What are the different etiologies that have been recorded in this dataset? Display them in a table like the one below.
 
 ```{r echo = FALSE}
 outbreaks %>%
@@ -389,20 +394,18 @@ outbreaks %>%
 ```
 
 ---
-
+class: your-turn
 Solution:
 
-```{r echo = TRUE}
+```{r eval = FALSE}
 outbreaks %>%
   count(etiology)
 ```
 
 
 --- 
-
+class: your-turn
 # Your Turn 6
-
-Read in + plot
 
 Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it?
 
@@ -413,21 +416,23 @@ outbreaks %>%
 ```
 
 ---
+
 Solution:
 
-```{r}
+```{r eval = FALSE}
 outbreaks %>% 
   ggplot(mapping = aes(x = month, y = illnesses)) + 
   geom_point()
 ```
 
 ---
+class: your-turn
 
 # Your Turn 7
 
 Subset the data before plotting to inspect the outlier in a plot like this:
 
-```{r}
+```{r echo = FALSE}
 outbreaks %>%
   filter(
     illnesses >= 400000
@@ -436,13 +441,31 @@ outbreaks %>%
   geom_point()
 ```
 
+___
+
+Solution:
+
+```{r eval = FALSE}
+outbreaks %>%
+  filter(
+    illnesses >= 400000
+  ) %>%
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+
+```
+
 ---
+class: your-turn
 
 # Your Turn 8
 
-What observation is associated with such a high number of illnesses? Display the observation in a table:
+Which observation in `outbreaks` is associated with such a high number of illnesses? Display solely this observation in a table.
 
-```{r}
+___
+One possible solution:
+
+```{r eval = FALSE}
 outbreaks %>%
   filter(
     illnesses >= 400000
@@ -450,22 +473,28 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
 # Your Turn 9
 
 Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
 
-```{r}
+___
+
+Solution:
+
+```{r eval = FALSE}
 outbreaks %>% arrange(desc(illnesses))
 ```
 
 ---
+class: your-turn
 
 # Your Turn 10
 
-Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
+Excluding the previous observation, has the number of illnesses decreased throughout the years? Explore this question with a visualization.
 
-```{r}
+```{r echo = FALSE}
 outbreaks %>%
   filter(
     illnesses < 400000
@@ -479,32 +508,72 @@ outbreaks %>%
 
 ---
 
+One possible solution:
+
+```{r eval = FALSE}
+outbreaks %>%
+  filter(
+    illnesses < 400000
+  ) %>% 
+  ggplot(
+    mapping = aes(x = year, y = illnesses)
+  ) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+---
+class: your-turn
 # Your Turn 11
 
-How many primary modes of illness are there?
+How many primary modes of illness does this dataset contain?
 
-```{r}
+---
+
+One possible solution:
+
+```{r eval = FALSE}
 outbreaks %>%
   count(primary_mode)
 ```
 
+
 ---
+class: your-turn
 
 # Your Turn 12
 
-Which primary mode is responsible for the greatest number of reported outbreaks?
+Which primary mode is responsible for the greatest number of reported outbreaks? Explore this with a visualization.
+
+
+---
+
+Solution:
+
 
 ```{r}
 outbreaks %>%
   ggplot(mapping = aes(x = primary_mode)) + 
-  geom_bar()
+  geom_bar() +
+  coord_flip()
 ```
 
 ---
+class: your-turn
 
 # Your Turn 13
 
 Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+
+```{r echo = FALSE}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
+  geom_point()
+```
+---
+
+Solution:
 
 ```{r}
 outbreaks %>%
@@ -514,12 +583,13 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
 # Your Turn 14
 
 Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
 
-```{r}
+```{r echo = FALSE}
 outbreaks %>%
   filter(illnesses < 40000) %>% 
   ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
@@ -529,9 +599,35 @@ outbreaks %>%
 
 ---
 
+Solution:
+
+```{r eval = FALSE}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
+  geom_point(alpha = 0.01) + 
+  geom_boxplot()
+```
+
+
+---
+class: your-turn
+
 # Your Turn 15
 
 Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+
+```{r echo = FALSE}
+outbreaks %>% 
+  filter(state == "Washington DC") %>%
+  ggplot(mapping = aes(x = primary_mode)) +
+  geom_bar()
+
+```
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -542,12 +638,17 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
 # Your Turn 16 
 
-Limit to DC and food-related illnesses --> when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
+Let's focus only on DC and foodborne illnesses now. Show the most recent outbreaks in a table, from most recent to least reaent.
 
-```{r}
+---
+
+Solution:
+
+```{r echo = FALSE}
 outbreaks %>% 
   filter(
     state == "Washington DC" & 
@@ -557,24 +658,34 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
 # Your Turn 17
 
-Find food-related outbreaks that resulted in at least 1 death, and show the columns from `year` to `deaths`
+Find food-related outbreaks that resulted in at least 1 death. Display the results in a table that contains only the columns from `year` to `deaths`.
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
   filter(
     primary_mode == "Food", 
     deaths >= 1
-  )
+  ) %>% 
+  select(year:deaths)
 ```
 
 ---
-
+class: your-turn
 # Your Turn 18
 
-Calculate new variable + plot it (fatality rate)
+Calculate new variable for each outbreak: the fatality rate (the  number of deaths / the number of illnesses, multipled by 100). Then visualize the distribution of the fatality rate.
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -587,10 +698,15 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
 # Your Turn 19
 
-Filter out fatalty rates or 0 --> then plot the distribution of those
+Remove outbreaks that have a fatality rate of zero. What is the distribution of the fatality rate for the remaining outbreaks?
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -604,12 +720,12 @@ outbreaks %>%
 ```
 
 ---
-
+class: your-turn
 # Your Turn 20
 
-Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+Find DC's worst outbreak according to the outbreak's hospitalization rate. Your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
 
-```{r}
+```{r echo = FALSE}
 outbreaks %>% 
   filter(state == "Washington DC") %>% 
   mutate(
@@ -620,7 +736,7 @@ outbreaks %>%
 
 
 ---
-
+class: your-turn
 # Your Turn 21
 
 X Use a window function + plot it
@@ -630,7 +746,7 @@ X Use a window function + plot it
 ```
 
 ---
-
+class: your-turn
 # Your Turn 22
 
 
