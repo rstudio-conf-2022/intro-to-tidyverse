@@ -338,14 +338,18 @@ What is the earliest year on record in this dataset? Latest?
 
 Solution
 
+.pull-left[
 ```{r}
 outbreaks %>%
   arrange(year)
-
+```
+]
+.pull-right[
+```{r}
 outbreaks %>%
   arrange(desc(year))
 ```
-
+]
 ---
 class: your-turn
 # Your Turn 3
@@ -414,15 +418,17 @@ class: your-turn
 
 # Your Turn 6
 
-Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it?
+.pull-left[
+Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it? ]
 
+.pull-right[
 ```{r, echo = FALSE}
 outbreaks %>% 
   ggplot(mapping = aes(x = month, y = illnesses)) + 
   geom_point()
 ```
 
-
+]
 
 ---
 
