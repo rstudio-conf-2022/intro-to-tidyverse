@@ -8,7 +8,7 @@ shortlink:
   text: lubridate-lightning-talk
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/lubridate.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -45,12 +45,18 @@ bike_traffic = readRDS('./data/session07/bike_traffic.rds')
 
 ### `r rmarkdown::metadata$subtitle`
 
-.pull-right[
-<img src="images/lubridate/lubridate_hex_sticker.png" height="200px"/>
-]
+<!-- .top-right{ -->
+<!--   position: absolute; -->
+<!--   top: 100px; -->
+<!--   right: 200px; -->
+<!-- } -->
+<!-- would use class = in the html tag if pulling from file -->
+
+<img src="images/lubridate/lubridate_hex_sticker.png" height="270px" 
+style = "position: absolute; top: 30px; right: 90px;" />
 
 <div class="title-footer">
-  <img src="../images/academy-logo.png">
+  <img src="./images/academy-logo.png">
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
 
@@ -95,8 +101,6 @@ class: middle chapter-slide green
 .big-white-number[1.]
 # Overview of Lubridate
 
-??? 
-First I'll give an overview of some of the common uses of lubridate.
 ---
 
 class: top
@@ -182,7 +186,7 @@ bike_traffic
 Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
 ---
 
-# Get into a `date` or `datetime` format
+# Get into a `datetime` format
 
 ```{r, include = TRUE, eval = FALSE, warning = FALSE}
 bike_traffic <- 
@@ -208,7 +212,7 @@ bike_traffic
 We can use a lubridate function to turn this column into a datetime.
 ---
 
-# Get into a `date` or `datetime` format
+# Get into a `date` format
 
 ```{r, include = TRUE, eval = FALSE}
 labor_day <- `ymd`("2015-09-07")
@@ -280,7 +284,7 @@ bike_traffic %>%
 ???
 And finally we can filter our dataset to that time interval using an operator called within. 
 ---
-# Time Intervals
+# Filtered Result
 ```{r filter_interval, eval = TRUE, echo = FALSE}
 bike_traffic %>%
   filter(timestamp %within% date_interval)

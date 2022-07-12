@@ -1,5 +1,7 @@
-/* code ====================================*/
+/* make bullet sizes the same ====================================*/
 
-.remark-code-small {
-  font-size: 18px;
+.remark-slide-content p,
+.remark-slide-content ol,
+.remark-slide-content li {
+  font-size: 2.2rem;
 }

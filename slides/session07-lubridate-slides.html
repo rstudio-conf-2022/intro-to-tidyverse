@@ -22,6 +22,7 @@
     <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-banner/banner.js"></script>
     <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/lubridate.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -35,12 +36,18 @@ class: title-slide
 
 ### Day 2, Session 3
 
-.pull-right[
-&lt;img src="images/lubridate/lubridate_hex_sticker.png" height="200px"/&gt;
-]
+&lt;!-- .top-right{ --&gt;
+&lt;!--   position: absolute; --&gt;
+&lt;!--   top: 100px; --&gt;
+&lt;!--   right: 200px; --&gt;
+&lt;!-- } --&gt;
+&lt;!-- would use class = in the html tag if pulling from file --&gt;
+
+&lt;img src="images/lubridate/lubridate_hex_sticker.png" height="270px" 
+style = "position: absolute; top: 30px; right: 90px;" /&gt;
 
 &lt;div class="title-footer"&gt;
-  &lt;img src="../images/academy-logo.png"&gt;
+  &lt;img src="./images/academy-logo.png"&gt;
   &lt;div&gt; Laura Puckett • July 26, 2022&lt;/div&gt;
 &lt;/div&gt;
 
@@ -66,8 +73,6 @@ class: middle chapter-slide green
 .big-white-number[1.]
 # Overview of Lubridate
 
-??? 
-First I'll give an overview of some of the common uses of lubridate.
 ---
 
 class: top
@@ -171,7 +176,7 @@ bike_traffic
 Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
 ---
 
-# Get into a `date` or `datetime` format
+# Get into a `datetime` format
 
 
 ```r
@@ -206,7 +211,7 @@ bike_traffic &lt;-
 We can use a lubridate function to turn this column into a datetime.
 ---
 
-# Get into a `date` or `datetime` format
+# Get into a `date` format
 
 
 ```r
@@ -288,7 +293,7 @@ bike_traffic %&gt;%
 ???
 And finally we can filter our dataset to that time interval using an operator called within. 
 ---
-# Time Intervals
+# Filtered Result
 
 ```
 ## # A tibble: 674 × 4
