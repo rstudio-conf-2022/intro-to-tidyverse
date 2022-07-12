@@ -15,9 +15,3 @@
 .remark-slide-content li {
   font-size: 1.5rem;
 }
-
-/* overrides tachyons default */
-
-.title-slide {
-  box-sizing: content-box;
-}
