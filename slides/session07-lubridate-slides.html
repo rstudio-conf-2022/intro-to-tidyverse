@@ -21,8 +21,8 @@
     <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-banner/banner.js"></script>
-    <link rel="stylesheet" href="/assets/academy-theme.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/lubridate.css" type="text/css" />
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/lubridate.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -36,18 +36,23 @@ class: title-slide
 
 ### Day 2, Session 3
 
-.pull-right[
-&lt;img src="images/lubridate/lubridate_hex_sticker.png" height="200px"/&gt;
-]
+&lt;!-- .top-right{ --&gt;
+&lt;!--   position: absolute; --&gt;
+&lt;!--   top: 100px; --&gt;
+&lt;!--   right: 200px; --&gt;
+&lt;!-- } --&gt;
+&lt;!-- would use class = in the html tag if pulling from file --&gt;
+
+&lt;img src="images/lubridate/lubridate_hex_sticker.png" height="270px" 
+style = "position: absolute; top: 30px; right: 90px;" /&gt;
 
 &lt;div class="title-footer"&gt;
-  &lt;img src="../images/academy-logo.png"&gt;
+  &lt;img src="./images/academy-logo.png"&gt;
   &lt;div&gt; Laura Puckett • July 26, 2022&lt;/div&gt;
 &lt;/div&gt;
 
-
 <script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"exclude":["title-slide"],"position":"top"}'))})</script>
-<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/slides/lubridate.Rmd\\">lubridate-lightning-talk<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/blob/main/slides/session07-lubridate-slides.Rmd\\">lubridate-lightning-talk<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
 
 ---
 class: speaker-slide
@@ -76,6 +81,8 @@ background-size: cover
 
 # Creating Dates and Datetimes
 
+???
+One of the key uses of lubridate it to get your data into a date or datetime format more easily. These are standardized formats for storing dates or times. Here we have four different format to express the same date. A lubridate function called `ymd` for year/month/day can handle all of these different formats and will output the Date object shown ont the right. 
 ---
 
 class: top
@@ -84,12 +91,17 @@ background-size: cover
 
 # Creating Dates and Datetimes
 
+???
+There are a number of functions that lubridate includes for creating a date or datetime from almost any format. 
 ---
 
 class: top
 background-image: url(images/lubridate/diagram_1.png)
 background-size: cover
 # Extract Information
+
+???
+Once we have our data in a date or datetime format, we are able to easily access all of the components used to build the object. 
 
 ---
 
@@ -98,9 +110,16 @@ background-image: url(images/lubridate/diagram_2.png)
 background-size: cover
 # Extract Information
 
+???
+And, we can even extract additional information such as the quarter, week or day of the year of weekday. 
 ---
-
+class: top
 # Other tasks with lubridate
+
+???
+Some additional tasks that can be completed using lubridate functions are to convert between different time zones, account for leap time, round times to the nearest week, for example, and work with intervals of time. 
+
+--
 
 - math with dates/datetimes
 
@@ -114,6 +133,10 @@ background-size: cover
 
 --
 
+- round times
+
+--
+
 - time intervals
 
 ---
@@ -123,8 +146,37 @@ class: middle chapter-slide green
 .big-white-number[2.] 
 # Example
 
+???
+Now let's go through a quick example of some of these functions. 
 ---
-# Get into a `date` or `datetime` format
+# Bike Traffic Dataset
+
+```r
+bike_traffic
+```
+
+```
+## # A tibble: 85,810 × 5
+##    date                   crossing           direction bike_count ped_count
+##    &lt;fct&gt;                  &lt;fct&gt;              &lt;fct&gt;          &lt;int&gt;     &lt;int&gt;
+##  1 02/28/2019 11:00:00 PM Burke Gilman Trail North              0         0
+##  2 02/28/2019 10:00:00 PM Burke Gilman Trail North              0         0
+##  3 02/28/2019 09:00:00 PM Burke Gilman Trail North              2         0
+##  4 02/28/2019 08:00:00 PM Burke Gilman Trail North              2         1
+##  5 02/28/2019 07:00:00 PM Burke Gilman Trail North              6         0
+##  6 02/28/2019 06:00:00 PM Burke Gilman Trail North             13         5
+##  7 02/28/2019 05:00:00 PM Burke Gilman Trail North             19        15
+##  8 02/28/2019 04:00:00 PM Burke Gilman Trail North             26        23
+##  9 02/28/2019 03:00:00 PM Burke Gilman Trail North             25        15
+## 10 02/28/2019 02:00:00 PM Burke Gilman Trail North             22        16
+## # … with 85,800 more rows
+```
+
+???
+Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
+---
+
+# Get into a `datetime` format
 
 
 ```r
@@ -154,12 +206,12 @@ bike_traffic &lt;-
 ## # … with 85,800 more rows
 ```
 
+???
 
+We can use a lubridate function to turn this column into a datetime.
 ---
 
-
-
-# Get into a `date` or `datetime` format
+# Get into a `date` format
 
 
 ```r
@@ -173,30 +225,8 @@ labor_day &lt;- `ymd`("2015-09-07")
 ## [1] "2015-09-07"
 ```
 
----
-
-# Get into a `date` or `datetime` format
-
-```r
-bike_traffic
-```
-
-```
-## # A tibble: 85,810 × 4
-##    timestamp           direction crossing           bike_count
-##    &lt;dttm&gt;              &lt;fct&gt;     &lt;fct&gt;                   &lt;int&gt;
-##  1 2019-02-28 23:00:00 North     Burke Gilman Trail          0
-##  2 2019-02-28 22:00:00 North     Burke Gilman Trail          0
-##  3 2019-02-28 21:00:00 North     Burke Gilman Trail          2
-##  4 2019-02-28 20:00:00 North     Burke Gilman Trail          2
-##  5 2019-02-28 19:00:00 North     Burke Gilman Trail          6
-##  6 2019-02-28 18:00:00 North     Burke Gilman Trail         13
-##  7 2019-02-28 17:00:00 North     Burke Gilman Trail         19
-##  8 2019-02-28 16:00:00 North     Burke Gilman Trail         26
-##  9 2019-02-28 15:00:00 North     Burke Gilman Trail         25
-## 10 2019-02-28 14:00:00 North     Burke Gilman Trail         22
-## # … with 85,800 more rows
-```
+???
+Suppose we are interested in the bike traffic around labor day. We can start by creating a date object for our date of interest. 
 
 ---
 class:top
@@ -215,6 +245,8 @@ wday(labor_date, label = TRUE)
 ## Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat
 ```
 
+???
+We can confirm that the day of week is Monday as expected.
 ---
 
 class: top
@@ -229,6 +261,8 @@ labor_day - weeks(1)
 ## [1] "2015-08-31"
 ```
 
+???
+Now we can do math with the date. If we are interested in the bike traffic within a week of labor day, we can easily add or subtact a week from the date.
 
 ---
 # Time Intervals
@@ -246,6 +280,8 @@ date_interval
 ## [1] 2015-08-31 UTC--2015-09-14 UTC
 ```
 
+???
+Next, we can create an interval that will span from one week before labor day to one week after using lubridate's interval function.
 --
 
 
@@ -254,8 +290,10 @@ bike_traffic %&gt;%
   filter(`timestamp %within% date_interval`)
 ```
 
+???
+And finally we can filter our dataset to that time interval using an operator called within. 
 ---
-# Time Intervals
+# Filtered Result
 
 ```
 ## # A tibble: 674 × 4
@@ -294,6 +332,10 @@ class: top
  &lt;img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/&gt;
 ]
 
+???
+Here are some additional resources for the lubridate package. The site includes links to the cheatsheets and some examples. 
+
+Chapter 16 of R for Data Science includes an in-depth description of lubridate's many features. 
 ---
 class: middle chapter-slide green
 
