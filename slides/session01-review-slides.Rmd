@@ -20,7 +20,7 @@ params:
   wifi_network: ""
   wifi_password: ""
 ---
-class: middle
+class: middle, chapter-slide
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -47,13 +47,18 @@ if (!is.null(rmarkdown::metadata$shortlink)) {
 }
 ```
 
-
-# Welcome
-
+.pull-left[
+.big-text.near-black[Welcome]
 
 Find your group's table and make yourself comfortable. 
 
-We'll get started shortly after the 9 o'clock hour.
+We'll get started shortly after 9am.]
+
+.pull-right[
+
+Schematic of table layout goes here.
+
+]
 
 ---
 class: inverse middle
@@ -384,6 +389,7 @@ outbreaks %>%
 
 ---
 class: your-turn
+
 # Your Turn 5
 
 What are the different etiologies that have been recorded in this dataset? Display them in a table like the one below.
@@ -394,17 +400,18 @@ outbreaks %>%
 ```
 
 ---
-class: your-turn
+
 Solution:
 
-```{r eval = FALSE}
+```{r}
 outbreaks %>%
   count(etiology)
 ```
 
 
---- 
+---
 class: your-turn
+
 # Your Turn 6
 
 Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it?
@@ -414,6 +421,8 @@ outbreaks %>%
   ggplot(mapping = aes(x = month, y = illnesses)) + 
   geom_point()
 ```
+
+
 
 ---
 
@@ -441,7 +450,7 @@ outbreaks %>%
   geom_point()
 ```
 
-___
+---
 
 Solution:
 
@@ -462,10 +471,11 @@ class: your-turn
 
 Which observation in `outbreaks` is associated with such a high number of illnesses? Display solely this observation in a table.
 
-___
+---
+
 One possible solution:
 
-```{r eval = FALSE}
+```{r}
 outbreaks %>%
   filter(
     illnesses >= 400000
@@ -479,11 +489,11 @@ class: your-turn
 
 Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
 
-___
+---
 
 Solution:
 
-```{r eval = FALSE}
+```{r}
 outbreaks %>% arrange(desc(illnesses))
 ```
 
@@ -571,6 +581,8 @@ outbreaks %>%
   ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
   geom_point()
 ```
+
+
 ---
 
 Solution:
