@@ -94,9 +94,9 @@ class: middle
 
 # Agenda
 
-1. Review `dplyr::mutate()`
-1. Recode with `dplyr::if_else()`
-1. Recode with `dplyr::case_when()`
+1. Review `mutate()`
+1. Recode with `if_else()`
+1. Recode with `case_when()`
 1. Work time: Milestone recreation
 
 ???
@@ -111,23 +111,6 @@ We'll practice:
 By the end of this lesson, you should be able to complete your milestone recreation using the hotels dataset. 
 
 ---
-class: your-turn
-
-# Review `mutate()`
-
-Open this session's milestone file and complete the code in the chunk labelled `review-mutate`.
-
-**TODO: Add screenshot of academyMilestones directory**
-
-```{r echo = FALSE}
-countdown::countdown(minutes = 3)
-```
-
-???
-
-Let's begin with some review. Open the R Markdown (milestone?) file for today's session. Run the setup chunk, then use the `review-mutate` chunk to complete this review.
-
----
 
 # `patients` dataset
 
@@ -138,6 +121,31 @@ patients
 ???
 
 Today we'll work with the `patients` dataset. We have information about age, sex, body mass index (BMI), fasting blood glucose level (mg/dL), and systolic and diastolic blood pressure (mmHg) for 30 patients. 
+
+---
+class: your-turn
+
+# Review `mutate()`
+
+1. Navigate to **conf2022.rstudioacademy.com**
+1. Open the **Conf Session 6 - Recode** milestone
+1. Complete the `mutate()` review activity
+
+```{r echo = FALSE}
+countdown::countdown(minutes = 4)
+```
+
+???
+
+We'll start by reviewing the `mutate()` function.
+
+---
+
+![](images/session06/patients_before.png)
+
+???
+
+Imagine we are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). We can complete this task by using `if_else()` to recode the variable `sex`.
 
 ---
 
@@ -153,7 +161,7 @@ patients %>%
 
 ???
 
-Imagine we are tasked with preparing the patient data for use in a program that only accepts the variable `sex` when formatted as 0s (for male) or 1s (for female). We can complete this task by using `if_else()` to recode the variable `sex`.
+Let's add a new column called `sex_recode` to our dataset. That means our `if_else()` statement should take place inside of `mutate()`.
 
 `if_else()` takes three arguments to recode its values.
 
@@ -207,9 +215,12 @@ class: your-turn
 
 # Your turn #1
 
-Recode the values of systolic blood pressure (`sys_bp`) into two new categories: `"high"` and `"normal"`. Save the result as a new variable named `sys_status`.
+**Recode the values of systolic blood pressure into two new categories: `"high"` and `"normal"`.** Save the result as a new variable named `sys_status`.
 
-Consider a systolic blood pressure of 130 mmHg or above to be “high” and a systolic blood pressure of less than 130 mmHg to be “normal”.
+| `sys_bp`          | `sys_status` |
+|:------------------|:-------------|
+| Less than 130 mmHg| normal       |
+| 130 mmHg or above | high         |
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
@@ -255,7 +266,7 @@ What's gone wrong?
 
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
-1. A BMI of 30 or greater
+1. A BMI of 27 or greater
 
 ???
 
@@ -269,11 +280,10 @@ So far you have used `if_else()` with basic logical conditions, but you can reco
 
 1. Age 40 or older
 1. Blood glucose is 126 mg/dL or greater
-1. A BMI of 30 or greater
+1. A BMI of 27 or greater
 
 ```{r eval = FALSE}
-patients_interventions <- 
-  patients %>% 
+patients %>% 
   mutate(
     intervene = if_else(
       ____ & ____ & ____,
@@ -289,11 +299,10 @@ patients_interventions <-
 
 1. **Age 40 or older**
 1. Blood glucose is 126 mg/dL or greater
-1. A BMI of 30 or greater
+1. A BMI of 27 or greater
 
 ```{r eval = FALSE}
-patients_interventions <- 
-  patients %>% 
+patients %>% 
   mutate(
     intervene = if_else(
       age >= 40 & ____ & ____, 
@@ -309,11 +318,10 @@ patients_interventions <-
 
 1. **Age 40 or older**
 1. **Blood glucose is 126 mg/dL or greater**
-1. A BMI of 30 or greater
+1. A BMI of 27 or greater
 
 ```{r eval = FALSE}
-patients_interventions <- 
-  patients %>% 
+patients %>% 
   mutate(
     intervene = if_else(
       age >= 40 & glucose >= 126 & ____, 
@@ -329,14 +337,13 @@ patients_interventions <-
 
 1. **Age 40 or older**
 1. **Blood glucose is 126 mg/dL or greater**
-1. **A BMI of 30 or greater**
+1. **A BMI of 27 or greater**
 
-```{r}
-patients_interventions <- 
-  patients %>% 
+```{r eval = FALSE}
+patients %>% 
   mutate(
     intervene = if_else(
-      age >= 40 & glucose >= 126 & bmi >= 30, 
+      age >= 40 & glucose >= 126 & bmi >= 27, 
       "yes", 
       "no"
     )
@@ -344,12 +351,28 @@ patients_interventions <-
 ```
 
 ---
+# Complex logical conditions
+
+1. **Age 40 or older**
+1. **Blood glucose is 126 mg/dL or greater**
+1. **A BMI of 27 or greater**
+
+```{r}
+patients_interventions <-
+  patients %>% 
+  mutate(
+    intervene = if_else(
+      age >= 40 & glucose >= 126 & bmi >= 27, 
+      "yes", 
+      "no"
+    )
+  )
+```
+---
 
 # Complex TRUE and FALSE conditions
 
-```{r patients-interventions}
-patients_interventions
-```
+![](images/session06/bmi_predict.png)
 
 ???
 
@@ -361,10 +384,12 @@ class: your-turn
 
 # Your turn #2
 
-Create a new variable called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have `bmi_predict` display the patient’s current BMI.
+**Add a new variable to the `patients_interventions` dataset called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention.** 
+
+For all other patients, have `bmi_predict` display the patient’s current BMI.
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 3)
+countdown::countdown(minutes = 4)
 ```
 
 ---
@@ -483,7 +508,9 @@ class: your-turn
 
 # Your turn #3
 
-Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`. Use `mutate()` to save the result as a new variable, `diabetes_status`. Save the new tibble as an object called `patients_2`.
+**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.** 
+
+Name this new variable `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
 | Diabetes status | Fasting blood glucose |
 |:----------------|:----------------------|
@@ -575,7 +602,7 @@ class: your-turn
 
 # Your turn #4
 
-Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.
+**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -596,7 +623,7 @@ class: your-turn
 
 # Your turn #4
 
-```{r your-turn-4-solution}
+```{r your-turn-4-solution, eval = TRUE}
 patients_2 %>% 
   mutate(
      followup = case_when(
@@ -652,7 +679,7 @@ class: your-turn
 
 # Your turn #5
 
-Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient, including the appropriate missing value.
+**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Including the appropriate missing value in your solution.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -713,7 +740,9 @@ case_when(
 * When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call. Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
 ---
 
+class: your-turn
 
+# Your turn: `Conf Milestone`
 
 
 
