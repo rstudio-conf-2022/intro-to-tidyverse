@@ -13,6 +13,7 @@ output:
     lib_dir: libs
     nature:
       highlightStyle: github
+      highlightLanguage: ["r", "yaml", "markdown"]
       highlightLines: false
       countIncrementalSlides: false
       ratio: "16:9"
@@ -26,9 +27,6 @@ options(htmltools.dir.version = FALSE)
 # Load packages
 library(countdown)
 library(ymlthis)
-
-# enable panelset
-xaringanExtra::use_panelset()
 ```
 
 # `r rmarkdown::metadata$title`
@@ -79,14 +77,18 @@ class: speaker-slide
 ]
 
 ---
+# Thank you
 
+Thanks to Garrett Grolemund, Alison Hill and Desirée De Leon for their roles with making these materials!
+
+---
 class: middle
 
 # Agenda
 
 1. What is R Markdown?
 1. Why use R Markdown?
-1. The 3 essential ingredients of R Markdown
+1. The 3 essential ingredients
   - Text
   - Code
   - Metadata
@@ -101,27 +103,38 @@ class: middle chapter-slide red
 ---
 # What is R Markdown?
 
-1. An authoring framework for data science
+--
+
+`r emo::ji("writing_hand")` An authoring framework for data science
 
 --
-2. A file format (`.Rmd`)
+
+`r emo::ji("floppy_disk")` A file format (`.Rmd`)
 
 --
-3. An [R package](https://rmarkdown.rstudio.com/docs/)
+
+`r emo::ji("package")` An [R package](https://rmarkdown.rstudio.com/docs/) (rmarkdown)
 
 --
-4. A tool for integrating prose, code, and results
+
+`r emo::ji("hammer_and_wrench")` A tool for integrating prose, code, and results
+
+--
+
+`r emo::ji("sparkles")` Magic
 
 ---
-# What is R Markdown?
+# What's in a `.Rmd`?
 
 .pull-left[
-A single document includes...
 
-1. Text and headers
-1. R code
-1. Output (e.g. plots, tables)
-1. Images
+`r emo::ji("page_with_curl")` Text and headers
+
+`r emo::ji("computer")` R code
+
+`r emo::ji("bar_chart")` Output (e.g. plots, tables)
+
+`r emo::ji("framed_picture")` Images
 
 ... and more!
 ]
@@ -166,7 +179,7 @@ class: middle chapter-slide green
 # The 3 essential ingredients
 
 .pull-left[
-```{r echo=FALSE, out.width="100%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 ```
 ]
@@ -176,7 +189,7 @@ knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 # The 3 essential ~~ingredients~~ frameworks
 
 .pull-left[
-```{r echo=FALSE, out.width="100%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 ```
 ]
@@ -197,6 +210,31 @@ class: inverse middle center
 
 ---
 
+# Text
+
+--
+
+.pull-left[
+```markdown
+Regular text
+
+_italics_
+
+**bold**  
+
+`code`  
+```
+]
+
+--
+
+.pull-right[
+Regular text  
+_italics_  
+**bold**  
+`code`
+]
+---
 
 # Headers
 
@@ -232,33 +270,6 @@ class: inverse middle center
 ##### Header 5
 
 ###### Header 6
-]
-
----
-
-# Text
-
---
-
-.pull-left[
-```markdown
-Regular text
-
-_italics_
-
-**bold**  
-
-`code`  
-```
-]
-
---
-
-.pull-right[
-Regular text  
-_italics_  
-**bold**  
-`code`
 ]
 
 ---
@@ -363,6 +374,8 @@ class: your-turn
 # Your Turn
 Starting with an un-formatted .Rmd file, recreate a shown output.
 
+TODO: Add gif instructions (how to knit)
+
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
 ```
@@ -400,20 +413,24 @@ knitr::include_graphics("images/session03-rmarkdown/code-chunk-shortcuts.png")
 ---
 # Chunk labels
 
+
+
 ---
 # Chunk options
+
+By default, both code and output are shown.
 
 .pull-left[
 
 ````
-```{r plot-1, echo=FALSE}`r ''`
+```{r plot}`r ''`
 plot(cars)
 ```
 ````
 ]
 
 .pull-right[
-```{r plot-1, echo=FALSE, out.width = "70%"}
+```{r out.width = "50%"}
 plot(cars)
 ```
 ]
@@ -433,7 +450,7 @@ plot(cars)
 ]
 
 .pull-right[
-```{r plot, echo=FALSE, out.width = "70%"}
+```{r echo=FALSE, out.width = "50%"}
 plot(cars)
 ```
 ]
@@ -443,10 +460,27 @@ plot(cars)
 
 `eval = FALSE` prevents the code from being run. As a result, no results will be displayed with the code.
 
+.pull-left[
+
+````
+```{r plot, eval=FALSE}`r ''`
+plot(cars)
+```
+````
+]
+
+.pull-right[
+```{r plot-eval, eval=FALSE, out.width = "50%"}
+plot(cars)
+```
+]
+
 ---
 # `include`
 
 `include = FALSE` runs the code, but prevents both the code and the results from appearing 
+
+TODO: add example with verbatim code chunk
 
 ---
 # `r emo::ji("yarn")` Knit
@@ -484,6 +518,7 @@ countdown::countdown(minutes = 3)
 ---
 # Resources 
 
+TODO: add image of chunk options in cheatsheet
 
 ---
 class: inverse middle center
@@ -616,7 +651,7 @@ class: your-turn
 
 # Mini Project
 
-Turn your previous EDA mini project into a customized R Markdown report.
+Turn your previous EDA analysis into a customized R Markdown report.
  
 ```{r echo = FALSE}
 countdown::countdown(minutes = 20)
