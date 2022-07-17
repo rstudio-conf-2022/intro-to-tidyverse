@@ -30,9 +30,12 @@ body {
     color: #534c48;
 }
 
-
-
-
+.top-fixed{ 
+  position: absolute;
+  top: 30px
+} 
+  
+  
 /* Footer ================================== */
 
 div.my-footer {

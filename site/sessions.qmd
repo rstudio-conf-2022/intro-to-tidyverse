@@ -9,7 +9,7 @@ First, make sure you've registered for this workshop through the [rstudio::conf(
 You can select from the following session times:
 
 * Mondays, 12-1pm EDT
-* Tuesdays, 12-1pm EDT
+* Tuesdays, 12-1pm EDT (Waitlist)
 * Mondays, 4-5pm EDT
 
 Following the kickoff session on July 5, plan to attend your weekly group session starting the week of July 11 and concluding the week of August 16. Note that group sessions will not take place during the week of July 25, during the conference, nor the following week of August 1, which will be a break week.

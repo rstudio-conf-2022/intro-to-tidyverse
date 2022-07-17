@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lightning talk • lubridate</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Laura Puckett" />
+    <meta name="date" content="2022-07-26" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-banner/banner.js"></script>
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/lubridate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+# Lightning talk • lubridate
+
+### Day 2, Session 3
+
+&lt;!-- .top-right{ --&gt;
+&lt;!--   position: absolute; --&gt;
+&lt;!--   top: 100px; --&gt;
+&lt;!--   right: 200px; --&gt;
+&lt;!-- } --&gt;
+&lt;!-- would use class = in the html tag if pulling from file --&gt;
+
+&lt;img src="images/lubridate/lubridate_hex_sticker.png" height="270px" 
+style = "position: absolute; top: 30px; right: 90px;" /&gt;
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="./images/academy-logo.png"&gt;
+  &lt;div&gt; Laura Puckett • July 26, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"exclude":["title-slide"],"position":"top"}'))})</script>
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/blob/main/slides/session07-lubridate-slides.Rmd\\">lubridate-lightning-talk<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
+
+---
+class: speaker-slide
+
+# Laura Puckett
+
+&lt;img style="border-radius: 50%;" src="https://github.com/Laura-Puckett.png" width="200px"/&gt;
+
+.speaker-links[
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> Laura-Puckett](https://github.com/Laura-Puckett)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg> laura.puckett@rstudio.com](laura.puckett@rstudio.com)
+]
+
+---
+
+class: middle chapter-slide green
+
+.big-white-number[1.]
+# Overview of Lubridate
+
+---
+
+class: top
+background-image: url(images/lubridate/make_dates_1.png)
+background-size: cover
+
+# Creating Dates and Datetimes
+
+???
+One of the key uses of lubridate it to get your data into a date or datetime format more easily. These are standardized formats for storing dates or times. Here we have four different format to express the same date. A lubridate function called `ymd` for year/month/day can handle all of these different formats and will output the Date object shown ont the right. 
+---
+
+class: top
+background-image: url(images/lubridate/make_dates_2.png)
+background-size: cover
+
+# Creating Dates and Datetimes
+
+???
+There are a number of functions that lubridate includes for creating a date or datetime from almost any format. 
+---
+
+class: top
+background-image: url(images/lubridate/diagram_1.png)
+background-size: cover
+# Extract Information
+
+???
+Once we have our data in a date or datetime format, we are able to easily access all of the components used to build the object. 
+
+---
+
+class: top
+background-image: url(images/lubridate/diagram_2.png)
+background-size: cover
+# Extract Information
+
+???
+And, we can even extract additional information such as the quarter, week or day of the year of weekday. 
+---
+class: top
+# Other tasks with lubridate
+
+???
+Some additional tasks that can be completed using lubridate functions are to convert between different time zones, account for leap time, round times to the nearest week, for example, and work with intervals of time. 
+
+--
+
+- math with dates/datetimes
+
+--
+
+- time zones
+
+--
+
+- leap seconds, leap years
+
+--
+
+- round times
+
+--
+
+- time intervals
+
+---
+
+class: middle chapter-slide green
+
+.big-white-number[2.] 
+# Example
+
+???
+Now let's go through a quick example of some of these functions. 
+---
+# Bike Traffic Dataset
+
+```r
+bike_traffic
+```
+
+```
+## # A tibble: 85,810 × 5
+##    date                   crossing           direction bike_count ped_count
+##    &lt;fct&gt;                  &lt;fct&gt;              &lt;fct&gt;          &lt;int&gt;     &lt;int&gt;
+##  1 02/28/2019 11:00:00 PM Burke Gilman Trail North              0         0
+##  2 02/28/2019 10:00:00 PM Burke Gilman Trail North              0         0
+##  3 02/28/2019 09:00:00 PM Burke Gilman Trail North              2         0
+##  4 02/28/2019 08:00:00 PM Burke Gilman Trail North              2         1
+##  5 02/28/2019 07:00:00 PM Burke Gilman Trail North              6         0
+##  6 02/28/2019 06:00:00 PM Burke Gilman Trail North             13         5
+##  7 02/28/2019 05:00:00 PM Burke Gilman Trail North             19        15
+##  8 02/28/2019 04:00:00 PM Burke Gilman Trail North             26        23
+##  9 02/28/2019 03:00:00 PM Burke Gilman Trail North             25        15
+## 10 02/28/2019 02:00:00 PM Burke Gilman Trail North             22        16
+## # … with 85,800 more rows
+```
+
+???
+Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
+---
+
+# Get into a `datetime` format
+
+
+```r
+bike_traffic &lt;- 
+  bike_traffic %&gt;%
+  mutate(timestamp = `mdy_hms`(date,
+                             tz = "US/Pacific"))
+```
+
+--
+
+
+```
+## # A tibble: 85,810 × 4
+##    timestamp           direction crossing           bike_count
+##    &lt;dttm&gt;              &lt;fct&gt;     &lt;fct&gt;                   &lt;int&gt;
+##  1 2019-02-28 23:00:00 North     Burke Gilman Trail          0
+##  2 2019-02-28 22:00:00 North     Burke Gilman Trail          0
+##  3 2019-02-28 21:00:00 North     Burke Gilman Trail          2
+##  4 2019-02-28 20:00:00 North     Burke Gilman Trail          2
+##  5 2019-02-28 19:00:00 North     Burke Gilman Trail          6
+##  6 2019-02-28 18:00:00 North     Burke Gilman Trail         13
+##  7 2019-02-28 17:00:00 North     Burke Gilman Trail         19
+##  8 2019-02-28 16:00:00 North     Burke Gilman Trail         26
+##  9 2019-02-28 15:00:00 North     Burke Gilman Trail         25
+## 10 2019-02-28 14:00:00 North     Burke Gilman Trail         22
+## # … with 85,800 more rows
+```
+
+???
+
+We can use a lubridate function to turn this column into a datetime.
+---
+
+# Get into a `date` format
+
+
+```r
+labor_day &lt;- `ymd`("2015-09-07")
+```
+
+--
+
+
+```
+## [1] "2015-09-07"
+```
+
+???
+Suppose we are interested in the bike traffic around labor day. We can start by creating a date object for our date of interest. 
+
+---
+class:top
+
+# Find the day of the week
+
+```r
+wday(labor_date, label = TRUE)
+```
+
+--
+
+
+```
+## [1] Mon
+## Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat
+```
+
+???
+We can confirm that the day of week is Monday as expected.
+---
+
+class: top
+# Manipulate Times
+
+
+```r
+labor_day - weeks(1)
+```
+
+```
+## [1] "2015-08-31"
+```
+
+???
+Now we can do math with the date. If we are interested in the bike traffic within a week of labor day, we can easily add or subtact a week from the date.
+
+---
+# Time Intervals
+
+```r
+date_interval &lt;- `interval`(labor_day - weeks(1),
+                               labor_day + weeks(1))
+date_interval
+```
+
+--
+
+
+```
+## [1] 2015-08-31 UTC--2015-09-14 UTC
+```
+
+???
+Next, we can create an interval that will span from one week before labor day to one week after using lubridate's interval function.
+--
+
+
+```r
+bike_traffic %&gt;%
+  filter(`timestamp %within% date_interval`)
+```
+
+???
+And finally we can filter our dataset to that time interval using an operator called within. 
+---
+# Filtered Result
+
+```
+## # A tibble: 674 × 4
+##    timestamp           direction crossing           bike_count
+##    &lt;dttm&gt;              &lt;fct&gt;     &lt;fct&gt;                   &lt;int&gt;
+##  1 2015-09-13 17:00:00 North     Burke Gilman Trail         33
+##  2 2015-09-13 16:00:00 North     Burke Gilman Trail         44
+##  3 2015-09-13 15:00:00 North     Burke Gilman Trail         50
+##  4 2015-09-13 14:00:00 North     Burke Gilman Trail         30
+##  5 2015-09-13 13:00:00 North     Burke Gilman Trail         30
+##  6 2015-09-13 12:00:00 North     Burke Gilman Trail         33
+##  7 2015-09-13 11:00:00 North     Burke Gilman Trail         90
+##  8 2015-09-13 10:00:00 North     Burke Gilman Trail        149
+##  9 2015-09-13 09:00:00 North     Burke Gilman Trail         35
+## 10 2015-09-13 08:00:00 North     Burke Gilman Trail         16
+## # … with 664 more rows
+```
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+# Resources
+
+---
+class: top
+# Resources
+
+.pull-left[
+- [Lubridate Site](https://lubridate.tidyverse.org/)
+
+- [R for Data Science Ch. 16 - Dates and Times](https://r4ds.had.co.nz/dates-and-times.html)
+]
+
+.pull-right[
+ &lt;img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/&gt;
+]
+
+???
+Here are some additional resources for the lubridate package. The site includes links to the cheatsheets and some examples. 
+
+Chapter 16 of R for Data Science includes an in-depth description of lubridate's many features. 
+---
+class: middle chapter-slide green
+
+.big-white-number[4.]
+# Exercises
+
+---
+class: your-turn
+
+# Your Turn
+
+A. What day of the week was the moon landing (September 7, 1969)?
+
+
+```r
+ymd(____) %&gt;%
+  ____()
+```
+
+B. How many days ago was the moon landing?
+
+
+```r
+ymd(____) ____ date(now())
+```
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"df_print": "kable"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
