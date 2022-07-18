@@ -140,6 +140,22 @@ countdown::countdown(minutes = 4)
 We'll start by reviewing the `mutate()` function.
 
 ---
+class: your-turn
+
+# Review `mutate()`
+
+```{r}
+patients %>% 
+  mutate(
+    pulse_pressure = sys_bp - dias_bp
+  )
+```
+
+???
+
+Take a look at the solution to the `mutate()` activity and see how it compares to yours. Any questions?
+
+---
 
 ![](images/session06/patients_before.png)
 
@@ -161,7 +177,7 @@ patients %>%
 
 ???
 
-Let's add a new column called `sex_recode` to our dataset. That means our `if_else()` statement should take place inside of `mutate()`.
+Parts of this code should look familiar to you, since we just practiced using `mutate()` to add columns to a dataset. Here, we'll use `if_else()` inside of `mutate()` to add a column called `sex_recode`.
 
 `if_else()` takes three arguments to recode its values.
 
@@ -178,7 +194,7 @@ patients %>%
 
 ???
  
-The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out.
+The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out, so I've removed it here.
 
 ---
 
@@ -208,7 +224,7 @@ patients %>%
 
 ???
 
-Finally we'll add the value the variable should take if the condition is `false`. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
+Finally we'll add the value the variable should take if the condition is `false`. I've evaluated this code and you can see the table output below. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
 
 ---
 class: your-turn
@@ -228,7 +244,7 @@ countdown::countdown(minutes = 4)
 
 ???
 
-Let's do some more practice with `if_else()`. 
+Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
 
 ---
 class: your-turn
@@ -244,6 +260,7 @@ patients %>%
 
 ???
 
+You'll often see `if_else()` written without any arguments spelled out. Any questions?
 
 ---
 
@@ -258,7 +275,7 @@ patients %>%
 
 ???
 
-What's gone wrong?
+Any ideas about what's gone wrong here?
 
 ---
 
@@ -293,6 +310,10 @@ patients %>%
   )
 ```
 
+???
+
+Here is the outline of an `if_else()` call inside of `mutate()` that we can use to create the variable `intervene` based on the conditions above.
+
 ---
 
 # Complex logical conditions
@@ -311,6 +332,10 @@ patients %>%
     )
   )
 ```
+
+???
+
+Let's add the first condition: age 40 or older.
 
 ---
 
@@ -331,6 +356,10 @@ patients %>%
   )
 ```
 
+???
+
+...and blood glucose greater than or equal to 126.
+
 ---
 
 # Complex logical conditions
@@ -350,6 +379,10 @@ patients %>%
   )
 ```
 
+???
+
+...and BMI of 27 or greater.
+
 ---
 # Complex logical conditions
 
@@ -368,6 +401,11 @@ patients_interventions <-
     )
   )
 ```
+
+???
+
+I'll save this as a tbl called `patients_interventions` for us to use next.
+
 ---
 
 # Complex TRUE and FALSE conditions
@@ -440,13 +478,26 @@ if_else(<LOGICAL TEST>, <DO THIS IF TRUE>, <DO THIS IF FALSE>)
 | Stage 2 Hypertension            | 140 and above                     |
 
 
+???
+
+We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official CDC guidelines specify 4 categories.
+
+---
+# Multiple conditions with `if_else()`?
+
+| Blood pressure category         | Systolic Blood Pressure (mmHg)    |
+|:--------------------------------|:----------------------------------|
+| Normal                          | Below 120                         |
+| Elevated                        | 120 to < 130                      |
+| Stage 1 Hypertension            | 130 to < 140                      |
+| Stage 2 Hypertension            | 140 and above                     |
+
+
 ```{r echo = FALSE}
-countdown::countdown(seconds = 30)
+countdown::countdown(minutes = 0, seconds = 30)
 ```
 
 ???
-
-We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official [CDC guidelines](https://www.cdc.gov/bloodpressure/facts.htm){target="_blank" rel="noopener noreferrer"} specify 4 categories:
 
 Can we use `if_else()` to recode a variable under more than two conditions? Discuss with your group.
 
@@ -457,25 +508,47 @@ Can we use `if_else()` to recode a variable under more than two conditions? Disc
 ```{r}
 patients %>% 
   mutate(
-    sys_bp_status = 
+    sys_bp_status = if_else(
+      sys_bp < 120, 
+      "normal",
       if_else(
-        sys_bp < 120, 
-        "normal",
+        sys_bp < 130, 
+        "elevated", 
         if_else(
-          sys_bp < 130, 
-          "elevated", 
-          if_else(
-            sys_bp < 140, 
-            "stage 1",
-            "stage 2"
-          )
+          sys_bp < 140, 
+          "stage 1",
+          "stage 2"
         )
       )
+    )
   )
 ```
 
+???
+
+We could, but it would require nested `if_else()` calls, which can get pretty confusing.
+
 ---
 
+# Multiple conditions with `case_when()`
+
+```{r eval = FALSE}
+patients %>% 
+  mutate(
+    sys_bp_status = case_when(
+      ____ ~ ____, 
+      ____ ~ ____, 
+      ____ ~ ____, 
+      ____ ~ ____, 
+    )
+  )
+```
+
+???
+
+A better option is to use `case_when()`.
+
+---
 # Multiple conditions with `case_when()`
 
 ```{r}
@@ -489,6 +562,10 @@ patients %>%
     )
   )
 ```
+
+???
+
+Here's what that recode operation looks like with `case_when()`.
 
 ---
 
@@ -679,7 +756,7 @@ class: your-turn
 
 # Your turn #5
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Including the appropriate missing value in your solution.
+**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Use the appropriate missing value in your solution.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -743,6 +820,8 @@ case_when(
 class: your-turn
 
 # Your turn: `Conf Milestone`
+
+![](images/session06/conf_milestone.png)
 
 
 
