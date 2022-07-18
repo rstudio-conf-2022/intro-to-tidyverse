@@ -22,7 +22,14 @@ output:
 class: title-slide
 
 ```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
+options(htmltools.dir.version = FALSE, dplyr.summarise.inform = FALSE)
+
+hook_source <- knitr::knit_hooks$get('source')
+knitr::knit_hooks$set(source = function(x, options) {
+  x <- stringr::str_replace(x, "^[[:blank:]]?([^*].+?)[[:blank:]]*#<<[[:blank:]]*$", "*\\1")
+  hook_source(x, options)
+})
+
 library(tidyverse)
 library(babynames)
 
@@ -86,7 +93,6 @@ class: middle
 
 # Agenda slide
 
-1. Review R Markdown
 1. `summarize()`
 1. Helpful summary functions
 1. Create grouped summaries
@@ -116,7 +122,7 @@ The `babynames()` dataset, from the babynames package, includes US baby name dat
 
 ```{r eval=FALSE}
 babynames %>% 
-  summarize(              )
+  summarize(____) #<<
 ```
 
 ---
@@ -124,7 +130,7 @@ babynames %>%
 
 ```{r}
 babynames %>% 
-  summarize(total = sum(n))
+  summarize(total = sum(n)) #<<
 ```
 
 ???
@@ -149,9 +155,9 @@ class: your-turn
 Complete the code to extract rows where `name == [your name]`. Then, use `summarize()`, `sum()`, and `min()` to find:
 
 1. The total number of children with your name.
-2. The first year your name appeared in the data.
+1. The first year your name appeared in the data.
 
-(If you don't find your name in the data, try one of these names, which have interesting results: Khaleesi, Anakin)
+(If you don't find your name in the data, try one of these names, which have (potentially) surprising results: Khaleesi, Anakin)
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 5)
@@ -179,10 +185,15 @@ class: middle chapter-slide blue
 
 # Summary functions
 
+.pull-left[
 - Take a vector as input
 - Return a single value as output
+]
 
+.pull-right[
 <img src="images/session05/summary-functions.png"/>
+
+]
 
 ---
 # `n()`
@@ -358,51 +369,90 @@ We can also group by multiple columns by adding additional columns to `group_by(
 
 ---
 
+# `summarize()` removes one grouping variable
+
+*And it tells you what it's doing!*
+
+```{r echo=FALSE}
+options(dplyr.summarise.inform = TRUE)
+```
+
+.pull-left[
+```{r summarize-message, eval=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount))
+```
+]
+
+.pull-right[
+```{r summarize-message-out, ref.label="summarize-message", echo=FALSE}
+```
+
+???
+`summarize()` removes the last grouping variable. Our data is still grouped by `continent`.
+
+---
+
+# Some dplyr functions respect groups*
+
+```{r echo=FALSE}
+options(dplyr.summarise.inform = TRUE)
+```
+
+\* but not all!
+
+.pull-left[
+```{r grouped-filter, results=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) %>% 
+  filter(median == max(median))
+```
+]
+
+--
+
+.pull-right[
+```{r grouped-filter-out, ref.label="grouped-filter", echo=FALSE}
+```
+]
+
+--
+
+After `summarize()`, the data is still grouped by `continent`, so we get __one row per continent__. 
+
+???
+
+This is important to realize because some dplyr verbs work differently with grouped data. For example, what if we filtered at this point, when the data is still grouped by continent? 
+
+Instead of getting one row, which contains the maximum median value, we get one row per each continent. 
+
+But what if we just want to find the *one* city with the highest median?
+
+---
+
 # Undoing groups
 
 ```{r}
 pollution %>% 
-  group_by(continent)
-```
---
-
-```{r}
-pollution %>% 
-  group_by(continent) %>% 
-  summarize(mean = mean(amount))
-```
-
-
-???
-`group_by()` groups by common values. `summarize()` undoes the grouping. 
-Notice that the `Groups` box is gone after we `summarize()`. 
-
----
-# Be careful
-
-```{r}
-pollution %>% 
   group_by(continent, year) %>% 
-  summarize(median = median(amount))
+  summarize(median = mean(amount)) %>% 
+  ungroup() %>% #<<
+  filter(median == max(median))
 ```
 
-
 ???
-`summarize()` only undoes one layer of grouping. We are still grouped by `city`. 
+Do to so, we'll need to `ungroup()` before filtering. 
+`ungroup()` removes all groups from the table. 
 
----
-# Ungroup
+# Name popularity (again)
 
 ```{r}
-pollution %>% 
-  group_by(continent, year) %>% 
-  summarize(mean = mean(amount)) %>% 
-  ungroup()
+babynames %>% 
+  filter(name == "Sara", sex == "F") %>% 
+  summarize(total = sum(n))
 ```
-
-
-???
-To undo any groupings, use the function `ungroup()`.
 
 ---
 class: your-turn
@@ -417,22 +467,59 @@ countdown::countdown(minutes = 3)
 
 ---
 
-```{r}
+.pull-left[
+```{r most-popular, eval=FALSE}
 babynames %>% 
   group_by(name, sex) %>% 
   summarize(total = sum(n)) %>% 
   arrange(desc(total))
 ```
+]
+
+.pull-right[
+```{r most-popular-out, ref.label="most-popular", echo=FALSE}
+```
+]
 
 ---
 
-```{r}
+.pull-left[
+```{r names-plot, echo=FALSE}
 babynames %>% 
   group_by(name, sex) %>% 
   summarize(total = sum(n)) %>% 
   arrange(desc(total)) %>% 
-  ggplot(aes(name, total, color = sex)) +
-  geom_col()
+  ungroup() %>% 
+  slice(1:10) %>% 
+  ggplot(aes(fct_reorder(name, total, .desc = TRUE), total, fill = sex)) +
+  geom_col() +
+  labs(
+    x = "Name",
+    y = "Total"
+  )
+```
+]
+
+.pull-right[
+```{r names-plot-out, ref.label="names-plot", echo=FALSE}
+```
+]
+
+---
+
+# Group by the variables from your test case
+
+```{r}
+babynames %>% 
+  filter(name == "Sara", sex == "F") %>% #<<
+  summarize(total = sum(n))
+```
+--
+
+```{r}
+babynames %>% 
+  group_by(name == "Sara", sex == "F") %>% #<<
+  summarize(total = sum(n))
 ```
 
 ---
