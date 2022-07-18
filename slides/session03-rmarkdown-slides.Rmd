@@ -427,169 +427,6 @@ knitr::include_graphics("images/session03-rmarkdown/code-chunk-shortcuts.png")
 ]
 
 ---
-# Chunk options
-
-By default, code and output are both displayed.
-
-.pull-left[
-
-````
-```{r plot}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-
----
-# `echo`
-
-`echo = FALSE` hides the code. Especially useful for plots!
-
-.panelset[
-.panel[.panel-name[Default]
-
-.pull-left[
-
-````
-```{r plot}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-
-.panel[.panel-name[echo = FALSE]
-
-.pull-left[
-
-````
-```{r plot, echo = FALSE}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r echo = FALSE, out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-]
-
----
-# `eval`
-
-`eval = FALSE` prevents the code from being run.
-
-.panelset[
-.panel[.panel-name[Default]
-
-.pull-left[
-
-````
-```{r plot}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-
-.panel[.panel-name[eval = FALSE]
-
-.pull-left[
-
-````
-```{r plot, eval = FALSE}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r eval = FALSE, out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-]
-
----
-# `include`
-
-`include = FALSE` runs the code, but prevents both the code and the output from appearing. 
-
-.panelset[
-.panel[.panel-name[Default]
-
-.pull-left[
-
-````
-```{r plot}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r out.width = "30%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-
-.panel[.panel-name[include = FALSE]
-
-.pull-left[
-
-````
-```{r plot, include = FALSE}`r ''`
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-````
-]
-
-.pull-right[
-```{r include = FALSE, out.width = "25%"}
-ggplot(mpg) + 
-  geom_point(aes(displ, hwy))
-```
-]
-]
-]
-
----
 # Chunk labels
 
 .pull-left[
@@ -665,9 +502,94 @@ class: middle, center
 
 ---
 class: middle, center
-# A good chunk label
+# A good chunk
 
 `r emo::ji("bulb")` Think: kebabs, not snakes
+
+---
+# Chunk options
+
+By default, code and output are both displayed.
+
+.pull-left[
+
+````
+```{r plot}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r out.width = "50%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+
+---
+# `echo`
+
+`echo = FALSE` hides the code. Especially useful for plots!
+
+.pull-left[
+
+````
+```{r plot, echo=FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r echo=FALSE, out.width = "50%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+
+---
+# `eval`
+
+`eval = FALSE` prevents the code from being run.
+
+.pull-left[
+
+````
+```{r plot, eval=FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r eval=FALSE, out.width = "50%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+
+---
+# `include`
+
+`include = FALSE` runs the code, but prevents both the code and the output from appearing. 
+
+.pull-left[
+
+````
+```{r plot, include=FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+[no code or output shown]
+]
 
 ---
 # `r emo::ji("yarn")` Knit
