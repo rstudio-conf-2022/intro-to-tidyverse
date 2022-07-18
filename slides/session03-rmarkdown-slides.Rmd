@@ -106,7 +106,7 @@ class: middle chapter-slide red
 
 --
 
-`r emo::ji("writing_hand")` ["A unified authoring framework for data science"](https://r4ds.had.co.nz/r-markdown.html?q=yaml%20#r-markdown)
+`r emo::ji("writing_hand")` An authoring framework for data science
 
 --
 
@@ -336,15 +336,22 @@ Numbered list
 ![Hex logo](images/session03-rmarkdown/rmd-hex.png)
 ```
 
+```{css, echo=FALSE}
+figure {
+  font-size: 30px;
+}
+```
+
 <figure>
 <img src="images/session03-rmarkdown/rmd-hex.png" width="25%"/>
 <figcaption>Hex logo</figcaption>
 </figure>
+
 ---
 # Images
 
 ```markdown
-![Hex logo](images/session03-rmarkdown/rmd-hex.png){width=50%}
+![Hex logo](images/session03-rmarkdown/rmd-hex.png){width=75%}
 ```
 
 <figure>
@@ -437,9 +444,9 @@ glimpse(mpg)
 ```
 ````
 
-* Place between curly braces<br>`{r peek}`
+* Place between curly braces `{r peek}`
 
-* Add options after comma <br>`{r peek, echo=FALSE}`
+* Add options after comma `{r peek, echo=FALSE}`
 
 ]
 
@@ -447,7 +454,7 @@ glimpse(mpg)
 
 .pull-right[
 
-`r emo::ji("warning")` Careful! No duplicate chunk labels
+`r emo::ji("warning")` No duplicate chunk labels!
 
 ````
 ```{r peek}`r ''`
@@ -514,7 +521,7 @@ By default, code and output are both displayed.
 .pull-left[
 
 ````
-```{r plot}`r ''`
+```{r}`r ''`
 ggplot(mpg) + 
   geom_point(aes(displ, hwy))
 ```
@@ -536,7 +543,7 @@ ggplot(mpg) +
 .pull-left[
 
 ````
-```{r plot, echo=FALSE}`r ''`
+```{r echo=FALSE}`r ''`
 ggplot(mpg) + 
   geom_point(aes(displ, hwy))
 ```
@@ -558,7 +565,7 @@ ggplot(mpg) +
 .pull-left[
 
 ````
-```{r plot, eval=FALSE}`r ''`
+```{r eval=FALSE}`r ''`
 ggplot(mpg) + 
   geom_point(aes(displ, hwy))
 ```
@@ -580,7 +587,7 @@ ggplot(mpg) +
 .pull-left[
 
 ````
-```{r plot, include=FALSE}`r ''`
+```{r include=FALSE}`r ''`
 ggplot(mpg) + 
   geom_point(aes(displ, hwy))
 ```
