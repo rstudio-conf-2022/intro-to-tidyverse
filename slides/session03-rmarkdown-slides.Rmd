@@ -27,6 +27,7 @@ options(htmltools.dir.version = FALSE)
 # Load packages
 library(countdown)
 library(ymlthis)
+library(tidyverse)
 ```
 
 # `r rmarkdown::metadata$title`
@@ -105,7 +106,7 @@ class: middle chapter-slide red
 
 --
 
-`r emo::ji("writing_hand")` An authoring framework for data science
+`r emo::ji("writing_hand")` ["A unified authoring framework for data science"](https://r4ds.had.co.nz/r-markdown.html?q=yaml%20#r-markdown)
 
 --
 
@@ -164,6 +165,9 @@ class: middle chapter-slide blue
 # Replication crisis
 
 ---
+# Reproducibility crisis
+
+---
 background-image: url(images/session03-rmarkdown/reproducibility.gif)
 background-position: center;
 background-size: 100% 
@@ -206,13 +210,11 @@ knitr
 class: inverse middle center
 
 # Text
-## (Markdown)
+## Markdown
 
 ---
 
 # Text
-
---
 
 .pull-left[
 ```markdown
@@ -226,8 +228,6 @@ _italics_
 ```
 ]
 
---
-
 .pull-right[
 Regular text  
 _italics_  
@@ -238,8 +238,6 @@ _italics_
 
 # Headers
 
---
-
 .pull-left[
 ```markdown
 # Header 1
@@ -255,8 +253,6 @@ _italics_
 ###### Header 6
 ```
 ]
-
---
 
 .pull-right[
 # Header 1
@@ -275,7 +271,8 @@ _italics_
 ---
 # Lists
 
---
+.panelset[
+.panel[.panel-name[Bulleted]
 
 .pull-left[
 
@@ -288,8 +285,6 @@ Bulleted list
 
 ]
 
---
-
 .pull-right[
 
 Bulleted list
@@ -297,11 +292,9 @@ Bulleted list
 * bullet 1
 * bullet 2
 ]
+]
 
----
-# Lists
-
---
+.panel[.panel-name[Numbered]
 
 .pull-left[
 
@@ -314,8 +307,6 @@ Numbered list
 
 ]
 
---
-
 .pull-right[
 Numbered list
 
@@ -323,33 +314,53 @@ Numbered list
 2. item 2
 
 ]
+]
+]
 
 ---
 # Images
-
---
 
 ```markdown
 ![](images/session03-rmarkdown/rmd-hex.png)
 ```
 
---
-
+<figure>
 <img src="images/session03-rmarkdown/rmd-hex.png" width="25%"/>
+</figure>
+
+---
+# Images
+
+
+```markdown
+![Hex logo](images/session03-rmarkdown/rmd-hex.png)
+```
+
+<figure>
+<img src="images/session03-rmarkdown/rmd-hex.png" width="25%"/>
+<figcaption>Hex logo</figcaption>
+</figure>
+---
+# Images
+
+```markdown
+![Hex logo](images/session03-rmarkdown/rmd-hex.png){width=50%}
+```
+
+<figure>
+<img src="images/session03-rmarkdown/rmd-hex.png" width="15%"/>
+<figcaption>Hex logo</figcaption>
+</figure>
 
 ---
 
 # Links
 
---
-
 ```markdown
-You can learn more about R Markdown [here](https://rmarkdown.rstudio.com/).
+Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 ```
 
---
-
-You can learn more about R Markdown [here](https://rmarkdown.rstudio.com/).
+Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 
 ---
 # Resources 
@@ -357,12 +368,17 @@ You can learn more about R Markdown [here](https://rmarkdown.rstudio.com/).
 <!-- TODO: update image -->
 
 .pull-left[
+
+<p style="font-style: italic; font-size:26px;"> Help > Cheatsheets > R Markdown Cheat Sheet </p>
+
 ```{r echo=FALSE}
 knitr::include_graphics("images/session03-rmarkdown/markdown-cheatsheet.png")
 ```
 ]
 
 .pull-right[
+
+<p style="font-style: italic; font-size:26px;"> Help > Markdown Quick Reference </p>
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("images/session03-rmarkdown/quick-ref.png")
@@ -384,7 +400,7 @@ countdown::countdown(minutes = 3)
 class: inverse middle center
 
 # Code
-## (knitr)
+## knitr
 
 ---
 # Add a code chunk
@@ -411,27 +427,24 @@ knitr::include_graphics("images/session03-rmarkdown/code-chunk-shortcuts.png")
 ]
 
 ---
-# Chunk labels
-
-
-
----
 # Chunk options
 
-By default, both code and output are shown.
+By default, code and output are both displayed.
 
 .pull-left[
 
 ````
 ```{r plot}`r ''`
-plot(cars)
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
 ````
 ]
 
 .pull-right[
-```{r out.width = "50%"}
-plot(cars)
+```{r out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
 ]
 
@@ -440,47 +453,221 @@ plot(cars)
 
 `echo = FALSE` hides the code. Especially useful for plots!
 
+.panelset[
+.panel[.panel-name[Default]
+
 .pull-left[
 
 ````
-```{r plot, echo=FALSE}`r ''`
-plot(cars)
+```{r plot}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
 ````
 ]
 
 .pull-right[
-```{r echo=FALSE, out.width = "50%"}
-plot(cars)
+```{r out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
+]
+]
+
+.panel[.panel-name[echo = FALSE]
+
+.pull-left[
+
+````
+```{r plot, echo = FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r echo = FALSE, out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+]
 ]
 
 ---
 # `eval`
 
-`eval = FALSE` prevents the code from being run. As a result, no results will be displayed with the code.
+`eval = FALSE` prevents the code from being run.
+
+.panelset[
+.panel[.panel-name[Default]
 
 .pull-left[
 
 ````
-```{r plot, eval=FALSE}`r ''`
-plot(cars)
+```{r plot}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
 ````
 ]
 
 .pull-right[
-```{r plot-eval, eval=FALSE, out.width = "50%"}
-plot(cars)
+```{r out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
 ```
+]
+]
+
+.panel[.panel-name[eval = FALSE]
+
+.pull-left[
+
+````
+```{r plot, eval = FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r eval = FALSE, out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+]
 ]
 
 ---
 # `include`
 
-`include = FALSE` runs the code, but prevents both the code and the results from appearing 
+`include = FALSE` runs the code, but prevents both the code and the output from appearing. 
 
-TODO: add example with verbatim code chunk
+.panelset[
+.panel[.panel-name[Default]
+
+.pull-left[
+
+````
+```{r plot}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r out.width = "30%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+]
+
+.panel[.panel-name[include = FALSE]
+
+.pull-left[
+
+````
+```{r plot, include = FALSE}`r ''`
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+````
+]
+
+.pull-right[
+```{r include = FALSE, out.width = "25%"}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy))
+```
+]
+]
+]
+
+---
+# Chunk labels
+
+.pull-left[
+
+````
+```{r peek}`r ''`
+glimpse(mpg)
+```
+````
+
+* Place between curly braces<br>`{r peek}`
+
+* Add options after comma <br>`{r peek, echo=FALSE}`
+
+]
+
+--
+
+.pull-right[
+
+`r emo::ji("warning")` Careful! No duplicate chunk labels
+
+````
+```{r peek}`r ''`
+head(mpg)
+```
+````
+
+````
+Error in parse_block(g[-1], g[1], params.src) : 
+  duplicate label 'peek'
+Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_block
+Execution halted
+````
+
+]
+
+???
+
+how can we make it easier on ourselves to explore the code in here?
+
+show how to add chunk labels and view in IDE interactively
+
+---
+class: middle, center
+# A good chunk label
+
+.pull-left[
+
+**Good**
+
+`my-plot`
+
+`myplot`
+
+`myplot1`
+
+`MY-PLOT`
+
+]
+
+.pull-right[
+
+### Bad
+
+`my_plot`
+
+`my plot`
+
+...everything else!
+
+]
+
+---
+class: middle, center
+# A good chunk label
+
+`r emo::ji("bulb")` Think: kebabs, not snakes
 
 ---
 # `r emo::ji("yarn")` Knit
@@ -524,14 +711,14 @@ TODO: add image of chunk options in cheatsheet
 class: inverse middle center
 
 # Metadata
-## (YAML)
+## YAML
 
 ---
 # YAML
 
-_"YAML Ain't Markup Language"_
+[_"YAML Ain't Markup Language"_](https://en.wikipedia.org/wiki/YAML#History_and_name)
 
-A section of key:value pairs separated by dashed lines `———`
+A section of `key: value` pairs separated by dashes <code>---</code>
 
 ```yaml
 ---
@@ -544,33 +731,38 @@ key: value
 
 .pull-left[
 
-Default
-
 ```{r echo = FALSE}
 yml_empty() %>% 
- yml_author("Your name here") %>% 
-  yml_title("Your title here") %>% 
-  yml_output(html_document()) %>% 
-  asis_yaml_output()
+ yml_author("Brendan Cullen") %>% 
+ yml_title("Diamonds Exploration") %>% 
+ yml_output(html_document()) %>% 
+ asis_yaml_output()
 ```
 ]
+
+--
 
 .pull-right[
 
-A few more options
-
 ```{r echo = FALSE}
 yml_empty() %>%
-  yml_author("Your name here") %>%
-  yml_title("Your title here") %>%
+ yml_author("Brendan Cullen") %>% 
+ yml_title("Diamonds Exploration") %>% 
   yml_output(html_document(
     toc = TRUE,
-    toc_float = TRUE,
-    theme = "flatly"
+    toc_float = TRUE
   )) %>%
   asis_yaml_output()
 ```
+
 ]
+
+Add a floating table of contents. `r emo::ji("warning")` Indentation matters! `r emo::ji("warning")`
+
+---
+# Built-in output formats
+
+TODO: panelset with HTML, PDF, Word YAML headers and screenshots
 
 ---
 # Built-in output formats
