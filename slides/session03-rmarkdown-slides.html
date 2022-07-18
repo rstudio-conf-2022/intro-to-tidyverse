@@ -327,7 +327,7 @@ figure {
 # Images
 
 ```markdown
-![Hex logo](images/session03-rmarkdown/rmd-hex.png){width=75%}
+![Hex logo](images/session03-rmarkdown/rmd-hex.png){width=50%}
 ```
 
 &lt;figure&gt;
@@ -371,7 +371,7 @@ Starting with an un-formatted .Rmd file, recreate a shown output.
 
 TODO: Add gif instructions (how to knit)
 
-<div class="countdown" id="timer_62d4db60" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5dd72" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -444,8 +444,11 @@ how can we make it easier on ourselves to explore the code in here?
 show how to add chunk labels and view in IDE interactively
 
 ---
-class: middle, center
-# A good chunk label
+# Chunk labels 
+
+💡 Think "kebabs, not snakes"
+
+.center[
 
 .pull-left[
 
@@ -455,9 +458,7 @@ class: middle, center
 
 `myplot`
 
-`myplot1`
-
-`MY-PLOT`
+`MYPLOT-1`
 
 ]
 
@@ -470,14 +471,8 @@ class: middle, center
 `my plot`
 
 ...everything else!
-
 ]
-
----
-class: middle, center
-# A good chunk
-
-💡 Think: kebabs, not snakes
+]
 
 ---
 # Chunk options
@@ -568,8 +563,6 @@ ggplot(mpg) +
 ---
 # 🧶 Knit
 
-How does it work?
-
 .center[
 &lt;img src="https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png" width="100%" /&gt;
 ]
@@ -592,7 +585,7 @@ class: your-turn
 # Your Turn
 Use chunk options to recreate a shown output.
 
-<div class="countdown" id="timer_62d4d94b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5debb" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -649,14 +642,92 @@ output:
 ---
 ```
 
+Add a floating table of contents
 ]
 
-Add a floating table of contents. ⚠️ Indentation matters! ⚠️
+---
+# Indentation matters!
+
+.pull-left[
+
+````
+---
+author: Brendan Cullen
+title: Diamonds Exploration
+output:
+html_document:
+toc: true
+toc_float: true
+---
+````
+.center[
+❌
+]
+
+]
+
+.pull-right[
+
+```yaml
+---
+author: Brendan Cullen
+title: Diamonds Exploration
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+```
+
+.center[
+✅
+]
+]
 
 ---
-# Built-in output formats
+# `output`
 
-TODO: panelset with HTML, PDF, Word YAML headers and screenshots
+&lt;!-- TODO: panelset with HTML, PDF, Word YAML headers and screenshots --&gt;
+
+.panelset[
+.panel[.panel-name[HTML]
+
+```yaml
+---
+author: Brendan Cullen
+title: Diamonds Exploration
+output: html_document
+---
+```
+
+]
+
+.panel[.panel-name[Word]
+
+
+```yaml
+---
+author: Brendan Cullen
+title: Diamonds Exploration
+output: word_document
+---
+```
+
+]
+
+.panel[.panel-name[PDF]
+
+
+```yaml
+---
+author: Brendan Cullen
+title: Diamonds Exploration
+output: pdf_document
+---
+```
+
+]
+]
 
 ---
 # Built-in output formats
@@ -683,7 +754,7 @@ class: your-turn
 # Your Turn
 Adjust the YAML metadata to recreate the shown output.
 
-<div class="countdown" id="timer_62d4db40" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5df50" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -723,13 +794,18 @@ Adjust the YAML metadata to recreate the shown output.
 ✔️ **Preview your work:** 🧶 early, 🧶 often
 
 ---
+class: inverse, center, middle
+
+# Demo
+
+---
 class: your-turn
 
 # Mini Project
 
 Turn your previous EDA analysis into a customized R Markdown report.
  
-<div class="countdown" id="timer_62d4d952" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5ddc8" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
