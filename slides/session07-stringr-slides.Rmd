@@ -4,8 +4,8 @@ subtitle: "Day 2, Session 3"
 author: "Steven Smallberg"
 date: "July 26, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-  text: shortlink
+  url: rstd.io/stringr
+  text: rstd.io/stringr
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css"]
@@ -78,7 +78,7 @@ class: middle
 # Meet stringr
 ]
 
-.center[<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/stringr.png?raw=true" width="300"/>]
+.center[<img src="https://github.com/rstudio/hex-stickers/blob/master/PNG/stringr.png?raw=true" alt="stringr hex sticker" width="300"/>]
 
 ???
 
@@ -146,6 +146,28 @@ We want to compare traits across terrier breeds only.
 
 class: middle
 
+.center[<img src="images/session07/dog_breeds.png" alt="Cartoon of 18 dog breeds" width="800"/>]
+
+???
+
+To make this very clear, we have `r n_distinct(breed_traits$breed)` dog breeds (with 18 very good boys and girls are pictured here as an example)...
+
+---
+
+class: middle
+
+.center[<img src="images/session07/terrier_breeds.png" alt="Cartoon of 18 dog breeds with only four terrier breeds highlighted" width="800"/>]
+
+???
+
+...and we want to subset the data so that we can continue our analysis on terrier breeds. Note that I don't know how many of the `r n_distinct(breed_traits$breed)` breeds in the dataset have "terrier" as part of their name.
+
+(The four highlighted breeds, from top to bottom, left to right, are Scottish, Bull, Boston, and Russell terriers.)
+
+---
+
+class: middle
+
 .top-fixed[
 # Sniffing out terrier breeds
 ]
@@ -157,7 +179,7 @@ breed_traits %>%
 
 ???
 
-That means subsetting data. And when I say "subsetting", alarm bells are probably going off in your head that we we'll be using the `filter()` function.
+When I say "subset", alarm bells are probably going off in your head that we we'll be using the `filter()` function.
 
 Using what we've already know how to do, we can scan through the paginated results in RMarkdown and find our first match — Yorkshire terriers.
 
