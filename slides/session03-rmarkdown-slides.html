@@ -371,7 +371,7 @@ Starting with an un-formatted .Rmd file, recreate a shown output.
 
 TODO: Add gif instructions (how to knit)
 
-<div class="countdown" id="timer_62d5dd72" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5e314" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -396,81 +396,6 @@ class: inverse middle center
 
 .panel[.panel-name[Option 3]
 &lt;img src="images/session03-rmarkdown/code-chunk-shortcuts.png" width="70%" /&gt;
-]
-]
-
----
-# Chunk labels
-
-.pull-left[
-
-````
-```{r peek}
-glimpse(mpg)
-```
-````
-
-* Place between curly braces `{r peek}`
-
-* Add options after comma `{r peek, echo=FALSE}`
-
-]
-
---
-
-.pull-right[
-
-⚠️ No duplicate chunk labels!
-
-````
-```{r peek}
-head(mpg)
-```
-````
-
-````
-Error in parse_block(g[-1], g[1], params.src) : 
-  duplicate label 'peek'
-Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
-Execution halted
-````
-
-]
-
-???
-
-how can we make it easier on ourselves to explore the code in here?
-
-show how to add chunk labels and view in IDE interactively
-
----
-# Chunk labels 
-
-💡 Think "kebabs, not snakes"
-
-.center[
-
-.pull-left[
-
-**Good**
-
-`my-plot`
-
-`myplot`
-
-`MYPLOT-1`
-
-]
-
-.pull-right[
-
-### Bad
-
-`my_plot`
-
-`my plot`
-
-...everything else!
 ]
 ]
 
@@ -561,6 +486,81 @@ ggplot(mpg) +
 ]
 
 ---
+# Chunk labels
+
+.pull-left[
+
+````
+```{r peek}
+glimpse(mpg)
+```
+````
+
+* Place between curly braces `{r peek}`
+
+* Add options after comma `{r peek, echo=FALSE}`
+
+]
+
+--
+
+.pull-right[
+
+⚠️ No duplicate chunk labels!
+
+````
+```{r peek}
+head(mpg)
+```
+````
+
+````
+Error in parse_block(g[-1], g[1], params.src) : 
+  duplicate label 'peek'
+Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
+Execution halted
+````
+
+]
+
+???
+
+how can we make it easier on ourselves to explore the code in here?
+
+show how to add chunk labels and view in IDE interactively
+
+---
+# Chunk labels 
+
+💡 Think "kebabs, not snakes"
+
+.center[
+
+.pull-left[
+
+**Good**
+
+`my-plot`
+
+`myplot`
+
+`MYPLOT-1`
+
+]
+
+.pull-right[
+
+### Bad
+
+`my_plot`
+
+`my plot`
+
+...everything else!
+]
+]
+
+---
 # 🧶 Knit
 
 .center[
@@ -585,7 +585,7 @@ class: your-turn
 # Your Turn
 Use chunk options to recreate a shown output.
 
-<div class="countdown" id="timer_62d5debb" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5e14f" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -692,6 +692,7 @@ output:
 .panelset[
 .panel[.panel-name[HTML]
 
+.pull-left[
 ```yaml
 ---
 author: Brendan Cullen
@@ -699,12 +700,17 @@ title: Diamonds Exploration
 output: html_document
 ---
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 
 .panel[.panel-name[Word]
 
-
+.pull-left[
 ```yaml
 ---
 author: Brendan Cullen
@@ -712,12 +718,17 @@ title: Diamonds Exploration
 output: word_document
 ---
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 
 .panel[.panel-name[PDF]
 
-
+.pull-left[
 ```yaml
 ---
 author: Brendan Cullen
@@ -725,7 +736,12 @@ title: Diamonds Exploration
 output: pdf_document
 ---
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 ]
 
@@ -754,7 +770,7 @@ class: your-turn
 # Your Turn
 Adjust the YAML metadata to recreate the shown output.
 
-<div class="countdown" id="timer_62d5df50" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5e359" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -805,7 +821,7 @@ class: your-turn
 
 Turn your previous EDA analysis into a customized R Markdown report.
  
-<div class="countdown" id="timer_62d5ddc8" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d5e07a" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>

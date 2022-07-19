@@ -434,81 +434,6 @@ knitr::include_graphics("images/session03-rmarkdown/code-chunk-shortcuts.png")
 ]
 
 ---
-# Chunk labels
-
-.pull-left[
-
-````
-```{r peek}`r ''`
-glimpse(mpg)
-```
-````
-
-* Place between curly braces `{r peek}`
-
-* Add options after comma `{r peek, echo=FALSE}`
-
-]
-
---
-
-.pull-right[
-
-`r emo::ji("warning")` No duplicate chunk labels!
-
-````
-```{r peek}`r ''`
-head(mpg)
-```
-````
-
-````
-Error in parse_block(g[-1], g[1], params.src) : 
-  duplicate label 'peek'
-Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_block
-Execution halted
-````
-
-]
-
-???
-
-how can we make it easier on ourselves to explore the code in here?
-
-show how to add chunk labels and view in IDE interactively
-
----
-# Chunk labels 
-
-`r emo::ji("bulb")` Think "kebabs, not snakes"
-
-.center[
-
-.pull-left[
-
-**Good**
-
-`my-plot`
-
-`myplot`
-
-`MYPLOT-1`
-
-]
-
-.pull-right[
-
-### Bad
-
-`my_plot`
-
-`my plot`
-
-...everything else!
-]
-]
-
----
 # Chunk options
 
 By default, code and output are both displayed.
@@ -591,6 +516,81 @@ ggplot(mpg) +
 
 .pull-right[
 [no code or output shown]
+]
+
+---
+# Chunk labels
+
+.pull-left[
+
+````
+```{r peek}`r ''`
+glimpse(mpg)
+```
+````
+
+* Place between curly braces `{r peek}`
+
+* Add options after comma `{r peek, echo=FALSE}`
+
+]
+
+--
+
+.pull-right[
+
+`r emo::ji("warning")` No duplicate chunk labels!
+
+````
+```{r peek}`r ''`
+head(mpg)
+```
+````
+
+````
+Error in parse_block(g[-1], g[1], params.src) : 
+  duplicate label 'peek'
+Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_block
+Execution halted
+````
+
+]
+
+???
+
+how can we make it easier on ourselves to explore the code in here?
+
+show how to add chunk labels and view in IDE interactively
+
+---
+# Chunk labels 
+
+`r emo::ji("bulb")` Think "kebabs, not snakes"
+
+.center[
+
+.pull-left[
+
+**Good**
+
+`my-plot`
+
+`myplot`
+
+`MYPLOT-1`
+
+]
+
+.pull-right[
+
+### Bad
+
+`my_plot`
+
+`my plot`
+
+...everything else!
+]
 ]
 
 ---
@@ -727,6 +727,7 @@ yml_empty() %>%
 .panelset[
 .panel[.panel-name[HTML]
 
+.pull-left[
 ```{r echo=FALSE}
 yml_empty() %>% 
  yml_author("Brendan Cullen") %>% 
@@ -734,12 +735,17 @@ yml_empty() %>%
  yml_output(html_document()) %>% 
  asis_yaml_output()
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 
 .panel[.panel-name[Word]
 
-
+.pull-left[
 ```{r echo=FALSE}
 yml_empty() %>% 
  yml_author("Brendan Cullen") %>% 
@@ -747,12 +753,17 @@ yml_empty() %>%
  yml_output(word_document()) %>% 
  asis_yaml_output()
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 
 .panel[.panel-name[PDF]
 
-
+.pull-left[
 ```{r echo=FALSE}
 yml_empty() %>% 
  yml_author("Brendan Cullen") %>% 
@@ -760,7 +771,12 @@ yml_empty() %>%
  yml_output(pdf_document()) %>% 
  asis_yaml_output()
 ```
+]
 
+.pull-right[
+
+# TODO: image
+]
 ]
 ]
 
