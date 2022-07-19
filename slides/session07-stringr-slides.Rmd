@@ -150,7 +150,7 @@ class: middle
 
 ???
 
-To make this very clear, we have `r n_distinct(breed_traits$breed)` dog breeds (18 very good boys and girls are pictured here as an example)...
+To make this very clear, we have `r n_distinct(breed_traits$breed)` dog breeds (with 18 very good boys and girls are pictured here as an example)...
 
 ---
 
@@ -179,7 +179,7 @@ breed_traits %>%
 
 ???
 
-And when I say "subset", alarm bells are probably going off in your head that we we'll be using the `filter()` function.
+When I say "subset", alarm bells are probably going off in your head that we we'll be using the `filter()` function.
 
 Using what we've already know how to do, we can scan through the paginated results in RMarkdown and find our first match — Yorkshire terriers.
 
