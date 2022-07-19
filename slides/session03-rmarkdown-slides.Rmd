@@ -4,8 +4,8 @@ subtitle: "Day 1, Session 3"
 author: "Brendan Cullen"
 date: "July 25, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-  text: shortlink
+  url: http://rstd.io/rmd
+  text: rstd.io/rmd
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css"]
