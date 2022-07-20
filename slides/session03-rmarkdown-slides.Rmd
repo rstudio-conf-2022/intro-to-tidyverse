@@ -8,7 +8,7 @@ shortlink:
   text: rstd.io/rmd
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session03.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -104,8 +104,6 @@ class: middle chapter-slide red
 ---
 # What is R Markdown?
 
---
-
 `r emo::ji("writing_hand")` An authoring framework for data science
 
 --
@@ -118,7 +116,7 @@ class: middle chapter-slide red
 
 --
 
-`r emo::ji("hammer_and_wrench")` A tool for integrating prose, code, and results
+`r emo::ji("hammer_and_wrench")` A tool for integrating prose, code, and output
 
 --
 
@@ -133,7 +131,7 @@ class: middle chapter-slide red
 
 `r emo::ji("computer")` R code
 
-`r emo::ji("bar_chart")` Output (e.g. plots, tables)
+`r emo::ji("bar_chart")` Output (e.g. plots, tables, model results)
 
 `r emo::ji("framed_picture")` Images
 
@@ -183,28 +181,36 @@ class: middle chapter-slide green
 # The 3 essential ingredients
 
 .pull-left[
+## 1. Text
+
+## 2. Code
+
+## 3. Metadata
+]
+
+.pull-right[
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 ```
 ]
 
 ---
-
-# The 3 essential ~~ingredients~~ frameworks
+# The 3 essential <span style="color:red">frameworks</span>
 
 .pull-left[
+## 1. Text &rarr; <span style="color:red">Markdown</span>
+
+## 2. Code &rarr; <span style="color:red">knitr</span>
+
+## 3. Metadata &rarr; <span style="color:red">YAML</span>
+]
+
+.pull-right[
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 ```
 ]
 
-.pull-right[
-YAML
-
-Markdown
-
-knitr
-]
 ---
 
 class: inverse middle center
@@ -387,7 +393,7 @@ knitr::include_graphics("images/session03-rmarkdown/markdown-cheatsheet.png")
 
 <p style="font-style: italic; font-size:26px;"> Help > Markdown Quick Reference </p>
 
-```{r echo=FALSE, out.width="60%"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("images/session03-rmarkdown/quick-ref.png")
 ```
 ]
@@ -529,17 +535,15 @@ glimpse(mpg)
 ```
 ````
 
-* Place between curly braces `{r peek}`
+* Place label between curly braces <br> `{r peek}`
 
-* Add options after comma `{r peek, echo=FALSE}`
+* Add chunk options after comma <br> `{r peek, echo=FALSE}`
 
 ]
 
 --
 
 .pull-right[
-
-`r emo::ji("warning")` No duplicate chunk labels!
 
 ````
 ```{r peek}`r ''`
@@ -554,6 +558,8 @@ Calls: <Anonymous> ... process_file -> split_file -> lapply -> FUN -> parse_bloc
 Execution halted
 ````
 
+`r emo::ji("warning")` Careful! No duplicate chunk labels
+
 ]
 
 ???
@@ -567,9 +573,9 @@ show how to add chunk labels and view in IDE interactively
 
 `r emo::ji("bulb")` Think "kebabs, not snakes"
 
-.center[
-
 .pull-left[
+
+.center[
 
 **Good**
 
@@ -577,19 +583,26 @@ show how to add chunk labels and view in IDE interactively
 
 `myplot`
 
-`MYPLOT-1`
+`myplot1`
+
+`MY-PLOT`
+
+]
 
 ]
 
 .pull-right[
 
-### Bad
+.center[
+
+**Bad**
 
 `my_plot`
 
 `my plot`
 
 ...everything else!
+
 ]
 ]
 
@@ -671,17 +684,52 @@ yml_empty() %>%
  yml_author("Brendan Cullen") %>% 
  yml_title("Diamonds Exploration") %>% 
   yml_output(html_document(
+    toc = TRUE
+  )) %>%
+  asis_yaml_output()
+```
+
+.center[
+Add a table of contents
+]
+]
+
+---
+# YAML
+
+.pull-left[
+
+```{r echo = FALSE}
+yml_empty() %>% 
+ yml_author("Brendan Cullen") %>% 
+ yml_title("Diamonds Exploration") %>% 
+ yml_output(html_document()) %>% 
+ asis_yaml_output()
+```
+]
+
+.pull-right[
+
+```{r echo = FALSE}
+yml_empty() %>%
+ yml_author("Brendan Cullen") %>% 
+ yml_title("Diamonds Exploration") %>% 
+  yml_output(html_document(
     toc = TRUE,
     toc_float = TRUE
   )) %>%
   asis_yaml_output()
 ```
 
-Add a floating table of contents
+.center[
+Add a table of contents
+
+Make it a **floating** table of contents
+]
 ]
 
 ---
-# Indentation matters!
+# YAML - indentation matters!
 
 .pull-left[
 
@@ -701,6 +749,7 @@ toc_float: true
 
 ]
 
+
 .pull-right[
 
 ```{r echo = FALSE}
@@ -716,6 +765,8 @@ yml_empty() %>%
 
 .center[
 `r emo::ji("white_check_mark")`
+
+Indent **format** 2 characters<br> Indent **options** 4 characters
 ]
 ]
 
@@ -833,10 +884,7 @@ countdown::countdown(minutes = 3)
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your text:** use markdown formatting to include **bold**, _italics_, `code font`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
-
----
-# Take-aways (cont.)
+`r emo::ji("heavy_check_mark")` **Style your text:** use markdown for **bold**, _italics_, `code`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
 
 --
 
