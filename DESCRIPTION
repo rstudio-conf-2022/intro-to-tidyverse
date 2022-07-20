@@ -16,13 +16,13 @@ License: MIT + file LICENSE
 Depends:
     tidyverse
 Imports: 
+    flair (>= 0.0.2),
     janitor,
     knitr,
     rmarkdown
 Suggests:
     emo (>= 0.0.0.9000),
     countdown (>= 0.3.5),
-    flair,
     fontawesome,
     here,
     quarto,
@@ -34,4 +34,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Remotes:  
     gadenbuie/countdown,
-    hadley/emo
+    hadley/emo,
+    r-for-educators/flair
