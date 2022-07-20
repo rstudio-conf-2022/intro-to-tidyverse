@@ -1,5 +1,10 @@
 .big-text {
-  font-size: 6em;
+  font-size: 14rem;
+  font-weight: 900;
+}
+
+h1 .big-text {
+  font-size: 12rem;
   font-weight: 900;
 }
 
@@ -19,4 +24,27 @@
 
 .remark-code {
     font-size: 18px;
+}
+
+
+/* tables */
+/* spacey-table with white rows */
+
+.spaced td {
+  padding: 15px;
+}
+
+.spaced tr {
+  background-color: white;
+}
+
+
+/* ------ Agenda slide / list and bullet spacing ---- */
+
+.agenda ol {
+  font-size: 40px;
+}
+
+.agenda ol li {
+  padding-bottom: 1rem;
 }
