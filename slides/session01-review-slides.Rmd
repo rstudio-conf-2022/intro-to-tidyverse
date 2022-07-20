@@ -4,8 +4,8 @@ subtitle: "Day 1, Session 1"
 author: "Desirée De Leon"
 date: "July 25, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01
-  text: materials/session01
+  url: "https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01"
+  text: ""
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css", "assets/session01.css"]
@@ -20,7 +20,7 @@ params:
   wifi_network: ""
   wifi_password: ""
 ---
-class: middle, chapter-slide
+class:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -47,21 +47,39 @@ if (!is.null(rmarkdown::metadata$shortlink)) {
 }
 ```
 
-.pull-left[
-.big-text.near-black[Welcome]
+
+# .big-text[Welcome] 
+
+## Introduction to the tidyverse 
 
 Find your group's table and make yourself comfortable. 
 
-We'll get started shortly after 9am.]
+We'll get started shortly after 9am.
 
-.pull-right[
 
-Schematic of table layout goes here.
-
-]
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> </div>
+</div>
 
 ---
-class: inverse middle
+class: middle, agenda
+
+# Session 1 Agenda
+
+1. Logistics: Policies, Goals, and Schedules
+1. Review: Group challenge
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[1.]
+
+# Policies, Goals, & Schedules
+
+---
+
+class: inverse, middle
 
 # Conference workshop policies
 
@@ -76,9 +94,13 @@ class: inverse middle
   `r emo::ji("no_entry_sign")` `r emo::ji("camera")` 
 
   <br>
-  <br>
 
-  `r emo::ji("yoga")` `r emo::ji("tent")`
+  `r emo::ji("person_in_lotus_position")` `r emo::ji("tent")`
+  
+  <br>
+  <br>
+  
+  `r emo::ji("face_with_medical_mask")` `r emo::ji("microbe")`
   ]
 ]
 
@@ -92,7 +114,12 @@ class: inverse middle
 
   <br>
 
-  A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
+  A meditation / chill-out room is available for those who want to recharge with some peach and quiet.
+  
+   <br>
+   
+  Fully cover your mouth and nose at all times
+   
 ] 
 
 ---
@@ -109,6 +136,7 @@ class: inverse middle
   - By email: send a message to `conf@rstudio.com`
   - By phone: call 844-448-1212
   
+  
 ---
 class: middle, center
 
@@ -120,7 +148,7 @@ Wifi network name
 
 ]
 
-.pull-left[
+.pull-right[
 # `r fontawesome::fa("fas fa-key")`
 
 Wifi password
@@ -130,21 +158,17 @@ Wifi password
 ]
 
 ---
-class: top, center
+class: center, top
 background-image: url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
 background-position: center
-background-size: contain
+background-size: cover
 
 # Goals
-
-Drill old wrangling skills and explore new ones
-
-Learn best practices for exploring your data and reporting it reproducibly 
 
 
 ???
 
-Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academ course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
+Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academy course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
 
 1. Drill old wrangling skills and explore new ones
 
@@ -154,11 +178,19 @@ In short, we're using these two days to give you sanctioned time to dive deep in
 
 [Will we build in opps for more learning and drilling during downtime?]
 
+--
+
+Drill old wrangling skills and explore new ones
+
+--
+
+Learn best practices for exploring your data and reporting it reproducibly 
+
 
 ---
-class: center, middle, chapter-slide blue
+class: center, middle, chapter-slide red
 
-.big-text.white[Hello!]
+.big-text.white.center[Hello!]
 
 ???
 
@@ -181,39 +213,195 @@ class: speaker-slide
 ]
 
 ---
+class: center
 
-Placeholder for team slide...
+# Meet the team
+
+<div class="cf-ns nl2 nr2">
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/8742033?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Kristin Bott
+    </div>
+  </div>
+
+
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/32279312?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Brendan Cullen
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/5782147?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Daniel Chen
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/18153457?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Sara Altman
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/49049415?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Deirdre Francks
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/34824840?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+Steven Smallberg    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/36464703?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+Laura Puckett    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/85014?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Garrett Grolemund    
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/45143?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Dan Buch
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/5420529?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Garrick Aden-Buie
+    </div>
+  </div>
+  
+  
+  
+</div>
+
+
 
 ???
 
-But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that you have been experiencing at Academy. 
+But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that have made the Academy experience you're going through possible. 
 
 ---
 
-line up image
+
+class: middle, center
+background-image: url("images/session01/scooters.jpg")
+background-size: cover
+
+---
+class: middle, center
+background-image: url("images/session01/scooters-dark.png")
+background-size: cover
+
+# .big-text.white[The Lineup]
 
 ???
  
-The lineup for the next couple days...
+Here is what we have lined up for you for the next couple days...
 
 
 ---
- day 1
- 
- day 2
+class: middle, center
+
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices
+]
+
+--
+
+.pull-right[
+
+# Day Two:
+
+### Transformation + Milestone  
+
+]
 
 ---
+class: middle, center
 
-day 1 day 2 detailed
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices
+
+Review
+
+Exploratory data analysis
+
+R Markdown for reproducible results
+
+R Projects and your local IDE
+]
+
+--
+
+.pull-right[
+
+# Day Two:
+
+### Transformation + Milestone  
+
+Summarize data and work with groups
+
+Recoding variables + Milestone recreation
+
+Lightning talks + Milestone extension
+
+Milestone presentation
+]
+
 ---
-
-schedule
+class: middle, center
 
 ???
 
-Now that we have an overview of the next two days...
-
----
+this is our schedule. And this is where we'll work...
 
 You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
 
@@ -221,10 +409,40 @@ You can navigate there now...
 
 One exception is Session 4....
 
----
-class: center, middle, chapter-slide blue
+--
 
-.big-text.white[Let's get to work!]
+.left-column1[
+# Schedule
+
+.spaced[
+
+| Time          | Activity                                                      |
+|:--------------|:--------------------------------------------------------------|
+| 09:00 - 10:30 | Session 1                              |
+| 10:30 - 11:00 | *Break* `r emo::ji("coffee")`                                 |
+| 11:00 - 12:30 | Session 2                                    |
+| 12:30 - 01:30 | *Lunch* `r emo::ji("bento")`                                
+| 01:30 - 03:00 | Session 3                                       |
+| 03:00 - 03:30 | *Break* `r emo::ji("tea")`                                    |
+| 03:30 - 05:00 | Session 4  
+
+]
+]
+
+--
+
+.right-column1[
+# Workspace
+<img src="images/session01/campsite_screenshot.png">
+]
+
+
+---
+class: middle, chapter-slide green
+
+.big-white-number[2.]
+
+# Review: Group challenge
 
 ---
 class: title-slide
@@ -321,6 +539,7 @@ glimpse(outbreaks)
 ???
 
 3 minutes to read in the data and run glimpse()?
+
 ---
 
 Show Solution.
@@ -344,12 +563,14 @@ outbreaks %>%
   arrange(year)
 ```
 ]
+
 .pull-right[
 ```{r}
 outbreaks %>%
   arrange(desc(year))
 ```
 ]
+
 ---
 class: your-turn
 # Your Turn 3
