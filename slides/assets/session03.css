@@ -1,0 +1,50 @@
+.big-text {
+  font-size: 14rem;
+  font-weight: 900;
+}
+
+h1 .big-text {
+  font-size: 12rem;
+  font-weight: 900;
+}
+
+.emphasis {
+  color: #E7553C;
+  font-weight: bold;
+}
+
+/* overrides theme font size ============ */ 
+
+.remark-slide-content p, 
+.remark-slide-content ol,
+.remark-slide-content li {
+  font-size: 1.9rem;
+}
+
+
+.remark-code {
+    font-size: 24px;
+}
+
+
+/* tables */
+/* spacey-table with white rows */
+
+.spaced td {
+  padding: 15px;
+}
+
+.spaced tr {
+  background-color: white;
+}
+
+
+/* ------ Agenda slide / list and bullet spacing ---- */
+
+.agenda ol {
+  font-size: 40px;
+}
+
+.agenda ol li {
+  padding-bottom: 1rem;
+}
