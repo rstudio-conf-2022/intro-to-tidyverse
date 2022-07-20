@@ -19,30 +19,131 @@
     <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
     <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-banner/banner.js"></script>
     <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/session01.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 
-
-class: title-slide
-
+class: middle
 
 
-# Session 1 Review
-
-### Day 1, Session 1
-
-&lt;div class="title-footer"&gt;
-  &lt;img src="images/academy-logo.png"&gt;
-  &lt;div&gt; Desirée De Leon • July 25, 2022&lt;/div&gt;
-&lt;/div&gt;
 
 
-<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"exclude":["title-slide"],"position":"top"}'))})</script>
-<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"<a href=\\"https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01\\">materials/session01<\/a>","exclude":["title-slide"],"position":"bottom"}'))})</script>
+# Welcome
+
+
+Find your group's table and make yourself comfortable. 
+
+We'll get started shortly after the 9 o'clock hour.
+
+---
+class: inverse middle
+
+# Conference workshop policies
+
+.left-column[
+
+  .center[
+
+  🚪 💨 
+
+  &lt;br&gt;
+
+  🚫 📷 
+
+  &lt;br&gt;
+  &lt;br&gt;
+
+  🧘‍♂️ ⛺
+  ]
+]
+
+.right-column[
+
+  Identify the exits closest to you in case of emergency 
+
+  &lt;br&gt;
+
+  Please do not photograph people wearing .light-red[red lanyards] 
+
+  &lt;br&gt;
+
+  A chill-out room is available for neurologically diverse attendees on the 4th floor of tower 1
+] 
+
+---
+
+# Code of conduct
+
+- Please review the [rstudio::conf code of conduct](https://rstd.io/code-of-conduct) that applies to all workshops &lt;https://rstd.io/code-of-conduct&gt;
+
+--
+
+- CoC issues can be addressed three ways:
+
+  - In person: contact any rstudio::conf staff member or the conference registration desk
+  - By email: send a message to `conf@rstudio.com`
+  - By phone: call 844-448-1212
+  
+---
+class: middle, center
+
+.pull-left[
+# <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z"/></svg>
+Wifi network name  
+
+
+
+]
+
+.pull-left[
+# <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M512 176.001C512 273.203 433.202 352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z"/></svg>
+
+Wifi password
+
+
+
+]
+
+---
+class: top, center
+background-image: url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1332&amp;q=80)
+background-position: center
+background-size: contain
+
+# Goals
+
+Drill old wrangling skills and explore new ones
+
+Learn best practices for exploring your data and reporting it reproducibly 
+
+
+???
+
+Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academ course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
+
+1. Drill old wrangling skills and explore new ones
+
+1. Learn best practices for exploring your data and report it reproducibly -- including doing this in your local RStudio IDE, outside of Academy.
+
+In short, we're using these two days to give you sanctioned time to dive deep into the skills you've been learning the past few weeks with a lot of protected time for practice. 
+
+[Will we build in opps for more learning and drilling during downtime?]
+
+
+---
+class: center, middle, chapter-slide blue
+
+.big-text.white[Hello!]
+
+???
+
+And so with that, let me introduce myself...
+
 
 ---
 class: speaker-slide
@@ -60,75 +161,160 @@ class: speaker-slide
 ]
 
 ---
-class: middle
 
-This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+Placeholder for team slide...
 
+???
 
-
----
-class: middle
-
-Review activity with small group (new dataset) - 50 min
+But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that you have been experiencing at Academy. 
 
 ---
 
-## Outbreaks data
+line up image
+
+???
+ 
+The lineup for the next couple days...
 
 
-```r
-outbreaks &lt;- readr::read_csv("data/session01/outbreaks.csv")
-```
-
-```
-## Rows: 57649 Columns: 21
-## ── Column specification ────────────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (14): state, primary_mode, etiology, serotype_or_genotype, etiology_status, sett...
-## dbl  (7): year, month, illnesses, hospitalizations, info_on_hospitalizations, deaths...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
+---
+ day 1
+ 
+ day 2
 
 ---
 
-1. First things first -- let's take a look a what's in this dataset. Can you recreate output that looks like this?
+day 1 day 2 detailed
+---
+
+schedule
+
+???
+
+Now that we have an overview of the next two days...
+
+---
+
+You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
+
+You can navigate there now...
+
+One exception is Session 4....
+
+---
+class: center, middle, chapter-slide blue
+
+.big-text.white[Let's get to work!]
+
+---
+class: title-slide
+
+# Session 1 Review
+
+### Day 1, Session 1
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; Desirée De Leon • July 25, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+???
+
+We're going to start off with some review of what we've learned for the past couple weeks.
+
+---
+
+Screenshot of workspace
+
+for this session, we'll be doing our work in this part of the Academy website. 
+
+Go ahead and open up the milestone for this session.  
 
 
-```r
-glimpse(outbreaks)
-```
+---
+
+What we'll do:
+
+I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
+
+
+You'll do your work in this RMd, yo ucan create as many code chunks as you like in here. Do you work in the Rmd document so you have a record of your code.
+
+---
+
+
+For each prompt, the first group to have everyone with the answer correct (as verified by your mentor), will win a small prize. 
+
+
+After a few more minutes, we'll go over the answer together. And then move on to the next question. 
+
+???
+
+After the conference, you'll be able to see these slides (with the prompts) linked on our website.
+
+---
+class: center, middle
+background-image: url(https://images.unsplash.com/photo-1638490868554-afb2dfd088a8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80)
+background-position: center
+background-size: cover
+
+# Outbreaks data
+
+
+
+
+???
+
+We'll be working with data about water and food borne illnesses. this dataset comes from....
+
+First things first, let's take a look a what's in this dataset. 
+
+So here is your first prompt:
+
+---
+class: your-turn
+
+# Your Turn 1
+
+Can you recreate output that looks like this?
+
+
+
 
 ```
 ## Rows: 57,649
 ## Columns: 21
-## $ year                         &lt;dbl&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2009, 2…
-## $ month                        &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1…
-## $ state                        &lt;chr&gt; "Minnesota", "Minnesota", "Minnesota", "Minnesota…
-## $ primary_mode                 &lt;chr&gt; "Person-to-person", "Food", "Person-to-person", "…
-## $ etiology                     &lt;chr&gt; "Norovirus Genogroup II", "Norovirus", "Norovirus…
-## $ serotype_or_genotype         &lt;chr&gt; "unknown", NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ etiology_status              &lt;chr&gt; "Confirmed", "Suspected", "Suspected", "Confirmed…
-## $ setting                      &lt;chr&gt; "Hotel/motel", "Restaurant - Sit-down dining", "O…
-## $ illnesses                    &lt;dbl&gt; 21, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16, 11, 6,…
-## $ hospitalizations             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 4, 2…
-## $ info_on_hospitalizations     &lt;dbl&gt; 19, 2, 0, 24, 8, 5, 3, 21, 7, 5, 1, 16, 11, 6, 69…
-## $ deaths                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-## $ info_on_deaths               &lt;dbl&gt; 19, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16, 11, 6,…
-## $ food_vehicle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "cookies", "salad, un…
-## $ food_contaminated_ingredient &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ ifsac_category               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "Multiple", "Multiple…
-## $ water_exposure               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ water_type                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ animal_type                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ animal_type_specify          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ year                         &lt;dbl&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009,…
+## $ month                        &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,…
+## $ state                        &lt;chr&gt; "Minnesota", "Minnesota", "Minnesota", "M…
+## $ primary_mode                 &lt;chr&gt; "Person-to-person", "Food", "Person-to-pe…
+## $ etiology                     &lt;chr&gt; "Norovirus Genogroup II", "Norovirus", "N…
+## $ serotype_or_genotype         &lt;chr&gt; "unknown", NA, NA, NA, NA, NA, NA, NA, NA…
+## $ etiology_status              &lt;chr&gt; "Confirmed", "Suspected", "Suspected", "C…
+## $ setting                      &lt;chr&gt; "Hotel/motel", "Restaurant - Sit-down din…
+## $ illnesses                    &lt;dbl&gt; 21, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ hospitalizations             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0,…
+## $ info_on_hospitalizations     &lt;dbl&gt; 19, 2, 0, 24, 8, 5, 3, 21, 7, 5, 1, 16, 1…
+## $ deaths                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ info_on_deaths               &lt;dbl&gt; 19, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ food_vehicle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "cookies", "s…
+## $ food_contaminated_ingredient &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ ifsac_category               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "Multiple", "…
+## $ water_exposure               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_type                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type_specify          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
 ```
 
-```r
-#str(outbreaks)
-```
+???
+
+3 minutes to read in the data and run glimpse()?
+---
+
+Show Solution.
+
+Static or live code in box?
 
 ---
 
@@ -142,22 +328,23 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 57,649 × 21
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  1971    11 Alaska     Water        Shigell… &lt;NA&gt;             Confirmed       Mobile…
-##  2  1971     6 Alabama    Water        Selenium &lt;NA&gt;             Confirmed       Unknown
-##  3  1971     6 Arkansas   Water        Hepatit… &lt;NA&gt;             Confirmed       Store/…
-##  4  1971     2 California Water        Copper   &lt;NA&gt;             Confirmed       Restau…
-##  5  1971     7 California Water        Unknown  &lt;NA&gt;             Suspected       Commun…
-##  6  1971    12 California Water        Unknown  &lt;NA&gt;             Suspected       Hotel/…
-##  7  1971     7 Kentucky   Water        Unknown  &lt;NA&gt;             Suspected       Park -…
-##  8  1971     6 Missouri   Water        Unknown  &lt;NA&gt;             Suspected       Subdiv…
-##  9  1971     7 Mississip… Water        Shigell… &lt;NA&gt;             Confirmed       Camp/C…
-## 10  1971     9 North Car… Water        Hepatit… &lt;NA&gt;             Confirmed       Privat…
-## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
-## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
-## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
-## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  1971    11 Alaska     Water        Shigell… &lt;NA&gt;             Confirmed      
+##  2  1971     6 Alabama    Water        Selenium &lt;NA&gt;             Confirmed      
+##  3  1971     6 Arkansas   Water        Hepatit… &lt;NA&gt;             Confirmed      
+##  4  1971     2 California Water        Copper   &lt;NA&gt;             Confirmed      
+##  5  1971     7 California Water        Unknown  &lt;NA&gt;             Suspected      
+##  6  1971    12 California Water        Unknown  &lt;NA&gt;             Suspected      
+##  7  1971     7 Kentucky   Water        Unknown  &lt;NA&gt;             Suspected      
+##  8  1971     6 Missouri   Water        Unknown  &lt;NA&gt;             Suspected      
+##  9  1971     7 Mississip… Water        Shigell… &lt;NA&gt;             Confirmed      
+## 10  1971     9 North Car… Water        Hepatit… &lt;NA&gt;             Confirmed      
+## # … with 57,639 more rows, and 14 more variables: setting &lt;chr&gt;,
+## #   illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;,
+## #   deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
 
@@ -168,22 +355,23 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 57,649 × 21
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  2020     1 Mississip… Person-to-p… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            Long-t…
-##  2  2020     1 Wisconsin  Person-to-p… Norovir… GII.P16 - GII.4… Confirmed       Other …
-##  3  2020     1 Nebraska   Person-to-p… Norovir… GII.P16 - GII.4… Confirmed       Long-t…
-##  4  2020     1 New York   Food         Clostri… &lt;NA&gt;             Suspected       Catere…
-##  5  2020     1 New Mexico Person-to-p… Norovir… unknown          Confirmed       Long-t…
-##  6  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
-##  7  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected; Sus… Long-t…
-##  8  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
-##  9  2020     1 Massachus… Person-to-p… Norovir… &lt;NA&gt;             Suspected       Long-t…
-## 10  2020     1 Massachus… Food         Norovir… &lt;NA&gt;             Suspected       Restau…
-## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
-## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
-## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
-## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  2020     1 Mississip… Person-to-p… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+##  2  2020     1 Wisconsin  Person-to-p… Norovir… GII.P16 - GII.4… Confirmed      
+##  3  2020     1 Nebraska   Person-to-p… Norovir… GII.P16 - GII.4… Confirmed      
+##  4  2020     1 New York   Food         Clostri… &lt;NA&gt;             Suspected      
+##  5  2020     1 New Mexico Person-to-p… Norovir… unknown          Confirmed      
+##  6  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected      
+##  7  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected; Sus…
+##  8  2020     1 Minnesota  Person-to-p… Norovir… &lt;NA&gt;             Suspected      
+##  9  2020     1 Massachus… Person-to-p… Norovir… &lt;NA&gt;             Suspected      
+## 10  2020     1 Massachus… Food         Norovir… &lt;NA&gt;             Suspected      
+## # … with 57,639 more rows, and 14 more variables: setting &lt;chr&gt;,
+## #   illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;,
+## #   deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
 
@@ -316,12 +504,13 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 1 × 21
-##    year month state     primary_mode etiology   serotype_or_gen… etiology_status setting
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-## 1  1993     3 Wisconsin Water        Cryptospo… &lt;NA&gt;             Confirmed       Commun…
-## # … with 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
-## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
-## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+##    year month state     primary_mode etiology   serotype_or_gen… etiology_status
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;          
+## 1  1993     3 Wisconsin Water        Cryptospo… &lt;NA&gt;             Confirmed      
+## # … with 14 more variables: setting &lt;chr&gt;, illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
 ## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
@@ -337,22 +526,23 @@ outbreaks %&gt;% arrange(desc(illnesses))
 
 ```
 ## # A tibble: 57,649 × 21
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  1993     3 Wisconsin  Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
-##  2  1987     1 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
-##  3  1983     6 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected       Camp/C…
-##  4  1991     8 Puerto Ri… Water        Unknown  &lt;NA&gt;             Suspected       Commun…
-##  5  1980     6 Texas      Water        Unknown  &lt;NA&gt;             Suspected       Commun…
-##  6  2007     5 Utah       Water        Cryptos… &lt;NA&gt;             Confirmed       Commun…
-##  7  1995     7 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed; Con… Park -…
-##  8  1978     3 Colorado   Water        Giardia… &lt;NA&gt;             Confirmed       Commun…
-##  9  1987     9 Multistate Water        Norovir… &lt;NA&gt;             Confirmed       School…
-## 10  1975     8 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected       Commun…
-## # … with 57,639 more rows, and 13 more variables: illnesses &lt;dbl&gt;,
-## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
-## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;,
-## #   ifsac_category &lt;chr&gt;, water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  1993     3 Wisconsin  Water        Cryptos… &lt;NA&gt;             Confirmed      
+##  2  1987     1 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed      
+##  3  1983     6 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected      
+##  4  1991     8 Puerto Ri… Water        Unknown  &lt;NA&gt;             Suspected      
+##  5  1980     6 Texas      Water        Unknown  &lt;NA&gt;             Suspected      
+##  6  2007     5 Utah       Water        Cryptos… &lt;NA&gt;             Confirmed      
+##  7  1995     7 Georgia    Water        Cryptos… &lt;NA&gt;             Confirmed; Con…
+##  8  1978     3 Colorado   Water        Giardia… &lt;NA&gt;             Confirmed      
+##  9  1987     9 Multistate Water        Norovir… &lt;NA&gt;             Confirmed      
+## 10  1975     8 Pennsylva… Water        Unknown  &lt;NA&gt;             Suspected      
+## # … with 57,639 more rows, and 14 more variables: setting &lt;chr&gt;,
+## #   illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;,
+## #   deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
 
@@ -473,21 +663,22 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 44 × 21
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  2019     6 Washingto… Food         Cyclosp… &lt;NA&gt;             Confirmed       "Resta…
-##  2  2019     5 Washingto… Food         Norovir… unknown - unkno… Suspected       "Priva…
-##  3  2019     3 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Resta…
-##  4  2018     9 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Resta…
-##  5  2018     3 Washingto… Food         Norovir… unknown - unkno… Confirmed       "Resta…
-##  6  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected       "Resta…
-##  7  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected       "Resta…
-##  8  2017    12 Washingto… Food         Norovir… unknown - unkno… Confirmed       "Cater…
-##  9  2016     2 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            "Schoo…
-## 10  2015     9 Washingto… Food         Salmone… Enteritidis      Confirmed       "Resta…
-## # … with 34 more rows, and 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
-## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
-## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  2019     6 Washingto… Food         Cyclosp… &lt;NA&gt;             Confirmed      
+##  2  2019     5 Washingto… Food         Norovir… unknown - unkno… Suspected      
+##  3  2019     3 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+##  4  2018     9 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+##  5  2018     3 Washingto… Food         Norovir… unknown - unkno… Confirmed      
+##  6  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected      
+##  7  2018     3 Washingto… Food         Norovir… &lt;NA&gt;             Suspected      
+##  8  2017    12 Washingto… Food         Norovir… unknown - unkno… Confirmed      
+##  9  2016     2 Washingto… Food         &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+## 10  2015     9 Washingto… Food         Salmone… Enteritidis      Confirmed      
+## # … with 34 more rows, and 14 more variables: setting &lt;chr&gt;, illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
 ## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
@@ -509,21 +700,22 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 265 × 21
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  2009     7 Michigan   Food         Salmone… Newport          Confirmed        &lt;NA&gt;  
-##  2  2009     5 West Virg… Food         Salmone… Enteritidis      Confirmed        &lt;NA&gt;  
-##  3  2010     2 Illinois   Food         Shigell… &lt;NA&gt;             Confirmed       "Resta…
-##  4  2010     5 Louisiana  Food         Clostri… &lt;NA&gt;             Confirmed        &lt;NA&gt;  
-##  5  2010     6 New York   Food         Escheri… O157:H7          Confirmed       "Other"
-##  6  2010    10 Colorado   Food         Norovir… &lt;NA&gt;             Confirmed       "Long-…
-##  7  2011     3 Rhode Isl… Food         Salmone… Heidelberg       Confirmed        &lt;NA&gt;  
-##  8  2009     2 Multistate Food         Salmone… Carrau           Confirmed       "Groce…
-##  9  2009     8 Multistate Food         Escheri… O157:H7          Confirmed       "Other"
-## 10  2010     1 Texas      Food         Listeri… &lt;NA&gt;             Confirmed        &lt;NA&gt;  
-## # … with 255 more rows, and 13 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
-## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
-## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  2009     7 Michigan   Food         Salmone… Newport          Confirmed      
+##  2  2009     5 West Virg… Food         Salmone… Enteritidis      Confirmed      
+##  3  2010     2 Illinois   Food         Shigell… &lt;NA&gt;             Confirmed      
+##  4  2010     5 Louisiana  Food         Clostri… &lt;NA&gt;             Confirmed      
+##  5  2010     6 New York   Food         Escheri… O157:H7          Confirmed      
+##  6  2010    10 Colorado   Food         Norovir… &lt;NA&gt;             Confirmed      
+##  7  2011     3 Rhode Isl… Food         Salmone… Heidelberg       Confirmed      
+##  8  2009     2 Multistate Food         Salmone… Carrau           Confirmed      
+##  9  2009     8 Multistate Food         Escheri… O157:H7          Confirmed      
+## 10  2010     1 Texas      Food         Listeri… &lt;NA&gt;             Confirmed      
+## # … with 255 more rows, and 14 more variables: setting &lt;chr&gt;, illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
 ## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;
 ```
@@ -591,21 +783,22 @@ outbreaks %&gt;%
 
 ```
 ## # A tibble: 99 × 22
-##     year month state      primary_mode etiology serotype_or_gen… etiology_status setting
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;  
-##  1  2019     3 Washingto… Environment… Norovir… unknown - unkno… Confirmed       Long-t…
-##  2  2015     3 Washingto… Environment… Norovir… &lt;NA&gt;             Confirmed       Hospit…
-##  3  2014     2 Washingto… Indetermina… Norovir… unknown          Suspected       Long-t…
-##  4  2009     2 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            &lt;NA&gt;   
-##  5  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected       &lt;NA&gt;   
-##  6  2019     7 Washingto… Indetermina… Norovir… &lt;NA&gt;             Suspected       School…
-##  7  2014     2 Washingto… Indetermina… Norovir… unknown          Confirmed       Long-t…
-##  8  2002    10 Washingto… Food         Salmone… &lt;NA&gt;             Confirmed; Con… Catere…
-##  9  2009     3 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;            &lt;NA&gt;   
-## 10  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected       &lt;NA&gt;   
-## # … with 89 more rows, and 14 more variables: illnesses &lt;dbl&gt;, hospitalizations &lt;dbl&gt;,
-## #   info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;, info_on_deaths &lt;dbl&gt;,
-## #   food_vehicle &lt;chr&gt;, food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
+##     year month state      primary_mode etiology serotype_or_gen… etiology_status
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;          
+##  1  2019     3 Washingto… Environment… Norovir… unknown - unkno… Confirmed      
+##  2  2015     3 Washingto… Environment… Norovir… &lt;NA&gt;             Confirmed      
+##  3  2014     2 Washingto… Indetermina… Norovir… unknown          Suspected      
+##  4  2009     2 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+##  5  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected      
+##  6  2019     7 Washingto… Indetermina… Norovir… &lt;NA&gt;             Suspected      
+##  7  2014     2 Washingto… Indetermina… Norovir… unknown          Confirmed      
+##  8  2002    10 Washingto… Food         Salmone… &lt;NA&gt;             Confirmed; Con…
+##  9  2009     3 Washingto… Indetermina… &lt;NA&gt;     &lt;NA&gt;             &lt;NA&gt;           
+## 10  2010    12 Washingto… Person-to-p… Norovir… &lt;NA&gt;             Suspected      
+## # … with 89 more rows, and 15 more variables: setting &lt;chr&gt;, illnesses &lt;dbl&gt;,
+## #   hospitalizations &lt;dbl&gt;, info_on_hospitalizations &lt;dbl&gt;, deaths &lt;dbl&gt;,
+## #   info_on_deaths &lt;dbl&gt;, food_vehicle &lt;chr&gt;,
+## #   food_contaminated_ingredient &lt;chr&gt;, ifsac_category &lt;chr&gt;,
 ## #   water_exposure &lt;chr&gt;, water_type &lt;chr&gt;, animal_type &lt;chr&gt;,
 ## #   animal_type_specify &lt;chr&gt;, water_status &lt;chr&gt;, hosp_rate &lt;dbl&gt;
 ```
@@ -669,19 +862,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

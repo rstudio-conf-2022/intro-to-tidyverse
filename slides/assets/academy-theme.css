@@ -110,6 +110,7 @@ div.my-footer span {
   left: 0;
   right: 0;
   z-index: 20;
+  box-sizing: content-box;
 }
 
 .title-footer img {
@@ -143,12 +144,18 @@ div.my-footer span {
 }
 
 .big-white-number {
-  font-size: 6em;
+  font-size: 240px;
   float: left;
   width: 20%;
   color: white;
   font-weight: 900;
 }
+
+
+.chapter-slide h1 {
+  font-size: 100px;
+}
+
 
 .red {
   background-color: #ffb3a2;
@@ -165,9 +172,6 @@ div.my-footer span {
 .tan {
   background-color: #e2d8d2;
 }
-
-
-
 
 .chapter-slide.red h1,
 .chapter-slide.blue h1,
@@ -234,12 +238,13 @@ pre {
 
 pre code { 
   background: none; 
-  font-size: 1rem;
+  font-size: 1rem; 
 }
+
 
 .remark-code {
   font-size: 26px;
-}
+} 
 
 .remark-inline-code {
   color: #847d79;
@@ -301,10 +306,10 @@ pre code {
 /* Two column layout ============================/*
 
 /* Two-column layout */
-.left-column {
+.middle .left-column {
   color: #777;
   width: 30%;
-  height: 92%;
+  height: 50%;
   float: left;
   font-size: 18px;
 }

@@ -4,11 +4,11 @@ subtitle: "Day 1, Session 1"
 author: "Desirée De Leon"
 date: "July 25, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01
-  text: materials/session01
+  url: "https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01"
+  text: ""
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session01.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -16,27 +16,18 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
+params:
+  wifi_network: ""
+  wifi_password: ""
 ---
-
-class: title-slide
+class:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-```
 
-# `r rmarkdown::metadata$title`
-
-### `r rmarkdown::metadata$subtitle`
-
-<div class="title-footer">
-  <img src="images/academy-logo.png">
-  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
-</div>
-
-
-```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
 xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+xaringanExtra::use_tachyons()
 
 if (!is.null(rmarkdown::metadata$shortlink)) {
   shortlink <- rmarkdown::metadata$shortlink
@@ -56,6 +47,156 @@ if (!is.null(rmarkdown::metadata$shortlink)) {
 }
 ```
 
+
+# .big-text[Welcome] 
+
+## Introduction to the tidyverse 
+
+Find your group's table and make yourself comfortable. 
+
+We'll get started shortly after 9am.
+
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> </div>
+</div>
+
+---
+class: middle, agenda
+
+# Session 1 Agenda
+
+1. Logistics: Policies, Goals, and Schedules
+1. Review: Group challenge
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[1.]
+
+# Policies, Goals, & Schedules
+
+---
+
+class: inverse, middle
+
+# Conference workshop policies
+
+.left-column[
+
+  .center[
+
+  `r emo::ji("door")` `r emo::ji("dash")` 
+
+  <br>
+
+  `r emo::ji("no_entry_sign")` `r emo::ji("camera")` 
+
+  <br>
+
+  `r emo::ji("person_in_lotus_position")` `r emo::ji("tent")`
+  
+  <br>
+  <br>
+  
+  `r emo::ji("face_with_medical_mask")` `r emo::ji("microbe")`
+  ]
+]
+
+.right-column[
+
+  Identify the exits closest to you in case of emergency 
+
+  <br>
+
+  Please do not photograph people wearing .light-red[red lanyards] 
+
+  <br>
+
+  A meditation / chill-out room is available for those who want to recharge with some peach and quiet.
+  
+   <br>
+   
+  Fully cover your mouth and nose at all times
+   
+] 
+
+---
+
+# Code of conduct
+
+- Please review the [rstudio::conf code of conduct](https://rstd.io/code-of-conduct) that applies to all workshops <https://rstd.io/code-of-conduct>
+
+--
+
+- CoC issues can be addressed three ways:
+
+  - In person: contact any rstudio::conf staff member or the conference registration desk
+  - By email: send a message to `conf@rstudio.com`
+  - By phone: call 844-448-1212
+  
+  
+---
+class: middle, center
+
+.pull-left[
+# `r fontawesome::fa("fas fa-wifi")`
+Wifi network name  
+
+`r params$wifi_network`
+
+]
+
+.pull-right[
+# `r fontawesome::fa("fas fa-key")`
+
+Wifi password
+
+`r params$wifi_password`
+
+]
+
+---
+class: center, top
+background-image: url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80)
+background-position: center
+background-size: cover
+
+# Goals
+
+
+???
+
+Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academy course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
+
+1. Drill old wrangling skills and explore new ones
+
+1. Learn best practices for exploring your data and report it reproducibly -- including doing this in your local RStudio IDE, outside of Academy.
+
+In short, we're using these two days to give you sanctioned time to dive deep into the skills you've been learning the past few weeks with a lot of protected time for practice. 
+
+[Will we build in opps for more learning and drilling during downtime?]
+
+--
+
+Drill old wrangling skills and explore new ones
+
+--
+
+Learn best practices for exploring your data and reporting it reproducibly 
+
+
+---
+class: center, middle, chapter-slide red
+
+.big-text.white.center[Hello!]
+
+???
+
+And so with that, let me introduce myself...
+
+
 ---
 class: speaker-slide
 
@@ -72,9 +213,294 @@ class: speaker-slide
 ]
 
 ---
-class: middle
+class: center
 
-This is the planning document for the slides that will be used during the Session 01 Review Activity at conf.
+# Meet the team
+
+<div class="cf-ns nl2 nr2">
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/8742033?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Kristin Bott
+    </div>
+  </div>
+
+
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/32279312?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Brendan Cullen
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/5782147?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Daniel Chen
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/18153457?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Sara Altman
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/49049415?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Deirdre Francks
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/34824840?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+Steven Smallberg    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/36464703?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+Laura Puckett    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/85014?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Garrett Grolemund    
+    </div>
+  </div>
+  
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/45143?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Dan Buch
+    </div>
+  </div>
+  
+  <div class="fl-ns w-20-ns pv4">
+    <div class="tc">
+      <img src="https://avatars.githubusercontent.com/u/5420529?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar">
+    </div>
+    <div class="f6 fw6 gray ttu tracked mt2">
+      Garrick Aden-Buie
+    </div>
+  </div>
+  
+  
+  
+</div>
+
+
+
+???
+
+But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that have made the Academy experience you're going through possible. 
+
+---
+
+
+class: middle, center
+background-image: url("images/session01/scooters.jpg")
+background-size: cover
+
+---
+class: middle, center
+background-image: url("images/session01/scooters-dark.png")
+background-size: cover
+
+# .big-text.white[The Lineup]
+
+???
+ 
+Here is what we have lined up for you for the next couple days...
+
+
+---
+class: middle, center
+
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices
+]
+
+--
+
+.pull-right[
+
+# Day Two:
+
+### Transformation + Milestone  
+
+]
+
+---
+class: middle, center
+
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices
+
+Review
+
+Exploratory data analysis
+
+R Markdown for reproducible results
+
+R Projects and your local IDE
+]
+
+--
+
+.pull-right[
+
+# Day Two:
+
+### Transformation + Milestone  
+
+Summarize data and work with groups
+
+Recoding variables + Milestone recreation
+
+Lightning talks + Milestone extension
+
+Milestone presentation
+]
+
+---
+class: middle, center
+
+???
+
+this is our schedule. And this is where we'll work...
+
+You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
+
+You can navigate there now...
+
+One exception is Session 4....
+
+--
+
+.left-column1[
+# Schedule
+
+.spaced[
+
+| Time          | Activity                                                      |
+|:--------------|:--------------------------------------------------------------|
+| 09:00 - 10:30 | Session 1                              |
+| 10:30 - 11:00 | *Break* `r emo::ji("coffee")`                                 |
+| 11:00 - 12:30 | Session 2                                    |
+| 12:30 - 01:30 | *Lunch* `r emo::ji("bento")`                                
+| 01:30 - 03:00 | Session 3                                       |
+| 03:00 - 03:30 | *Break* `r emo::ji("tea")`                                    |
+| 03:30 - 05:00 | Session 4  
+
+]
+]
+
+--
+
+.right-column1[
+# Workspace
+<img src="images/session01/campsite_screenshot.png">
+]
+
+
+---
+class: middle, chapter-slide green
+
+.big-white-number[2.]
+
+# Review: Group challenge
+
+---
+class: title-slide
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+???
+
+We're going to start off with some review of what we've learned for the past couple weeks.
+
+---
+
+Screenshot of workspace
+
+for this session, we'll be doing our work in this part of the Academy website. 
+
+Go ahead and open up the milestone for this session.  
+
+
+---
+
+What we'll do:
+
+I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
+
+
+You'll do your work in this RMd, yo ucan create as many code chunks as you like in here. Do you work in the Rmd document so you have a record of your code.
+
+---
+
+RULES:
+
+For each prompt, the first group to have everyone with the answer correct (as verified by your mentor), will win a small prize. 
+
+You must have the correct code and the correct output.
+
+After a few more minutes, we'll go over the answer together. And then move on to the next question. 
+
+???
+
+After the conference, you'll be able to see these slides (with the prompts) linked on our website.
+
+---
+class: center, middle
+background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3bc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80)
+background-position: center
+background-size: cover
+
+# 
+
+.big-text.white[Outbreaks data]
 
 ```{r load-data, include=FALSE}
 library(tidyverse)
@@ -84,43 +510,77 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
   readr::write_csv("data/session01/outbreaks.csv")
 ```
 
+
+???
+
+We'll be working with data about foodborne and waterborne disease outbreaks spread by contact with environmental sources or infected people or animals. This dataset comes from the CDC's National 
+National Outbreak Reporting System (NORS).
+
+First things first, let's take a look a what's in this dataset. 
+
+So here is your first prompt:
+
 ---
-class: middle
+class: your-turn
 
-Review activity with small group (new dataset) - 50 min
+# Your Turn 1
 
----
+Can you recreate output that looks like this?
 
-## Outbreaks data
-
-```{r read-in-outbreaks}
+```{r read-in-outbreaks, include = FALSE}
 outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
 ```
 
----
-
-1. First things first -- let's take a look a what's in this dataset. Can you recreate output that looks like this?
-
-```{r}
+```{r echo = FALSE}
 glimpse(outbreaks)
 #str(outbreaks)
 ```
 
+???
+
+3 minutes to read in the data and run glimpse()?
+
 ---
 
-1.1 What is the earliest year on record in this dataset? Latest?
+Show Solution.
 
+Static or live code in box?
+
+---
+class: your-turn
+
+# Your Turn 2
+
+What is the earliest year on record in this dataset? Latest?
+
+---
+
+Solution
+
+.pull-left[
 ```{r}
 outbreaks %>%
   arrange(year)
+```
+]
 
+.pull-right[
+```{r}
 outbreaks %>%
   arrange(desc(year))
 ```
+]
+
+---
+class: your-turn
+# Your Turn 3
+
+The `state` variable appears to include US locations -- is the data limited to the 50 states?
+
 
 ---
 
-1.2 The `state` variable appears to include US locations -- is the data limited to the 50 states?
+Solution: 
 
 ```{r}
 outbreaks %>%
@@ -128,43 +588,87 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
+# Your Turn 4
 
-1.3 The ifsac category is....relevant when the primary mode of infection is via Food. Filtering on that criterion, can you reproduce the table below?
+Let's turn our attention to only observations where the primary mode of infection is Food. Using that criterion, can you reproduce the table below?
 
-Can you repro
-
-```{r}
+```{r echo = FALSE}
 outbreaks %>%
   filter(primary_mode == "Food") %>% 
   count(ifsac_category)
 ```
 
+???
+
 ---
 
-2. What are the different etiologies that have been recorded? Display them in a table ike the one below.
+Solution:
 
-```{r}
+```{r eval = FALSE}
+outbreaks %>%
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category)
+```
+
+
+---
+class: your-turn
+
+# Your Turn 5
+
+What are the different etiologies that have been recorded in this dataset? Display them in a table like the one below.
+
+```{r echo = FALSE}
 outbreaks %>%
   count(etiology)
 ```
 
 ---
 
-3. Read in + plot
-
-Explore the relationship between month and the number of illnesses with a plot like this one:
+Solution:
 
 ```{r}
+outbreaks %>%
+  count(etiology)
+```
+
+
+---
+class: your-turn
+
+# Your Turn 6
+
+.pull-left[
+Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it? ]
+
+.pull-right[
+```{r, echo = FALSE}
+outbreaks %>% 
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+```
+
+]
+
+---
+
+Solution:
+
+```{r eval = FALSE}
 outbreaks %>% 
   ggplot(mapping = aes(x = month, y = illnesses)) + 
   geom_point()
 ```
 
 ---
+class: your-turn
 
-4. Subset the data before plotting to inspect the outlier in a plot like this:
+# Your Turn 7
 
-```{r}
+Subset the data before plotting to inspect the outlier in a plot like this:
+
+```{r echo = FALSE}
 outbreaks %>%
   filter(
     illnesses >= 400000
@@ -175,7 +679,28 @@ outbreaks %>%
 
 ---
 
-5. What observation is associated with such a high number of illnesses? Display the observation in a table:
+Solution:
+
+```{r eval = FALSE}
+outbreaks %>%
+  filter(
+    illnesses >= 400000
+  ) %>%
+  ggplot(mapping = aes(x = month, y = illnesses)) + 
+  geom_point()
+
+```
+
+---
+class: your-turn
+
+# Your Turn 8
+
+Which observation in `outbreaks` is associated with such a high number of illnesses? Display solely this observation in a table.
+
+---
+
+One possible solution:
 
 ```{r}
 outbreaks %>%
@@ -185,18 +710,28 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
-6. Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+# Your Turn 9
+
+Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% arrange(desc(illnesses))
 ```
 
 ---
+class: your-turn
 
-7. Excluding the observation with the highest number of illnesses, have we gotten better at reducing the number of illnesses through the years?
+# Your Turn 10
 
-```{r}
+Excluding the previous observation, has the number of illnesses decreased throughout the years? Explore this question with a visualization.
+
+```{r echo = FALSE}
 outbreaks %>%
   filter(
     illnesses < 400000
@@ -210,26 +745,74 @@ outbreaks %>%
 
 ---
 
-8. How many primary modes of illness are there?
+One possible solution:
 
-```{r}
+```{r eval = FALSE}
+outbreaks %>%
+  filter(
+    illnesses < 400000
+  ) %>% 
+  ggplot(
+    mapping = aes(x = year, y = illnesses)
+  ) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+---
+class: your-turn
+# Your Turn 11
+
+How many primary modes of illness does this dataset contain?
+
+---
+
+One possible solution:
+
+```{r eval = FALSE}
 outbreaks %>%
   count(primary_mode)
 ```
 
+
+---
+class: your-turn
+
+# Your Turn 12
+
+Which primary mode is responsible for the greatest number of reported outbreaks? Explore this with a visualization.
+
+
 ---
 
-9. Which primary mode is responsible for the greatest number of reported outbreaks?
+Solution:
+
 
 ```{r}
 outbreaks %>%
   ggplot(mapping = aes(x = primary_mode)) + 
-  geom_bar()
+  geom_bar() +
+  coord_flip()
 ```
 
 ---
+class: your-turn
 
-10. Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+# Your Turn 13
+
+Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+
+```{r echo = FALSE}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
+  geom_point()
+```
+
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>%
@@ -239,10 +822,13 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
-11. Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+# Your Turn 14
 
-```{r}
+Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+
+```{r echo = FALSE}
 outbreaks %>%
   filter(illnesses < 40000) %>% 
   ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
@@ -252,7 +838,35 @@ outbreaks %>%
 
 ---
 
-12. Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+Solution:
+
+```{r eval = FALSE}
+outbreaks %>%
+  filter(illnesses < 40000) %>% 
+  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
+  geom_point(alpha = 0.01) + 
+  geom_boxplot()
+```
+
+
+---
+class: your-turn
+
+# Your Turn 15
+
+Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+
+```{r echo = FALSE}
+outbreaks %>% 
+  filter(state == "Washington DC") %>%
+  ggplot(mapping = aes(x = primary_mode)) +
+  geom_bar()
+
+```
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -263,10 +877,17 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
-21. Limit to DC and food-related illnesses --> when was the last time (year / month) that there was an outbreak? Your answer should be a table. 
+# Your Turn 16 
 
-```{r}
+Let's focus only on DC and foodborne illnesses now. Show the most recent outbreaks in a table, from most recent to least reaent.
+
+---
+
+Solution:
+
+```{r echo = FALSE}
 outbreaks %>% 
   filter(
     state == "Washington DC" & 
@@ -276,22 +897,34 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
-30. Harder filter() + select()
+# Your Turn 17
 
-Find food-related outbreaks that resulted in at least 1 death, and show the columns from `year` to `deaths`
+Find food-related outbreaks that resulted in at least 1 death. Display the results in a table that contains only the columns from `year` to `deaths`.
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
   filter(
     primary_mode == "Food", 
     deaths >= 1
-  )
+  ) %>% 
+  select(year:deaths)
 ```
 
 ---
+class: your-turn
+# Your Turn 18
 
-40. Calculate new variable + plot it (fatality rate)
+Calculate new variable for each outbreak: the fatality rate (the  number of deaths / the number of illnesses, multipled by 100). Then visualize the distribution of the fatality rate.
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -304,8 +937,15 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
 
-Filter out fatalty rates or 0 --> then plot the distribution of those
+# Your Turn 19
+
+Remove outbreaks that have a fatality rate of zero. What is the distribution of the fatality rate for the remaining outbreaks?
+
+---
+
+Solution:
 
 ```{r}
 outbreaks %>% 
@@ -319,10 +959,12 @@ outbreaks %>%
 ```
 
 ---
+class: your-turn
+# Your Turn 20
 
-Y. Find DC's worst outbreak according to the outbreak's hospitalization rate. your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+Find DC's worst outbreak according to the outbreak's hospitalization rate. Your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
 
-```{r}
+```{r echo = FALSE}
 outbreaks %>% 
   filter(state == "Washington DC") %>% 
   mutate(
@@ -333,15 +975,21 @@ outbreaks %>%
 
 
 ---
+class: your-turn
+# Your Turn 21
 
-
-5. X Use a window function + plot it
+X Use a window function + plot it
 
 ```{r}
 
 ```
 
-6. X Mean center something (?) and then plot it
+---
+class: your-turn
+# Your Turn 22
+
+
+Mean center something (?) and then plot it
 
 ```{r}
 
