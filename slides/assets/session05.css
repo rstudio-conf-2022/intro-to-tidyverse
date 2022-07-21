@@ -1,0 +1,33 @@
+.big-text {
+  font-size: 12rem;
+  font-weight: 900;
+}
+
+.white {
+  color: white;
+}
+
+.medium-text {
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.spaced td {
+  padding: 15px;
+  font-size: 2.2rem;
+}
+
+.spaced tr {
+  background-color: white;
+  font-size: 2.5rem;
+}
+
+.agenda ol {
+  font-size: 80px;
+  font-weight: 900;
+}
+
+.pull-left-wide {
+  float: left;
+  width: 50%;
+}
