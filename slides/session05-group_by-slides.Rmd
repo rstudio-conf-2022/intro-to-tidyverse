@@ -134,9 +134,14 @@ babynames %>%
 ---
 # Total number of babies in `babynames`
 
-```{r}
+```{r first-summarize, eval=FALSE}
 babynames %>% 
   summarize(total = sum(n)) #<<
+```
+
+--
+
+```{r first-summarize-out, ref.label="first-summarize", echo=FALSE}
 ```
 
 ???
@@ -145,9 +150,14 @@ babynames %>%
 ---
 # Max number of babies with a name
 
-```{r}
+```{r max, eval=FALSE}
 babynames %>% 
   summarize(max = max(n))
+```
+
+--
+
+```{r max-out, ref.label="max", echo=FALSE}
 ```
 
 ???
@@ -171,13 +181,18 @@ countdown::countdown(minutes = 3)
 
 ---
 
-```{r}
+```{r sara, eval=FALSE}
 babynames %>% 
   filter(name == "Sara") %>% 
   summarize(
     total = sum(n),
     first = min(year)
   )
+```
+
+--
+
+```{r sara-out, ref.label="sara", echo=FALSE}
 ```
 
 ---
@@ -191,20 +206,9 @@ class: middle chapter-slide blue
 
 # Summary functions
 
-.pull-left[
-### `r emo::ji("check")` Take a vector as input
-### `r emo::ji("check")` Return a single value as output
-]
-
-.pull-right[
-<img src="images/session05/summary-functions-diagram.png"/>
-]
-
----
-
 ```{r sum, include=FALSE, eval=FALSE}
 babynames %>% 
-  summarize(total = sum(n)) #<<
+  summarize(total = sum(n)) 
 ```
 
 ```{r echo=FALSE}
@@ -228,8 +232,24 @@ decorate_chunk("my-name-sum", eval = FALSE) %>%
 ```
 
 ???
-we've already seen a couple summary functions, including sum and min, but there are
-many other useful ones
+we've already seen a couple summary functions, including sum and min
+
+---
+
+# Summary functions
+
+.pull-left[
+### `r emo::ji("check")` Take a vector as input
+### `r emo::ji("check")` Return a single value as output
+]
+
+.pull-right[
+<img src="images/session05/summary-functions-diagram.png"/>
+]
+
+???
+a summary function is just a function that takes a vector as input and returns a 
+single value
 
 ---
 
@@ -252,6 +272,10 @@ many other useful ones
 ]
 ]
 
+???
+there are many useful summary functions, including ones you've already seen like
+sum() and min(). this table is here for your reference, but we'll go over a couple of these functions in a second
+
 ---
 background-image: url(images/session05/summary-functions.png)
 background-size: contain
@@ -265,9 +289,16 @@ These are also all on your dplyr cheatsheet
 
 Find the number of rows 
 
-```{r}
+--
+
+```{r n, eval=FALSE}
 babynames %>% 
   summarize(n_rows = n()) #<<
+```
+
+--
+
+```{r n-out, ref.label="n", echo=FALSE}
 ```
 
 ---
@@ -275,12 +306,19 @@ babynames %>%
 
 Find the number of distinct values in a column
 
-```{r}
+--
+
+```{r n_distinct, eval=FALSE}
 babynames %>% 
   summarize(
     n_rows = n(),
     n_names = n_distinct(name) #<<
   )
+```
+
+--
+
+```{r n_distinct-out, ref.label="n_distinct", echo=FALSE}
 ```
 
 ---
@@ -364,7 +402,7 @@ for each of these groups, generating three different numbers.
 # `group_by()` 
 
 .pull-left[
-```{r}
+```{r eval=FALSE}
 pollution %>% 
   group_by(city) #<<
 ```
@@ -380,7 +418,7 @@ pollution %>%
 # `group_by()` 
 
 .pull-left[
-```{r}
+```{r eval=FALSE}
 pollution %>% 
   group_by(city) #<<
 ```
@@ -402,11 +440,15 @@ You can see these groups in the header of the tibble.
 
 # `group_by()` + `summarize()`
 
+--
+
 ```{r eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
   summarize(median = median(amount), n = n())
 ```
+
+--
 
 <img src="images/session05/pollution-group-summarize-1.png"/>
 
@@ -461,7 +503,7 @@ We can also group by multiple columns by adding additional columns to `group_by(
 
 ---
 
-# `summarize()` removes one grouping variable...
+# `summarize()` removes a grouping variable
 
 ```{r summarize-message, eval=FALSE}
 pollution %>% 
@@ -471,7 +513,7 @@ pollution %>%
 
 --
 
-<img src="images/session05/summarize-remove-group.png"/>
+<img src="images/session05/summarize-remove-group.png" height=300px/>
 
 ???
 `summarize()` removes the last grouping variable. Our data is still grouped by `continent`.
@@ -543,19 +585,19 @@ Do to so, we'll need to `ungroup()` before filtering.
 
 --
 
-1. `group_by()` groups data
+- `group_by()` groups data
 
 --
 
-2. `group_by()` + `summarize()` summarizes data by group
+- `group_by()` + `summarize()` summarizes data by group
 
 --
 
-3. `summarize()` removes one layer of grouping
+- `summarize()` removes one layer of grouping
 
 --
 
-4. `ungroup()` removes all groups
+- `ungroup()` removes all groups
 
 ???
 we're going to return to the babynames data, but first lets recap what we covered
