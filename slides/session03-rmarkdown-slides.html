@@ -131,7 +131,7 @@ class: middle chapter-slide red
 
 # Does this look familiar?
 
-&lt;img src="images/session03-rmarkdown/academy-rmd.png" width="90%" /&gt;
+&lt;img src="images/session03-rmarkdown/academy-rmd.png" width="80%" /&gt;
 
 ---
 class: middle chapter-slide blue
@@ -200,21 +200,27 @@ class: inverse middle center
 # Text
 
 .pull-left[
-```markdown
+````markdown
+Regular text
+
+
+_italics_
+
+
+**bold**  
+
+
+`code`  
+````
+]
+
+.pull-right[
 Regular text
 
 _italics_
 
 **bold**  
 
-`code`  
-```
-]
-
-.pull-right[
-Regular text  
-_italics_  
-**bold**  
 `code`
 ]
 ---
@@ -370,16 +376,39 @@ Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 
 &lt;img src="images/session03-rmarkdown/quick-ref.png" width="50%" /&gt;
 ]
+
 ---
 class: your-turn
 
-# Your Turn
-Starting with an un-formatted .Rmd file, recreate a shown output.
+# Your Turn 1
 
-TODO: Add gif instructions (how to knit)
+.panelset[
+.panel[.panel-name[Overview]
 
-<div class="countdown" id="timer_62d88cf3" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+1. Open `your_turn_01.Rmd`.
+
+1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. Add markdown formatting to `your_turn_01.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add Level-1 and Level-2 headers
+
+1. Add a bulleted list
+
+1. Add a [hyperlink](https://www.americangemsociety.org/4cs-of-diamonds/)
+
+1. Add an image (saved in the `images/` directory)
+
+1. Add _italicized_ and **bolded** text
+]
+]
+
+<div class="countdown" id="timer_62d8b90e" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
@@ -596,11 +625,32 @@ TODO: Add recorded demo of knitting a .Rmd document
 ---
 class: your-turn
 
-# Your Turn
-Use chunk options to recreate a shown output.
+# Your Turn 2
 
-<div class="countdown" id="timer_62d889eb" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+.panelset[
+.panel[.panel-name[Overview]
+
+1. Open `your_turn_02.Rmd`.
+
+1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Hide the code and output of the setup chunk
+
+1. Hide the code for all plots
+
+1. Bonus: Add descriptive labels to your code chunks
+
+]
+]
+
+<div class="countdown" id="timer_62d8b9d0" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
@@ -737,67 +787,6 @@ Indent **format** 2 characters&lt;br&gt; Indent **options** 4 characters
 ]
 
 ---
-# `output`
-
-&lt;!-- TODO: panelset with HTML, PDF, Word YAML headers and screenshots --&gt;
-
-.panelset[
-.panel[.panel-name[HTML]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: html_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[Word]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: word_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[PDF]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: pdf_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-]
-
----
 # Built-in output formats
 
 &lt;!-- TODO: update image --&gt;
@@ -816,14 +805,36 @@ output: pdf_document
 &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png" width="32%" /&gt;
 
 ---
-
 class: your-turn
 
-# Your Turn
-Adjust the YAML metadata to recreate the shown output.
+# Your Turn 3
 
-<div class="countdown" id="timer_62d88cf4" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+.panelset[
+.panel[.panel-name[Overview]
+
+1. Open `your_turn_03.Rmd`.
+
+1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add a floating table of contents
+
+1. Apply the `flatly` theme to your document
+
+1. Add a "Code Download" button
+
+1. Print the `diamonds` dataset as a paged table
+
+]
+]
+
+<div class="countdown" id="timer_62d8ba35" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 
@@ -868,9 +879,13 @@ class: your-turn
 
 # Mini Project
 
-Turn your previous EDA analysis into a customized R Markdown report.
+**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wines` dataset.** 
+
+Be sure to use markdown formatting, knitr chunk options and YAML metadata.
+
+We'll leave some time at the end for you to share your report with your group. 
  
-<div class="countdown" id="timer_62d88b64" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d8ba95" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>

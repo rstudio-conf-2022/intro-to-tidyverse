@@ -148,7 +148,7 @@ knitr::include_graphics("images/session03-rmarkdown/doc-make.jpg")
 
 # Does this look familiar?
 
-```{r echo=FALSE, out.width="90%"}
+```{r echo=FALSE, out.width="80%"}
 knitr::include_graphics("images/session03-rmarkdown/academy-rmd.png")
 ```
 
@@ -223,21 +223,27 @@ class: inverse middle center
 # Text
 
 .pull-left[
-```markdown
+````markdown
+Regular text
+
+
+_italics_
+
+
+**bold**  
+
+
+`code`  
+````
+]
+
+.pull-right[
 Regular text
 
 _italics_
 
 **bold**  
 
-`code`  
-```
-]
-
-.pull-right[
-Regular text  
-_italics_  
-**bold**  
 `code`
 ]
 ---
@@ -397,16 +403,39 @@ knitr::include_graphics("images/session03-rmarkdown/markdown-cheatsheet.png")
 knitr::include_graphics("images/session03-rmarkdown/quick-ref.png")
 ```
 ]
+
 ---
 class: your-turn
 
-# Your Turn
-Starting with an un-formatted .Rmd file, recreate a shown output.
+# Your Turn 1
 
-TODO: Add gif instructions (how to knit)
+.panelset[
+.panel[.panel-name[Overview]
+
+1. Open `your_turn_01.Rmd`.
+
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+
+1. Add markdown formatting to `your_turn_01.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add Level-1 and Level-2 headers
+
+1. Add a bulleted list
+
+1. Add a [hyperlink](https://www.americangemsociety.org/4cs-of-diamonds/)
+
+1. Add an image (saved in the `images/` directory)
+
+1. Add _italicized_ and **bolded** text
+]
+]
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 3)
+countdown::countdown(minutes = 4)
 ```
 
 ---
@@ -630,11 +659,32 @@ TODO: Add recorded demo of knitting a .Rmd document
 ---
 class: your-turn
 
-# Your Turn
-Use chunk options to recreate a shown output.
+# Your Turn 2
+
+.panelset[
+.panel[.panel-name[Overview]
+
+1. Open `your_turn_02.Rmd`.
+
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+
+1. Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Hide the code and output of the setup chunk
+
+1. Hide the code for all plots
+
+1. Bonus: Add descriptive labels to your code chunks
+
+]
+]
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 3)
+countdown::countdown(minutes = 4)
 ```
 
 ---
@@ -771,67 +821,6 @@ Indent **format** 2 characters<br> Indent **options** 4 characters
 ]
 
 ---
-# `output`
-
-<!-- TODO: panelset with HTML, PDF, Word YAML headers and screenshots -->
-
-.panelset[
-.panel[.panel-name[HTML]
-
-.pull-left[
-```{r echo=FALSE}
-yml_empty() %>% 
- yml_author("Brendan Cullen") %>% 
- yml_title("Diamonds Exploration") %>% 
- yml_output(html_document()) %>% 
- asis_yaml_output()
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[Word]
-
-.pull-left[
-```{r echo=FALSE}
-yml_empty() %>% 
- yml_author("Brendan Cullen") %>% 
- yml_title("Diamonds Exploration") %>% 
- yml_output(word_document()) %>% 
- asis_yaml_output()
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[PDF]
-
-.pull-left[
-```{r echo=FALSE}
-yml_empty() %>% 
- yml_author("Brendan Cullen") %>% 
- yml_title("Diamonds Exploration") %>% 
- yml_output(pdf_document()) %>% 
- asis_yaml_output()
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-]
-
----
 # Built-in output formats
 
 <!-- TODO: update image -->
@@ -860,14 +849,36 @@ knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/
 ```
 
 ---
-
 class: your-turn
 
-# Your Turn
-Adjust the YAML metadata to recreate the shown output.
+# Your Turn 3
+
+.panelset[
+.panel[.panel-name[Overview]
+
+1. Open `your_turn_03.Rmd`.
+
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+
+1. Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add a floating table of contents
+
+1. Apply the `flatly` theme to your document
+
+1. Add a "Code Download" button
+
+1. Print the `diamonds` dataset as a paged table
+
+]
+]
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 3)
+countdown::countdown(minutes = 4)
 ```
 
 
@@ -912,7 +923,11 @@ class: your-turn
 
 # Mini Project
 
-Turn your previous EDA analysis into a customized R Markdown report.
+**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wines` dataset.** 
+
+Be sure to use markdown formatting, knitr chunk options and YAML metadata.
+
+We'll leave some time at the end for you to share your report with your group. 
  
 ```{r echo = FALSE}
 countdown::countdown(minutes = 20)
