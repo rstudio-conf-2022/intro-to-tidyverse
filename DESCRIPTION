@@ -19,7 +19,8 @@ Imports:
     flair (>= 0.0.2),
     janitor,
     knitr,
-    rmarkdown
+    rmarkdown,
+    babynames
 Suggests:
     emo (>= 0.0.0.9000),
     countdown (>= 0.3.5),
