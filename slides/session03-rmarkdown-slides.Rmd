@@ -414,7 +414,7 @@ class: your-turn
 
 1. Open `your_turn_01.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
 1. Add markdown formatting to `your_turn_01.Rmd` to re-create the HTML output.
 
@@ -666,7 +666,7 @@ class: your-turn
 
 1. Open `your_turn_02.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
 1. Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
 
@@ -858,7 +858,7 @@ class: your-turn
 
 1. Open `your_turn_03.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
 1. Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
 
