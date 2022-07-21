@@ -634,14 +634,15 @@ babynames %>%
 
 # Group by the variables from your test case
 
-```{r}
+```{r eval=FALSE}
 babynames %>% 
   filter(name == "Sara", sex == "F") %>% #<<
   summarize(total = sum(n))
 ```
+
 --
 
-```{r}
+```{r eval=FALSE}
 babynames %>% 
   group_by(name == "Sara", sex == "F") %>% #<<
   summarize(total = sum(n))
@@ -662,21 +663,41 @@ countdown::countdown(minutes = 3)
 
 ---
 
-```{r}
+.pull-left[
+```{r babynames-total, eval=FALSE}
 babynames %>% 
   group_by(year) %>% 
   summarize(n = sum(n))
 ```
+]
 
 --
 
-```{r}
+.pull-right[
+```{r babynames-total-out, ref.label="babynames-total", echo=FALSE}
+```
+]
+
+
+---
+
+.pull-left[
+```{r plot, eval=FALSE}
 babynames %>% 
   group_by(year) %>% 
   summarize(n = sum(n)) %>% 
   ggplot(aes(year, n)) +
   geom_line()
 ```
+]
+
+--
+
+.pull-right[
+```{r plot-out, ref.label="plot", echo=FALSE}
+```
+]
+
 
 ---
 background-image: url(images/session05/books.jpg)
