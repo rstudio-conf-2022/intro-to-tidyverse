@@ -166,7 +166,7 @@ Complete the code to extract rows where `name == [your name]`. Then, use `summar
 (If you don't find your name in the data, try one of these names, which have potentially surprising results: Khaleesi, Anakin)
 
 ```{r echo = FALSE}
-countdown::countdown(minutes = 5)
+countdown::countdown(minutes = 3)
 ```
 
 ---
