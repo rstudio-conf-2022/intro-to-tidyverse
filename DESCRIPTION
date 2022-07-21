@@ -16,20 +16,24 @@ License: MIT + file LICENSE
 Depends:
     tidyverse
 Imports: 
-    babynames,
+    flair (>= 0.0.2),
     janitor,
     knitr,
     rmarkdown
 Suggests:
+    emo (>= 0.0.0.9000),
     countdown (>= 0.3.5),
     fontawesome,
     here,
     quarto,
     usethis,
     xaringan,
-    xaringanExtra
+    xaringanExtra,
+    ymlthis
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
-Remotes: 
-    gadenbuie/countdown
+Remotes:  
+    gadenbuie/countdown,
+    hadley/emo,
+    r-for-educators/flair
