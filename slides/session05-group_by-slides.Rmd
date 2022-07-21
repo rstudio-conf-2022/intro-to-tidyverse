@@ -678,4 +678,14 @@ babynames %>%
   geom_line()
 ```
 
+---
+background-image: url(images/session05/books.jpg)
+background-size: cover
 
+# Mini Project - NYT bestsellers
+
+Open `session05-mini-project` in Academy. 
+ 
+```{r echo = FALSE}
+countdown::countdown(minutes = 40)
+```
