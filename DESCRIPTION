@@ -29,7 +29,8 @@ Suggests:
     usethis,
     xaringan,
     xaringanExtra,
-    DT (>= 0.22)
+    DT (>= 0.22),
+    reactable (>= 0.3.0)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
@@ -37,4 +38,5 @@ Remotes:
     gadenbuie/countdown,
     hadley/emo,
     r-for-educators/flair,
-    rstudio/DT
+    rstudio/DT,
+    glin/reactable
