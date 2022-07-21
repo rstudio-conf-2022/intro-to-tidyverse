@@ -5,10 +5,10 @@ author: "Sara Altman"
 date: "July 26, 2022"
 shortlink:
   url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-  text: shortlink
+  text: group_by
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session05.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -32,6 +32,7 @@ knitr::knit_hooks$set(source = function(x, options) {
 
 library(tidyverse)
 library(babynames)
+library(flair)
 
 pollution <- read_csv("data/session05/pollution.csv")
 ```
@@ -47,31 +48,24 @@ pollution <- read_csv("data/session05/pollution.csv")
 
 
 ```{r xaringanExtra, echo=FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "panelset"))
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
 xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
 if (!is.null(rmarkdown::metadata$shortlink)) {
   shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
   stopifnot(!is.null(shortlink$url))
   
   if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
     shortlink$text <- basename(shortlink$url)
   }
   
-  htmltools::HTML(sprintf(
-    '<script>document.addEventListener("DOMContentLoaded", function() {
-  document
-    .querySelectorAll(".remark-slides-area .remark-slide-content")
-    .forEach(function(el) {
-      const link = document.createElement("a")
-      link.classList = "footer-link"
-      link.href = "%s"
-      link.innerText = "%s"
-      el.appendChild(link)
-    })
-  })</script>',
-    shortlink$url,
-    shortlink$text
-  ))
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
 }
 ```
 
@@ -89,13 +83,11 @@ class: speaker-slide
 
 ---
 
-class: middle
+class: middle agenda
 
-# Agenda slide
-
-1. `summarize()`
-1. Helpful summary functions
-1. Create grouped summaries
+1. Summarize
+1. Summary functions
+1. Group by
 
 
 ---
@@ -103,12 +95,20 @@ class: middle chapter-slide red
 
 .big-white-number[1.]
 
-# `summarize()`
+# Summarize
 
 ---
+background-image: url(images/session05/names.jpg)
+background-size: cover
+class: bottom, left
+
+.big-text.white[Baby names]
+
+---
+
 # `babynames`
 
-```{r}
+```{r eval=TRUE}
 library(babynames)
 head(babynames)
 ```
@@ -118,15 +118,21 @@ head(babynames)
 The `babynames()` dataset, from the babynames package, includes US baby name data from the SSA. Each row represents a name, sex, year combination, and provides the number of babies and proportion of babies with that name. Only names with at least five uses are included.
 
 ---
-# What's the total number of babies in `babynames`?
+class: left, middle
+
+.medium-text[What's the total number of babies in `babynames`?]
+
+---
+
+# Total number of babies in `babynames`
 
 ```{r eval=FALSE}
 babynames %>% 
-  summarize(____) #<<
+  summarize(______________) #<<
 ```
 
 ---
-# What's the total number of babies in `babynames`?
+# Total number of babies in `babynames`
 
 ```{r}
 babynames %>% 
@@ -157,7 +163,7 @@ Complete the code to extract rows where `name == [your name]`. Then, use `summar
 1. The total number of children with your name.
 1. The first year your name appeared in the data.
 
-(If you don't find your name in the data, try one of these names, which have (potentially) surprising results: Khaleesi, Anakin)
+(If you don't find your name in the data, try one of these names, which have potentially surprising results: Khaleesi, Anakin)
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 5)
@@ -186,23 +192,82 @@ class: middle chapter-slide blue
 # Summary functions
 
 .pull-left[
-- Take a vector as input
-- Return a single value as output
+### `r emo::ji("check")` Take a vector as input
+### `r emo::ji("check")` Return a single value as output
 ]
 
 .pull-right[
-<img src="images/session05/summary-functions.png"/>
-
+<img src="images/session05/summary-functions-diagram.png"/>
 ]
+
+---
+
+```{r sum, include=FALSE, eval=FALSE}
+babynames %>% 
+  summarize(total = sum(n)) #<<
+```
+
+```{r echo=FALSE}
+# decorate_chunk("sum", eval = FALSE) %>% 
+#   flair_rx("sum\\(n\\)")
+```
+
+```{r my-name-sum, include=FALSE, eval=FALSE}
+babynames %>% 
+  filter(name == "Sara") %>% 
+  summarize(
+    total = sum(n),
+    first = min(year)
+  )
+```
+
+```{r echo=FALSE}
+# decorate_chunk("my-name-sum", eval = FALSE) %>% 
+#   flair_rx("sum\\(n\\)") %>% 
+#   flair_rx("min\\(year\\)")
+```
+
+???
+we've already seen a couple summary functions, including sum and min, but there are
+many other useful ones
+
+---
+
+.left-column1[
+.medium-text[Common summary functions]
+]
+
+.right-column1[
+.spaced[
+
+| Function            | Description        |
+|:--------------------|:-------------------|
+| `n()`               | # of rows          |
+| `n_distinct()`      | # of unique values |
+| `sum()`             | Sum                |
+| `mean()`            | Mean               |
+| `median()`          | Median             |
+| `min()` / `max()`     | Min/max value    |
+| `first()`           | First value        | 
+]
+]
+
+---
+background-image: url(images/session05/summary-functions.png)
+background-size: contain
+background-position: right
+
+???
+These are also all on your dplyr cheatsheet
 
 ---
 # `n()`
 
-Find the number of rows in a dataset or group
+Find the number of rows 
 
 ```{r}
 babynames %>% 
-  summarize(n_rows = n())
+  summarize(n_rows = n()) #<<
 ```
 
 ---
@@ -214,7 +279,7 @@ Find the number of distinct values in a column
 babynames %>% 
   summarize(
     n_rows = n(),
-    n_names = n_distinct(name)
+    n_names = n_distinct(name) #<<
   )
 ```
 
@@ -230,9 +295,11 @@ babynames %>%
   filter(name == "Sara") %>% 
   summarize(total = sum(n))
 ```
---
 
-What if we want to do this for every name?
+---
+class: middle, left
+
+.medium-text[What if we want to do this for every name?]
 
 ???
 We're going to need to group cases together by name. Before we tackle this task, 
@@ -243,14 +310,24 @@ class: middle chapter-slide green
 
 .big-white-number[2.]
 
-# Group cases
+# Group by
 
+---
+background-image: url(images/session05/pollution-scene.jpg)
+background-size: cover
+class: bottom, left
+
+.big-text.white[Pollution dataset]
 ---
 # `pollution`
 
 ```{r}
 pollution
 ```
+
+???
+small dataset included in your rmarkdown file for this session
+represents air pollution data for three cities in 2019 and 2020.
 
 ---
 # `pollution`
@@ -260,7 +337,6 @@ pollution %>%
   summarize(median = median(amount), n = n())
 ```
 ???
-`pollution` represents air pollution data for three cities in 2019 and 2020.
 
 We already know how to summarize the entire data set to find, for example, the median amount of pollution across all cities and years. 
 
@@ -272,7 +348,7 @@ We already know how to summarize the entire data set to find, for example, the m
 
 ???
 When we summarize, we're taking the entire data set and collapsing it into a single row. 
-But what if,instead of the median pollution for the entire data set, we wanted to find
+But what if, instead of the median pollution for the entire data set, we wanted to find
 the average pollution for each city?
 
 ---
@@ -287,11 +363,33 @@ for each of these groups, generating three different numbers.
 ---
 # `group_by()` 
 
-```{r eval=FALSE}
+.pull-left[
+```{r}
 pollution %>% 
-  group_by(city)
+  group_by(city) #<<
 ```
-<img src="images/session05/pollution-tibble-groups.png" width="295px"/>
+]
+
+--
+
+.pull-right[
+<img src="images/session05/pollution-tibble.png"/>
+]
+
+---
+# `group_by()` 
+
+.pull-left[
+```{r}
+pollution %>% 
+  group_by(city) #<<
+```
+]
+
+.pull-right[
+<img src="images/session05/pollution-tibble-2.png"/>
+]
+
 
 ???
 
@@ -307,10 +405,10 @@ You can see these groups in the header of the tibble.
 ```{r eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
-  summarize(median = median(amount))
+  summarize(median = median(amount), n = n())
 ```
 
-<img src="images/session05/pollution-group_by.png" width="295px"/>
+<img src="images/session05/pollution-group-summarize-1.png"/>
 
 ???
 Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will summarize each of the groups in turn. 
@@ -320,28 +418,22 @@ for each city into a single row for each city.
 
 ---
 
-# Summarize multiple variables
+# `group_by()` + `summarize()`
 
-```{r}
+```{r eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
-  summarize(
-    median = median(amount), 
-    sum = sum(amount)
-  )
+  summarize(median = median(amount), n = n())
 ```
 
-???
-
-Just as when we were summarizing the entire dataset, we can still
-summarize multiple variables.
+<img src="images/session05/pollution-group-summarize-2.png"/>
 
 ---
 class: your-turn
 
 # Your turn 2
 
-Use `group_by()` and `summarize()` the maximum reported amount of pollution for each continent. 
+Use `group_by()` and `summarize()` to find the maximum and mean reported amount of pollution for each continent. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
@@ -351,7 +443,7 @@ countdown::countdown(minutes = 3)
 ```{r}
 pollution %>% 
   group_by(continent) %>% 
-  summarize(max = max(amount))
+  summarize(max = max(amount), mean = mean(amount))
 ```
 
 ---
@@ -360,7 +452,7 @@ pollution %>%
 
 ```{r}
 pollution %>% 
-  group_by(continent, year) %>% 
+  group_by(continent, year) %>% #<<
   summarize(median = mean(amount))
 ```
 
@@ -369,60 +461,54 @@ We can also group by multiple columns by adding additional columns to `group_by(
 
 ---
 
-# `summarize()` removes one grouping variable
+# `summarize()` removes one grouping variable...
 
-*And it tells you what it's doing!*
-
-```{r echo=FALSE}
-options(dplyr.summarise.inform = TRUE)
-```
-
-.pull-left[
 ```{r summarize-message, eval=FALSE}
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount))
 ```
-]
 
-.pull-right[
-```{r summarize-message-out, ref.label="summarize-message", echo=FALSE}
-```
+--
+
+<img src="images/session05/summarize-remove-group.png"/>
 
 ???
 `summarize()` removes the last grouping variable. Our data is still grouped by `continent`.
 
 ---
 
-# Some dplyr functions respect groups*
+# ...and it tells you what it's doing
 
 ```{r echo=FALSE}
 options(dplyr.summarise.inform = TRUE)
 ```
 
-\* but not all!
+```{r summarize-message-out, ref.label="summarize-message"}
+```
 
-.pull-left[
-```{r grouped-filter, results=FALSE}
+---
+
+# Some dplyr functions respect groups
+
+```{r echo=FALSE}
+options(dplyr.summarise.inform = FALSE)
+```
+
+```{r grouped-filter, eval=FALSE}
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount)) %>% 
   filter(median == max(median))
 ```
-]
 
 --
 
-.pull-right[
 ```{r grouped-filter-out, ref.label="grouped-filter", echo=FALSE}
 ```
-]
-
---
-
-After `summarize()`, the data is still grouped by `continent`, so we get __one row per continent__. 
 
 ???
+After `summarize()`, the data is still grouped by `continent`, so we get __one row per continent__. 
 
 This is important to realize because some dplyr verbs work differently with grouped data. For example, what if we filtered at this point, when the data is still grouped by continent? 
 
@@ -434,7 +520,7 @@ But what if we just want to find the *one* city with the highest median?
 
 # Undoing groups
 
-```{r}
+```{r ungroup, eval=FALSE}
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount)) %>% 
@@ -442,9 +528,39 @@ pollution %>%
   filter(median == max(median))
 ```
 
+--
+
+```{r ungroup-out, ref.label="ungroup", echo=FALSE}
+```
+
 ???
 Do to so, we'll need to `ungroup()` before filtering. 
 `ungroup()` removes all groups from the table. 
+
+---
+
+# Recap
+
+--
+
+1. `group_by()` groups data
+
+--
+
+2. `group_by()` + `summarize()` summarizes data by group
+
+--
+
+3. `summarize()` removes one layer of grouping
+
+--
+
+4. `ungroup()` removes all groups
+
+???
+we're going to return to the babynames data, but first lets recap what we covered
+
+---
 
 # Name popularity (again)
 
@@ -453,6 +569,10 @@ babynames %>%
   filter(name == "Sara", sex == "F") %>% 
   summarize(total = sum(n))
 ```
+
+--
+
+__"What if we want to do this for every name?"__
 
 ---
 class: your-turn
@@ -467,7 +587,7 @@ countdown::countdown(minutes = 3)
 
 ---
 
-.pull-left[
+.pull-left-wide[
 ```{r most-popular, eval=FALSE}
 babynames %>% 
   group_by(name, sex) %>% 
@@ -475,6 +595,8 @@ babynames %>%
   arrange(desc(total))
 ```
 ]
+
+--
 
 .pull-right[
 ```{r most-popular-out, ref.label="most-popular", echo=FALSE}
@@ -493,17 +615,20 @@ babynames %>%
   slice(1:10) %>% 
   ggplot(aes(fct_reorder(name, total, .desc = TRUE), total, fill = sex)) +
   geom_col() +
-  labs(
-    x = "Name",
-    y = "Total"
-  )
+  labs(x = "Name", y = "Total")
 ```
 ]
 
 .pull-right[
-```{r names-plot-out, ref.label="names-plot", echo=FALSE}
-```
+.medium-text[James and John are the most popular, historically]
 ]
+
+---
+
+# Code for previous plot
+
+```{r names-plot-out, ref.label="names-plot", eval=FALSE}
+```
 
 ---
 
