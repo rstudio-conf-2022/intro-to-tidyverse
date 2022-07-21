@@ -208,8 +208,8 @@ babynames %>%
 ```
 
 ```{r echo=FALSE}
-# decorate_chunk("sum", eval = FALSE) %>% 
-#   flair_rx("sum\\(n\\)")
+decorate_chunk("sum", eval = FALSE) %>%
+  flair_rx("sum\\(n\\)")
 ```
 
 ```{r my-name-sum, include=FALSE, eval=FALSE}
@@ -222,9 +222,9 @@ babynames %>%
 ```
 
 ```{r echo=FALSE}
-# decorate_chunk("my-name-sum", eval = FALSE) %>% 
-#   flair_rx("sum\\(n\\)") %>% 
-#   flair_rx("min\\(year\\)")
+decorate_chunk("my-name-sum", eval = FALSE) %>%
+  flair_rx("sum\\(n\\)") %>%
+  flair_rx("min\\(year\\)")
 ```
 
 ???
