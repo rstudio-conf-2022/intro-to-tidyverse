@@ -4,8 +4,8 @@ subtitle: "Day 2, Session 1"
 author: "Sara Altman"
 date: "July 26, 2022"
 shortlink:
-  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
-  text: group_by
+  url: http://rstd.io/group_by
+  text: rstd.io/group_by
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css", "assets/session05.css"]
