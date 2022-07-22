@@ -141,15 +141,22 @@ class: middle chapter-slide blue
 # Why use R Markdown? 
 
 ---
+background-image: url(images/session03-rmarkdown/replication-crisis.png
+background-position: center;
+background-size: 80% 
 # Replication crisis
 
----
-# Reproducibility crisis
 
 ---
 background-image: url(images/session03-rmarkdown/reproducibility.gif)
 background-position: center;
 background-size: 100% 
+
+---
+# Beautiful data products
+
+&lt;iframe src="https://rmarkdown.rstudio.com/gallery.html" width="100%" height="400px" data-external="1"&gt;&lt;/iframe&gt;
+
 
 ---
 class: middle chapter-slide green
@@ -214,6 +221,15 @@ When you knit the document...
 
 &lt;video width="1190" height="475" controls&gt;
     &lt;source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"&gt; &lt;/video&gt;
+
+---
+# Where we're heading
+
+&lt;br&gt;
+
+.center[
+&lt;img src="images/session03-rmarkdown/build-report.png" width="100%" /&gt;
+]
 
 ---
 class: inverse middle center
@@ -421,7 +437,7 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62daf648" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62db30b6" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -471,7 +487,7 @@ ggplot(mpg) +
   geom_point(aes(displ, hwy))
 ```
 
-&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-12-1.png" width="50%" /&gt;
+&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-14-1.png" width="50%" /&gt;
 ]
 
 ---
@@ -490,7 +506,7 @@ ggplot(mpg) +
 ]
 
 .pull-right[
-&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-13-1.png" width="50%" /&gt;
+&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-15-1.png" width="50%" /&gt;
 ]
 
 ---
@@ -658,7 +674,7 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62daf593" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62db33fa" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -845,7 +861,7 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62daf490" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62db312d" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -895,12 +911,11 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wine_ratings` dataset.** 
+**Create an R Markdown report that summarizes your analysis of the `wine_ratings` dataset.** 
 
-Be sure to use markdown formatting, knitr chunk options and YAML metadata.
+1. Create a new R Markdown file. Give it a title and save it as `wines_report.Rmd`.
 
-We'll leave some time at the end for you to share your report with your group.
-
+2. Use markdown formatting, knitr chunk options and YAML metadata to polish your report.
 ]
 
 .panel[.panel-name[New file]
@@ -912,9 +927,12 @@ _File &gt; New File &gt; R Markdown_
 ]
 ]
  
-<div class="countdown" id="timer_62daf494" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62db3275" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+???
+We'll leave some time at the end for you to share your report with your group.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

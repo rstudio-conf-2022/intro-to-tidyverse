@@ -160,15 +160,24 @@ class: middle chapter-slide blue
 # Why use R Markdown? 
 
 ---
+background-image: url(images/session03-rmarkdown/replication-crisis.png
+background-position: center;
+background-size: 80% 
 # Replication crisis
 
----
-# Reproducibility crisis
 
 ---
 background-image: url(images/session03-rmarkdown/reproducibility.gif)
 background-position: center;
 background-size: 100% 
+
+---
+# Beautiful data products
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_url("https://rmarkdown.rstudio.com/gallery.html")
+```
+
 
 ---
 class: middle chapter-slide green
@@ -239,6 +248,17 @@ When you knit the document...
 
 <video width="1190" height="475" controls>
     <source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"> </video>
+
+---
+# Where we're heading
+
+<br>
+
+.center[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/build-report.png")
+```
+]
 
 ---
 class: inverse middle center
@@ -943,12 +963,11 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wine_ratings` dataset.** 
+**Create an R Markdown report that summarizes your analysis of the `wine_ratings` dataset.** 
 
-Be sure to use markdown formatting, knitr chunk options and YAML metadata.
+1. Create a new R Markdown file. Give it a title and save it as `wines_report.Rmd`.
 
-We'll leave some time at the end for you to share your report with your group.
-
+2. Use markdown formatting, knitr chunk options and YAML metadata to polish your report.
 ]
 
 .panel[.panel-name[New file]
@@ -965,3 +984,6 @@ knitr::include_graphics("images/session03-rmarkdown/open.gif")
 ```{r echo = FALSE}
 countdown::countdown(minutes = 20)
 ```
+
+???
+We'll leave some time at the end for you to share your report with your group.
