@@ -198,6 +198,7 @@ div.my-footer span {
 .your-turn h1 {
   color: black;
   font-size: 3em;
+  padding-left: 1.1em;
 }
 
 .your-turn h1:before {
@@ -207,9 +208,11 @@ div.my-footer span {
     background-repeat: no-repeat;
     width: 100px;
     height: 100px;
-    float: left;
     background-size: contain;
-    padding-right: 10px;
+    position: absolute;
+    margin-left: -90px;
+    margin-top: -12px;
+
 }
 
 .your-turn a {
@@ -338,30 +341,57 @@ pre code {
   padding-top: 0em;
 }
 
+.right-column55{
+  width: 55%;
+  float: right;
+  padding-top: 0;
+}
+
 .pull-left {
   float: left;
   width: 47%;
 }
+
 .pull-right {
   float: right;
   width: 47%;
 }
+
 .pull-right ~ * {
   clear: both;
 }
 
+/* Wide left column, narrow right */
+
+.wide-left {
+  float: left;
+  width: 62%;
+}
+
+.narrow-right {
+  float: right;
+  width: 35%;
+}
+
+
+
 img, video, iframe {
   max-width: 100%;
 }
+
 blockquote {
   border-left: solid 5px lightgray;
   padding-left: 1em;
 }
+
 table {
   margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
 }
+
 table thead th { border-bottom: 1px solid #ddd; }
+
 th, td { padding: 5px; }
+
 thead, tfoot, tr:nth-child(even) { background: #eee }

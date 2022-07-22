@@ -17,14 +17,47 @@ output:
       countIncrementalSlides: false
       ratio: "16:9"
 params:
-  wifi_network: ""
-  wifi_password: ""
+  wifi_network: "conf22"
+  wifi_password: "together!"
 ---
 class:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(fig.retina = 3)
+library(tidyverse)
+```
 
+```{r reactable-function, include=FALSE}
+reactable_preview <- function(data) {
+  
+  page_info <- "{rowStart}-{rowEnd} of {rows} rows"
+  
+  if (nrow(data) > 100) {
+    page_info <- glue::glue(
+      "{page_info} (Total: {actual})", 
+      actual = format(nrow(data), big.mark = ",")
+    )
+  }
+  
+  data %>% 
+    slice_head(n = 100) %>% 
+    reactable::reactable(
+      defaultColDef = reactable::colDef(align = "left", maxWidth = 400),
+      defaultPageSize = 8, 
+      compact = TRUE,
+      wrap = FALSE,
+      striped = TRUE,
+      sortable = FALSE, 
+      showPageInfo = TRUE,
+      language = reactable::reactableLang(
+        pageInfo = page_info
+      )
+    )
+}
+```
+
+```{r xaringan-stuff, include=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
 xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
 xaringanExtra::use_tachyons()
@@ -114,7 +147,7 @@ class: inverse, middle
 
   <br>
 
-  A meditation / chill-out room is available for those who want to recharge with some peach and quiet.
+  A meditation / chill-out room is open 8am-5pm in the Potomac Dressing Room if you want quiet space to recharge.
   
    <br>
    
@@ -397,41 +430,40 @@ Milestone presentation
 ]
 
 ---
-class: middle, center
+class: center
 
 ???
-
 this is our schedule. And this is where we'll work...
 
 You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
 
-You can navigate there now...
+You can navigate there now...One exception is Session 4....
 
-One exception is Session 4....
 
 --
 
 .left-column1[
+
 # Schedule
 
 .spaced[
 
 | Time          | Activity                                                      |
 |:--------------|:--------------------------------------------------------------|
-| 09:00 - 10:30 | Session 1                              |
+| 09:00 - 10:30 | Session 1                                                     |
 | 10:30 - 11:00 | *Break* `r emo::ji("coffee")`                                 |
-| 11:00 - 12:30 | Session 2                                    |
-| 12:30 - 01:30 | *Lunch* `r emo::ji("bento")`                                
-| 01:30 - 03:00 | Session 3                                       |
+| 11:00 - 12:30 | Session 2                                                     |
+| 12:30 - 01:30 | *Lunch* `r emo::ji("bento")`                                  |  
+| 01:30 - 03:00 | Session 3                                                     |
 | 03:00 - 03:30 | *Break* `r emo::ji("tea")`                                    |
-| 03:30 - 05:00 | Session 4  
+| 03:30 - 05:00 | Session 4                                                     |
 
 ]
 ]
 
 --
 
-.right-column1[
+.right-column63[
 # Workspace
 <img src="images/session01/campsite_screenshot.png">
 ]
@@ -461,36 +493,76 @@ class: title-slide
 We're going to start off with some review of what we've learned for the past couple weeks.
 
 ---
+class: inverse
 
-Screenshot of workspace
+### Go to **Conf Session 1 - Review**
+
+.center[
+```{r session1-workspace, echo = FALSE, out.width = "80%", fig.align = "center"}
+knitr::include_graphics("images/session01/campsite_screenshot.png")
+```
+]
+
+???
 
 for this session, we'll be doing our work in this part of the Academy website. 
 
-Go ahead and open up the milestone for this session.  
-
+Go ahead and open up the milestone for this Session 1.
 
 ---
+
+## `r emo::ji("rocket")` Rapid fire review 
+
+???
 
 What we'll do:
 
 I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
 
+You'll do your work in the R Markdown document you have open so you have a record of your code. You can create as many code chunks as you like in here. 
 
-You'll do your work in this RMd, yo ucan create as many code chunks as you like in here. Do you work in the Rmd document so you have a record of your code.
+--
+
+.pull-left[
+```{r label, echo = FALSE}
+knitr::include_graphics("images/session01/your-turn-example.png")
+```
+]
+
+--
+
+.pull-right[
+
+```{r solution, echo = FALSE}
+knitr::include_graphics("images/session01/your-turn-example.png")
+```
+]
 
 ---
 
-RULES:
+# Review game rules
 
-For each prompt, the first group to have everyone with the answer correct (as verified by your mentor), will win a small prize. 
+* For each prompt, the __first group with 4 or more people to have the answer correct__ (as verified by your mentor), scores a point.
 
-You must have the correct code and the correct output.
+--
 
-After a few more minutes, we'll go over the answer together. And then move on to the next question. 
+* You must have the __correct code__ *and* the __correct output__.
+
+--
+
+* __Working together__ with your groupmates is encouraged.
+
+--
+
+* After 1-2 minutes, we'll go over the answer together. And then move on to the next question. 
+
+--
+
+* Group with the most points at the end wins
 
 ???
 
-After the conference, you'll be able to see these slides (with the prompts) linked on our website.
+After the conference, you'll be able to see these slides (with all the prompts) linked on our website.
 
 ---
 class: center, middle
@@ -498,9 +570,15 @@ background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3b
 background-position: center
 background-size: cover
 
-# 
+???
 
-.big-text.white[Outbreaks data]
+We'll be working with data about foodborne and waterborne disease outbreaks
+
+---
+class: center, middle, inverse
+background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3bc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80)
+background-position: center
+background-size: cover
 
 ```{r load-data, include=FALSE}
 library(tidyverse)
@@ -510,105 +588,152 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
   readr::write_csv("data/session01/outbreaks.csv")
 ```
 
+# .big-text[`outbreaks`]
 
 ???
 
-We'll be working with data about foodborne and waterborne disease outbreaks spread by contact with environmental sources or infected people or animals. This dataset comes from the CDC's National 
-National Outbreak Reporting System (NORS).
+...spread by contact with environmental sources or infected people or animals. I'll refer to this dataset as `outbreaks`. It comes from the CDC's National Outbreak Reporting System (NORS).
 
 First things first, let's take a look a what's in this dataset. 
 
-So here is your first prompt:
+So *here* is your first prompt:
 
 ---
 class: your-turn
 
 # Your Turn 1
 
-Can you recreate output that looks like this?
+Read in the data and explore it. Can you recreate output that looks like this?
 
 ```{r read-in-outbreaks, include = FALSE}
 outbreaks <- readr::read_csv("data/session01/outbreaks.csv")
 ```
 
+.space-saver[
 ```{r echo = FALSE}
 glimpse(outbreaks)
 #str(outbreaks)
 ```
+]
 
 ???
 
-3 minutes to read in the data and run glimpse()?
+1 minute to read in the data and run `glimpse()`
 
 ---
 
-Show Solution.
+## Solution 1
+.pull-left[
+```{r sol-1, eval = FALSE}
+library(tidyverse)
 
-Static or live code in box?
+outbreaks <- 
+  read_csv("data/outbreaks.csv")
+
+glimpse(outbreaks)
+```
+]
+
+.pull-right.space-saver[
+```{r echo = FALSE, message = FALSE}
+glimpse(outbreaks)
+```
+]
 
 ---
 class: your-turn
 
 # Your Turn 2
 
-What is the earliest year on record in this dataset? Latest?
+What is the* **earliest year** on record in this dataset? **The latest**? 
+
+Answer the questions by creating two tables that are sorted.
 
 ---
 
-Solution
+## Solution 2
 
 .pull-left[
-```{r}
+```{r eval = FALSE, echo = TRUE}
 outbreaks %>%
   arrange(year)
 ```
+
+.space-saver[
+```{r echo = FALSE}
+outbreaks %>%
+  arrange(year) %>% 
+  reactable_preview()
+```
+]
 ]
 
 .pull-right[
-```{r}
+```{r eval = FALSE}
 outbreaks %>%
   arrange(desc(year))
 ```
+
+.space-saver[
+```{r echo = FALSE}
+outbreaks %>%
+  arrange(desc(year)) %>% 
+  reactable_preview()
+```
+]
 ]
 
 ---
 class: your-turn
+
 # Your Turn 3
 
-The `state` variable appears to include US locations -- is the data limited to the 50 states?
+The `state` variable appears to include US locations -- is the data limited to the 50 states? 
+
+Produce a table that displays all the unique values of this variable.
 
 
 ---
 
-Solution: 
+## Solution 3
 
-```{r}
+```{r sol-3, echo = TRUE, eval = FALSE}
 outbreaks %>%
-  count(state)
+  distinct(state)
+```
+
+```{r, echo = FALSE, eval = TRUE}
+outbreaks %>%
+  distinct(state) %>% 
+  reactable_preview()
 ```
 
 ---
 class: your-turn
+
 # Your Turn 4
 
-Let's turn our attention to only observations where the primary mode of infection is Food. Using that criterion, can you reproduce the table below?
+What are the different etiologies that have been recorded in this dataset, and how often do they appear in the data? Display your results in a table like the one below.
 
 ```{r echo = FALSE}
 outbreaks %>%
-  filter(primary_mode == "Food") %>% 
-  count(ifsac_category)
+  count(etiology) %>% 
+  reactable_preview()
 ```
-
-???
 
 ---
 
-Solution:
+## Solution 4
 
 ```{r eval = FALSE}
 outbreaks %>%
-  filter(primary_mode == "Food") %>% 
-  count(ifsac_category)
+  count(etiology)
+```
+
+```{r echo = FALSE}
+outbreaks %>%
+  count(etiology) %>% 
+  reactable_preview()
 ```
 
 
@@ -617,20 +742,32 @@ class: your-turn
 
 # Your Turn 5
 
-What are the different etiologies that have been recorded in this dataset? Display them in a table like the one below.
+Let's turn our attention to only observations where the primary mode of infection is Food. Using that criterion, can you reproduce the table below?
 
 ```{r echo = FALSE}
 outbreaks %>%
-  count(etiology)
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category) %>% 
+  reactable_preview()
 ```
+
+???
 
 ---
 
-Solution:
+## Solution 5
 
-```{r}
+```{r echo = TRUE, eval = FALSE}
 outbreaks %>%
-  count(etiology)
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category)
+```
+
+```{r echo = FALSE}
+outbreaks %>%
+  filter(primary_mode == "Food") %>% 
+  count(ifsac_category) %>% 
+  reactable_preview()
 ```
 
 
@@ -640,159 +777,299 @@ class: your-turn
 # Your Turn 6
 
 .pull-left[
-Explore the relationship between `month` and the number of illnesses with a plot like this one. Can you recreate it? ]
+Explore the relationship between `month` and the number of illnesses with a series of **boxplots** like the one to the right. Can you recreate it? 
+]
 
 .pull-right[
-```{r, echo = FALSE}
+```{r sol-6, echo = FALSE}
 outbreaks %>% 
-  ggplot(mapping = aes(x = month, y = illnesses)) + 
-  geom_point()
+  ggplot(aes(x = month, y = illnesses)) + 
+  geom_boxplot(aes(group = month)) #<<
 ```
-
 ]
+
+
+???
+
+Check documentation for use of the argument that allows you to create a new boxplot for each grouping.
 
 ---
 
-Solution:
+## Solution 6
 
-```{r eval = FALSE}
-outbreaks %>% 
-  ggplot(mapping = aes(x = month, y = illnesses)) + 
-  geom_point()
+.wide-left[
+```{r ref.label = "sol-6", fig.show = "hide"}
 ```
+]
+
+.narrow-right[
+```{r ref.label = "sol-6", echo = FALSE}
+```
+]
+
+???
+
+But outlier here makes it hard to see what's going on. Let's modify this.
 
 ---
 class: your-turn
 
 # Your Turn 7
 
-Subset the data before plotting to inspect the outlier in a plot like this:
+Which observation in `outbreaks` is the outlier associated with such a high number of illnesses? 
 
-```{r echo = FALSE}
-outbreaks %>%
-  filter(
-    illnesses >= 400000
-  ) %>%
-  ggplot(mapping = aes(x = month, y = illnesses)) + 
-  geom_point()
-```
+  * Display solely this observation in a table. 
+
+  * Then, recreate the boxplots **without** this observation.
 
 ---
+class: space-saver
 
-Solution:
+## Solution 7
+
+.pull-left[
 
 ```{r eval = FALSE}
 outbreaks %>%
-  filter(
-    illnesses >= 400000
-  ) %>%
-  ggplot(mapping = aes(x = month, y = illnesses)) + 
-  geom_point()
+  filter(illnesses == max(illnesses))
+```
+
+]
+
+.pull-right[
+```{r echo = FALSE}
+outbreaks %>%
+  filter(illnesses == max(illnesses)) %>% 
+  reactable_preview()
+```
+
+<br>
+
+]
+
+--
+
+.pull-left[
+```{r sol-7-fig, fig.asp = 1/2, fig.show = "hide"}
+outbreaks %>%
+  filter(illnesses != max(illnesses)) %>% #<<
+  ggplot(aes(x = month, y = illnesses)) + 
+  geom_boxplot(aes(group = month))
+```
+]
+
+.pull-right[
+```{r ref.label= "sol-7-fig", echo = FALSE, fig.asp = 3/5}
 
 ```
+
+]
 
 ---
 class: your-turn
 
 # Your Turn 8
 
-Which observation in `outbreaks` is associated with such a high number of illnesses? Display solely this observation in a table.
+Which outbreaks lead to the highest number of illnesses? Display these observations in a table from greatest to fewest illnesses.
 
 ---
+class: space-saver
 
-One possible solution:
+## Solution 8
 
-```{r}
-outbreaks %>%
-  filter(
-    illnesses >= 400000
-  )
+```{r eval = FALSE}
+outbreaks %>% arrange(desc(illnesses))
 ```
+
+```{r echo = FALSE}
+outbreaks %>% arrange(desc(illnesses)) %>% 
+  reactable_preview()
+```
+
 
 ---
 class: your-turn
 
 # Your Turn 9
 
-Which observations lead to the highest number of illnesses? Display them in a table from greatest to fewest illnesses.
+How many different primary modes of illness are in this dataset? How often does each appear in the data?
+
+Order the rows so that the most common primary mode appears at the top. 
 
 ---
 
-Solution:
+## Solution 9
 
-```{r}
-outbreaks %>% arrange(desc(illnesses))
+```{r eval = FALSE}
+outbreaks %>%
+  count(primary_mode) %>% 
+  arrange(desc(n))
 ```
+
+```{r echo = FALSE}
+outbreaks %>%
+  count(primary_mode) %>% 
+  arrange(desc(n)) %>% 
+  reactable_preview()
+```
+
+???
+
+Looks like the most common primary moe for outbreaks in this particular dataset is person-to-person.
 
 ---
 class: your-turn
 
 # Your Turn 10
 
-Excluding the previous observation, has the number of illnesses decreased throughout the years? Explore this question with a visualization.
+.pull-left[Can you figure out how to recreate this visualization of the **primary modes** of infection?]
 
+.pull-right[
 ```{r echo = FALSE}
 outbreaks %>%
-  filter(
-    illnesses < 400000
-  ) %>% 
-  ggplot(
-    mapping = aes(x = year, y = illnesses)
-  ) + 
-  geom_point() + 
-  geom_smooth()
+  ggplot(mapping = aes(x = primary_mode)) + 
+  geom_bar() +
+  coord_flip() 
 ```
+]
+
+???
 
 ---
 
-One possible solution:
+## Solution 10
 
-```{r eval = FALSE}
+.pull-left[
+```{r sol-10, eval = FALSE}
 outbreaks %>%
-  filter(
-    illnesses < 400000
-  ) %>% 
-  ggplot(
-    mapping = aes(x = year, y = illnesses)
-  ) + 
-  geom_point() + 
-  geom_smooth()
+  ggplot(aes(x = primary_mode)) + 
+  geom_bar() +
+  coord_flip() #<<
 ```
+]
+
+.pull-right[
+```{r ref.label = "sol-10", echo = FALSE}
+
+```
+]
+
+???
+
+Notice coord_flip()
+
+If your first inclination was to use count() then you might have come up with an answer like...
+
+---
+
+## Solution 10 - alternative
+
+.wide-left[
+```{r sol-10-alt, eval = FALSE}
+outbreaks %>%
+  count(primary_mode, name = "count") %>% #<<
+  ggplot(aes(x = primary_mode, y = count)) + 
+  geom_col() + #<<
+  coord_flip()
+```
+]
+
+.narrow-right[
+```{r ref.label = "sol-10-alt", echo = FALSE}
+
+```
+]
+
+???
+
+This one, but it's a little less efficient code-wise.
 
 ---
 class: your-turn
-# Your Turn 11
 
-How many primary modes of illness does this dataset contain?
+# Your Turn 11 
+
+Let's take a closer look at outbreaks associated with **Animal Contact**. 
+
+* Which *individual* states have had the most Animal Contact outbreaks -- how many has each state had? 
+
+* Create a table that contains the answer to both of these questions.  
+
 
 ---
+
+## Solution 11
 
 One possible solution:
 
 ```{r eval = FALSE}
 outbreaks %>%
-  count(primary_mode)
+  filter(primary_mode == "Animal Contact") %>% 
+  count(state) %>% 
+  filter(state != "Multistate") %>%  #<<
+  arrange(desc(n))
 ```
 
+```{r echo = FALSE}
+outbreaks %>%
+  filter(primary_mode == "Animal Contact") %>% 
+  count(state) %>% 
+  filter(state != "Multistate") %>% 
+  arrange(desc(n)) %>% 
+  reactable_preview()
+```
 
 ---
 class: your-turn
 
 # Your Turn 12
 
-Which primary mode is responsible for the greatest number of reported outbreaks? Explore this with a visualization.
+.left-column35[
+Now that we know the top 3 states are **Ohio**, **Minnesota**, and **Idaho**, recreate this table:
 
+* Has only the Animal Contact outbreaks for those locations  
+
+* Column names with "animal" appear after `state`
+
+* Drop the `primary_mode` column
+]
+
+.right-column63.space-saver[
+```{r sol-12, echo = FALSE}
+outbreaks %>%
+  filter(
+    primary_mode == "Animal Contact", 
+    state %in% c("Ohio", "Minnesota", "Idaho")
+  ) %>% 
+  relocate(
+    contains("animal"), 
+    .after = state
+  ) %>% 
+  select(-primary_mode) %>% 
+  reactable_preview()
+```
+]
 
 ---
+class: space-saver
 
-Solution:
+## Solution 12
 
-
-```{r}
+```{r eval = FALSE}
 outbreaks %>%
-  ggplot(mapping = aes(x = primary_mode)) + 
-  geom_bar() +
-  coord_flip()
+  filter(
+    primary_mode == "Animal Contact", 
+    state %in% c("Ohio", "Minnesota", "Idaho")
+  ) %>% 
+  relocate(
+    contains("animal"), 
+    .after = state
+  ) %>% 
+  select(-primary_mode)
+```
+
+```{r ref.label = "sol-12", echo = FALSE}
+
 ```
 
 ---
@@ -800,114 +1077,144 @@ class: your-turn
 
 # Your Turn 13
 
-Excluding the outlier, is there a relationship between year and number of illnesses, categorized by primary mode?
+.pull-left[Excluding the outlier we previously identified, visualize the relationship between **year** and number of **illnesses** with a smooth line plot.   
 
-```{r echo = FALSE}
+Color each line by its primary mode.]
+
+.pull-right[
+
+```{r echo = FALSE, message = FALSE}
 outbreaks %>%
-  filter(illnesses < 40000) %>% 
-  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
-  geom_point()
+  filter(illnesses != max(illnesses)) %>% 
+  ggplot(aes(y = illnesses, x = year, color = primary_mode)) + 
+  geom_smooth(se = FALSE)
 ```
-
+]
 
 ---
 
-Solution:
+## Solution 13
 
-```{r}
+.pull-left[
+```{r sol-13, eval = FALSE, message = FALSE}
 outbreaks %>%
-  filter(illnesses < 40000) %>% 
-  ggplot(mapping = aes(y = illnesses, x = year, color = primary_mode, alpha = 0.1)) + 
-  geom_point()
+  filter(illnesses != max(illnesses)) %>% 
+  ggplot(aes(y = illnesses, x = year, color = primary_mode)) + 
+  geom_smooth(se = FALSE)
 ```
+]
+
+.pull-right[
+```{r ref.label = "sol-13", echo = FALSE, message = FALSE}
+```
+]
+
 
 ---
 class: your-turn
 
 # Your Turn 14
 
-Show the distribution of the number of illnesses for each primary mode, excluding the outlier.
+Visualize the number of illnesses in **Washington DC**, grouped by **primary mode** of infection. *Hint: you may need to investigate violin plot*
 
-```{r echo = FALSE}
-outbreaks %>%
-  filter(illnesses < 40000) %>% 
-  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
-  geom_point(alpha = 0.01) + 
-  geom_boxplot()
+```{r sol-14, echo = FALSE, fig.height = 4.5, fig.width = 11, out.width = "80%"}
+outbreaks %>% 
+  filter(state == "Washington DC") %>%
+  ggplot(aes(x = primary_mode, y = illnesses)) +
+  geom_violin(aes(color = primary_mode)) + 
+  geom_point(alpha = 0.3) # any alpha value < 1 is OK
 ```
 
 ---
 
-Solution:
+## Solution 14
 
-```{r eval = FALSE}
-outbreaks %>%
-  filter(illnesses < 40000) %>% 
-  ggplot(mapping = aes(x = primary_mode, y = illnesses, color = primary_mode)) + 
-  geom_point(alpha = 0.01) + 
-  geom_boxplot()
+
+```{r ref.label = "sol-14", fig.show = "hide", message = FALSE, warning = FALSE}
 ```
 
+
+```{r ref.label = "sol-14", echo = FALSE, message = FALSE, fig.height = 4.5, fig.width = 11, out.width = "75%", warning = FALSE}
+```
 
 ---
 class: your-turn
 
 # Your Turn 15
 
-Visualize the number of outbreaks in Washington DC in this dataset, grouped by primary mode of infection.
+Let's focus only on **Washington DC** and **food borne illnesses**. Show the most recent outbreaks in a table from most recent to least recent.
 
-```{r echo = FALSE}
+---
+
+## Solution 15 
+
+.left-column40[
+```{r eval = FALSE}
 outbreaks %>% 
-  filter(state == "Washington DC") %>%
-  ggplot(mapping = aes(x = primary_mode)) +
-  geom_bar()
-
+  filter(
+    state == "Washington DC" & 
+    primary_mode == "Food"
+  ) %>%
+  arrange(desc(year), desc(month))
 ```
+]
 
----
-
-Solution:
-
-```{r}
-outbreaks %>% 
-  filter(state == "Washington DC") %>%
-  ggplot(mapping = aes(x = primary_mode)) +
-  geom_bar()
-
-```
-
----
-class: your-turn
-
-# Your Turn 16 
-
-Let's focus only on DC and foodborne illnesses now. Show the most recent outbreaks in a table, from most recent to least reaent.
-
----
-
-Solution:
-
+.right-column55[
 ```{r echo = FALSE}
 outbreaks %>% 
   filter(
     state == "Washington DC" & 
     primary_mode == "Food"
     ) %>%
-  arrange(desc(year), desc(month))
+  arrange(desc(year), desc(month)) %>% 
+  reactable_preview()
 ```
+]
+
+---
+class: your-turn
+
+# Your Turn 16
+
+Continue to focus only on **Washington DC** and **food borne illnesses**. Use tidyverse functions to display the unique values of `food_vehicle` as a vector.
+
+---
+## Solution 16
+
+.left-column1[
+```{r sol-16, eval = FALSE}
+outbreaks %>% 
+  filter(
+    state == "Washington DC",
+    primary_mode == "Food"
+  ) %>%
+  distinct(food_vehicle) %>% 
+  pull()
+```
+]
+
+.right-column55[
+```{r ref.label = "sol-16", echo = FALSE}
+
+```
+
+]
+
+
+
 
 ---
 class: your-turn
 
 # Your Turn 17
 
-Find food-related outbreaks that resulted in at least 1 death. Display the results in a table that contains only the columns from `year` to `deaths`.
+Find **food borne** outbreaks that resulted in at least 1 **death**. Display the results in a table that contains only the columns from `year` to `deaths`.
 
 ---
 
-Solution:
+## Solution
 
-```{r}
+```{r eval = FALSE}
 outbreaks %>% 
   filter(
     primary_mode == "Food", 
@@ -916,81 +1223,137 @@ outbreaks %>%
   select(year:deaths)
 ```
 
+```{r echo = FALSE}
+outbreaks %>% 
+  filter(
+    primary_mode == "Food", 
+    deaths >= 1
+  ) %>% 
+  select(year:deaths) %>% 
+  reactable_preview()
+```
+
 ---
 class: your-turn
+
 # Your Turn 18
 
-Calculate new variable for each outbreak: the fatality rate (the  number of deaths / the number of illnesses, multipled by 100). Then visualize the distribution of the fatality rate.
+Calculate new variable for each outbreak: **`fatality_rate`** (the  number of deaths / the number of illnesses, multiplied by 100). Then visualize the distribution of the fatality rate with a histogram.
 
 ---
 
-Solution:
-
-```{r}
+## Solution 18
+.pull-left[
+```{r sol-18, fig.show = "hide", message = FALSE}
 outbreaks %>% 
   select(1:3, deaths, illnesses) %>% 
   mutate(
-    fatality_rate = deaths/illnesses*100
+    fatality_rate = deaths / illnesses * 100
   ) %>%
-  ggplot(mapping = aes(x = fatality_rate)) + 
+  ggplot(aes(x = fatality_rate)) + 
   geom_histogram()
 ```
+]
+
+.pull-right[
+
+```{r ref.label = "sol-18", echo = FALSE, warning = FALSE, message = FALSE}
+
+```
+]
+
 
 ---
 class: your-turn
 
 # Your Turn 19
 
-Remove outbreaks that have a fatality rate of zero. What is the distribution of the fatality rate for the remaining outbreaks?
+* Remove outbreaks that have a fatality rate of zero. 
+
+* What is the distribution of the fatality rate for the remaining outbreaks as shown by a **notched boxplot**?
+
+* Make the interior of your notched boxplot solid .blue[blue].
 
 ---
 
-Solution:
+## Solution 19
 
-```{r}
+.pull-left[
+```{r sol-19, fig.show = "hide"}
 outbreaks %>% 
   select(1:3, deaths, illnesses) %>% 
   mutate(
-    fatality_rate = deaths/illnesses*100
+    fatality_rate = deaths / illnesses * 100
   ) %>%
   filter(fatality_rate > 0) %>%
-  ggplot(mapping = aes(x = fatality_rate)) + 
-  geom_histogram()
+  ggplot(aes(x = fatality_rate)) + 
+  geom_boxplot(
+    notch = TRUE,
+    fill = "blue" 
+  )
 ```
+]
+
+.pull-right[
+```{r ref.label = "sol-19", echo = FALSE}
+```
+]
 
 ---
 class: your-turn
-# Your Turn 20
 
-Find DC's worst outbreak according to the outbreak's hospitalization rate. Your answer should be a tibble with the highest hospitalization rates shown at the top. Any ties should be broken by outbreaks that happened more recently.
+# Your Turn 20 - last one!
+
+Find Washington DC's worst outbreak as defined by its **`hospitalization_rate`** (which you will need to calculate).
+
+* Subset the data so you display observations that are at least 60% greater than DC's mean hopsitalization rate. 
+
+* Your answer should be a tibble with the highest hospitalization rates shown at the top. 
+
+* Any ties should be broken by outbreaks that happened more recently.
+
+
+
+---
+
+## Solution 20
+
+```{r eval = FALSE}
+outbreaks %>% 
+  filter(state == "Washington DC") %>% 
+  mutate(hospitalization_rate = hospitalizations / illnesses * 100) %>%
+  filter(hospitalization_rate >= 1.60 * mean(hospitalization_rate, na.rm = TRUE)) %>% 
+  arrange(desc(hospitalization_rate), desc(year))
+```
+
 
 ```{r echo = FALSE}
 outbreaks %>% 
   filter(state == "Washington DC") %>% 
-  mutate(
-    hosp_rate = hospitalizations/illnesses*100
-  ) %>%
-  arrange(desc(hosp_rate), desc(year))
+  mutate(hospitalization_rate = hospitalizations / illnesses * 100) %>%
+  filter(hospitalization_rate >= 1.60 * mean(hospitalization_rate, na.rm = TRUE)) %>% 
+  arrange(desc(hospitalization_rate), desc(year)) %>% 
+  reactable_preview()
 ```
+---
 
+# Explore
+
++ Now, pair-up with at least one other groupmate and do something new with the `outbreaks` data (10 + minutes)
+
++ Then share with your group.
 
 ---
-class: your-turn
-# Your Turn 21
+class: blue, middle, center
 
-X Use a window function + plot it
-
-```{r}
-
-```
+# .big-text.white[The end `r emo::ji("rocket")`]
 
 ---
-class: your-turn
-# Your Turn 22
+background-image: url("https://images.unsplash.com/photo-1518541355664-6ca16f8aacf5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80")
+background-position: left
+background-size: cover
 
+### Next up: Coffee Break
 
-Mean center something (?) and then plot it
+Meet back here at 11:00am for Session 2
 
-```{r}
-
-```
