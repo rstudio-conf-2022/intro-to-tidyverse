@@ -30,7 +30,7 @@ Suggests:
     usethis,
     xaringan,
     xaringanExtra,
-    reactable (>= 0.3.0)
+    reactable (>= 0.3.0),
     ymlthis
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
