@@ -1,0 +1,206 @@
+---
+title: "Lightning Talk: `{forcats}`"
+subtitle: "Day 2, Session 7"
+author: "Daniel Chen"
+date: "July 26, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  text: repo
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+# xaringan::inf_mr() ## to auto update render
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://pbs.twimg.com/profile_images/1167606938726731776/45nojZYy_400x400.jpg" width="200px"/>
+
+.speaker-links[
+  [`r fontawesome::fa("github")` chendaniely](https://github.com/chendaniely)    
+  [`r fontawesome::fa("twitter")` chendaniely](https://twitter.com/chendaniely)   
+  [`r fontawesome::fa("link")` daniel.rbind.io](https://daniel.rbind.io)
+]
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# Categorical Data
+
+---
+class: chapter-slide red
+
+## Categorical Data
+
+```{r}
+library(tidyverse)
+library(forcats) # comes in tidyverse
+```
+
+General Social survey
+
+```{r}
+gss <- tibble(gss_cat) # read strings as factors
+```
+
+- Categorial data in R are called "factors"
+- Each category is called a "level"
+
+---
+class: chapter-slide red
+
+## General Social survey
+
+```{r}
+gss
+```
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Exploratory Data Analysis
+
+---
+class: chapter-slide blue
+
+## Hours of TV per day (continuous variable)
+
+```{r, warning=FALSE, message=FALSE}
+# something intesting about this data
+ggplot(gss, aes(x=tvhours)) +
+  geom_histogram()
+```
+
+---
+class: chapter-slide blue
+
+## Marital Status (categorical variable)
+
+```{r, warning=FALSE, message=FALSE}
+# looking at a categorical variable
+ggplot(gss, aes(x=marital)) +
+  geom_bar()
+
+```
+
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# Chapter slide * title 
+
+---
+class: middle chapter-slide tan
+
+.big-white-number[4.]
+
+# Chapter slide * title 
+
+
+---
+.pull-left[
+
+```{r eval=FALSE}
+.
+├── directory tree example
+├── _site/ #<<
+├── _site.yml 
+├── index.Rmd 
+├── schedule.Rmd 
+├── lab01.Rmd 
+└── lab02.Rmd 
+```
+]
+
+.pull-right[
+<img src="https://www.rstudio.com/academy/academy-steps-milestones.jpg">
+]
+
+
+---
+class: your-turn
+
+# Your Turn
+Instructions for a "`Your Turn`" Exercise
+
+```{r}
+# some code
+1 + 1
+```
+
+---
+
+class: inverse
+
+# This is an inverse slide
+## And a second level header
+Some text and some `inline code`
+
+---
+
+# A regular slide
+
+A code block. 
+
+```{r}
+2 + 3
+```
+
+And `some inline code`.
