@@ -33,3 +33,8 @@
   float: left;
   width: 50%;
 }
+
+.pull-right-wide {
+  float: right;
+  width: 50%;
+}
