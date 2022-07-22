@@ -1,0 +1,162 @@
+---
+title: Conf Session 2 - Exploratory Data Analysis
+output: html_document
+tutorial:
+  id: session02-eda
+  version: '0.1'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# load libraries
+library(tidyverse)
+
+# load external data
+wine_ratings <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-28/winemag-data-130k-v2.csv")
+
+```
+
+## Session 2 - Exploratory Data Analysis
+
+The `diamonds` dataset is provided with ggplot2. (To learn more about the dataset, run `?diamonds`.) 
+
+Run the following chunk to view the data:
+
+```{r diamonds}
+diamonds
+```
+Note the number of observations, the number and type of variables, and the values of those variables.
+
+### Your Turn #1
+Focus on the variable `price`. Using the skills you've learned in the first two weeks of Academy, explore the values of diamond price.
+```{r your-turn-1}
+
+
+```
+
+## Exploratory Data Analysis
+
+### Definitions (1)
+
+* A **variable** is a quantity, quality, or property that you can measure.
+* A **value** is the state of a variable when you measure it. The value of a variable may change from measurement to measurement.
+
+(For your reference, below is an exceprt of the speed of light data and related histogram shown in session #2.)
+```{r morley}
+head(morley)
+
+ggplot(morley, aes(x = Speed)) +
+  geom_histogram(bins = 15)
+```
+
+#### Quiz ####
+
+One of the best ways to explore the variation in your data is ____.
+
+## Exploring Variation ##
+
+### Definitions (2)
+
+* **Variation** is the tendency of the values of a variable to change from measurement to measurement.
+* **Distribution** is the pattern of values that appear when you measure a variable many times.
+
+#### Quiz ####
+* What is a continuous variable?
+* What is a categorical variable?
+
+How you visualize variation within variables depends on the type of data. We visualize the variation of a categorical variable with a **bar chart**, and a continuous variable with a **histogram**.
+
+```{r distribution-examples, eval = FALSE}
+# Example bar chart from hotels data -- code
+ggplot(hotels,
+       aes(x = assigned_room_type)) +
+  geom_bar()
+
+# Example histogram from hotels data -- code
+ggplot(hotels,
+       aes(x = adr)) +
+  geom_histogram()
+
+```
+
+
+### Your Turn #2
+Visualize
+1. the distribution for `cut` and
+2. the distribution for `carat` using the appropriate graph. 
+For each variable, note what values are **typical**, **rare**, and **possible**. (Ask: what else do you notice?) 
+```{r your-turn-2-cut}
+# distribution of `cut`
+
+```
+
+```{r your-turn-2-carat}
+# distribution of `carat`
+
+```
+
+
+### Your Turn #3
+Consider patterns revealed by your graphs, and remember that part of EDA is iteration (including in visualizations). Investigate on one of your questions about `carat` by making a second plot. 
+
+(Hint: when you make a histogram, explore multiple values of `binwidth`)
+
+```{r your-turn-3}
+
+```
+
+#### Quiz
+Why do some diamonds cost more than others?
+
+## Covariation
+
+#### Definitions (3)
+
+An **observation** is a set of measurements made under similar conditions. An observation will contain several values, each associated with a different variable.
+
+To understand variation, and covariation, we turn to a different kind of diamond... [in-person discussion of F = MA and baseball throws]
+
+How you visualize variation __between__ variables also depends on the type of data. Here are some options for visualization of variables:
+* continuous vs continuous : `geom_point()`
+* continuous vs categorical : `geom_freqpoly()`
+* continuous vs categorical : `geom_boxplot()`
+* categorical vs categorical : `geom_tile()`
+
+### Your Turn #4
+Visualize the relationships __between__ different variables in `diamonds` and the variable `price`. What patterns do you notice?
+```{r your-turn-4}
+# Suggestion: Consider each of the four C's (cut, clarity, carat, color) and price
+
+
+
+# Extension: can you add a third variable to your plots?
+
+
+```
+
+## Wine tastings data
+
+Your final data exploration will be with a wine ratings dataset from the Tidy Tuesday data project. Run the chunk below to look at the data:
+
+```{r wine-ratings}
+wine_ratings
+```
+
+### Your Turn #5
+Consider the wine_ratings data + think of a question that interests you. Make a graph that explores this question.
+```{r your-turn-5}
+
+```
+
+### Your Turn #6
+Now think of a question your last graph raises. Iterate and make a graph that explores further.
+```{r your-turn-6}
+
+```
+
+### Your Turn #7
+Consider your second graph. Ask one more question, and investigate with one more graph.
+```{r your-turn-7}
+
+```
