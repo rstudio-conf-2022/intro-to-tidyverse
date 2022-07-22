@@ -1,3 +1,5 @@
+/* Special header and text classes ========= */
+
 .big-text {
   font-size: 14rem;
   font-weight: 900;
@@ -13,6 +15,16 @@ h1 .big-text {
   font-weight: bold;
 }
 
+.inverse h1 .big-text .remark-inline-code{
+  color: white;
+}
+
+/* save some space beneath the Your Turn header */
+
+.your-turn h1 {
+  margin-bottom: 31px;
+}
+
 /* overrides theme font size ============ */ 
 
 .remark-slide-content p, 
@@ -21,13 +33,21 @@ h1 .big-text {
   font-size: 1.5rem;
 }
 
-
 .remark-code {
     font-size: 18px;
 }
 
+/*=== space saver text ==== */
 
-/* tables */
+.space-saver {
+  font-size: 85%;
+}
+
+.space-saver .remark-code {
+  font-size: 16px;
+}
+
+/* tables ============================================ */
 /* spacey-table with white rows */
 
 .spaced td {
@@ -38,8 +58,18 @@ h1 .big-text {
   background-color: white;
 }
 
+/*----reactable tables ----- */
+/* modify default styling of pagination and table info */
 
-/* ------ Agenda slide / list and bullet spacing ---- */
+.rt-page-info {
+  opacity: 0.4;
+}
+
+.rt-page-button {
+  color: #a6a6a6;
+}
+
+/* Agenda slide / list and bullet spacing ======== */
 
 .agenda ol {
   font-size: 40px;
@@ -47,4 +77,38 @@ h1 .big-text {
 
 .agenda ol li {
   padding-bottom: 1rem;
+}
+
+/*==== modified 2 col layouts ==== */
+
+.left-column35 {
+  width: 35%;
+  float: left;
+  padding-top: 0em;
+}
+
+.left-column40 {
+  width: 40%;
+  float: left;
+  padding-top: 0em;
+}
+
+.left-column1 {
+  color: #777;
+  width: 35%;
+  float: left;
+  height: 20%;
+  padding-top: 0em;
+}
+
+.right-column63 {
+  width: 63%;
+  float: right;
+  padding-top: 0em;
+}
+
+
+
+.pull-right ~ * {
+  clear: none !important;
 }
