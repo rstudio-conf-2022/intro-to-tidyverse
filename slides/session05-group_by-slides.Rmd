@@ -747,7 +747,7 @@ background-size: cover
 
 # Mini Project - NYT bestsellers
 
-Open `session05-mini-project` in Academy. 
+Open `books.Rmd` in Academy. 
  
 ```{r echo = FALSE}
 countdown::countdown(minutes = 40)
