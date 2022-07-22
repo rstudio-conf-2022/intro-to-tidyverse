@@ -943,7 +943,7 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wines` dataset.** 
+**Create a polished R Markdown report that summarizes your exploratory data analysis of the `wine_ratings` dataset.** 
 
 Be sure to use markdown formatting, knitr chunk options and YAML metadata.
 
