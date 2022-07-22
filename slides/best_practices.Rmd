@@ -1,6 +1,6 @@
 ---
 title: "Best Practices"
-subtitle: "Day 1, Session 1"
+subtitle: "Day 1, Session 4"
 author: "Daniel Chen"
 date: "July 25, 2022"
 output:
@@ -32,11 +32,6 @@ layout: true
 
 Speaker notes go under question mark headers
 
-- so far all our work has been within website rstudio, not local
-  - started from local
-  - why we want you comfortable working locally
-- things to take you a bit farther
-
 ---
 class: title-slide
 
@@ -51,9 +46,19 @@ class: title-slide
 
 ---
 
+class:
+
+# Switching it up!
+
+- So far, everything is within RStudio Academy
+- We also want you to be comfortable working on your own machines
+- Things to take you a bit farther
+
+---
+
 class: middle
 
-# Agenda slide • title
+# Best Practices in...
 
 1. Set Up the IDE
 1. R Projects
@@ -77,6 +82,10 @@ class: chapter-slide red
 knitr::include_graphics("images/best_practices/rstudio-tools-global_options-genearl-basic.png")
 ```
 
+```{r, echo=FALSE}
+countdown(minutes = 2, warn_when = 30)
+```
+
 ---
 
 class: middle chapter-slide blue
@@ -85,27 +94,31 @@ class: middle chapter-slide blue
 
 # R Projects
 
+---
+class: chapter-slide blue
+
+.pull-left[
+## It works on my machine
+
+1. You work on something
+2. You want to share it with your collegues
+3. They can't run any of your code
+]
+.pull-right[
+```{r, echo=FALSE}
+knitr::include_graphics("https://imgs.xkcd.com/comics/borrow_your_laptop.png")
+```
+
+]
 
 ---
 class: chapter-slide blue
 
-<!--
-TODO: move to end of section
--->
-
-## `setwd()` and `rm(list=ls())`
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-
----
-class: chapter-slide blue
-
-## Why
-
-TODO: add a story to build up example
+## How do RProjects help?
 
 1. Helps you isolate your thoughts (context switching)
 2. Explicitly sets your working directory
+  - Helps you point to your files
 3. Projects are self contained
 
 ---
@@ -144,59 +157,88 @@ class: your-turn
 
 # Your Turn
 
-TODO: go make the thing
+1. Create a new RStudio project
+1. Put the project on your `Desktop`
+2. Name your project: `conf-best_practices`
 
-1. make project in desktop
-2. call it `conf-best_practices`
+```{r, echo=FALSE}
+countdown(minutes = 2, warn_when = 30)
+```
 
 ---
 
 class: chapter-slide blue
 
-- let's see what's in this "project" folder
-- don't nest your rprojcts
-- it's a regular folder with a `.rproj` file
+## Project DO's and Don'ts
+
+.pull-left[
+### DO
+
+- Use projects as often as you can
+- Create a `temp` project to throw all your `test` and `Untitled.Rmd` files into
+- Consolidate all your projects into a single big project
+]
+.pull-right[
+### DON'T
+- Nest your R PRrojects
+  - You will confuse your working directories
+]
+
+---
+
+class: chapter-slide blue
+
+.pull-left[
+
+## What's in a Project?
+
+- A regular folder with a `.Rproj` file:
+
+```
+.
+..
+├── README.md
+└── conf-best_practices.Rproj
+```
+]
+.pull-right[
+
+
+```
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+BuildType: Custom
+CustomScriptPath: .build-site.R
+```
+]
+
 
 ---
 class: chapter-slide blue
-
-## Relative and Absolute paths
-
-- Working directory: `/home/dan/git/hub/my_project/`
-- Relative path: `data/original/my_data.csv`
-- Absolute path: `/home/dan/git/hub/my_project/data/original/my_data.csv`
-
-TODO: schematic of files
-
-
-```
-\-
-|- dan
-   |- Desktop
-       |-
-```
-
----
-class: chapter-slide blue
-
-## The `here` package
-
-```{r, echo=FALSE, out.width=600, fig.align="center"}
-knitr::include_graphics("images/best_practices/allison_horst-here.png")
-```
-
----
-class: middle chapter-slide blue
 
 ## Getting data for our project
 
-- getting data from github is common
-- you can load raw csvs
-- you need to download data from github
-- you can download directly from github (or any URL)
+- `read_csv()` from `{readr}` and `{tidyverse}`
+  - You can load raw csvs
+  - You can load directly from github (or any URL)
+
+- You can download data from github
+  - Getting data from github is common
 
 ---
-class: middle chapter-slide blue
+class: chapter-slide blue
 
 ## Download from GitHub
 
@@ -213,20 +255,74 @@ knitr::include_graphics("images/best_practices/github-download-2.png")
 ]
 
 ---
+
 class: your-turn
 
 # Your Turn
 
-just put everytihng in the root proj dir. more explicit names of files and variables
+In your `conf-best_practices` folder:
 
-3. Download the `encounters.csv` into data folder
+1. Save/Download the `encounters.csv`
   - https://bit.ly/rstudio2022-encounters
-4. Create an R script somewhere anywhere
-5. Load the `encounters.csv` dataset into R in anyway you know how
+2. Create an R script in your `conf-best_practices` folder
+3. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
 
 ```{r, echo=FALSE}
 countdown(minutes = 3, warn_when = 30)
 ```
+
+---
+class: chapter-slide blue
+
+## Relative and Absolute paths
+
+.pull-left[
+```
+/
+ |- Users/
+  |- Daniel/
+   |- Desktop/
+    |- best_practices/
+     |- data/
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+.pull-right[
+```
+C:\
+ |- Users\
+  |- Daniel\
+   |- Desktop\
+    |- best_practices\
+     |- data\
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+
+- Working directory: `/Users/Daniel/Desktop/best_practices/`
+- Relative path: `data/cool_stuff.csv`
+- Absolute path: `//Users/Daniel/Desktop/best_practices/data/cool_stuff.csv`
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Create a `data` folder and move the `encounters.csv` file into it.
+2. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 30)
+```
+
 
 ---
 class: chapter-slide blue
@@ -236,36 +332,43 @@ class: chapter-slide blue
 1. Rstudio > session > set working directory
 2. using the import GUI
 2. Full path
+  - `/Users/Daniel/Desktop/best_practices/data/encounters.csv`
 3. Relative path
   - `encounters.csv`
   - `data/encounters.csv`
   - `../data/encounters.csv`
-  - `here("data", "encounters.csv")`
 
----
-class: chapter-slide blue
+?
 
-example + story of co-worker and the way they imported
-
-ask if this will work on your computer
-
+Ask which of these would work on their own computer
 
 ---
 class: your-turn
 
 # Your Turn
 
-1. Move script to sub folder (e.g., `analysis`) and move data to `data/`
-2. Check to see if your dataset loads now. (it probably doesn't)
+1. Move the script into an `analysis` folder
+2. Check to see if your dataset loads now.
   - see if the code chunk works
   - see if it knits
-3. Fix your path to make it load
-  - `../data/`
-  - `/home/users/Dan/Desktop/asdfasdf/data/asdf.csv`
+3. Fix the path to make the data load
+
 
 ```{r, echo=FALSE}
 countdown(minutes = 2, warn_when = 15)
 ```
+
+---
+class: chapter-slide blue
+
+.pull-left[
+## The `here` package
+]
+.pull-right[
+```{r, echo=FALSE, out.width=750, fig.align="center"}
+knitr::include_graphics("images/best_practices/allison_horst-here.png")
+```
+]
 
 ---
 class: chapter-slide blue
@@ -285,15 +388,23 @@ here("data", "my_data.csv")
 ---
 class: your-turn
 
-- use `here()` instead
+# Your Turn
+
+1. Use `here()` to load up your data
+2. create a subfolder, `load` in `analysis`: `analysis/laod/load_data.Rmd`
+  - Does your file still load, even after you move your script to a different location?
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 15)
+```
 
 ---
+class: chapter-slide blue
 
-class: your-turn
+## `setwd()` and `rm(list=ls())`
 
-create a subfolder, `load` in `analysis`: `analysis/laod/asdf.Rmd`
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-- Q: does your file laod the data without chanign the cata path?
 
 ---
 class: middle chapter-slide green
@@ -311,7 +422,7 @@ class: chapter-slide green
 knitr::include_graphics("images/best_practices/naming-example.png")
 ```
 
-https://speakerdeck.com/jennybc/how-to-name-files
+- https://speakerdeck.com/jennybc/how-to-name-files
 
 ---
 class: chapter-slide green
@@ -359,21 +470,13 @@ How to write your dates and times YYYY-MM-DD
 - Week with weekday: 2022-W29-1
 - Date without year: --07-25[1]
 - Ordinal date: 2022-206
-
----
-
-class: middle chapter-slide tan
-
-## Use your `dplyr` skills
-
-- `select()` and `filter()` your data down!
-- to build up this example
-
 ---
 class: your-turn
 
 # Your Turn
 
+- Use your `dplyr` skills
+- `select()` and `filter()` your data down!
 
 <!--
 TODO: come up with a multi step exercise here
@@ -381,38 +484,43 @@ TODO: come up with a multi step exercise here
 
 1. Look for heart attack encounters
   - `description` has a value of "Cardiac Arrest" or "Myocardial Infarction"
-2. Save this dataset out to a file here("data", `mi.csv`) TODO:
-3. Answer the following questions in code in a separate file using the `mi.csv` file
+2. Save this dataset out to a file `here("data", "mi.csv")`
+- Answer the following questions in code in a separate file using the `mi.csv` file
   - How many different patients have a heart attack encounter?
   - what are the different types of `encounterclass`?
 
 ```{r, echo=FALSE}
-countdown(minutes = 5, warn_when = 60)
+countdown(minutes = 5, warn_when = 60, top=0) # top right timer
 ```
 
 ---
+class: chapter-slide green
 
-class: middle chapter-slide green
+## How to improve?
 
-- talk about exercise before
-- best pracice is to save data in a special "output"-like folder
-- name your file something so it sorts properly
-
----
-
-class: middle chapter-slide green
-
-https://style.tidyverse.org/
-
-rules for naming variables: use `_` no captical letters, no `.`
-
-- the same rules apply for your column names in your data
+- Save data in a special "output"-like folder
+- Name your file something so it sorts properly
 
 ---
+class: chapter-slide green
 
-class: middle chapter-slide green
+## Code style
 
-- ask them to do, and describe janitor::clean_names() on the `iris` dataset
+See: https://style.tidyverse.org/
+
+1. Variable names: use `_`: no captical letters, no `.`
+2. Same rules apply for your column names in your data
+
+---
+class: your-turn
+
+# Your Turn
+
+A quick way to fix your column names
+
+1. Load the `{janitor}` package
+2. Look at the `iris` dataset
+3. Use the `clean_names()` function on the the `iris` dataset
 
 ---
 class: middle chapter-slide red
@@ -423,11 +531,11 @@ class: middle chapter-slide red
 
 ---
 
-class: middle chapter-slide red
+class: chapter-slide red
 
 ## Optional: Customize Theme
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width=500, fig.align="center"}
 knitr::include_graphics("images/best_practices/rstudio-tools-global_options-appearance.png")
 ```
 
@@ -440,37 +548,14 @@ class: chapter-slide red
 https://github.com/tonsky/FiraCode
 
 - FiraCode is a popular font
-    - ligatures
+    - ligatures (e.g., `!=`, `==`, `|>`)
     - monospaced
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/best_practices/firacode-logo.svg")
 ```
 
-
-==
-
-!=
-
-
-|>
-
-%>%
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
-
 
 class: middle chapter-slide tan
 
@@ -481,14 +566,21 @@ class: middle chapter-slide tan
 ---
 class: chapter-slide tan
 
-- jenny's talk
-- pkgdown site for `reprex`
-
+- Jenny Bryan | Object of type ‘closure’ is not subsettable | RStudio (2020)
+  - https://www.youtube.com/watch?v=vgYS-F8opgE
+- `{reprex}` package for REPRoducible EXamples
+  - https://reprex.tidyverse.org/
 
 ---
 
-class: chapter-slide red
+class: chapter-slide inverse
 
-## reverse agenda slide of review of best practices
+## Best Practices
 
-- https://github.com/chendaniely/dissertation-analysis (in finder locally)
+1. Use an R PRoject
+2. Use relative paths to refer to files
+3. Name your files: human+machine readable, sortable
+4. Use folders to separate work
+5. Reproducibility is the key to sharing and asking for help
+
+- Example project with some of these features: https://github.com/chendaniely/dissertation-analysis
