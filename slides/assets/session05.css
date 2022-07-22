@@ -1,3 +1,9 @@
+.remark-slide-content p, 
+.remark-slide-content ol,
+.remark-slide-content li {
+  font-size: 1.9rem;
+}
+
 .big-text {
   font-size: 12rem;
   font-weight: 900;
