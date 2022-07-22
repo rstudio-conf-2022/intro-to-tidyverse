@@ -255,7 +255,7 @@ class: inverse middle center
 Regular text
 
 
-_italics_
+*italics*
 
 
 **bold**  
@@ -268,7 +268,7 @@ _italics_
 .pull-right[
 Regular text
 
-_italics_
+*italics*
 
 **bold**  
 
@@ -279,7 +279,7 @@ _italics_
 # Headers
 
 .pull-left[
-```markdown
+````markdown
 # Header 1
 
 ## Header 2
@@ -291,7 +291,7 @@ _italics_
 ##### Header 5
 
 ###### Header 6
-```
+````
 ]
 
 .pull-right[
@@ -316,12 +316,12 @@ _italics_
 
 .pull-left[
 
-```markdown
+````markdown
 Bulleted list
 
-* bullet 1
-* bullet 2
-```
+- bullet 1
+- bullet 2
+````
 
 ]
 
@@ -329,8 +329,8 @@ Bulleted list
 
 Bulleted list
 
-* bullet 1
-* bullet 2
+- bullet 1
+- bullet 2
 ]
 ]
 
@@ -444,7 +444,7 @@ class: your-turn
 
 1. Add an image (saved in the `images/` directory)
 
-1. Add _italicized_ and **bolded** text
+1. Add *italicized* and **bolded** text
 ]
 ]
 
@@ -911,7 +911,7 @@ countdown::countdown(minutes = 4)
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your text:** use markdown for **bold**, _italics_, `code`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
+`r emo::ji("heavy_check_mark")` **Style your text:** use markdown for **bold**, *italics*, `code`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
 
 --
 
