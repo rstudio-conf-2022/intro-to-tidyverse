@@ -188,8 +188,34 @@ class: middle chapter-slide green
 &lt;img src="images/session03-rmarkdown/rmd-anatomy.jpeg" width="90%" /&gt;
 ]
 
----
+???
 
+How does this all come together? Knitting!
+
+---
+# 🧶 Knit
+
+&lt;br&gt;
+
+.center[
+&lt;img src="images/session03-rmarkdown/knit_explained.png" width="100%" /&gt;
+]
+
+
+???
+When you knit the document... 
+
+1. R Markdown sends the .Rmd file to knitr, runs all the code and embeds results and text into an .md file.
+
+2. Pandoc then converts the .md file into your chosen output format, which you specify using YAML metadata.
+
+---
+# 🧶 Knit
+
+&lt;video width="1190" height="475" controls&gt;
+    &lt;source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"&gt; &lt;/video&gt;
+
+---
 class: inverse middle center
 
 # Text
@@ -359,23 +385,9 @@ Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 
 ---
-# Resources 
+# Cheatsheet
 
-&lt;!-- TODO: update image --&gt;
-
-.pull-left[
-
-&lt;p style="font-style: italic; font-size:26px;"&gt; Help &gt; Cheatsheets &gt; R Markdown Cheat Sheet &lt;/p&gt;
-
-&lt;img src="images/session03-rmarkdown/markdown-cheatsheet.png" width="2196" /&gt;
-]
-
-.pull-right[
-
-&lt;p style="font-style: italic; font-size:26px;"&gt; Help &gt; Markdown Quick Reference &lt;/p&gt;
-
-&lt;img src="images/session03-rmarkdown/quick-ref.png" width="50%" /&gt;
-]
+&lt;img src="images/session03-rmarkdown/cheatsheet-markdown.png" width="55%" /&gt;
 
 ---
 class: your-turn
@@ -385,11 +397,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_01.Rmd`.
+1. 📁 Open `your_turn_01.Rmd`.
 
-1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
 
-1. Add markdown formatting to `your_turn_01.Rmd` to re-create the HTML output.
+1. 💻 Add **markdown formatting** to `your_turn_01.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_01.Rmd` to check your work.
 
 ]
 
@@ -407,7 +421,7 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62d8b8b5" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dace23" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -604,23 +618,16 @@ show how to add chunk labels and view in IDE interactively
 ]
 
 ---
-# 🧶 Knit
+# Chunk labels
 
-.center[
-&lt;img src="https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png" width="100%" /&gt;
-]
+Easier to organize and navigate your document
 
-.footnote[
-Image: [R for Data Science](https://r4ds.had.co.nz/r-markdown.html#r-markdown-basics)
-]
-
-???
-When you knit the document, R Markdown sends the .Rmd file to knitr, which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. 
+&lt;img src="images/session03-rmarkdown/chunk-labels-nav.png" width="55%" /&gt;
 
 ---
-# 🧶 Knit
+# Cheatsheet
 
-TODO: Add recorded demo of knitting a .Rmd document
+&lt;img src="images/session03-rmarkdown/cheatsheet-knitr.png" width="100%" /&gt;
 
 ---
 class: your-turn
@@ -630,11 +637,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_02.Rmd`.
+1. 📁 Open `your_turn_02.Rmd`.
 
-1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
 
-1. Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+1. 💻 Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_02.Rmd` to check your work.
 
 ]
 
@@ -649,14 +658,9 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62d8b8ff" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dacd69" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
-
----
-# Resources 
-
-TODO: add image of chunk options in cheatsheet
 
 ---
 class: inverse middle center
@@ -747,6 +751,8 @@ Make it a **floating** table of contents
 ---
 # YAML - indentation matters!
 
+--
+
 .pull-left[
 
 ````
@@ -765,6 +771,7 @@ toc_float: true
 
 ]
 
+--
 
 .pull-right[
 
@@ -789,20 +796,23 @@ Indent **format** 2 characters&lt;br&gt; Indent **options** 4 characters
 ---
 # Built-in output formats
 
-&lt;!-- TODO: update image --&gt;
-
-.left-column[
-&lt;img src="images/session03-rmarkdown/output-formats.png" width="800" /&gt;
+.pull-left[
+&lt;img src="images/session03-rmarkdown/output-format-cheatsheet.png" width="2936" /&gt;
 ]
 
-.right-column[
-&lt;img src="images/session03-rmarkdown/output-format-cheatsheet.png" width="2665" /&gt;
+.pull-right[
+&lt;img src="images/session03-rmarkdown/output-formats.png" width="70%" /&gt;
 ]
 
 ---
 # Extension output formats
 
 &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png" width="32%" /&gt;
+
+---
+# Cheatsheet
+
+&lt;img src="images/session03-rmarkdown/cheatsheet-yaml.png" width="100%" /&gt;
 
 ---
 class: your-turn
@@ -812,11 +822,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_03.Rmd`.
+1. 📁 Open `your_turn_03.Rmd`.
 
-1. Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
 
-1. Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+1. 💻 Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_03.Rmd` to check your work.
 
 ]
 
@@ -833,7 +845,7 @@ class: your-turn
 ]
 ]
 
-<div class="countdown" id="timer_62d8bad2" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62daccb2" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -855,7 +867,7 @@ class: your-turn
 
 --
 
-✔️ **Style your output:** use knitr chunk options
+✔️ **Style your output:** use chunk options (`echo`, `eval`, etc.)
 
 --
 
@@ -863,7 +875,7 @@ class: your-turn
 
 --
 
-✔️ **Organize your code:** use knitr chunk labels
+✔️ **Organize your code:** use chunk labels
 
 --
 
@@ -879,13 +891,27 @@ class: your-turn
 
 # Mini Project
 
+.panelset[
+.panel[.panel-name[Overview]
+
 **Create a polished R Markdown report that summarizes your exploratory data analysis of the `wines` dataset.** 
 
 Be sure to use markdown formatting, knitr chunk options and YAML metadata.
 
-We'll leave some time at the end for you to share your report with your group. 
+We'll leave some time at the end for you to share your report with your group.
+
+]
+
+.panel[.panel-name[New file]
+
+_File &gt; New File &gt; R Markdown_
+
+&lt;img src="images/session03-rmarkdown/open.gif" width="50%" /&gt;
+
+]
+]
  
-<div class="countdown" id="timer_62d8b9c2" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dace85" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>

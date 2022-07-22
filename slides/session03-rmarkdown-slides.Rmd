@@ -211,8 +211,36 @@ knitr::include_graphics("images/session03-rmarkdown/rmd-anatomy.jpeg")
 ```
 ]
 
----
+???
 
+How does this all come together? Knitting!
+
+---
+# `r emo::ji("yarn")` Knit
+
+<br>
+
+.center[
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/knit_explained.png")
+```
+]
+
+
+???
+When you knit the document... 
+
+1. R Markdown sends the .Rmd file to knitr, runs all the code and embeds results and text into an .md file.
+
+2. Pandoc then converts the .md file into your chosen output format, which you specify using YAML metadata.
+
+---
+# `r emo::ji("yarn")` Knit
+
+<video width="1190" height="475" controls>
+    <source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"> </video>
+
+---
 class: inverse middle center
 
 # Text
@@ -382,27 +410,11 @@ Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 
 ---
-# Resources 
+# Cheatsheet
 
-<!-- TODO: update image -->
-
-.pull-left[
-
-<p style="font-style: italic; font-size:26px;"> Help > Cheatsheets > R Markdown Cheat Sheet </p>
-
-```{r echo=FALSE}
-knitr::include_graphics("images/session03-rmarkdown/markdown-cheatsheet.png")
+```{r echo=FALSE, out.width="55%"}
+knitr::include_graphics("images/session03-rmarkdown/cheatsheet-markdown.png")
 ```
-]
-
-.pull-right[
-
-<p style="font-style: italic; font-size:26px;"> Help > Markdown Quick Reference </p>
-
-```{r echo=FALSE, out.width="50%"}
-knitr::include_graphics("images/session03-rmarkdown/quick-ref.png")
-```
-]
 
 ---
 class: your-turn
@@ -412,11 +424,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_01.Rmd`.
+1. `r emo::ji("file_folder")` Open `your_turn_01.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. `r emo::ji("mag")` Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
-1. Add markdown formatting to `your_turn_01.Rmd` to re-create the HTML output.
+1. `r emo::ji("computer")` Add **markdown formatting** to `your_turn_01.Rmd` to re-create the HTML output.
+
+1. `r emo::ji("yarn")` Knit `your_turn_01.Rmd` to check your work.
 
 ]
 
@@ -636,25 +650,20 @@ show how to add chunk labels and view in IDE interactively
 ]
 
 ---
-# `r emo::ji("yarn")` Knit
+# Chunk labels
 
-.center[
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png")
+Easier to organize and navigate your document
+
+```{r echo=FALSE, out.width="55%"}
+knitr::include_graphics("images/session03-rmarkdown/chunk-labels-nav.png")
 ```
-]
-
-.footnote[
-Image: [R for Data Science](https://r4ds.had.co.nz/r-markdown.html#r-markdown-basics)
-]
-
-???
-When you knit the document, R Markdown sends the .Rmd file to knitr, which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. 
 
 ---
-# `r emo::ji("yarn")` Knit
+# Cheatsheet
 
-TODO: Add recorded demo of knitting a .Rmd document
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/cheatsheet-knitr.png")
+```
 
 ---
 class: your-turn
@@ -664,11 +673,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_02.Rmd`.
+1. `r emo::ji("file_folder")` Open `your_turn_02.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. `r emo::ji("mag")` Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
-1. Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+1. `r emo::ji("computer")` Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+
+1. `r emo::ji("yarn")` Knit `your_turn_02.Rmd` to check your work.
 
 ]
 
@@ -686,11 +697,6 @@ class: your-turn
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
 ```
-
----
-# Resources 
-
-TODO: add image of chunk options in cheatsheet
 
 ---
 class: inverse middle center
@@ -781,6 +787,8 @@ Make it a **floating** table of contents
 ---
 # YAML - indentation matters!
 
+--
+
 .pull-left[
 
 ````
@@ -799,6 +807,7 @@ toc_float: true
 
 ]
 
+--
 
 .pull-right[
 
@@ -823,17 +832,15 @@ Indent **format** 2 characters<br> Indent **options** 4 characters
 ---
 # Built-in output formats
 
-<!-- TODO: update image -->
-
-.left-column[
+.pull-left[
 ```{r echo=FALSE}
-knitr::include_graphics("images/session03-rmarkdown/output-formats.png")
+knitr::include_graphics("images/session03-rmarkdown/output-format-cheatsheet.png")
 ```
 ]
 
-.right-column[
-```{r echo=FALSE}
-knitr::include_graphics("images/session03-rmarkdown/output-format-cheatsheet.png")
+.pull-right[
+```{r echo=FALSE, out.width = "70%"}
+knitr::include_graphics("images/session03-rmarkdown/output-formats.png")
 ```
 ]
 
@@ -849,6 +856,13 @@ knitr::include_graphics("https://raw.githubusercontent.com/rstudio/hex-stickers/
 ```
 
 ---
+# Cheatsheet
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/session03-rmarkdown/cheatsheet-yaml.png")
+```
+
+---
 class: your-turn
 
 # Your Turn 3
@@ -856,11 +870,13 @@ class: your-turn
 .panelset[
 .panel[.panel-name[Overview]
 
-1. Open `your_turn_03.Rmd`.
+1. `r emo::ji("file_folder")` Open `your_turn_03.Rmd`.
 
-1. Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
+1. `r emo::ji("mag")` Inspect the contents of <a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank">this HTML output</a>.
 
-1. Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+1. `r emo::ji("computer")` Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+
+1. `r emo::ji("yarn")` Knit `your_turn_03.Rmd` to check your work.
 
 ]
 
@@ -899,7 +915,7 @@ countdown::countdown(minutes = 4)
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your output:** use knitr chunk options
+`r emo::ji("heavy_check_mark")` **Style your output:** use chunk options (`echo`, `eval`, etc.)
 
 --
 
@@ -907,7 +923,7 @@ countdown::countdown(minutes = 4)
 
 --
 
-`r emo::ji("heavy_check_mark")` **Organize your code:** use knitr chunk labels
+`r emo::ji("heavy_check_mark")` **Organize your code:** use chunk labels
 
 --
 
@@ -923,11 +939,27 @@ class: your-turn
 
 # Mini Project
 
+.panelset[
+.panel[.panel-name[Overview]
+
 **Create a polished R Markdown report that summarizes your exploratory data analysis of the `wines` dataset.** 
 
 Be sure to use markdown formatting, knitr chunk options and YAML metadata.
 
-We'll leave some time at the end for you to share your report with your group. 
+We'll leave some time at the end for you to share your report with your group.
+
+]
+
+.panel[.panel-name[New file]
+
+_File > New File > R Markdown_
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("images/session03-rmarkdown/open.gif")
+```
+
+]
+]
  
 ```{r echo = FALSE}
 countdown::countdown(minutes = 20)
