@@ -18,6 +18,7 @@
     <link href="libs/countdown/countdown.css" rel="stylesheet" />
     <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/session06.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -124,13 +125,47 @@ class: your-turn
 1. Open the **Conf Session 6 - Recode** milestone
 1. Complete the `mutate()` review activity
 
-<div class="countdown" id="timer_62d1bae4" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac898" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
 We'll start by reviewing the `mutate()` function.
+
+---
+class: your-turn
+
+# Review `mutate()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    pulse_pressure = sys_bp - dias_bp
+  )
+```
+
+```
+## # A tibble: 30 × 8
+##       id   age sex      bmi glucose sys_bp dias_bp pulse_pressure
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;
+##  1     1    39 female  32.4     124    106      72             34
+##  2     2    34 female  25.9      79    108      78             30
+##  3     3    18 male    27.0      73    126      64             62
+##  4     4    47 male    23.6     114    126      82             44
+##  5     5    30 female  19.4      89    100      72             28
+##  6     6    69 female  27.2     165    114      60             54
+##  7     7    16 female  20.3      81     88      52             36
+##  8     8    80 female  29.7     112    136      60             76
+##  9     9    37 male    28.9     135    102      70             32
+## 10    10    59 male    25.4     104    122      78             44
+## # … with 20 more rows
+```
+
+???
+
+Take a look at the solution to the `mutate()` activity and see how it compares to yours. Any questions?
 
 ---
 
@@ -155,7 +190,7 @@ patients %&gt;%
 
 ???
 
-Let's add a new column called `sex_recode` to our dataset. That means our `if_else()` statement should take place inside of `mutate()`.
+Parts of this code should look familiar to you, since we just practiced using `mutate()` to add columns to a dataset. Here, we'll use `if_else()` inside of `mutate()` to add a column called `sex_recode`.
 
 `if_else()` takes three arguments to recode its values.
 
@@ -173,7 +208,7 @@ patients %&gt;%
 
 ???
  
-The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out.
+The first thing to add is the logical condition. This argument is called `condition`, but you'll rarely see that argument spelled out, so I've removed it here.
 
 ---
 
@@ -222,27 +257,29 @@ patients %&gt;%
 
 ???
 
-Finally we'll add the value the variable should take if the condition is `false`. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
+Finally we'll add the value the variable should take if the condition is `false`. I've evaluated this code and you can see the table output below. Notice that the call to `mutate()` did not alter the `sex` column; it created a new column called `sex_recode`.
 
 ---
 class: your-turn
 
 # Your turn #1
 
-**Recode the values of systolic blood pressure into two new categories: `"high"` and `"normal"`.** Save the result as a new variable named `sys_status`.
+Add a new variable to `patients` that recodes the values of systolic blood pressure into the two categories defined below: `"normal"` and `"high"`. 
+
+Name this new variable `sys_status`. You do not need to save the resulting tibble.
 
 | `sys_bp`          | `sys_status` |
 |:------------------|:-------------|
 | Less than 130 mmHg| normal       |
 | 130 mmHg or above | high         |
 
-<div class="countdown" id="timer_62d1bc80" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac4d9" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
-Let's do some more practice with `if_else()`. 
+Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
 
 ---
 class: your-turn
@@ -276,6 +313,7 @@ patients %&gt;%
 
 ???
 
+You'll often see `if_else()` written without any arguments spelled out. Any questions?
 
 ---
 
@@ -298,7 +336,7 @@ patients %&gt;%
 
 ???
 
-What's gone wrong?
+Any ideas about what's gone wrong here?
 
 ---
 
@@ -334,6 +372,10 @@ patients %&gt;%
   )
 ```
 
+???
+
+Here is the outline of an `if_else()` call inside of `mutate()` that we can use to create the variable `intervene` based on the conditions above.
+
 ---
 
 # Complex logical conditions
@@ -353,6 +395,10 @@ patients %&gt;%
     )
   )
 ```
+
+???
+
+Let's add the first condition: age 40 or older.
 
 ---
 
@@ -374,6 +420,10 @@ patients %&gt;%
   )
 ```
 
+???
+
+...and blood glucose greater than or equal to 126.
+
 ---
 
 # Complex logical conditions
@@ -394,6 +444,10 @@ patients %&gt;%
   )
 ```
 
+???
+
+...and BMI of 27 or greater.
+
 ---
 # Complex logical conditions
 
@@ -413,6 +467,11 @@ patients_interventions &lt;-
     )
   )
 ```
+
+???
+
+I'll save this as a tbl called `patients_interventions` for us to use next.
+
 ---
 
 # Complex TRUE and FALSE conditions
@@ -429,11 +488,11 @@ class: your-turn
 
 # Your turn #2
 
-**Add a new variable to the `patients_interventions` dataset called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention.** 
+Add a new variable to the `patients_interventions` dataset that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have this variable display the patient’s current BMI. 
 
-For all other patients, have `bmi_predict` display the patient’s current BMI.
+Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
-<div class="countdown" id="timer_62d1bc88" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac830" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -504,13 +563,26 @@ if_else(&lt;LOGICAL TEST&gt;, &lt;DO THIS IF TRUE&gt;, &lt;DO THIS IF FALSE&gt;)
 | Stage 2 Hypertension            | 140 and above                     |
 
 
-<div class="countdown" id="timer_62d1bd4e" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
+???
+
+We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official CDC guidelines specify 4 categories.
+
+---
+# Multiple conditions with `if_else()`?
+
+| Blood pressure category         | Systolic Blood Pressure (mmHg)    |
+|:--------------------------------|:----------------------------------|
+| Normal                          | Below 120                         |
+| Elevated                        | 120 to &lt; 130                      |
+| Stage 1 Hypertension            | 130 to &lt; 140                      |
+| Stage 2 Hypertension            | 140 and above                     |
+
+
+<div class="countdown" id="timer_62dac4d6" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
 ???
-
-We previously recoded systolic blood pressure of `patients` into 2 weight categories: "high" and "normal", but official [CDC guidelines](https://www.cdc.gov/bloodpressure/facts.htm){target="_blank" rel="noopener noreferrer"} specify 4 categories:
 
 Can we use `if_else()` to recode a variable under more than two conditions? Discuss with your group.
 
@@ -522,20 +594,19 @@ Can we use `if_else()` to recode a variable under more than two conditions? Disc
 ```r
 patients %&gt;% 
   mutate(
-    sys_bp_status = 
+    sys_bp_status = if_else(
+      sys_bp &lt; 120, 
+      "normal",
       if_else(
-        sys_bp &lt; 120, 
-        "normal",
+        sys_bp &lt; 130, 
+        "elevated", 
         if_else(
-          sys_bp &lt; 130, 
-          "elevated", 
-          if_else(
-            sys_bp &lt; 140, 
-            "stage 1",
-            "stage 2"
-          )
+          sys_bp &lt; 140, 
+          "stage 1",
+          "stage 2"
         )
       )
+    )
   )
 ```
 
@@ -556,8 +627,32 @@ patients %&gt;%
 ## # … with 20 more rows
 ```
 
+???
+
+We could, but it would require nested `if_else()` calls, which can get pretty confusing.
+
 ---
 
+# Multiple conditions with `case_when()`
+
+
+```r
+patients %&gt;% 
+  mutate(
+    sys_bp_status = case_when(
+      ____ ~ ____, 
+      ____ ~ ____, 
+      ____ ~ ____, 
+      ____ ~ ____, 
+    )
+  )
+```
+
+???
+
+A better option is to use `case_when()`.
+
+---
 # Multiple conditions with `case_when()`
 
 
@@ -590,6 +685,10 @@ patients %&gt;%
 ## # … with 20 more rows
 ```
 
+???
+
+Here's what that recode operation looks like with `case_when()`.
+
 ---
 
 # Using `case_when()`
@@ -608,7 +707,7 @@ class: your-turn
 
 # Your turn #3
 
-**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.** 
+Add a new variable to `patients` that recodes the values of `glucose` into the three categories defined below: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.
 
 Name this new variable `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -618,7 +717,7 @@ Name this new variable `diabetes_status`. Save the new tibble as an object calle
 | Pre-diabetic    | 100 - 125 mg/dL       |
 | Diabetic        | 126 mg/dL or above    |
 
-<div class="countdown" id="timer_62d1bc48" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac54a" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -712,7 +811,9 @@ class: your-turn
 
 # Your turn #4
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. 
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -720,7 +821,7 @@ class: your-turn
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | 2                              |
 
-<div class="countdown" id="timer_62d1baea" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac772" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -815,7 +916,9 @@ class: your-turn
 
 # Your turn #5
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Including the appropriate missing value in your solution.
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. Use the appropriate missing value in your solution (one of `NA_character_`, `NA_real_`, `NA_integer_`, `NA_complex`, or `NA`).
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -823,7 +926,7 @@ class: your-turn
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | NA                             |
 
-<div class="countdown" id="timer_62d1bbc6" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dac5c1" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -898,6 +1001,8 @@ case_when(
 class: your-turn
 
 # Your turn: `Conf Milestone`
+
+![](images/session06/conf_milestone.png)
 
 
 

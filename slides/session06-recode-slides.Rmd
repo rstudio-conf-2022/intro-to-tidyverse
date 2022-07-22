@@ -8,7 +8,7 @@ shortlink:
   text: shortlink
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session06.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -231,7 +231,9 @@ class: your-turn
 
 # Your turn #1
 
-**Recode the values of systolic blood pressure into two new categories: `"high"` and `"normal"`.** Save the result as a new variable named `sys_status`.
+Add a new variable to `patients` that recodes the values of systolic blood pressure into the two categories defined below: `"normal"` and `"high"`. 
+
+Name this new variable `sys_status`. You do not need to save the resulting tibble.
 
 | `sys_bp`          | `sys_status` |
 |:------------------|:-------------|
@@ -422,9 +424,9 @@ class: your-turn
 
 # Your turn #2
 
-**Add a new variable to the `patients_interventions` dataset called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention.** 
+Add a new variable to the `patients_interventions` dataset that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have this variable display the patient’s current BMI. 
 
-For all other patients, have `bmi_predict` display the patient’s current BMI.
+Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
@@ -585,7 +587,7 @@ class: your-turn
 
 # Your turn #3
 
-**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.** 
+Add a new variable to `patients` that recodes the values of `glucose` into the three categories defined below: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.
 
 Name this new variable `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -679,7 +681,9 @@ class: your-turn
 
 # Your turn #4
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. 
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -756,7 +760,9 @@ class: your-turn
 
 # Your turn #5
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Use the appropriate missing value in your solution.
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. Use the appropriate missing value in your solution (one of `NA_character_`, `NA_real_`, `NA_integer_`, `NA_complex`, or `NA`).
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
