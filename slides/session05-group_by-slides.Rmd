@@ -426,7 +426,7 @@ pollution %>%
 
 --
 
-.pull-right[
+.pull-right-wide[
 <img src="images/session05/pollution-tibble.png"/>
 ]
 
@@ -440,7 +440,7 @@ pollution %>%
 ```
 ]
 
-.pull-right[
+.pull-right-wide[
 <img src="images/session05/pollution-tibble-2.png"/>
 ]
 
@@ -671,7 +671,13 @@ babynames %>%
   arrange(desc(total)) %>% 
   ungroup() %>% 
   slice(1:10) %>% 
-  ggplot(aes(fct_reorder(name, total, .desc = TRUE), total, fill = sex)) +
+  ggplot(
+    aes(
+      fct_reorder(name, total, .desc = TRUE), 
+      total, 
+      fill = sex
+    )
+  ) +
   geom_col() +
   labs(x = "Name", y = "Total")
 ```
@@ -766,5 +772,5 @@ background-size: cover
 Open `books.Rmd` in Academy. 
  
 ```{r echo = FALSE}
-countdown::countdown(minutes = 40)
+countdown::countdown(minutes = 25)
 ```
