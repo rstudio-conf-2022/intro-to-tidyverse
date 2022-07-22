@@ -333,7 +333,9 @@ babynames %>%
 ```
 
 ---
-# Name popularity 
+# What are the most popular names?
+
+--
 
 A name is popular if a large number of children have the name when you sum across years
 
@@ -700,7 +702,7 @@ babynames %>%
 
 ```{r eval=FALSE}
 babynames %>% 
-  group_by(name == "Sara", sex == "F") %>% #<<
+  group_by(name, sex) %>% #<<
   summarize(total = sum(n))
 ```
 
