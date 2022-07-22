@@ -899,35 +899,36 @@ countdown::countdown(minutes = 4)
 
 
 ---
+class: inverse
 # Take-aways
 
 --
 
-`r emo::ji("heavy_check_mark")` **Document your document:** use YAML to set up meaningful metadata
+`r emo::ji("white_check_mark")` **Document your document:** use YAML to set up meaningful metadata
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your document:** use YAML to add options to your chosen output format
+`r emo::ji("white_check_mark")` **Style your document:** use YAML to add options to your chosen output format
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your text:** use markdown for **bold**, *italics*, `code`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
+`r emo::ji("white_check_mark")` **Style your text:** use markdown for **bold**, *italics*, `code`, `r fontawesome::fa("list")` bullets and `r fontawesome::fa("list-ol")` lists
 
 --
 
-`r emo::ji("heavy_check_mark")` **Style your output:** use chunk options (`echo`, `eval`, etc.)
+`r emo::ji("white_check_mark")` **Style your output:** use chunk options (`echo`, `eval`, etc.)
 
 --
 
-`r emo::ji("heavy_check_mark")` **Organize your text:** use markdown headers with `#`
+`r emo::ji("white_check_mark")` **Organize your text:** use markdown headers with `#`
 
 --
 
-`r emo::ji("heavy_check_mark")` **Organize your code:** use chunk labels
+`r emo::ji("white_check_mark")` **Organize your code:** use chunk labels
 
 --
 
-`r emo::ji("heavy_check_mark")` **Preview your work:** `r emo::ji("yarn")` early, `r emo::ji("yarn")` often
+`r emo::ji("white_check_mark")` **Preview your work:** `r emo::ji("yarn")` early, `r emo::ji("yarn")` often
 
 ---
 class: inverse, center, middle
