@@ -18,7 +18,6 @@ output:
       ratio: "16:9"
 ---
 
----
 class: title-slide
 
 ```{r setup, include=FALSE}
@@ -82,13 +81,10 @@ class: speaker-slide
 [`r fontawesome::fa("github")` skaltman](https://github.com/skaltman)]
 
 ---
+# Thank you
 
-class: middle agenda
-
-1. Summarize
-1. Summary functions
-1. Group by
-
+These slides are adapted from a presentation created by Garrett Grolemund. Thanks 
+Garrett!
 
 ---
 class: middle chapter-slide red
@@ -121,6 +117,21 @@ The `babynames()` dataset, from the babynames package, includes US baby name dat
 class: left, middle
 
 .medium-text[What's the total number of babies in `babynames`?]
+
+---
+class: center, middle
+
+<img src="images/session05/babynames-n.png"/>
+
+---
+class: center, middle
+
+<img src="images/session05/babynames-n-2.png"/>
+
+---
+class: center, middle
+
+<img src="images/session05/babynames-n-3.png"/>
 
 ---
 
@@ -267,7 +278,7 @@ single value
 | `sum()`             | Sum                |
 | `mean()`            | Mean               |
 | `median()`          | Median             |
-| `min()` / `max()`     | Min/max value    |
+| `min()` / `max()`   | Min/max value      |
 | `first()`           | First value        | 
 ]
 ]
@@ -322,7 +333,9 @@ babynames %>%
 ```
 
 ---
-# Name popularity 
+# What are the most popular names?
+
+--
 
 A name is popular if a large number of children have the name when you sum across years
 
@@ -333,6 +346,9 @@ babynames %>%
   filter(name == "Sara") %>% 
   summarize(total = sum(n))
 ```
+
+???
+now, let's go back to babynames
 
 ---
 class: middle, left
@@ -410,7 +426,7 @@ pollution %>%
 
 --
 
-.pull-right[
+.pull-right-wide[
 <img src="images/session05/pollution-tibble.png"/>
 ]
 
@@ -424,7 +440,7 @@ pollution %>%
 ```
 ]
 
-.pull-right[
+.pull-right-wide[
 <img src="images/session05/pollution-tibble-2.png"/>
 ]
 
@@ -585,19 +601,19 @@ Do to so, we'll need to `ungroup()` before filtering.
 
 --
 
-- `group_by()` groups data
+`r emo::ji("heavy_check_mark")` `group_by()` groups data
 
 --
 
-- `group_by()` + `summarize()` summarizes data by group
+`r emo::ji("heavy_check_mark")` `group_by()` + `summarize()` summarizes data by group
 
 --
 
-- `summarize()` removes one layer of grouping
+`r emo::ji("heavy_check_mark")` `summarize()` removes one layer of grouping
 
 --
 
-- `ungroup()` removes all groups
+`r emo::ji("heavy_check_mark")` `ungroup()` removes all groups
 
 ???
 we're going to return to the babynames data, but first lets recap what we covered
@@ -655,7 +671,13 @@ babynames %>%
   arrange(desc(total)) %>% 
   ungroup() %>% 
   slice(1:10) %>% 
-  ggplot(aes(fct_reorder(name, total, .desc = TRUE), total, fill = sex)) +
+  ggplot(
+    aes(
+      fct_reorder(name, total, .desc = TRUE), 
+      total, 
+      fill = sex
+    )
+  ) +
   geom_col() +
   labs(x = "Name", y = "Total")
 ```
@@ -686,7 +708,7 @@ babynames %>%
 
 ```{r eval=FALSE}
 babynames %>% 
-  group_by(name == "Sara", sex == "F") %>% #<<
+  group_by(name, sex) %>% #<<
   summarize(total = sum(n))
 ```
 
@@ -747,8 +769,8 @@ background-size: cover
 
 # Mini Project - NYT bestsellers
 
-Open `session05-mini-project` in Academy. 
+Open `books.Rmd` in Academy. 
  
 ```{r echo = FALSE}
-countdown::countdown(minutes = 40)
+countdown::countdown(minutes = 25)
 ```

@@ -1,3 +1,9 @@
+.remark-slide-content p, 
+.remark-slide-content ol,
+.remark-slide-content li {
+  font-size: 1.9rem;
+}
+
 .big-text {
   font-size: 12rem;
   font-weight: 900;
@@ -22,12 +28,13 @@
   font-size: 2.5rem;
 }
 
-.agenda ol {
-  font-size: 80px;
-  font-weight: 900;
-}
 
 .pull-left-wide {
   float: left;
+  width: 50%;
+}
+
+.pull-right-wide {
+  float: right;
   width: 50%;
 }
