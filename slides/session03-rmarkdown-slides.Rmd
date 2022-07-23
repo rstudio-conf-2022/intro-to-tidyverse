@@ -250,7 +250,7 @@ When you knit the document...
     <source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"> </video>
 
 ---
-# Roadmap
+# Let's build an R Markdown report!
 
 <br>
 
@@ -270,7 +270,13 @@ class: inverse middle center
 
 # Text
 
+
 .pull-left[
+
+What you type in `.Rmd` `r emo::ji("point_down")` 
+
+***
+
 ````markdown
 Regular text
 
@@ -286,6 +292,11 @@ Regular text
 ]
 
 .pull-right[
+
+Rendered output `r emo::ji("point_down")` 
+
+***
+
 Regular text
 
 *italics*
@@ -294,6 +305,10 @@ Regular text
 
 `code`
 ]
+
+???
+I will go through this information quickly. Don't worry about absorbing all of this detail now. Have your cheatsheet handy for the exercises.
+
 ---
 
 # Headers
