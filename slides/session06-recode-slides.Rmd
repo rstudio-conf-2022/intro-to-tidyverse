@@ -153,7 +153,7 @@ patients %>%
 
 ???
 
-Take a look at the solution to the `mutate()` activity and see how it compares to yours. Any questions?
+Take a look at the solution to the `mutate()` activity and see how it compares to yours.
 
 ---
 
