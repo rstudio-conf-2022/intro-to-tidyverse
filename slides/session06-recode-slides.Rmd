@@ -129,7 +129,7 @@ class: your-turn
 
 1. Navigate to **conf2022.rstudioacademy.com**
 1. Open the **Conf Session 6 - Recode** milestone
-1. Complete the `mutate()` review activity
+1. Complete the **Mutate Review** activity
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
@@ -827,7 +827,11 @@ class: your-turn
 
 # Your turn: `Conf Milestone`
 
-![](images/session06/conf_milestone.png)
+.center[
+```{r conf-milestone, echo = FALSE, out.width = "80%", fig.align = "center"}
+knitr::include_graphics("images/session06/conf_milestone.png")
+```
+]
 
 
 
