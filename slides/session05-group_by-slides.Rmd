@@ -757,6 +757,9 @@ babynames %>%
 
 
 ---
+class: your-turn
+
+# Your Turn 4 - Solution
 
 .pull-left[
 ```{r plot, eval=FALSE}
