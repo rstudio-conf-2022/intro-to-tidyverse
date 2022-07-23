@@ -191,6 +191,9 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 1 - Solution
 
 ```{r sara, eval=FALSE}
 babynames %>% 
@@ -489,14 +492,18 @@ pollution %>%
 ---
 class: your-turn
 
-# Your turn 2
+# Your Turn 2
 
 Use `group_by()` and `summarize()` to find the maximum and mean reported amount of pollution for each continent. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
 ```
---
+
+---
+class: your-turn
+
+# Your Turn 2 - Solution
 
 ```{r}
 pollution %>% 
@@ -644,6 +651,9 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 3 - Solution
 
 .pull-left-wide[
 ```{r most-popular, eval=FALSE}
@@ -726,6 +736,9 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 4 - Solution
 
 .pull-left[
 ```{r babynames-total, eval=FALSE}
