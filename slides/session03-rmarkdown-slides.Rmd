@@ -250,7 +250,7 @@ When you knit the document...
     <source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"> </video>
 
 ---
-# Where we're heading
+# Roadmap
 
 <br>
 
@@ -949,11 +949,6 @@ class: inverse
 --
 
 `r emo::ji("white_check_mark")` **Preview your work:** `r emo::ji("yarn")` early, `r emo::ji("yarn")` often
-
----
-class: inverse, center, middle
-
-# Demo
 
 ---
 class: your-turn
