@@ -191,14 +191,12 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 1 - Solution
 
 ```{r sara, eval=FALSE}
-babynames %>% 
-  filter(name == "Sara") %>% 
-  summarize(
-    total = sum(n),
-    first = min(year)
-  )
+
 ```
 
 --
@@ -489,19 +487,21 @@ pollution %>%
 ---
 class: your-turn
 
-# Your turn 2
+# Your Turn 2
 
 Use `group_by()` and `summarize()` to find the maximum and mean reported amount of pollution for each continent. 
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 3)
 ```
---
+
+---
+class: your-turn
+
+# Your Turn 2 - Solution
 
 ```{r}
-pollution %>% 
-  group_by(continent) %>% 
-  summarize(max = max(amount), mean = mean(amount))
+
 ```
 
 ---
@@ -644,13 +644,13 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 3 - Solution
 
 .pull-left-wide[
 ```{r most-popular, eval=FALSE}
-babynames %>% 
-  group_by(name, sex) %>% 
-  summarize(total = sum(n)) %>% 
-  arrange(desc(total))
+
 ```
 ]
 
@@ -726,12 +726,13 @@ countdown::countdown(minutes = 3)
 ```
 
 ---
+class: your-turn
+
+# Your Turn 4 - Solution
 
 .pull-left[
 ```{r babynames-total, eval=FALSE}
-babynames %>% 
-  group_by(year) %>% 
-  summarize(n = sum(n))
+
 ```
 ]
 
@@ -744,14 +745,13 @@ babynames %>%
 
 
 ---
+class: your-turn
+
+# Your Turn 4 - Solution
 
 .pull-left[
 ```{r plot, eval=FALSE}
-babynames %>% 
-  group_by(year) %>% 
-  summarize(n = sum(n)) %>% 
-  ggplot(aes(year, n)) +
-  geom_line()
+
 ```
 ]
 
