@@ -125,47 +125,13 @@ class: your-turn
 1. Open the **Conf Session 6 - Recode** milestone
 1. Complete the **Mutate Review** activity
 
-<div class="countdown" id="timer_62dc4517" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc484b" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
 We'll start by reviewing the `mutate()` function.
-
----
-class: your-turn
-
-# Review `mutate()`
-
-
-```r
-patients %&gt;% 
-  mutate(
-    pulse_pressure = sys_bp - dias_bp
-  )
-```
-
-```
-## # A tibble: 30 × 8
-##       id   age sex      bmi glucose sys_bp dias_bp pulse_pressure
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;
-##  1     1    39 female  32.4     124    106      72             34
-##  2     2    34 female  25.9      79    108      78             30
-##  3     3    18 male    27.0      73    126      64             62
-##  4     4    47 male    23.6     114    126      82             44
-##  5     5    30 female  19.4      89    100      72             28
-##  6     6    69 female  27.2     165    114      60             54
-##  7     7    16 female  20.3      81     88      52             36
-##  8     8    80 female  29.7     112    136      60             76
-##  9     9    37 male    28.9     135    102      70             32
-## 10    10    59 male    25.4     104    122      78             44
-## # … with 20 more rows
-```
-
-???
-
-Take a look at the solution to the `mutate()` activity and see how it compares to yours. Any questions?
 
 ---
 
@@ -273,47 +239,13 @@ Name this new variable `sys_status`. You do not need to save the resulting tibbl
 | Less than 130 mmHg| normal       |
 | 130 mmHg or above | high         |
 
-<div class="countdown" id="timer_62dc4333" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc48f9" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
 Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
-
----
-class: your-turn
-
-# Your turn #1
-
-
-```r
-patients %&gt;% 
-  mutate(
-    sys_status = if_else(sys_bp &gt;= 130, "high", "normal")
-  )
-```
-
-```
-## # A tibble: 30 × 8
-##       id   age sex      bmi glucose sys_bp dias_bp sys_status
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     
-##  1     1    39 female  32.4     124    106      72 normal    
-##  2     2    34 female  25.9      79    108      78 normal    
-##  3     3    18 male    27.0      73    126      64 normal    
-##  4     4    47 male    23.6     114    126      82 normal    
-##  5     5    30 female  19.4      89    100      72 normal    
-##  6     6    69 female  27.2     165    114      60 normal    
-##  7     7    16 female  20.3      81     88      52 normal    
-##  8     8    80 female  29.7     112    136      60 high      
-##  9     9    37 male    28.9     135    102      70 normal    
-## 10    10    59 male    25.4     104    122      78 normal    
-## # … with 20 more rows
-```
-
-???
-
-You'll often see `if_else()` written without any arguments spelled out. Any questions?
 
 ---
 
@@ -492,44 +424,9 @@ Add a new variable to the `patients_interventions` dataset that calculates a 10%
 
 Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
-<div class="countdown" id="timer_62dc4400" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc48bd" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
-
----
-
-class: your-turn
-
-# Your turn #2
-
-
-```r
-patients_interventions %&gt;% 
-  mutate(
-    bmi_predict = if_else(
-      intervene == "yes", 
-      bmi * 0.90, 
-      bmi
-    )
-  )
-```
-
-```
-## # A tibble: 30 × 9
-##       id   age sex      bmi glucose sys_bp dias_bp intervene bmi_predict
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
-##  1     1    39 female  32.4     124    106      72 no               32.4
-##  2     2    34 female  25.9      79    108      78 no               25.9
-##  3     3    18 male    27.0      73    126      64 no               27.0
-##  4     4    47 male    23.6     114    126      82 no               23.6
-##  5     5    30 female  19.4      89    100      72 no               19.4
-##  6     6    69 female  27.2     165    114      60 yes              24.4
-##  7     7    16 female  20.3      81     88      52 no               20.3
-##  8     8    80 female  29.7     112    136      60 no               29.7
-##  9     9    37 male    28.9     135    102      70 no               28.9
-## 10    10    59 male    25.4     104    122      78 no               25.4
-## # … with 20 more rows
-```
 
 ---
 
@@ -578,7 +475,7 @@ We previously recoded systolic blood pressure of `patients` into 2 weight catego
 | Stage 2 Hypertension            | 140 and above                     |
 
 
-<div class="countdown" id="timer_62dc463c" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc4935" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -717,35 +614,13 @@ Name this new variable `diabetes_status`. Save the new tibble as an object calle
 | Pre-diabetic    | 100 - 125 mg/dL       |
 | Diabetic        | 126 mg/dL or above    |
 
-<div class="countdown" id="timer_62dc44f0" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc48de" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
 Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
-
----
-class: your-turn
-
-# Your turn #3
-
-
-```r
-patients_2 &lt;-
-  patients %&gt;% 
-  mutate(
-    diabetes_status = case_when(
-      glucose &lt; 100                   ~ "non-diabetic",
-      glucose &gt;= 100 &amp; glucose &lt;= 125 ~ "pre-diabetic",
-      glucose &gt;= 126                  ~ "diabetic"
-    )
-  )
-```
-
-???
-
-`case_when()` syntax can be a bit tricky to remember at first, but with more practice it will become second nature.
 
 ---
 
@@ -821,47 +696,13 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | 2                              |
 
-<div class="countdown" id="timer_62dc46b7" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc4931" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ???
 
 Practice using a catch-all condition.
-
----
-class: your-turn
-
-# Your turn #4
-
-
-```r
-patients_2 %&gt;% 
-  mutate(
-     followup = case_when(
-       diabetes_status == "diabetic" &amp; bmi &gt;= 30 ~ 1, 
-       diabetes_status == "pre-diabetic" &amp; bmi &gt;= 30 ~ 1.5,
-       TRUE ~ 2,
-    )
-  )
-```
-
-```
-## # A tibble: 30 × 9
-##       id   age sex      bmi glucose sys_bp dias_bp diabetes_status followup
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
-##  1     1    39 female  32.4     124    106      72 pre-diabetic         1.5
-##  2     2    34 female  25.9      79    108      78 non-diabetic         2  
-##  3     3    18 male    27.0      73    126      64 non-diabetic         2  
-##  4     4    47 male    23.6     114    126      82 pre-diabetic         2  
-##  5     5    30 female  19.4      89    100      72 non-diabetic         2  
-##  6     6    69 female  27.2     165    114      60 diabetic             2  
-##  7     7    16 female  20.3      81     88      52 non-diabetic         2  
-##  8     8    80 female  29.7     112    136      60 pre-diabetic         2  
-##  9     9    37 male    28.9     135    102      70 diabetic             2  
-## 10    10    59 male    25.4     104    122      78 pre-diabetic         2  
-## # … with 20 more rows
-```
 
 ---
 
@@ -880,10 +721,7 @@ patients_2 %&gt;%
 ```
 
 ```
-## Error in `mutate()`:
-## ! Problem while computing `followup = case_when(...)`.
-## Caused by error in `` names(message) &lt;- `*vtmp*` ``:
-## ! 'names' attribute [1] must be the same length as the vector [0]
+## Error in mutate(., followup = case_when(diabetes_status == "diabetic" ~ : object 'patients_2' not found
 ```
 
 
@@ -926,7 +764,7 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | NA                             |
 
-<div class="countdown" id="timer_62dc4388" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dc4864" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -934,41 +772,6 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 
 Fix the code from earlier using the appropriate `NA` value.
 
----
-class: your-turn
-
-# Your turn #5
-
-
-```r
-patients_2 %&gt;% 
-  mutate(
-    followup = case_when(
-      diabetes_status == "diabetic" ~ 1, 
-      diabetes_status == "pre-diabetic" ~ 1.5,
-      TRUE ~ NA_real_,
-    )
-  )
-```
-
-```
-## # A tibble: 30 × 9
-##       id   age sex      bmi glucose sys_bp dias_bp diabetes_status followup
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
-##  1     1    39 female  32.4     124    106      72 pre-diabetic         1.5
-##  2     2    34 female  25.9      79    108      78 non-diabetic        NA  
-##  3     3    18 male    27.0      73    126      64 non-diabetic        NA  
-##  4     4    47 male    23.6     114    126      82 pre-diabetic         1.5
-##  5     5    30 female  19.4      89    100      72 non-diabetic        NA  
-##  6     6    69 female  27.2     165    114      60 diabetic             1  
-##  7     7    16 female  20.3      81     88      52 non-diabetic        NA  
-##  8     8    80 female  29.7     112    136      60 pre-diabetic         1.5
-##  9     9    37 male    28.9     135    102      70 diabetic             1  
-## 10    10    59 male    25.4     104    122      78 pre-diabetic         1.5
-## # … with 20 more rows
-```
-
-???
 ---
 class: inverse
 
