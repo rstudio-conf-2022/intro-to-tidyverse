@@ -603,6 +603,36 @@ ggplot(mpg) +
 ]
 
 ---
+# A global `setup` chunk `r emo::ji("earth_africa")`
+
+.pull-left[
+
+````markdown
+```{r setup, include = FALSE}`r ''`
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
+]
+
+---
 # Chunk labels
 
 .pull-left[
