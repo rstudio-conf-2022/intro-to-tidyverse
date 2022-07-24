@@ -71,8 +71,20 @@ class: speaker-slide
 class: middle chapter-slide green
 
 .big-white-number[1.]
-# Overview of Lubridate
+# Overview of `lubridate`
 
+---
+class: top
+background-image: url(images/lubridate/date_and_datetime.png)
+background-size: cover
+
+???
+
+Lubridate is a package to make it easier to work with dates and datetimes. These are two standard formats for storing time-related information. A date is what is sounds like - the information for a date, so the year, month, and day. 
+
+A datetime stores all of that as well as hours, minutes, and seconds.
+
+Lubridate contains a lot of cool features to make it easier to work with dates and datetimes. s
 ---
 
 class: top
@@ -82,7 +94,7 @@ background-size: cover
 # Creating Dates and Datetimes
 
 ???
-One of the key uses of lubridate it to get your data into a date or datetime format more easily, which are standardized formats for storing dates or times. 
+When working with time-related information, often the first step is to get your data into a date or datetime format. 
 
 When reading you data into R, it may be expressed in a variety of formats. The lubridate functions are built to make this transformation as intuitive and flexible as possible. 
 
@@ -135,7 +147,7 @@ work with intervals of time
 
 --
 
-- math with dates/datetimes
+- math with time
 
 --
 
@@ -147,7 +159,7 @@ work with intervals of time
 
 --
 
-- round times
+- rounding times
 
 --
 
@@ -370,7 +382,7 @@ A. What day of the week was the moon landing (September 7, 1969)?
 
 ```r
 ymd(____) %&gt;%
-  ____()
+  ____(label = ____)
 ```
 
 B. How many days ago was the moon landing?
@@ -385,7 +397,6 @@ ymd(____) ____ date(now())
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
-"highlightLines": true,
 "highlightSpans": true,
 "countIncrementalSlides": false,
 "ratio": "16:9",
@@ -468,24 +479,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
+})();</script>
 
 <script>
 slideshow._releaseMath = function(el) {
