@@ -131,7 +131,7 @@ class: middle chapter-slide red
 
 # Does this look familiar?
 
-&lt;img src="images/session03-rmarkdown/academy-rmd.png" width="90%" /&gt;
+&lt;img src="images/session03-rmarkdown/academy-rmd.png" width="80%" /&gt;
 
 ---
 class: middle chapter-slide blue
@@ -141,15 +141,22 @@ class: middle chapter-slide blue
 # Why use R Markdown? 
 
 ---
+background-image: url(images/session03-rmarkdown/replication-crisis.png
+background-position: center;
+background-size: 80% 
 # Replication crisis
 
----
-# Reproducibility crisis
 
 ---
 background-image: url(images/session03-rmarkdown/reproducibility.gif)
 background-position: center;
 background-size: 100% 
+
+---
+# Beautiful data products
+
+&lt;iframe src="https://rmarkdown.rstudio.com/gallery.html" width="100%" height="400px" data-external="1"&gt;&lt;/iframe&gt;
+
 
 ---
 class: middle chapter-slide green
@@ -188,8 +195,43 @@ class: middle chapter-slide green
 &lt;img src="images/session03-rmarkdown/rmd-anatomy.jpeg" width="90%" /&gt;
 ]
 
----
+???
 
+How does this all come together? Knitting!
+
+---
+# 🧶 Knit
+
+&lt;br&gt;
+
+.center[
+&lt;img src="images/session03-rmarkdown/knit_explained.png" width="100%" /&gt;
+]
+
+
+???
+When you knit the document... 
+
+1. R Markdown sends the .Rmd file to knitr, runs all the code and embeds results and text into an .md file.
+
+2. Pandoc then converts the .md file into your chosen output format, which you specify using YAML metadata.
+
+---
+# 🧶 Knit
+
+&lt;video width="1190" height="475" controls&gt;
+    &lt;source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"&gt; &lt;/video&gt;
+
+---
+# Roadmap
+
+&lt;br&gt;
+
+.center[
+&lt;img src="images/session03-rmarkdown/build-report.png" width="100%" /&gt;
+]
+
+---
 class: inverse middle center
 
 # Text
@@ -199,30 +241,51 @@ class: inverse middle center
 
 # Text
 
+
 .pull-left[
-```markdown
+
+What you type in `.Rmd` 👇 
+
+***
+
+````markdown
 Regular text
 
-_italics_
+
+*italics*
+
 
 **bold**  
 
+
 `code`  
-```
+````
 ]
 
 .pull-right[
-Regular text  
-_italics_  
+
+Rendered output 👇 
+
+***
+
+Regular text
+
+*italics*
+
 **bold**  
+
 `code`
 ]
+
+???
+I will go through this information quickly. Don't worry about absorbing all of this detail now. Have your cheatsheet handy for the exercises.
+
 ---
 
 # Headers
 
 .pull-left[
-```markdown
+````markdown
 # Header 1
 
 ## Header 2
@@ -234,7 +297,7 @@ _italics_
 ##### Header 5
 
 ###### Header 6
-```
+````
 ]
 
 .pull-right[
@@ -259,12 +322,12 @@ _italics_
 
 .pull-left[
 
-```markdown
+````markdown
 Bulleted list
 
-* bullet 1
-* bullet 2
-```
+- bullet 1
+- bullet 2
+````
 
 ]
 
@@ -272,8 +335,8 @@ Bulleted list
 
 Bulleted list
 
-* bullet 1
-* bullet 2
+- bullet 1
+- bullet 2
 ]
 ]
 
@@ -353,33 +416,44 @@ Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 Read more about R Markdown [here](https://rmarkdown.rstudio.com/).
 
 ---
-# Resources 
+# Cheatsheet
 
-&lt;!-- TODO: update image --&gt;
+&lt;img src="images/session03-rmarkdown/cheatsheet-markdown.png" width="55%" /&gt;
 
-.pull-left[
-
-&lt;p style="font-style: italic; font-size:26px;"&gt; Help &gt; Cheatsheets &gt; R Markdown Cheat Sheet &lt;/p&gt;
-
-&lt;img src="images/session03-rmarkdown/markdown-cheatsheet.png" width="2196" /&gt;
-]
-
-.pull-right[
-
-&lt;p style="font-style: italic; font-size:26px;"&gt; Help &gt; Markdown Quick Reference &lt;/p&gt;
-
-&lt;img src="images/session03-rmarkdown/quick-ref.png" width="50%" /&gt;
-]
 ---
 class: your-turn
 
-# Your Turn
-Starting with an un-formatted .Rmd file, recreate a shown output.
+# Your Turn 1
 
-TODO: Add gif instructions (how to knit)
+.panelset[
+.panel[.panel-name[Overview]
 
-<div class="countdown" id="timer_62d88cf3" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+1. 📁 Open `your_turn_01.Rmd`.
+
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_01_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. 💻 Add **markdown formatting** to `your_turn_01.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_01.Rmd` to check your work.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add Level-1 and Level-2 headers
+
+1. Add a bulleted list
+
+1. Add a [hyperlink](https://www.americangemsociety.org/4cs-of-diamonds/)
+
+1. Add an image (saved in the `images/` directory)
+
+1. Add *italicized* and **bolded** text
+]
+]
+
+<div class="countdown" id="timer_62dca78d" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
@@ -428,7 +502,7 @@ ggplot(mpg) +
   geom_point(aes(displ, hwy))
 ```
 
-&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-12-1.png" width="50%" /&gt;
+&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-14-1.png" width="50%" /&gt;
 ]
 
 ---
@@ -447,7 +521,7 @@ ggplot(mpg) +
 ]
 
 .pull-right[
-&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-13-1.png" width="50%" /&gt;
+&lt;img src="session03-rmarkdown-slides_files/figure-html/unnamed-chunk-15-1.png" width="50%" /&gt;
 ]
 
 ---
@@ -490,6 +564,36 @@ ggplot(mpg) +
 
 .pull-right[
 [no code or output shown]
+]
+
+---
+# A global `setup` chunk 🌍
+
+.pull-left[
+
+````markdown
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
 ]
 
 ---
@@ -575,38 +679,49 @@ show how to add chunk labels and view in IDE interactively
 ]
 
 ---
-# 🧶 Knit
+# Chunk labels
 
-.center[
-&lt;img src="https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png" width="100%" /&gt;
-]
+Easier to organize and navigate your document
 
-.footnote[
-Image: [R for Data Science](https://r4ds.had.co.nz/r-markdown.html#r-markdown-basics)
-]
-
-???
-When you knit the document, R Markdown sends the .Rmd file to knitr, which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. 
+&lt;img src="images/session03-rmarkdown/chunk-labels-nav.png" width="55%" /&gt;
 
 ---
-# 🧶 Knit
+# Cheatsheet
 
-TODO: Add recorded demo of knitting a .Rmd document
+&lt;img src="images/session03-rmarkdown/cheatsheet-knitr.png" width="100%" /&gt;
 
 ---
 class: your-turn
 
-# Your Turn
-Use chunk options to recreate a shown output.
+# Your Turn 2
 
-<div class="countdown" id="timer_62d889eb" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+.panelset[
+.panel[.panel-name[Overview]
+
+1. 📁 Open `your_turn_02.Rmd`.
+
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_02_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. 💻 Add **chunk options** to `your_turn_02.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_02.Rmd` to check your work.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Hide the code and output of the setup chunk
+
+1. Hide the code for all plots
+
+1. Bonus: Add descriptive labels to your code chunks
+
+]
+]
+
+<div class="countdown" id="timer_62dca419" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
-
----
-# Resources 
-
-TODO: add image of chunk options in cheatsheet
 
 ---
 class: inverse middle center
@@ -697,6 +812,8 @@ Make it a **floating** table of contents
 ---
 # YAML - indentation matters!
 
+--
+
 .pull-left[
 
 ````
@@ -715,6 +832,7 @@ toc_float: true
 
 ]
 
+--
 
 .pull-right[
 
@@ -737,77 +855,14 @@ Indent **format** 2 characters&lt;br&gt; Indent **options** 4 characters
 ]
 
 ---
-# `output`
-
-&lt;!-- TODO: panelset with HTML, PDF, Word YAML headers and screenshots --&gt;
-
-.panelset[
-.panel[.panel-name[HTML]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: html_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[Word]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: word_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-
-.panel[.panel-name[PDF]
-
-.pull-left[
-```yaml
----
-author: Brendan Cullen
-title: Diamonds Exploration
-output: pdf_document
----
-```
-]
-
-.pull-right[
-
-# TODO: image
-]
-]
-]
-
----
 # Built-in output formats
 
-&lt;!-- TODO: update image --&gt;
-
-.left-column[
-&lt;img src="images/session03-rmarkdown/output-formats.png" width="800" /&gt;
+.pull-left[
+&lt;img src="images/session03-rmarkdown/output-format-cheatsheet.png" width="2936" /&gt;
 ]
 
-.right-column[
-&lt;img src="images/session03-rmarkdown/output-format-cheatsheet.png" width="2665" /&gt;
+.pull-right[
+&lt;img src="images/session03-rmarkdown/output-formats.png" width="70%" /&gt;
 ]
 
 ---
@@ -816,63 +871,108 @@ output: pdf_document
 &lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png" width="32%" /&gt;
 
 ---
+# Cheatsheet
 
+&lt;img src="images/session03-rmarkdown/cheatsheet-yaml.png" width="100%" /&gt;
+
+---
 class: your-turn
 
-# Your Turn
-Adjust the YAML metadata to recreate the shown output.
+# Your Turn 3
 
-<div class="countdown" id="timer_62d88cf4" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+.panelset[
+.panel[.panel-name[Overview]
+
+1. 📁 Open `your_turn_03.Rmd`.
+
+1. 🔍 Inspect the contents of &lt;a href="https://rsacdn.link/milestones/conf2022/session03-rmarkdown/data/your_turn_03_solution.html" rel="noopener noreferrer" target="_blank"&gt;this HTML output&lt;/a&gt;.
+
+1. 💻 Add **YAML metadata** to `your_turn_03.Rmd` to re-create the HTML output.
+
+1. 🧶 Knit `your_turn_03.Rmd` to check your work.
+
+]
+
+.panel[.panel-name[Steps]
+
+1. Add a floating table of contents
+
+1. Apply the `flatly` theme to your document
+
+1. Add a "Code Download" button
+
+1. Print the `diamonds` dataset as a paged table
+
+]
+]
+
+<div class="countdown" id="timer_62dca5f6" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 
 ---
+class: inverse
 # Take-aways
 
 --
 
-✔️ **Document your document:** use YAML to set up meaningful metadata
+✅ **Document your document:** use YAML to set up meaningful metadata
 
 --
 
-✔️ **Style your document:** use YAML to add options to your chosen output format
+✅ **Style your document:** use YAML to add options to your chosen output format
 
 --
 
-✔️ **Style your text:** use markdown for **bold**, _italics_, `code`, <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M88 48C101.3 48 112 58.75 112 72V120C112 133.3 101.3 144 88 144H40C26.75 144 16 133.3 16 120V72C16 58.75 26.75 48 40 48H88zM480 64C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H192C174.3 128 160 113.7 160 96C160 78.33 174.3 64 192 64H480zM480 224C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H192C174.3 288 160 273.7 160 256C160 238.3 174.3 224 192 224H480zM480 384C497.7 384 512 398.3 512 416C512 433.7 497.7 448 480 448H192C174.3 448 160 433.7 160 416C160 398.3 174.3 384 192 384H480zM16 232C16 218.7 26.75 208 40 208H88C101.3 208 112 218.7 112 232V280C112 293.3 101.3 304 88 304H40C26.75 304 16 293.3 16 280V232zM88 368C101.3 368 112 378.7 112 392V440C112 453.3 101.3 464 88 464H40C26.75 464 16 453.3 16 440V392C16 378.7 26.75 368 40 368H88z"/></svg> bullets and <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M55.1 56.04C55.1 42.78 66.74 32.04 79.1 32.04H111.1C125.3 32.04 135.1 42.78 135.1 56.04V176H151.1C165.3 176 175.1 186.8 175.1 200C175.1 213.3 165.3 224 151.1 224H71.1C58.74 224 47.1 213.3 47.1 200C47.1 186.8 58.74 176 71.1 176H87.1V80.04H79.1C66.74 80.04 55.1 69.29 55.1 56.04V56.04zM118.7 341.2C112.1 333.8 100.4 334.3 94.65 342.4L83.53 357.9C75.83 368.7 60.84 371.2 50.05 363.5C39.26 355.8 36.77 340.8 44.47 330.1L55.59 314.5C79.33 281.2 127.9 278.8 154.8 309.6C176.1 333.1 175.6 370.5 153.7 394.3L118.8 432H152C165.3 432 176 442.7 176 456C176 469.3 165.3 480 152 480H64C54.47 480 45.84 474.4 42.02 465.6C38.19 456.9 39.9 446.7 46.36 439.7L118.4 361.7C123.7 355.9 123.8 347.1 118.7 341.2L118.7 341.2zM512 64C529.7 64 544 78.33 544 96C544 113.7 529.7 128 512 128H256C238.3 128 224 113.7 224 96C224 78.33 238.3 64 256 64H512zM512 224C529.7 224 544 238.3 544 256C544 273.7 529.7 288 512 288H256C238.3 288 224 273.7 224 256C224 238.3 238.3 224 256 224H512zM512 384C529.7 384 544 398.3 544 416C544 433.7 529.7 448 512 448H256C238.3 448 224 433.7 224 416C224 398.3 238.3 384 256 384H512z"/></svg> lists
+✅ **Style your text:** use markdown for **bold**, *italics*, `code`, <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M88 48C101.3 48 112 58.75 112 72V120C112 133.3 101.3 144 88 144H40C26.75 144 16 133.3 16 120V72C16 58.75 26.75 48 40 48H88zM480 64C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H192C174.3 128 160 113.7 160 96C160 78.33 174.3 64 192 64H480zM480 224C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H192C174.3 288 160 273.7 160 256C160 238.3 174.3 224 192 224H480zM480 384C497.7 384 512 398.3 512 416C512 433.7 497.7 448 480 448H192C174.3 448 160 433.7 160 416C160 398.3 174.3 384 192 384H480zM16 232C16 218.7 26.75 208 40 208H88C101.3 208 112 218.7 112 232V280C112 293.3 101.3 304 88 304H40C26.75 304 16 293.3 16 280V232zM88 368C101.3 368 112 378.7 112 392V440C112 453.3 101.3 464 88 464H40C26.75 464 16 453.3 16 440V392C16 378.7 26.75 368 40 368H88z"/></svg> bullets and <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M55.1 56.04C55.1 42.78 66.74 32.04 79.1 32.04H111.1C125.3 32.04 135.1 42.78 135.1 56.04V176H151.1C165.3 176 175.1 186.8 175.1 200C175.1 213.3 165.3 224 151.1 224H71.1C58.74 224 47.1 213.3 47.1 200C47.1 186.8 58.74 176 71.1 176H87.1V80.04H79.1C66.74 80.04 55.1 69.29 55.1 56.04V56.04zM118.7 341.2C112.1 333.8 100.4 334.3 94.65 342.4L83.53 357.9C75.83 368.7 60.84 371.2 50.05 363.5C39.26 355.8 36.77 340.8 44.47 330.1L55.59 314.5C79.33 281.2 127.9 278.8 154.8 309.6C176.1 333.1 175.6 370.5 153.7 394.3L118.8 432H152C165.3 432 176 442.7 176 456C176 469.3 165.3 480 152 480H64C54.47 480 45.84 474.4 42.02 465.6C38.19 456.9 39.9 446.7 46.36 439.7L118.4 361.7C123.7 355.9 123.8 347.1 118.7 341.2L118.7 341.2zM512 64C529.7 64 544 78.33 544 96C544 113.7 529.7 128 512 128H256C238.3 128 224 113.7 224 96C224 78.33 238.3 64 256 64H512zM512 224C529.7 224 544 238.3 544 256C544 273.7 529.7 288 512 288H256C238.3 288 224 273.7 224 256C224 238.3 238.3 224 256 224H512zM512 384C529.7 384 544 398.3 544 416C544 433.7 529.7 448 512 448H256C238.3 448 224 433.7 224 416C224 398.3 238.3 384 256 384H512z"/></svg> lists
 
 --
 
-✔️ **Style your output:** use knitr chunk options
+✅ **Style your output:** use chunk options (`echo`, `eval`, etc.)
 
 --
 
-✔️ **Organize your text:** use markdown headers with `#`
+✅ **Organize your text:** use markdown headers with `#`
 
 --
 
-✔️ **Organize your code:** use knitr chunk labels
+✅ **Organize your code:** use chunk labels
 
 --
 
-✔️ **Preview your work:** 🧶 early, 🧶 often
-
----
-class: inverse, center, middle
-
-# Demo
+✅ **Preview your work:** 🧶 early, 🧶 often
 
 ---
 class: your-turn
 
 # Mini Project
 
-Turn your previous EDA analysis into a customized R Markdown report.
+.panelset[
+.panel[.panel-name[Overview]
+
+**Create an R Markdown report that summarizes your analysis of the `wine_ratings` dataset.** 
+
+1. Create a new R Markdown file. Give it a title and save it as `wines_report.Rmd`.
+
+2. Use markdown formatting, knitr chunk options and YAML metadata to polish your report.
+]
+
+.panel[.panel-name[New file]
+
+_File &gt; New File &gt; R Markdown_
+
+&lt;img src="images/session03-rmarkdown/open.gif" width="50%" /&gt;
+
+]
+]
  
-<div class="countdown" id="timer_62d88b64" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62dca685" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+???
+We'll leave some time at the end for you to share your report with your group.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

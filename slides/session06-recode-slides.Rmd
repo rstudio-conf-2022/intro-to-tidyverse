@@ -8,7 +8,7 @@ shortlink:
   text: shortlink
 output:
   xaringan::moon_reader:
-    css: ["default", "assets/academy-theme.css"]
+    css: ["default", "assets/academy-theme.css", "assets/session06.css"]
     seal: false
     lib_dir: libs
     nature:
@@ -129,7 +129,7 @@ class: your-turn
 
 1. Navigate to **conf2022.rstudioacademy.com**
 1. Open the **Conf Session 6 - Recode** milestone
-1. Complete the `mutate()` review activity
+1. Complete the **Mutate Review** activity
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
@@ -138,22 +138,6 @@ countdown::countdown(minutes = 4)
 ???
 
 We'll start by reviewing the `mutate()` function.
-
----
-class: your-turn
-
-# Review `mutate()`
-
-```{r}
-patients %>% 
-  mutate(
-    pulse_pressure = sys_bp - dias_bp
-  )
-```
-
-???
-
-Take a look at the solution to the `mutate()` activity and see how it compares to yours. Any questions?
 
 ---
 
@@ -231,7 +215,9 @@ class: your-turn
 
 # Your turn #1
 
-**Recode the values of systolic blood pressure into two new categories: `"high"` and `"normal"`.** Save the result as a new variable named `sys_status`.
+Add a new variable to `patients` that recodes the values of systolic blood pressure into the two categories defined below: `"normal"` and `"high"`. 
+
+Name this new variable `sys_status`. You do not need to save the resulting tibble.
 
 | `sys_bp`          | `sys_status` |
 |:------------------|:-------------|
@@ -245,22 +231,6 @@ countdown::countdown(minutes = 4)
 ???
 
 Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
-
----
-class: your-turn
-
-# Your turn #1
-
-```{r your-turn-1-solution}
-patients %>% 
-  mutate(
-    sys_status = if_else(sys_bp >= 130, "high", "normal")
-  )
-```
-
-???
-
-You'll often see `if_else()` written without any arguments spelled out. Any questions?
 
 ---
 
@@ -422,29 +392,12 @@ class: your-turn
 
 # Your turn #2
 
-**Add a new variable to the `patients_interventions` dataset called `bmi_predict` that calculates a 10% reduction in BMI for patients who receive intervention.** 
+Add a new variable to the `patients_interventions` dataset that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have this variable display the patient’s current BMI. 
 
-For all other patients, have `bmi_predict` display the patient’s current BMI.
+Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
-```
-
----
-
-class: your-turn
-
-# Your turn #2
-
-```{r your-turn-2-solution}
-patients_interventions %>% 
-  mutate(
-    bmi_predict = if_else(
-      intervene == "yes", 
-      bmi * 0.90, 
-      bmi
-    )
-  )
 ```
 
 ---
@@ -585,7 +538,7 @@ class: your-turn
 
 # Your turn #3
 
-**Recode the values of `glucose` into 3 categories: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.** 
+Add a new variable to `patients` that recodes the values of `glucose` into the three categories defined below: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.
 
 Name this new variable `diabetes_status`. Save the new tibble as an object called `patients_2`.
 
@@ -602,27 +555,6 @@ countdown::countdown(minutes = 4)
 ???
 
 Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
-
----
-class: your-turn
-
-# Your turn #3
-
-```{r your-turn-3-solution, eval = TRUE}
-patients_2 <-
-  patients %>% 
-  mutate(
-    diabetes_status = case_when(
-      glucose < 100                   ~ "non-diabetic",
-      glucose >= 100 & glucose <= 125 ~ "pre-diabetic",
-      glucose >= 126                  ~ "diabetic"
-    )
-  )
-```
-
-???
-
-`case_when()` syntax can be a bit tricky to remember at first, but with more practice it will become second nature.
 
 ---
 
@@ -679,7 +611,9 @@ class: your-turn
 
 # Your turn #4
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.**
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. 
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -694,22 +628,6 @@ countdown::countdown(minutes = 4)
 ???
 
 Practice using a catch-all condition.
-
----
-class: your-turn
-
-# Your turn #4
-
-```{r your-turn-4-solution, eval = TRUE}
-patients_2 %>% 
-  mutate(
-     followup = case_when(
-       diabetes_status == "diabetic" & bmi >= 30 ~ 1, 
-       diabetes_status == "pre-diabetic" & bmi >= 30 ~ 1.5,
-       TRUE ~ 2,
-    )
-  )
-```
 
 ---
 
@@ -756,7 +674,9 @@ class: your-turn
 
 # Your turn #5
 
-**Add a new variable to `patients_2` called `followup` that displays the recommended number of months until follow up for each patient.** Use the appropriate missing value in your solution.
+Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. Use the appropriate missing value in your solution (one of `NA_character_`, `NA_real_`, `NA_integer_`, `NA_complex`, or `NA`).
+
+Name this new variable `followup`. You do not need to save the resulting tibble.
 
 | Diabetes status            | Follow up schedule (in months) |
 |:---------------------------|:-------------------------------|
@@ -772,23 +692,6 @@ countdown::countdown(minutes = 4)
 
 Fix the code from earlier using the appropriate `NA` value.
 
----
-class: your-turn
-
-# Your turn #5
-
-```{r your-turn-5-solution}
-patients_2 %>% 
-  mutate(
-    followup = case_when(
-      diabetes_status == "diabetic" ~ 1, 
-      diabetes_status == "pre-diabetic" ~ 1.5,
-      TRUE ~ NA_real_,
-    )
-  )
-```
-
-???
 ---
 class: inverse
 
@@ -821,7 +724,11 @@ class: your-turn
 
 # Your turn: `Conf Milestone`
 
-![](images/session06/conf_milestone.png)
+.center[
+```{r conf-milestone, echo = FALSE, out.width = "80%", fig.align = "center"}
+knitr::include_graphics("images/session06/conf_milestone.png")
+```
+]
 
 
 
