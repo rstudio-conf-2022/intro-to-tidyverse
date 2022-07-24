@@ -135,72 +135,126 @@ class: chapter-slide blue
 # looking at a categorical variable
 ggplot(gss, aes(x=marital)) +
   geom_bar()
-
 ```
 
+---
+
+## What are you trying to show?
+
+.pull-left[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(gss, aes(x=marital)) +
+  geom_bar()
+```
+]
+.pull-right[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+gss %>%
+  ggplot(aes(x = fct_infreq(marital))) +
+  geom_bar()
+```
+]
 
 ---
 class: middle chapter-slide green
 
 .big-white-number[3.]
 
-# Chapter slide * title 
+# `{forcats}`
+
+---
+
+## Categorical Data is differernt
+
+.pull-left[
+```{r, results='hide', fig.keep='none'}
+# count of the factors
+gss %>%
+  count(marital) %>%
+  arrange(desc(n)) %>%
+  ggplot(
+    aes(
+      x = marital,
+      y = n
+    )
+  ) +
+  geom_bar(stat = "identity")
+```
+]
+.pull-right[
+```{r, echo=FALSE}
+gss %>%
+  count(marital) %>%
+  arrange(desc(n)) %>%
+  ggplot(aes(x = marital, y = n)) +
+  geom_bar(stat = "identity")
+```
+]
+
+---
+
+## Factors have an ordering
+
+Factors are stored with an order even if there is no inherent ordering to the meaning
+
+```{r}
+gss %>%
+  pull(marital) %>%
+  fct_unique()
+```
+
+Do not rely on default ording if it's important
+
 
 ---
 class: middle chapter-slide tan
 
 .big-white-number[4.]
 
-# Chapter slide * title 
-
+# Sorting Factors
 
 ---
+
+## `fct_infreq()`
+
+Reorder factor levels by first appearance, frequency, or numeric order
+
+https://forcats.tidyverse.org/reference/fct_inorder.html
+
+---
+
+## Example
+
+```{r}
+f <- factor(c("b", "b", "a", "c", "c", "c"))
+f
+```
+
+```{r}
+fct_infreq(f)
+```
+
+---
+
+## Sort your factors!
+
 .pull-left[
-
-```{r eval=FALSE}
-.
-├── directory tree example
-├── _site/ #<<
-├── _site.yml 
-├── index.Rmd 
-├── schedule.Rmd 
-├── lab01.Rmd 
-└── lab02.Rmd 
+```r
+gss %>%
+  ggplot(
+    aes(
+      x = fct_infreq(marital)
+    )
+  ) +
+  geom_bar()
 ```
 ]
-
 .pull-right[
-<img src="https://www.rstudio.com/academy/academy-steps-milestones.jpg">
+```{r, echo=FALSE}
+gss %>%
+  ggplot(aes(x = fct_infreq(marital))) +
+  geom_bar()
+```
 ]
 
 
----
-class: your-turn
-
-# Your Turn
-Instructions for a "`Your Turn`" Exercise
-
-```{r}
-# some code
-1 + 1
-```
-
----
-
-class: inverse
-
-# This is an inverse slide
-## And a second level header
-Some text and some `inline code`
-
----
-
-# A regular slide
-
-A code block. 
-
-```{r}
-2 + 3
-```
-
-And `some inline code`.
