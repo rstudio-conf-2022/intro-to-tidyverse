@@ -15,6 +15,8 @@ output:
       ratio: "16:9"
 ---
 
+class: title-slide
+
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -22,18 +24,6 @@ options(htmltools.dir.version = FALSE)
 
 library(countdown)
 ```
-
-layout: true
-
-<a class="footer-link" href="https://github.com/rstudio-conf-2022/intro-to-tidyverse">shortlink here</a>
-
-
-???
-
-Speaker notes go under question mark headers
-
----
-class: title-slide
 
 # `r rmarkdown::metadata$title`
 
@@ -44,26 +34,64 @@ class: title-slide
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
 
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
 ---
+class: speaker-slide
 
-class:
+# `r rmarkdown::metadata$author`
 
-# Switching it up!
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
 
-- So far, everything is within RStudio Academy
-- We also want you to be comfortable working on your own machines
-- Things to take you a bit farther
+<img style="border-radius: 50%;" src="https://pbs.twimg.com/profile_images/1167606938726731776/45nojZYy_400x400.jpg" width="200px"/>
+
+.speaker-links[
+  [`r fontawesome::fa("github")` chendaniely](https://github.com/chendaniely)    
+  [`r fontawesome::fa("twitter")` chendaniely](https://twitter.com/chendaniely)   
+  [`r fontawesome::fa("link")` daniel.rbind.io](https://daniel.rbind.io)
+]
 
 ---
 
 class: middle
 
-# Best Practices in...
+# Switching it up!
 
-1. Set Up the IDE
-1. R Projects
-1. Chapter title
-1. Chapter title
+1. So far, everything is within RStudio Academy
+2. We also want you to be comfortable working on your own machines
+3. Things to take you a bit farther
+
+---
+
+class: middle
+
+## Best Practices
+
+1. IDE Setup
+2. Use an R Project
+3. Name your files
+4. Customizations
+5. Asking for help
 
 
 ---
@@ -114,7 +142,7 @@ knitr::include_graphics("https://imgs.xkcd.com/comics/borrow_your_laptop.png")
 ---
 class: chapter-slide blue
 
-## How do RProjects help?
+## How do R Projects help?
 
 1. Helps you isolate your thoughts (context switching)
 2. Explicitly sets your working directory
@@ -174,14 +202,15 @@ class: chapter-slide blue
 .pull-left[
 ### DO
 
-- Use projects as often as you can
-- Create a `temp` project to throw all your `test` and `Untitled.Rmd` files into
-- Consolidate all your projects into a single big project
+1. Use projects as often as you can
+1. Create a `temp` project to throw all your `test` and `Untitled.Rmd` files into
+1. Consolidate all your projects into a single big project
 ]
 .pull-right[
 ### DON'T
-- Nest your R PRrojects
+1. Nest your R P Rrojects
   - You will confuse your working directories
+2. Mix multiple projects into 1
 ]
 
 ---
@@ -332,15 +361,11 @@ class: chapter-slide blue
 1. Rstudio > session > set working directory
 2. using the import GUI
 2. Full path
-  - `/Users/Daniel/Desktop/best_practices/data/encounters.csv`
+- `/Users/Daniel/Desktop/best_practices/data/encounters.csv`
 3. Relative path
   - `encounters.csv`
   - `data/encounters.csv`
   - `../data/encounters.csv`
-
-?
-
-Ask which of these would work on their own computer
 
 ---
 class: your-turn
@@ -391,7 +416,7 @@ class: your-turn
 # Your Turn
 
 1. Use `here()` to load up your data
-2. create a subfolder, `load` in `analysis`: `analysis/laod/load_data.Rmd`
+2. create a subfolder, `load` in `analysis`: `analysis/ami/load_data.Rmd`
   - Does your file still load, even after you move your script to a different location?
 
 ```{r, echo=FALSE}
@@ -441,17 +466,16 @@ class: chapter-slide green
 Descriptive name after a sortable term in the file name.
 
 .pull-left[
-- 01.R
-- 02.R
-- 03.R
+1. `01.R`
+2. `02.R`
+3. `03.R`
 ]
 
 .pull-right[
-- 01-read_data.R
-- 02-visualize_data.R
-- 03-analyze_data.R
+1. `01-read_data.R`
+2. `02-visualize_data.R`
+3. `03-analyze_data.R`
 ]
-
 
 ---
 class: chapter-slide green
@@ -475,8 +499,7 @@ class: your-turn
 
 # Your Turn
 
-- Use your `dplyr` skills
-- `select()` and `filter()` your data down!
+- Use your `dplyr` skills: `select()` and `filter()`
 
 <!--
 TODO: come up with a multi step exercise here
@@ -485,9 +508,9 @@ TODO: come up with a multi step exercise here
 1. Look for heart attack encounters
   - `description` has a value of "Cardiac Arrest" or "Myocardial Infarction"
 2. Save this dataset out to a file `here("data", "mi.csv")`
-- Answer the following questions in code in a separate file using the `mi.csv` file
-  - How many different patients have a heart attack encounter?
-  - what are the different types of `encounterclass`?
+3. Answer the following questions in code in a separate file (`eda.Rmd`) using the `mi.csv` file
+- How many different patients have a heart attack encounter?
+- what are the different types of `encounterclass`?
 
 ```{r, echo=FALSE}
 countdown(minutes = 5, warn_when = 60, top=0) # top right timer
@@ -498,8 +521,12 @@ class: chapter-slide green
 
 ## How to improve?
 
-- Save data in a special "output"-like folder
-- Name your file something so it sorts properly
+1. Save data in a special "output"-like folder
+  - `data/original/encounters.csv`
+  - `data/final/mi.csv`
+2. Name your file something so it sorts properly
+  - `01-load.Rmd`
+  - `02-eda.Rmd`
 
 ---
 class: chapter-slide green
@@ -521,6 +548,10 @@ A quick way to fix your column names
 1. Load the `{janitor}` package
 2. Look at the `iris` dataset
 3. Use the `clean_names()` function on the the `iris` dataset
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 60)
+```
 
 ---
 class: middle chapter-slide red
@@ -566,6 +597,10 @@ class: middle chapter-slide tan
 ---
 class: chapter-slide tan
 
+## Reproduciable Examples!
+
+<a href="https://imgflip.com/i/1nenhs"><img src="https://i.imgflip.com/1nenhs.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
+
 - Jenny Bryan | Object of type ‘closure’ is not subsettable | RStudio (2020)
   - https://www.youtube.com/watch?v=vgYS-F8opgE
 - `{reprex}` package for REPRoducible EXamples
@@ -577,7 +612,7 @@ class: chapter-slide inverse
 
 ## Best Practices
 
-1. Use an R PRoject
+1. Use an R Project
 2. Use relative paths to refer to files
 3. Name your files: human+machine readable, sortable
 4. Use folders to separate work
