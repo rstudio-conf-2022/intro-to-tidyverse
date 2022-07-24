@@ -250,7 +250,7 @@ When you knit the document...
     <source src="images/session03-rmarkdown/knit_demo.mp4" type="video/mp4"> </video>
 
 ---
-# Let's build an R Markdown report!
+# Roadmap
 
 <br>
 
