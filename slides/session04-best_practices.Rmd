@@ -1,0 +1,621 @@
+---
+title: "Best Practices"
+subtitle: "Day 1, Session 4"
+author: "Daniel Chen"
+date: "July 25, 2022"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# xaringan::inf_mr() ## to auto update render
+
+library(countdown)
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://pbs.twimg.com/profile_images/1167606938726731776/45nojZYy_400x400.jpg" width="200px"/>
+
+.speaker-links[
+  [`r fontawesome::fa("github")` chendaniely](https://github.com/chendaniely)    
+  [`r fontawesome::fa("twitter")` chendaniely](https://twitter.com/chendaniely)   
+  [`r fontawesome::fa("link")` daniel.rbind.io](https://daniel.rbind.io)
+]
+
+---
+
+class: middle
+
+# Switching it up!
+
+1. So far, everything is within RStudio Academy
+2. We also want you to be comfortable working on your own machines
+3. Things to take you a bit farther
+
+---
+
+class: middle
+
+## Best Practices
+
+1. IDE Setup
+2. Use an R Project
+3. Name your files
+4. Customizations
+5. Asking for help
+
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# Set up the IDE
+
+---
+class: chapter-slide red
+
+## Workspace settings
+
+```{r, echo=FALSE, out.width="475px", fig.align="center"}
+knitr::include_graphics("images/best_practices/rstudio-tools-global_options-genearl-basic.png")
+```
+
+```{r, echo=FALSE}
+countdown(minutes = 2, warn_when = 30)
+```
+
+---
+
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# R Projects
+
+---
+class: chapter-slide blue
+
+.pull-left[
+## It works on my machine
+
+1. You work on something
+2. You want to share it with your collegues
+3. They can't run any of your code
+]
+.pull-right[
+```{r, echo=FALSE}
+knitr::include_graphics("https://imgs.xkcd.com/comics/borrow_your_laptop.png")
+```
+
+]
+
+---
+class: chapter-slide blue
+
+## How do R Projects help?
+
+1. Helps you isolate your thoughts (context switching)
+2. Explicitly sets your working directory
+  - Helps you point to your files
+3. Projects are self contained
+
+---
+
+class: chapter-slide blue
+
+## How: File > New Project
+
+```{r, echo=FALSE, out.width="800px", fig.align="center"}
+knitr::include_graphics("images/best_practices/rstudio-new_project-01-new.png")
+```
+
+---
+class: chapter-slide blue
+
+## How: New or Existing Folder
+
+```{r, echo=FALSE, out.width=750, fig.align="center"}
+knitr::include_graphics("images/best_practices/rstudio-new_project-02-wizard.png")
+```
+
+---
+
+class: chapter-slide blue
+
+## How: Create
+
+- Use your `Desktop` for now
+
+```{r, echo=FALSE, out.width=600, fig.align="center"}
+knitr::include_graphics("images/best_practices/rstudio-new_project-03-create.png")
+```
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Create a new RStudio project
+1. Put the project on your `Desktop`
+2. Name your project: `conf-best_practices`
+
+```{r, echo=FALSE}
+countdown(minutes = 2, warn_when = 30)
+```
+
+---
+
+class: chapter-slide blue
+
+## Project DO's and Don'ts
+
+.pull-left[
+### DO
+
+1. Use projects as often as you can
+1. Create a `temp` project to throw all your `test` and `Untitled.Rmd` files into
+1. Consolidate all your projects into a single big project
+]
+.pull-right[
+### DON'T
+1. Nest your R P Rrojects
+  - You will confuse your working directories
+2. Mix multiple projects into 1
+]
+
+---
+
+class: chapter-slide blue
+
+.pull-left[
+
+## What's in a Project?
+
+- A regular folder with a `.Rproj` file:
+
+```
+.
+..
+├── README.md
+└── conf-best_practices.Rproj
+```
+]
+.pull-right[
+
+
+```
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+BuildType: Custom
+CustomScriptPath: .build-site.R
+```
+]
+
+
+---
+class: chapter-slide blue
+
+## Getting data for our project
+
+- `read_csv()` from `{readr}` and `{tidyverse}`
+  - You can load raw csvs
+  - You can load directly from github (or any URL)
+
+- You can download data from github
+  - Getting data from github is common
+
+---
+class: chapter-slide blue
+
+## Download from GitHub
+
+.pull-left[
+```{r, echo=FALSE, out.width=450, fig.align="center"}
+knitr::include_graphics("images/best_practices/github-download-1.png")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, out.width=450, fig.align="center"}
+knitr::include_graphics("images/best_practices/github-download-2.png")
+```
+]
+
+---
+
+class: your-turn
+
+# Your Turn
+
+In your `conf-best_practices` folder:
+
+1. Save/Download the `encounters.csv`
+  - https://bit.ly/rstudio2022-encounters
+2. Create an R script in your `conf-best_practices` folder
+3. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 30)
+```
+
+---
+class: chapter-slide blue
+
+## Relative and Absolute paths
+
+.pull-left[
+```
+/
+ |- Users/
+  |- Daniel/
+   |- Desktop/
+    |- best_practices/
+     |- data/
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+.pull-right[
+```
+C:\
+ |- Users\
+  |- Daniel\
+   |- Desktop\
+    |- best_practices\
+     |- data\
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+
+- Working directory: `/Users/Daniel/Desktop/best_practices/`
+- Relative path: `data/cool_stuff.csv`
+- Absolute path: `//Users/Daniel/Desktop/best_practices/data/cool_stuff.csv`
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Create a `data` folder and move the `encounters.csv` file into it.
+2. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 30)
+```
+
+
+---
+class: chapter-slide blue
+
+## How did you laod data?
+
+1. Rstudio > session > set working directory
+2. using the import GUI
+2. Full path
+- `/Users/Daniel/Desktop/best_practices/data/encounters.csv`
+3. Relative path
+  - `encounters.csv`
+  - `data/encounters.csv`
+  - `../data/encounters.csv`
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Move the script into an `analysis` folder
+2. Check to see if your dataset loads now.
+  - see if the code chunk works
+  - see if it knits
+3. Fix the path to make the data load
+
+
+```{r, echo=FALSE}
+countdown(minutes = 2, warn_when = 15)
+```
+
+---
+class: chapter-slide blue
+
+.pull-left[
+## The `here` package
+]
+.pull-right[
+```{r, echo=FALSE, out.width=750, fig.align="center"}
+knitr::include_graphics("images/best_practices/allison_horst-here.png")
+```
+]
+
+---
+class: chapter-slide blue
+
+## The `here` package
+
+```{r}
+library(here)
+
+here()
+```
+
+```{r}
+here("data", "my_data.csv")
+```
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Use `here()` to load up your data
+2. create a subfolder, `load` in `analysis`: `analysis/ami/load_data.Rmd`
+  - Does your file still load, even after you move your script to a different location?
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 15)
+```
+
+---
+class: chapter-slide blue
+
+## `setwd()` and `rm(list=ls())`
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# Naming Things
+
+---
+class: chapter-slide green
+
+## Examples
+
+```{r, echo=FALSE, out.width=600, fig.align="center"}
+knitr::include_graphics("images/best_practices/naming-example.png")
+```
+
+- https://speakerdeck.com/jennybc/how-to-name-files
+
+---
+class: chapter-slide green
+
+## General rules
+
+1. Machine readable
+2. Human readable
+3. Sorts/orders nicely
+
+---
+class: chapter-slide green
+
+## Embrace the Slug
+
+Descriptive name after a sortable term in the file name.
+
+.pull-left[
+1. `01.R`
+2. `02.R`
+3. `03.R`
+]
+
+.pull-right[
+1. `01-read_data.R`
+2. `02-visualize_data.R`
+3. `03-analyze_data.R`
+]
+
+---
+class: chapter-slide green
+
+## ISO 8601 for Dates
+
+How to write your dates and times YYYY-MM-DD
+
+- Date: 2022-07-25
+- Date and time in UTC
+  - 2022-07-25T21:05:17+00:00
+  - 2022-07-18T21:05:17Z
+  - 20220718T210517Z
+- Week: 2022-W30
+  - Domains have different starting week rules
+- Week with weekday: 2022-W29-1
+- Date without year: --07-25[1]
+- Ordinal date: 2022-206
+---
+class: your-turn
+
+# Your Turn
+
+- Use your `dplyr` skills: `select()` and `filter()`
+
+<!--
+TODO: come up with a multi step exercise here
+-->
+
+1. Look for heart attack encounters
+  - `description` has a value of "Cardiac Arrest" or "Myocardial Infarction"
+2. Save this dataset out to a file `here("data", "mi.csv")`
+3. Answer the following questions in code in a separate file (`eda.Rmd`) using the `mi.csv` file
+- How many different patients have a heart attack encounter?
+- what are the different types of `encounterclass`?
+
+```{r, echo=FALSE}
+countdown(minutes = 5, warn_when = 60, top=0) # top right timer
+```
+
+---
+class: chapter-slide green
+
+## How to improve?
+
+1. Save data in a special "output"-like folder
+  - `data/original/encounters.csv`
+  - `data/final/mi.csv`
+2. Name your file something so it sorts properly
+  - `01-load.Rmd`
+  - `02-eda.Rmd`
+
+---
+class: chapter-slide green
+
+## Code style
+
+See: https://style.tidyverse.org/
+
+1. Variable names: use `_`: no captical letters, no `.`
+2. Same rules apply for your column names in your data
+
+---
+class: your-turn
+
+# Your Turn
+
+A quick way to fix your column names
+
+1. Load the `{janitor}` package
+2. Look at the `iris` dataset
+3. Use the `clean_names()` function on the the `iris` dataset
+
+```{r, echo=FALSE}
+countdown(minutes = 3, warn_when = 60)
+```
+
+---
+class: middle chapter-slide red
+
+.big-white-number[5.]
+
+# Customizations
+
+---
+
+class: chapter-slide red
+
+## Optional: Customize Theme
+
+```{r, echo=FALSE, out.width=500, fig.align="center"}
+knitr::include_graphics("images/best_practices/rstudio-tools-global_options-appearance.png")
+```
+
+---
+
+class: chapter-slide red
+
+## Optional: Customize Font
+
+https://github.com/tonsky/FiraCode
+
+- FiraCode is a popular font
+    - ligatures (e.g., `!=`, `==`, `|>`)
+    - monospaced
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/best_practices/firacode-logo.svg")
+```
+
+---
+
+class: middle chapter-slide tan
+
+.big-white-number[4.]
+
+# Best practrices for _asking_ for help
+
+---
+class: chapter-slide tan
+
+## Reproduciable Examples!
+
+<a href="https://imgflip.com/i/1nenhs"><img src="https://i.imgflip.com/1nenhs.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
+
+- Jenny Bryan | Object of type ‘closure’ is not subsettable | RStudio (2020)
+  - https://www.youtube.com/watch?v=vgYS-F8opgE
+- `{reprex}` package for REPRoducible EXamples
+  - https://reprex.tidyverse.org/
+
+---
+
+class: chapter-slide inverse
+
+## Best Practices
+
+1. Use an R Project
+2. Use relative paths to refer to files
+3. Name your files: human+machine readable, sortable
+4. Use folders to separate work
+5. Reproducibility is the key to sharing and asking for help
+
+- Example project with some of these features: https://github.com/chendaniely/dissertation-analysis
