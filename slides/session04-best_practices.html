@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Best Practices</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Chen" />
+    <meta name="date" content="2022-07-25" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+
+# Best Practices
+
+### Day 1, Session 4
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; Daniel Chen • July 25, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+---
+class: speaker-slide
+
+# Daniel Chen
+
+&lt;!-- You can copy the image link address from your github profile to use as the src link below --&gt; 
+
+&lt;img style="border-radius: 50%;" src="https://pbs.twimg.com/profile_images/1167606938726731776/45nojZYy_400x400.jpg" width="200px"/&gt;
+
+.speaker-links[
+  [<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> chendaniely](https://github.com/chendaniely)    
+  [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> chendaniely](https://twitter.com/chendaniely)   
+  [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> daniel.rbind.io](https://daniel.rbind.io)
+]
+
+---
+
+class: middle
+
+# Switching it up!
+
+1. So far, everything is within RStudio Academy
+2. We also want you to be comfortable working on your own machines
+3. Things to take you a bit farther
+
+---
+
+class: middle
+
+## Best Practices
+
+1. IDE Setup
+2. Use an R Project
+3. Name your files
+4. Customizations
+5. Asking for help
+
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# Set up the IDE
+
+---
+class: chapter-slide red
+
+## Workspace settings: Tools &gt; Global Setup
+
+&lt;img src="images/best_practices/rstudio-tools-global_options-genearl-basic.png" width="475px" style="display: block; margin: auto;" /&gt;
+
+<div class="countdown" id="timer_62dee20a" style="right:0;bottom:0;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# R Projects
+
+---
+class: chapter-slide blue
+
+.pull-left[
+## It works on my machine
+
+1. You work on something
+2. You want to share it with your collegues
+3. They can't run any of your code
+]
+.pull-right[
+![](https://imgs.xkcd.com/comics/borrow_your_laptop.png)&lt;!-- --&gt;
+
+]
+
+---
+class: chapter-slide blue
+
+## How do R Projects help?
+
+1. Helps you isolate your thoughts (context switching)
+2. Explicitly sets your working directory
+  - Helps you point to your files
+3. Projects are self contained
+
+---
+
+class: chapter-slide blue
+
+## How: File &gt; New Project
+
+&lt;img src="images/best_practices/rstudio-new_project-01-new.png" width="800px" style="display: block; margin: auto;" /&gt;
+
+---
+class: chapter-slide blue
+
+## How: New or Existing Folder
+
+&lt;img src="images/best_practices/rstudio-new_project-02-wizard.png" width="750" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: chapter-slide blue
+
+## How: Create
+
+- Use your `Desktop` for now
+
+&lt;img src="images/best_practices/rstudio-new_project-03-create.png" width="600" style="display: block; margin: auto;" /&gt;
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Create a new RStudio project
+1. Put the project on your `Desktop`
+2. Name your project: `conf-best_practices`
+
+<div class="countdown" id="timer_62dee06a" style="right:0;bottom:0;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: chapter-slide blue
+
+## Project DO's and Don'ts
+
+.pull-left[
+### DO
+
+1. Use projects as often as you can
+1. Create a `temp` project to throw all your `test` and `Untitled.Rmd` files into
+1. Consolidate all your projects into a single big project
+]
+.pull-right[
+### DON'T
+1. Nest your R P Rrojects
+  - You will confuse your working directories
+2. Mix multiple projects into 1
+]
+
+---
+
+class: chapter-slide blue
+
+.pull-left[
+
+## What's in a Project?
+
+- A regular folder with a `.Rproj` file:
+
+```
+.
+..
+├── README.md
+└── conf-best_practices.Rproj
+```
+]
+.pull-right[
+
+
+```
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+BuildType: Custom
+CustomScriptPath: .build-site.R
+```
+]
+
+
+---
+class: chapter-slide blue
+
+## Getting data for our project
+
+- `read_csv()` from `{readr}` and `{tidyverse}`
+  - You can load raw csvs
+  - You can load directly from github (or any URL)
+
+- You can download data from github
+  - Getting data from github is common
+
+---
+class: chapter-slide blue
+
+## Download from GitHub
+
+.pull-left[
+&lt;img src="images/best_practices/github-download-1.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="images/best_practices/github-download-2.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: your-turn
+
+# Your Turn
+
+In your `conf-best_practices` folder:
+
+1. Save/Download the `encounters.csv`
+  - https://bit.ly/rstudio2022-encounters
+2. Create an R script in your `conf-best_practices` folder
+3. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
+
+<div class="countdown" id="timer_62dee13e" style="right:0;bottom:0;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: chapter-slide blue
+
+## Relative and Absolute paths
+
+.pull-left[
+```
+/
+ |- Users/
+  |- Daniel/
+   |- Desktop/
+    |- best_practices/
+     |- data/
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+.pull-right[
+```
+C:\
+ |- Users\
+  |- Daniel\
+   |- Desktop\
+    |- best_practices\
+     |- data\
+     | |- cool_stuff.csv
+     |
+     |- 01-load_data.R
+     |- README.md
+     |- best_practices.Rproj
+```
+]
+
+- Working directory: `/Users/Daniel/Desktop/best_practices/`
+- Relative path: `data/cool_stuff.csv`
+- Absolute path: `//Users/Daniel/Desktop/best_practices/data/cool_stuff.csv`
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Create a `data` folder and move the `encounters.csv` file into it.
+2. Load the `encounters.csv` dataset into R, save it as the `encounters` variable
+
+<div class="countdown" id="timer_62dedfab" style="right:0;bottom:0;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+---
+class: chapter-slide blue
+
+## How did you laod data?
+
+1. Rstudio &gt; session &gt; set working directory
+2. using the import GUI
+2. Full path
+- `/Users/Daniel/Desktop/best_practices/data/encounters.csv`
+3. Relative path
+  - `encounters.csv`
+  - `data/encounters.csv`
+  - `../data/encounters.csv`
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Move the script into an `analysis` folder
+2. Check to see if your dataset loads now.
+  - see if the code chunk works
+  - see if it knits
+3. Fix the path to make the data load
+
+
+<div class="countdown" id="timer_62dee101" style="right:0;bottom:0;" data-warnwhen="15">
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: chapter-slide blue
+
+.pull-left[
+## The `here` package
+]
+.pull-right[
+&lt;img src="images/best_practices/allison_horst-here.png" width="750" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: chapter-slide blue
+
+## The `here` package
+
+
+```r
+library(here)
+```
+
+```
+## here() starts at /Users/danielchen/git/rstudio/intro-to-tidyverse
+```
+
+```r
+here()
+```
+
+```
+## [1] "/Users/danielchen/git/rstudio/intro-to-tidyverse"
+```
+
+
+```r
+here("data", "my_data.csv")
+```
+
+```
+## [1] "/Users/danielchen/git/rstudio/intro-to-tidyverse/data/my_data.csv"
+```
+
+---
+class: your-turn
+
+# Your Turn
+
+1. Use `here()` to load up your data
+2. create a subfolder, `ami` in `analysis`: `analysis/ami/load_data.Rmd`
+  - Does your file still load, even after you move your script to a different location?
+
+<div class="countdown" id="timer_62dee1ec" style="right:0;bottom:0;" data-warnwhen="15">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: chapter-slide blue
+
+## `setwd()` and `rm(list=ls())`
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;The only two things that make &lt;a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw"&gt;@JennyBryan&lt;/a&gt; 😤😠🤯. Instead use projects + here::here() &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; &lt;a href="https://t.co/GwxnHePL4n"&gt;pic.twitter.com/GwxnHePL4n&lt;/a&gt;&lt;/p&gt;&amp;mdash; Hadley Wickham (@hadleywickham) &lt;a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw"&gt;December 11, 2017&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt; 
+
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# Naming Things
+
+---
+class: chapter-slide green
+
+## Examples
+
+&lt;img src="images/best_practices/naming-example.png" width="600" style="display: block; margin: auto;" /&gt;
+
+- https://speakerdeck.com/jennybc/how-to-name-files
+
+---
+class: chapter-slide green
+
+## General rules
+
+1. Machine readable
+2. Human readable
+3. Sorts/orders nicely
+
+---
+class: chapter-slide green
+
+## Embrace the Slug
+
+Descriptive name after a sortable term in the file name.
+
+.pull-left[
+1. `01.R`
+2. `02.R`
+3. `03.R`
+]
+
+.pull-right[
+1. `01-read_data.R`
+2. `02-visualize_data.R`
+3. `03-analyze_data.R`
+]
+
+---
+class: chapter-slide green
+
+## ISO 8601 for Dates
+
+How to write your dates and times YYYY-MM-DD
+
+- Date: 2022-07-25
+- Date and time in UTC
+  - 2022-07-25T21:05:17+00:00
+  - 2022-07-18T21:05:17Z
+  - 20220718T210517Z
+- Week: 2022-W30
+  - Domains have different starting week rules
+- Week with weekday: 2022-W29-1
+- Date without year: --07-25[1]
+- Ordinal date: 2022-206
+---
+class: your-turn
+
+# Your Turn
+
+- Use your `dplyr` skills: `select()` and `filter()`
+
+&lt;!--
+TODO: come up with a multi step exercise here
+--&gt;
+
+1. Look for heart attack encounters
+  - `description` has a value of "Cardiac Arrest" or "Myocardial Infarction"
+2. Save this dataset out to a file `here("data", "mi.csv")`
+3. Answer the following questions in code in a separate file (`eda.Rmd`) using the `mi.csv` file
+- How many different patients have a heart attack encounter?
+- what are the different types of `encounterclass`?
+
+<div class="countdown" id="timer_62dee159" style="top:0;right:0;" data-warnwhen="60">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: chapter-slide green
+
+## How to improve?
+
+1. Save data in a special "output"-like folder
+  - `data/original/encounters.csv`
+  - `data/final/mi.csv`
+2. Name your file something so it sorts properly
+  - `01-load.Rmd`
+  - `02-eda.Rmd`
+
+---
+class: chapter-slide green
+
+## Code style
+
+See: https://style.tidyverse.org/
+
+1. Variable names: use `_`: no captical letters, no `.`
+2. Same rules apply for your column names in your data
+
+---
+class: your-turn
+
+# Your Turn
+
+A quick way to fix your column names
+
+1. Load the `{janitor}` package
+2. Look at the `iris` dataset
+3. Use the `clean_names()` function on the the `iris` dataset
+
+<div class="countdown" id="timer_62dedf15" style="right:0;bottom:0;" data-warnwhen="60">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: middle chapter-slide red
+
+.big-white-number[5.]
+
+# Customizations
+
+---
+
+class: chapter-slide red
+
+## Optional: Customize Theme
+
+&lt;img src="images/best_practices/rstudio-tools-global_options-appearance.png" width="500" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: chapter-slide red
+
+## Optional: Customize Font
+
+https://github.com/tonsky/FiraCode
+
+- FiraCode is a popular font
+    - ligatures (e.g., `!=`, `==`, `|&gt;`)
+    - monospaced
+
+![](images/best_practices/firacode-logo.svg)&lt;!-- --&gt;
+
+---
+
+class: middle chapter-slide tan
+
+.big-white-number[4.]
+
+# Best practrices for _asking_ for help
+
+---
+class: chapter-slide tan
+
+## Reproduciable Examples!
+
+&lt;a href="https://imgflip.com/i/1nenhs"&gt;&lt;img src="https://i.imgflip.com/1nenhs.jpg" title="made at imgflip.com"/&gt;&lt;/a&gt;&lt;div&gt;&lt;a href="https://imgflip.com/memegenerator"&gt;&lt;/a&gt;&lt;/div&gt;
+
+- Jenny Bryan | Object of type ‘closure’ is not subsettable | RStudio (2020)
+  - https://www.youtube.com/watch?v=vgYS-F8opgE
+- `{reprex}` package for REPRoducible EXamples
+  - https://reprex.tidyverse.org/
+
+---
+
+class: chapter-slide inverse
+
+## Best Practices
+
+1. Use an R Project
+2. Use relative paths to refer to files
+3. Name your files: human+machine readable, sortable
+4. Use folders to separate work
+5. Reproducibility is the key to sharing and asking for help
+
+- Example project with some of these features: https://github.com/chendaniely/dissertation-analysis
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

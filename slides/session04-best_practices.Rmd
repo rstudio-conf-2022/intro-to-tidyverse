@@ -104,7 +104,7 @@ class: middle chapter-slide red
 ---
 class: chapter-slide red
 
-## Workspace settings
+## Workspace settings: Tools > Global Setup
 
 ```{r, echo=FALSE, out.width="475px", fig.align="center"}
 knitr::include_graphics("images/best_practices/rstudio-tools-global_options-genearl-basic.png")
@@ -416,7 +416,7 @@ class: your-turn
 # Your Turn
 
 1. Use `here()` to load up your data
-2. create a subfolder, `load` in `analysis`: `analysis/ami/load_data.Rmd`
+2. create a subfolder, `ami` in `analysis`: `analysis/ami/load_data.Rmd`
   - Does your file still load, even after you move your script to a different location?
 
 ```{r, echo=FALSE}
