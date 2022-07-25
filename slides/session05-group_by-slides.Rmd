@@ -87,6 +87,17 @@ These slides are adapted from a presentation created by Garrett Grolemund. Thank
 Garrett!
 
 ---
+class: middle
+
+# Agenda
+
+1. Summarize data
+1. Summary functions
+1. Group values together
+1. Mini project `r emo::ji("book")`
+
+
+---
 class: middle chapter-slide red
 
 .big-white-number[1.]
@@ -374,7 +385,7 @@ background-image: url(images/session05/pollution-scene.jpg)
 background-size: cover
 class: bottom, left
 
-.big-text.white[Pollution dataset]
+.big-text.white[Pollution]
 ---
 # `pollution`
 
@@ -418,7 +429,7 @@ We want to _group by_ the name of the city, and calculate the average `amount`
 for each of these groups, generating three different numbers. 
 
 ---
-# `group_by()` 
+# 1. `group_by()` 
 
 .pull-left[
 ```{r eval=FALSE}
@@ -434,7 +445,7 @@ pollution %>%
 ]
 
 ---
-# `group_by()` 
+# 1. `group_by()` 
 
 .pull-left[
 ```{r eval=FALSE}
@@ -457,37 +468,33 @@ You can see these groups in the header of the tibble.
 
 ---
 
-# `group_by()` + `summarize()`
+# 2. `summarize()`
 
 --
 
-```{r eval=FALSE}
+```{r pollution-group-summarize, eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
-  summarize(median = median(amount), n = n())
+  summarize(median = median(amount), n = n()) #<<
 ```
 
 --
 
-<img src="images/session05/pollution-group-summarize-1.png"/>
+```{r pollution-group-summarize-out, ref.label="pollution-group-summarize", echo=FALSE}
+```
+
 
 ???
 Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will summarize each of the groups in turn. 
 
 Now, we have three rows, each summarizing the mean amount of pollution in a single city. We've collapsed the two rows
 for each city into a single row for each city. 
-
 ---
 
-# `group_by()` + `summarize()`
+<img src="images/session05/pollution-group_by.png"/>
+---
 
-```{r eval=FALSE}
-pollution %>% 
-  group_by(city) %>% 
-  summarize(median = median(amount), n = n())
-```
-
-<img src="images/session05/pollution-group-summarize-2.png"/>
+<img src="images/session05/pollution-summarize.png"/>
 
 ---
 class: your-turn
