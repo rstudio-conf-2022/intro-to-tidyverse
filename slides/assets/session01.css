@@ -108,7 +108,15 @@ h1 .big-text {
 }
 
 
-
 .pull-right ~ * {
   clear: none !important;
 }
+
+
+.box {
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
