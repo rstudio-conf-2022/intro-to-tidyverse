@@ -165,11 +165,35 @@ background-position: center;
 background-size: 80% 
 # Replication crisis
 
+???
+
+* These are just a few headlines from the past or so that highlight an ongoing problem across many fields of science -- that many published studies fail to replicate.
+
+* I won't go into details here, but suffice it to say, to solve the reproducibility crisis, 
+we need both cultural changes in how science is conducted AND technological solutions. 
+
+* R Markdown gives us just that -- a technological solution for reproducibility.
 
 ---
 background-image: url(images/session03-rmarkdown/reproducibility.gif)
 background-position: center;
 background-size: 100% 
+
+???
+
+* To put this in perspective, I'm going to borrow one of my favorite historical analogies; 
+we can think of R Markdown like the advent of the printing press in the 15th century.
+
+* The printing press made it possible to reproduce any book AND, more importantly, make that process AUTOMATABLE. This revolutionary technology allowed the dissemination of information to the masses,
+which had a wide-ranging impact on society at large
+
+* R Markdown does something similar for data science today -- you can share your 
+R Markdown document with someone else, and that person will have everything they 
+need to reproduce your analysis AUTOMATICALLY, with the click of a button.
+
+* Because this process can be entirely automated, this has huge potential in a 
+business setting to increase the efficiency of data science workflows, which in turn can lead
+to better business outcomes
 
 ---
 # Beautiful data products
@@ -454,7 +478,7 @@ knitr::include_graphics("images/session03-rmarkdown/cheatsheet-markdown.png")
 ---
 class: your-turn
 
-# Your Turn 1
+# Your Turn 1 (with a partner!)
 
 .panelset[
 .panel[.panel-name[Overview]
@@ -996,6 +1020,11 @@ class: inverse
 `r emo::ji("white_check_mark")` **Preview your work:** `r emo::ji("yarn")` early, `r emo::ji("yarn")` often
 
 ---
+class: inverse middle center
+
+# Questions?
+
+---
 class: your-turn
 
 # Mini Project
@@ -1026,4 +1055,8 @@ countdown::countdown(minutes = 20)
 ```
 
 ???
-We'll leave some time at the end for you to share your report with your group.
+
+* If you have already started a separate R Markdown file for exploring the 
+`wine_ratings` dataset, feel free to use that file to build your report.
+
+* We'll leave some time at the end for you to share your report with your group.
