@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Session 1 Review</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Desirée De Leon" />
+    <meta name="date" content="2022-07-25" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard('pre > code.r, pre > code.md', {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-banner/banner.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-banner/banner.js"></script>
+    <script src="libs/core-js/shim.min.js"></script>
+    <script src="libs/react/react.min.js"></script>
+    <script src="libs/react/react-dom.min.js"></script>
+    <script src="libs/reactwidget/react-tools.js"></script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/reactable-binding/reactable.js"></script>
+    <link rel="stylesheet" href="assets/academy-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/session01.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class:
+
+
+
+
+
+
+
+
+# .big-text[Welcome] 
+
+## Introduction to the tidyverse 
+
+Find your group's table and make yourself comfortable. 
+
+We'll get started shortly after 9am.
+
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; &lt;/div&gt;
+&lt;/div&gt;
+
+---
+class: middle, agenda
+
+# Session 1 Agenda
+
+1. Logistics: Policies, Goals, and Schedules
+1. Tech and tooling
+1. Review: Group challenge
+
+???
+
+
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[1.]
+
+# Policies, Goals, &amp; Schedules 
+
+---
+
+class: inverse, middle
+
+# Conference workshop policies
+
+.left-column[
+
+  .center[
+
+  🚪 💨 
+
+  &lt;br&gt;
+
+  🚫 📷 
+  
+  &lt;br&gt;
+
+  
+  😷 🦠
+  ]
+]
+
+.right-column[
+
+  Identify the exits closest to you in case of emergency 
+
+  &lt;br&gt;
+
+  Please do not photograph people wearing .light-red[red lanyards] 
+  
+  &lt;br&gt;
+   
+  Fully cover your mouth and nose at all times. A limited supply of masks are available upon request. Ask at registration desk.
+   
+] 
+
+---
+
+# Code of conduct
+
+- Please review the [rstudio::conf code of conduct](https://rstd.io/code-of-conduct) that applies to all workshops &lt;https://rstd.io/code-of-conduct&gt;
+
+--
+
+- CoC issues can be addressed three ways:
+
+  - In person: contact any rstudio::conf staff member or the conference registration desk  
+  
+  - By email: send a message to `conf@rstudio.com`  
+  
+  - By phone: call 844-448-1212  
+
+---
+class: inverse, middle
+
+# Locations to note
+
+.left-column[
+
+  .center[
+
+  🚹 🚾
+  
+  &lt;br&gt;
+
+  🧘 ⛺
+  
+  &lt;br&gt;
+  &lt;br&gt;
+  
+  🤱 🍼
+  ]
+]
+
+.right-column[
+
+  Gender neutral bathrooms are near National Harbor rooms
+
+  &lt;br&gt;
+
+
+  A meditation / chill-out room is open 8am - 5pm, Mon - Thurs in **National Harbor 9** if you want quiet space to recharge.
+  
+   &lt;br&gt;
+   
+  A lactation room is located at **Potomac Dressing Room**. Open 8am - 5pm, Mon - Thurs.
+   
+] 
+  
+---
+class: middle, center, inverse
+
+.pull-left[
+# <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z"/></svg>
+Wifi network name  
+
+.light-red[conf22]
+
+]
+
+.pull-right[
+# <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M512 176.001C512 273.203 433.202 352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z"/></svg>
+
+Wifi password
+
+.light-red[together!]
+
+]
+
+---
+class: inverse, center, middle
+background-image: url("https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2938&amp;q=80")
+background-size: cover
+
+
+???
+
+So now, with those procedural things out of the way, let me officially welcome you to the conf component of the Introduction to the [NEXT] Tidyverse! 
+
+This is the first time that we're including an in-person piece within an RStudio Academy course, and we're so excited that we get to pilot this with each one of you. 
+
+--
+
+# The `tidyverse`
+
+---
+background-image: url("https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80")
+background-size: cover
+
+???
+
+At Academy, we believe that learning any new skill (whether its musical, computational, athletic -- *any new skill*) is not simply about memorizing new facts...
+
+---
+background-image: url("https://images.unsplash.com/photo-1614935151651-0bea6508db6b?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1850&amp;q=80")
+background-size: cover
+
+
+???
+
+but it's about applying them...
+---
+background-image: url("https://images.unsplash.com/photo-1584208124835-8a3d74ae211c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1084&amp;q=80")
+background-size: cover
+
+
+???
+
+-- it's about a commitment to practice
+
+---
+background-image: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80")
+background-size: cover
+
+
+???
+
+-- a dedication to putting yourself out there and seeking out feedback
+
+---
+
+background-image: url("https://images.unsplash.com/photo-1562411052-105105232432?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1771&amp;q=80")
+background-size: cover
+
+???
+-- and the resolve to doing these things many times over...
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80")
+background-size: cover
+
+???
+
+By being here the next two days, you are checking off all of these boxes in some form. And you happen to be doing this for a skillset that is both highly valuable and versatile. 
+
+You can take your coding and data science skills with you to any job 
+-- apply them to goals both professional and personal.
+
+---
+background-image: url("https://images.unsplash.com/photo-1500106067612-d3b2531fc762?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=928&amp;q=80")
+background-size: cover
+
+???
+
+So, by immersing yourself in the content and collaboration the next two days, you're really making a *long-term investment* in yourself. 
+
+
+---
+class: center, top
+background-image: url(https://images.unsplash.com/photo-1520962880247-cfaf541c8724?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1332&amp;q=80)
+background-position: center
+background-size: cover
+
+# Goals
+
+???
+
+For the next two days, our goals are to support you in this by allowing for more group work, exposure to new projects and datasets, and increased access to mentors and instructors. Specifically...[CLICK]
+
+1. Drill old wrangling skills and explore new ones [CLICK]
+
+1. Learn best practices for exploring your data and reporting it reproducibly -- both in the Academy platform, but also in your local RStudio IDE.
+
+In short, we hope the next two days allow you to do a deep-dive into the skills you've been learning the past few weeks, to apply new skills you'll learn, and take advantage of a lot of protected time for practice. 
+
+--
+
+Drill old wrangling skills and explore new ones
+
+--
+
+Learn best practices for exploring your data and reporting it reproducibly 
+
+---
+class: center, middle, red
+
+.big-text.white.center[Hello!]
+
+???
+
+And the academy team will be guiding you as you do this...
+
+
+---
+class: speaker-slide
+
+# Desirée De Leon
+
+&lt;!-- You can copy the image link address from your github profile to use as the src link below --&gt; 
+
+&lt;img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/29008894?v=4" width="200px"/&gt;
+
+.speaker-links[
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> dcossyleon](https://github.com/dcossyleon)    
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> dcossyle](https://twitter.com/dcossyle)   
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> desiree.rbind.io](https://desiree.rbind.io)
+]
+
+???
+
+So you already know me, my name is Desiree, I'm a data science educator at RStudio.
+
+and you can find me online here.
+
+---
+class: center
+
+# Meet the team
+
+&lt;div class="cf-ns nl2 nr2"&gt;
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/8742033?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Kristin Bott
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/32279312?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Brendan Cullen
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/5782147?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Daniel Chen
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/18153457?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Sara Altman
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/49049415?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Deirdre Francks
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/34824840?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+Steven Smallberg    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/36464703?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+Laura Puckett    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/85014?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Garrett Grolemund    
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/45143?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Dan Buch
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="fl-ns w-20-ns pv4"&gt;
+    &lt;div class="tc"&gt;
+      &lt;img src="https://avatars.githubusercontent.com/u/5420529?v=4" class="br-100 pa1 ba b--black-10 h4 w4" alt="avatar"&gt;
+    &lt;/div&gt;
+    &lt;div class="f6 fw6 gray ttu tracked mt2"&gt;
+      Garrick Aden-Buie
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  
+  
+&lt;/div&gt;
+
+
+???
+
+But you may not have yet met the rest of the team of people behind the work and content that you'll be seeing today &amp; tomorrow. 
+
+You'll be hearing from some as speakers; some of them are your mentors; and of course..
+
+there are some who are not at the the workshop, but whose fingerprints are all over the lessons and tech that are making your Academy experience possible.
+
+---
+class: middle, center
+background-image: url("images/session01/scooters.jpg")
+background-size: cover
+
+
+???
+ 
+Alright, so with that, here is what we have...
+
+---
+class: middle, center
+background-image: url("images/session01/scooters-dark.png")
+background-size: cover
+
+# .big-text.white[The Lineup]
+
+???
+lined up for you for the next couple days...
+
+---
+class: middle, center 
+
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices 
+
+]
+
+???
+Day 1, today -- has a combination of review and learning best practices for exploring, reporting, and working with your data. [CLICK]
+
+Tomorrow we will do a deeper dive into transforming your data with new functions and working on your project milestone.
+
+--
+
+.pull-right[
+
+# Day Two:
+
+### Transformation + Milestone  
+
+]
+
+
+
+---
+class: middle, center
+
+.pull-left[
+
+# Day One:
+
+### Review + Best Practices
+
+Review
+
+Exploratory data analysis
+
+R Markdown for reproducible results
+
+R Projects and your local IDE
+]
+
+.pull-right[
+# Day Two:
+
+### Transformation + Milestone  
+
+]
+
+???
+
+We'll have four sessions each day, and these are the specific topic that we'll cover today..
+
+[click]
+
+and tomorrow
+
+--
+
+.pull-right[
+
+Summarize data and work with groups
+
+Recoding variables + Milestone recreation
+
+Lightning talks + Milestone extension
+
+Milestone presentation
+]
+
+---
+class: center
+
+
+.left-column1[
+
+# Schedule
+
+.spaced[
+
+| Time          | Activity                                                      |
+|:--------------|:--------------------------------------------------------------|
+| 09:00 - 10:30 | Session 1                                                     |
+| 10:30 - 11:00 | *Break* ☕                                 |
+| 11:00 - 12:30 | Session 2                                                     |
+| 12:30 - 01:30 | *Lunch* 🍱                                  |  
+| 01:30 - 03:00 | Session 3                                                     |
+| 03:00 - 03:30 | *Break* 🍵                                    |
+| 03:30 - 05:00 | Session 4                                                     |
+
+]
+]
+
+
+???
+this is what our schedule will be like each day [CLICK]
+
+And this is where we'll work...
+
+You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
+
+
+Which leads me to the next agenda item ... [CLICK]
+--
+
+.right-column63[
+# Workspace
+&lt;img src="images/session01/campsite_screenshot.png"&gt;
+]
+
+
+---
+class: chapter-slide, tan, middle
+
+.big-white-number[2.]
+
+# Tech and tooling
+
+???
+
+...on the tech and tooling we'll be using at this workshop
+
+---
+class: inverse, middle, center
+.pull-left[
+  ### Presenting
+
+]
+
+???
+
+at several points throughout this workshop, and especially tomorrow, you'll be presenting your work to your small group, just like we do during group sessions.
+
+Even though we're in person, the best way to present to your group live will be...
+
+---
+class: inverse, middle, center
+
+.pull-left[
+  
+  ### Presenting
+
+  &lt;img src="images/session01/zoom.png" width="25%" /&gt;
+
+]
+
+???
+
+to screenshare on **zoom**, so that we are not physically huddled around computers in order to share code... 
+
+---
+class: inverse, middle, center
+
+.pull-left[
+  
+  ### Presenting
+
+  &lt;img src="images/session01/zoom.png" width="25%" /&gt;
+
+  Muted 
+  
+  No camera  
+  
+  Your group session link  
+
+]
+
+???
+
+Each session, you'll be seated at the same table with your group. If there is group-presenting involved during the session, then you'll sign on to zoom using the link you usually use for group sessions. 
+
+But turn your audio and camera off. The only thing necessary is screensharing, which your mentor will have you do as normal when it's time. 
+
+[CLICK]
+
+For other forms of code sharing as well as announcements, we can continue to use slack. 
+
+--
+
+.pull-right[
+  ### Code + Announcements
+
+  &lt;br&gt;
+    
+  &lt;img src="images/session01/slack.png" width="40%" /&gt;
+
+  &lt;br&gt;
+  
+  Your group's slack channel  
+  
+  `#intro-to-tidyverse`
+  
+]
+
+---
+class: inverse, center, middle
+
+.pull-left[
+
+## Done! 
+
+&lt;img src="images/session01/green-square.png" width="252" /&gt;
+]
+
+???
+Finally --  throughout the workshop, we'll use sticky notes to signal either being done with an activity or needing help. 
+
+* You should place a green sticky on your laptop if you’re done with an exercise and a pink sticky if you want help. [CLICK]
+
+* You can use pink stickies at anytime during the session to signal that you're stuck, lost, or would like help.
+
+* You mentor will be on the lookout for stickies throughout each session. 
+
+--
+
+.pull-right[
+
+## Help! 
+
+&lt;img src="images/session01/pink-square.png" width="252" /&gt;
+]
+
+
+---
+class: middle, chapter-slide green
+
+.big-white-number[3.]
+
+# Review: Group challenge
+
+???
+
+Alright, our Review group challenge is up next
+
+But before I explain that...
+
+---
+class: inverse
+
+.big-text.white[
+# Questions?
+]
+
+???
+
+I think this would be a good time to pause and let you ask your mentors any questions about the logistics that I've covered so far. 
+
+So take 30 seconds to do that and make sure you have your sticky notes.
+
+---
+class: title-slide
+
+# Session 1 Review
+
+### Day 1, Session 1
+
+&lt;div class="title-footer"&gt;
+  &lt;img src="images/academy-logo.png"&gt;
+  &lt;div&gt; Desirée De Leon • July 25, 2022&lt;/div&gt;
+&lt;/div&gt;
+
+???
+
+We're going to start off with some review of what we've learned for the past couple weeks.
+
+---
+class: inverse
+
+### Go to **Conf Session 1 - Review**
+
+.center[
+&lt;img src="images/session01/campsite_screenshot.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+???
+
+for this session, we'll be doing our work in this part of the Academy website. 
+
+Go ahead and open up the milestone for this Session 1.
+
+---
+
+## 🚀 Rapid fire review 
+
+
+&lt;img src="images/session01/your-turn-example.png" width="577" /&gt;
+
+???
+
+What we'll do:
+
+I'm going to give you a prompt with a short tidyverse task, and you'll work to recreate it. 
+
+You'll do your work in the R Markdown document you have open so you have a record of your code. You can create as many new code chunks as you like in here. 
+
+
+---
+
+# Review challenge rules
+
+* For each prompt, the __first group with 4 or more people to have the answer correct__ (as verified by your mentor), scores a point.
+
+--
+
+* You must have the __correct code__ *and* the __correct output__.
+
+--
+
+* __Working together__ with your groupmates is encouraged.
+
+--
+
+* After 1-2 minutes, we'll go over the answer together. And then move on to the next question. 
+
+--
+
+* Group with the most points at the end wins (a small prize!)
+
+???
+
+For each prompt, the first group with 4 or more people to have the correct answer, scores a point.
+
+You must have the correct code and output.
+
+Working together is okay (and encouraged)
+
+We'll go over the answer once I see that most groups have finished.
+
+There are 20 prompts -- we may get through all of them (or not). But there will be a prize for the winning group at the end. 
+
+I should also note that there's a bit of a mish mash of difficulty. But The main idea is that you exercise some tidyverse recall and get warmed up.
+
+
+After today, I'll share the slides with the prompts and the solutions so that you'll be able to refer back to them later.
+
+---
+class: inverse, center, middle
+
+.pull-left[
+
+## Done! 
+
+&lt;img src="images/session01/green-square.png" width="252" /&gt;
+]
+
+.pull-right[
+
+## Help! 
+
+&lt;img src="images/session01/pink-square.png" width="252" /&gt;
+]
+
+???
+
+You'll use the sticky system to signal to your mentor that you're ready for your code to be checked.
+
+And your mentor will use a sticky to signal that the group has at least 4 correct answers.
+
+---
+class: center, middle
+
+
+# .big-text[Questions?]
+
+
+---
+class: center, middle
+background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3bc5?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1160&amp;q=80)
+background-position: center
+background-size: cover
+
+???
+
+We'll be working with data about foodborne and waterborne disease outbreaks
+
+---
+class: center, middle, inverse
+background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3bc5?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1160&amp;q=80)
+background-position: center
+background-size: cover
+
+
+
+# .big-text[`outbreaks`]
+
+???
+
+...spread by contact with environmental sources or infected people or animals. I'll refer to this dataset as `outbreaks`. It comes from the CDC's National Outbreak Reporting System (NORS).
+
+First things first, let's take a look a what's in this dataset. 
+
+So *here* is your first prompt:
+
+---
+class: your-turn
+
+# Your Turn 1
+
+Read in the data and explore it. Can you recreate output that looks like this?
+
+
+
+.space-saver[
+
+```
+## Rows: 57,649
+## Columns: 21
+## $ year                         &lt;dbl&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009,…
+## $ month                        &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,…
+## $ state                        &lt;chr&gt; "Minnesota", "Minnesota", "Minnesota", "M…
+## $ primary_mode                 &lt;chr&gt; "Person-to-person", "Food", "Person-to-pe…
+## $ etiology                     &lt;chr&gt; "Norovirus Genogroup II", "Norovirus", "N…
+## $ serotype_or_genotype         &lt;chr&gt; "unknown", NA, NA, NA, NA, NA, NA, NA, NA…
+## $ etiology_status              &lt;chr&gt; "Confirmed", "Suspected", "Suspected", "C…
+## $ setting                      &lt;chr&gt; "Hotel/motel", "Restaurant - Sit-down din…
+## $ illnesses                    &lt;dbl&gt; 21, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ hospitalizations             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0,…
+## $ info_on_hospitalizations     &lt;dbl&gt; 19, 2, 0, 24, 8, 5, 3, 21, 7, 5, 1, 16, 1…
+## $ deaths                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ info_on_deaths               &lt;dbl&gt; 19, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ food_vehicle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "cookies", "s…
+## $ food_contaminated_ingredient &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ ifsac_category               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "Multiple", "…
+## $ water_exposure               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_type                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type_specify          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+```
+]
+
+???
+
+1 minute
+
+---
+
+## Solution 1
+.pull-left[
+
+```r
+library(tidyverse)
+
+outbreaks &lt;- 
+  read_csv("data/outbreaks.csv")
+
+glimpse(outbreaks)
+```
+]
+
+.pull-right.space-saver[
+
+```
+## Rows: 57,649
+## Columns: 21
+## $ year                         &lt;dbl&gt; 2009, 2009, 2009, 2009, 2009, 2009, 2009,…
+## $ month                        &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,…
+## $ state                        &lt;chr&gt; "Minnesota", "Minnesota", "Minnesota", "M…
+## $ primary_mode                 &lt;chr&gt; "Person-to-person", "Food", "Person-to-pe…
+## $ etiology                     &lt;chr&gt; "Norovirus Genogroup II", "Norovirus", "N…
+## $ serotype_or_genotype         &lt;chr&gt; "unknown", NA, NA, NA, NA, NA, NA, NA, NA…
+## $ etiology_status              &lt;chr&gt; "Confirmed", "Suspected", "Suspected", "C…
+## $ setting                      &lt;chr&gt; "Hotel/motel", "Restaurant - Sit-down din…
+## $ illnesses                    &lt;dbl&gt; 21, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ hospitalizations             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0,…
+## $ info_on_hospitalizations     &lt;dbl&gt; 19, 2, 0, 24, 8, 5, 3, 21, 7, 5, 1, 16, 1…
+## $ deaths                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ info_on_deaths               &lt;dbl&gt; 19, 2, 50, 24, 16, 5, 3, 21, 7, 5, 22, 16…
+## $ food_vehicle                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "cookies", "s…
+## $ food_contaminated_ingredient &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ ifsac_category               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "Multiple", "…
+## $ water_exposure               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_type                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ animal_type_specify          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ water_status                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+```
+]
+
+---
+class: your-turn
+
+# Your Turn 2
+
+What is the* **earliest year** on record in this dataset? __The latest__? 
+
+Answer the questions by creating two tables that are sorted.
+
+---
+
+## Solution 2
+
+.pull-left[
+
+```r
+outbreaks %&gt;%
+  arrange(year)
+```
+
+.space-saver[
+<div id="htmlwidget-39b69f4e42efe8525de4" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-39b69f4e42efe8525de4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1973,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974],"month":[11,6,6,2,7,12,7,6,7,9,9,7,8,8,11,8,11,6,11,6,3,8,10,5,4,4,5,5,12,5,11,9,11,5,4,6,6,5,8,3,5,7,5,6,7,9,9,6,9,11,7,2,7,8,6,7,8,2,10,4,12,3,6,8,7,7,6,6,8,8,9,12,8,6,7,11,12,7,9,6,8,1,3,12,4,6,8,1,9,11,7,2,8,8,7,8,10,9,9,6],"state":["Alaska","Alabama","Arkansas","California","California","California","Kentucky","Missouri","Mississippi","North Carolina","North Carolina","New Jersey","New Jersey","New Mexico","New York","Oklahoma","Oklahoma","Oregon","Texas","Vermont","Alaska","Alabama","Alabama","California","Colorado","Colorado","Colorado","Colorado","Colorado","Florida","Florida","Hawaii","Iowa","Illinois","Indiana","Massachusetts","Maryland","Minnesota","North Carolina","New York","Ohio","Ohio","Oregon","Pennsylvania","Pennsylvania","Tennessee","Utah","Washington","Washington","West Virginia","Alaska","Alabama","Arkansas","Arkansas","Arizona","Colorado","Connecticut","Florida","Florida","Maryland","Maryland","New Jersey","New Jersey","New Jersey","Ohio","Oregon","Pennsylvania","Pennsylvania","Pennsylvania","Pennsylvania","Pennsylvania","Pennsylvania","Tennessee","Virginia","Virginia","Vermont","Vermont","Alaska","California","Colorado","Colorado","Florida","Idaho","Montana","North Carolina","New Hampshire","New Hampshire","New Jersey","New York","New York","Ohio","Oregon","Oregon","Oregon","Pennsylvania","Pennsylvania","Pennsylvania","Pennsylvania","Utah","Washington"],"primary_mode":["Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water"],"etiology":["Shigella sonnei","Selenium","Hepatitis A","Copper","Unknown","Unknown","Unknown","Unknown","Shigella sonnei","Hepatitis A","Unknown","Hepatitis A","Shigella sonnei","Unknown","Unknown","Hepatitis A","Hepatitis A","Unknown","Hepatitis A","Unknown","Unknown","Hepatitis A","Hepatitis A","Unknown","Unknown","Unknown","Giardia duodenalis","Giardia duodenalis","Giardia duodenalis","Unknown","Oil","Shigella sonnei","Shigella sonnei","Unknown","Shigella sonnei","Unknown","Unknown","Arsenic","Unknown","Unknown","Hepatitis A","Hepatitis A","Unknown","Fluoride","Hepatitis A","Unknown","Giardia duodenalis","Salmonella enterica","Salmonella enterica","Unknown","Shigella unknown","Hepatitis A","Unknown","Unknown","Shigella unknown","Giardia duodenalis","Unknown","Salmonella enterica","Unknown","Salmonella enterica","Shigella unknown","Unknown","Unknown","Unknown","Hepatitis A","Unknown","Unknown","Unknown","Unknown","Shigella sonnei","Unknown","Unknown","Giardia duodenalis","Legionella pneumophila","Legionella pneumophila","Giardia duodenalis","Giardia duodenalis","Salmonella unknown","Unknown","Giardia duodenalis","Unknown","Shigella sonnei","Unknown","Unknown","Fluoride","Giardia duodenalis","Unknown","Unknown","Chromium","Giardia duodenalis","Shigella unknown","Oil","Unknown","Unknown","Unknown","Shigella sonnei","Unknown","Legionella pneumophila","Giardia duodenalis","Salmonella enterica"],"serotype_or_genotype":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Typhi","Newport",null,null,null,null,null,null,null,null,"Typhi",null,"Typhi",null,null,null,null,null,null,null,null,null,null,null,null,null,"unknown","unknown",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unknown",null,"Typhi"],"etiology_status":["Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Suspected","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Suspected","Suspected","Suspected","Suspected","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Suspected","Confirmed","Confirmed","Confirmed"],"setting":["Mobile Home Park","Unknown","Store/Shop","Restaurant/Cafeteria","Community/Municipality","Hotel/Motel/Lodge/Inn","Park - State Park","Subdivision/Neighborhood","Camp/Cabin Setting","Private Residence","Mobile Home Park","Camp/Cabin Setting","Camp/Cabin Setting","Other","Restaurant/Cafeteria","Unknown","Community/Municipality","Restaurant/Cafeteria","Farm/Agricultural Setting","Community/Municipality","Community/Municipality","Community/Municipality","School/College/University","Resort","Resort","Camp/Cabin Setting","Hotel/Motel/Lodge/Inn","Camp/Cabin Setting","Subdivision/Neighborhood","Park - State Park","Community/Municipality","Camp/Cabin Setting","School/College/University","Park - State Park","Park - Unknown","Unknown","Camp/Cabin Setting","Indoor workplace/Office","Camp/Cabin Setting","Restaurant/Cafeteria","Mobile Home Park","Unknown","Resort","School/College/University","Camp/Cabin Setting","School/College/University","Camp/Cabin Setting","Private Residence","Public Outdoor Area","Unknown","Community/Municipality","Community/Municipality","Camp/Cabin Setting","Unknown","Private Residence","Hotel/Motel/Lodge/Inn","Community/Municipality","Camp/Cabin Setting","Factory/Industrial Facility","Farm/Agricultural Setting","Hospital/Health Care","Indoor workplace/Office","Camp/Cabin Setting","Camp/Cabin Setting","Park - Unknown","Unknown","Hotel/Motel/Lodge/Inn","Hotel/Motel/Lodge/Inn","Restaurant/Cafeteria","Club (Requires Membership)","Church/Place of Worship","Restaurant/Cafeteria","Farm/Agricultural Setting","Factory/Industrial Facility","Factory/Industrial Facility","Community/Municipality","Community/Municipality","Mobile Home Park","Unknown","Hotel/Motel/Lodge/Inn","Resort","Community/Municipality","Restaurant/Cafeteria","Resort","School/College/University","Community/Municipality","Other","Restaurant/Cafeteria","Indoor workplace/Office","Community/Municipality","Park - State Park","Unknown","Unknown","Community/Municipality","Restaurant/Cafeteria","Camp/Cabin Setting","Restaurant/Cafeteria","Hotel/Motel/Lodge/Inn","Other","Private Residence"],"illnesses":[89,3,98,2,3500,84,68,2,187,2,38,22,67,10,750,6,50,200,3,3,400,9,50,26,25,142,24,28,12,40,41,61,208,90,2,3,88,11,9,21,9,12,37,150,5,19,60,5,3,60,50,50,225,42,2,16,74,210,194,2,94,2,22,46,35,29,38,71,24,181,153,145,5,12,10,32,20,34,18,18,85,1200,9,615,213,78,7,57,20,4800,6,18,19,400,72,600,18,11,34,5],"hospitalizations":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",9,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"info_on_hospitalizations":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"deaths":[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,"NA","NA",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA",0,0],"info_on_deaths":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"food_vehicle":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_exposure":["Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Other/Environmental water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Other/Environmental water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Other/Environmental water","Other/Environmental water","Drinking water","Drinking water","Drinking water","Other/Environmental water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Other/Environmental water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Undetermined water","Other/Environmental water","Drinking water"],"water_type":["Community","Individual/Private","Other","Community","Community","Other","Other","Community","Community","Individual/Private","Community","Other","Other","Other","Other","Individual/Private","Community","Other","Individual/Private","Community","Community","Community","Other","Other","Other","Other","Other","Other","Community","Other","Community","Other","Other","Other","Other","Community","Other","Other","Other","Other","Community","Community","Other","Other","Other","Community","Other","Individual/Private","River/Stream","Community","Community","Community","Other","Other","Individual/Private","Other","Community","Other","Community","Individual/Private","Other","Commercially-Bottled","Other","Other","Other","Other","Other","Other","Other","Other","Other","Other","Individual/Private","Unknown","Unknown","Community","Community","Community","Unknown","Other","Other","Community","Community","Other","Other","Community","River/Stream","Other","Community","Community","Other","Community","Community","Community","Other","Other","Other","Unknown","River/Stream","Individual/Private"],"animal_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type_specify":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":["Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed"]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 57,649)"},"dataKey":"420d56eceea81ced1626706ef9e1d6bb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]
+]
+
+.pull-right[
+
+```r
+outbreaks %&gt;%
+  arrange(desc(year))
+```
+
+.space-saver[
+<div id="htmlwidget-9bcd84f95ac1a7618ed8" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9bcd84f95ac1a7618ed8">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020,2020],"month":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"state":["Mississippi","Wisconsin","Nebraska","New York","New Mexico","Minnesota","Minnesota","Minnesota","Massachusetts","Massachusetts","South Carolina","Virginia","Virginia","Minnesota","Wyoming","North Carolina","Tennessee","Virginia","Oregon","Oregon","Oregon","Alabama","Virginia","Virginia","Minnesota","Minnesota","New York","Ohio","Pennsylvania","Michigan","Michigan","Minnesota","Minnesota","Minnesota","Minnesota","Ohio","Iowa","Iowa","Iowa","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Nebraska","Nebraska","Nebraska","Pennsylvania","Alabama","Ohio","Minnesota","Massachusetts","Massachusetts","Massachusetts","Massachusetts","Montana","Ohio","Minnesota","Minnesota","Pennsylvania","Texas","Ohio","Oregon","Oregon","Oregon","Ohio","Ohio","North Carolina","North Carolina","Minnesota","Indiana","Ohio","Minnesota","Alabama","Virginia","Minnesota","Nebraska","Ohio","Pennsylvania","Pennsylvania","Pennsylvania","North Carolina","North Carolina","Minnesota","Alabama","Minnesota","Wyoming","Montana","Minnesota","Minnesota","Minnesota","Tennessee","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Wisconsin","Wisconsin"],"primary_mode":["Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Indeterminate/Other/Unknown","Food","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Person-to-person","Person-to-person","Food","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Indeterminate/Other/Unknown","Person-to-person","Person-to-person","Person-to-person","Person-to-person"],"etiology":[null,"Norovirus Genogroup II","Norovirus Genogroup II","Clostridium perfringens","Norovirus Genogroup II","Norovirus unknown","Norovirus unknown; Clostridium difficile","Norovirus unknown","Norovirus","Norovirus","Sapovirus unknown","Sapovirus","Norovirus","Norovirus unknown","Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II","Norovirus Genogroup II; Norovirus Genogroup II",null,null,null,"Norovirus unknown","Norovirus","Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II",null,"Norovirus Genogroup II; Norovirus Genogroup II",null,"Norovirus","Norovirus Genogroup I","Norovirus unknown","Norovirus unknown","Norovirus Genogroup II","Norovirus unknown","Norovirus","Norovirus Genogroup II","Norovirus Genogroup II","Norovirus Genogroup II","Norovirus Genogroup I","Norovirus unknown","Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II; Norovirus unknown","Norovirus unknown","Norovirus Genogroup II","Norovirus Genogroup II",null,"Norovirus unknown",null,"Norovirus","Norovirus unknown","Norovirus","Norovirus","Norovirus","Norovirus","Norovirus unknown","Norovirus Genogroup II; Norovirus Genogroup II","Norovirus unknown","Norovirus unknown","Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II",null,"Norovirus",null,"Norovirus Genogroup II","Norovirus Genogroup II; Norovirus Genogroup II","Norovirus unknown","Norovirus unknown","Norovirus unknown","Norovirus","Norovirus","Norovirus unknown",null,"Norovirus","Norovirus unknown","Norovirus Genogroup II","Norovirus","Norovirus Genogroup II","Norovirus unknown","Norovirus unknown","Norovirus unknown","Norovirus unknown","Norovirus unknown",null,"Norovirus unknown","Norovirus Genogroup II",null,"Norovirus Genogroup II","Norovirus unknown","Norovirus unknown","Norovirus Genogroup II",null,"Norovirus Genogroup II",null,"Norovirus unknown","Norovirus Genogroup II","Norovirus Genogroup II","Norovirus Genogroup II; Norovirus unknown"],"serotype_or_genotype":[null,"GII.P16 - GII.4 Sydney","GII.P16 - GII.4 Sydney",null,"unknown",null,null,null,null,null,null,null,null,null,"GII.P untypeable - GII.6",null,"GII.P16 - GII.4 Sydney","GII.P4 New Orleans - GII.4 untypeable; unknown",null,null,null,null,null,"GII.P16 -",null,"GII.P7 - GII.6",null,"GII.P16 - GII.4 Sydney; unknown",null,null,"GI.P1 - GI.1",null,null,"GII.P16 -",null,null,"unknown - unknown","unknown -","GII.P16 - GII.4 Sydney","GI.P3 - GI.3",null,null,null,"GII.P16 - GII.4 Sydney;",null,"GII.P12 - GII.3","GII.P16 - GII.4 Sydney",null,null,null,null,null,null,null,null,null,null,"GII.P8 - GII.8; unknown",null,null,"unknown - unknown",null,"GII.P16 - GII.4 Sydney",null,null,null,"GII.P16 - GII.4 Sydney","GII.P16 - GII.4 Sydney; unknown",null,null,null,null,null,null,null,null,null,"GII.P16 - GII.4 Sydney",null,"unknown - unknown",null,null,null,null,null,null,null,"GII.P untypeable - GII.6",null,"GII.P7 - GII.6",null,null,"GII.P16 - GII.4 Sydney",null,"GII.P16 - GII.2",null,null,null,"GII.P16 - GII.4 Sydney","GII.P16 - GII.4 Sydney;"],"etiology_status":[null,"Confirmed","Confirmed","Suspected","Confirmed","Suspected","Suspected; Suspected","Suspected","Suspected","Suspected","Suspected","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed; Suspected",null,null,null,"Confirmed","Suspected","Suspected","Confirmed","Confirmed",null,"Confirmed; Confirmed",null,"Suspected","Confirmed","Suspected","Suspected","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed; Suspected","Suspected","Confirmed","Confirmed",null,"Suspected",null,"Suspected","Suspected","Suspected","Suspected","Suspected","Suspected","Suspected","Suspected; Suspected","Suspected","Suspected","Confirmed","Suspected","Confirmed",null,"Suspected",null,"Confirmed","Confirmed; Suspected","Confirmed","Suspected","Suspected","Suspected","Suspected","Confirmed",null,"Suspected","Suspected","Confirmed","Suspected","Suspected","Suspected","Suspected","Confirmed","Suspected","Suspected",null,"Suspected","Confirmed",null,"Suspected","Suspected","Suspected","Suspected",null,"Confirmed",null,"Confirmed","Suspected","Confirmed","Confirmed; Suspected"],"setting":["Long-term care/nursing home/assisted living facility","Other healthcare facility","Long-term care/nursing home/assisted living facility","Caterer (food prepared off-site from where served)","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Hospital","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Child day care","Grocery store","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","School/college/university","Long-term care/nursing home/assisted living facility","Child day care","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Other, specify","Long-term care/nursing home/assisted living facility","Other healthcare facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","School/college/university","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Hospital","Long-term care/nursing home/assisted living facility","Banquet Facility (food prepared and served on-site)","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Child day care","Long-term care/nursing home/assisted living facility","Caterer (food prepared off-site from where served)","Long-term care/nursing home/assisted living facility","Restaurant","Long-term care/nursing home/assisted living facility","School/college/university","Long-term care/nursing home/assisted living facility","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Hospital","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","School/college/university","Long-term care/nursing home/assisted living facility","Child day care","School/college/university","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility"],"illnesses":[18,6,20,7,18,95,34,4,39,9,21,6,9,19,94,32,11,11,8,4,21,13,16,3,39,14,3,14,36,8,33,9,5,8,43,24,37,52,55,10,49,5,24,58,5,48,56,15,3,4,16,58,14,26,28,5,4,28,38,22,79,22,13,22,6,8,66,69,23,44,49,56,13,21,2,22,5,15,5,11,14,16,60,20,19,7,19,13,5,7,35,83,19,18,12,42,6,4,34,57],"hospitalizations":[0,0,1,0,0,1,4,"NA",0,0,0,0,0,1,1,1,"NA",0,0,0,0,0,0,0,3,0,0,2,0,2,0,"NA",1,0,"NA",0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,"NA",1,0,"NA",0,2,0,0,"NA",0,0,0,0,0,0,1,0,0,3,0,5,0,0,0,0,"NA",0,"NA",0,0,0,2,0,"NA",0,"NA",0,0,0,"NA","NA",0,0,0,0,0,1,2,0],"info_on_hospitalizations":[18,6,20,7,18,95,34,0,39,9,21,6,9,15,94,32,0,11,8,4,21,13,16,0,39,14,3,14,36,8,33,0,1,8,0,24,37,52,4,10,49,4,24,58,5,48,56,15,3,4,16,0,14,26,0,5,4,28,38,0,79,22,13,22,6,8,66,69,23,44,49,56,13,0,0,22,0,15,0,11,14,16,60,20,0,7,0,13,5,7,0,0,19,0,12,0,6,4,34,57],"deaths":[0,0,0,0,0,2,1,"NA",0,0,0,0,0,0,2,1,"NA",0,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA","NA",0,"NA",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA",0,"NA",0,0,0,0,0,0,0,"NA",0,0,0,"NA","NA",0,0,0,0,0,0,0,0],"info_on_deaths":[18,6,20,7,18,95,34,0,39,9,21,6,9,19,94,32,0,11,8,4,21,13,16,0,39,14,3,14,36,8,33,0,0,8,0,24,37,52,4,10,49,4,24,58,5,48,56,15,3,4,16,58,14,26,0,5,4,28,38,22,79,22,13,22,6,8,66,69,23,44,49,56,13,21,0,22,0,15,0,11,14,16,60,20,19,7,0,13,5,7,0,0,19,0,12,0,6,4,34,57],"food_vehicle":[null,null,null,"curry chicken; pelau dish; curry chick peas w/ potatoes",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"raw oysters",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ice",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"food_contaminated_ingredient":[null,null,null,"chicken; peas; meat; chick peas; potatoes",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"oysters, raw",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,"Multiple",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Mollusks",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Other",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_exposure":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type_specify":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 57,649)"},"dataKey":"2059b633f86bb4c903134ef2b052b536"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]
+]
+
+---
+class: your-turn
+
+# Your Turn 3
+
+The `state` variable appears to include US locations -- is the data limited to the 50 states? 
+
+Produce a table that displays all the unique values of this variable.
+
+
+---
+
+## Solution 3
+
+
+```r
+outbreaks %&gt;%
+  distinct(state)
+```
+
+<div id="htmlwidget-9fbdb1ca4b049ace8b87" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9fbdb1ca4b049ace8b87">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"state":["Minnesota","Pennsylvania","Alaska","Alabama","Illinois","Iowa","Montana","Louisiana","Tennessee","New York","Massachusetts","Ohio","Maine","Arkansas","Michigan","Florida","Wyoming","Hawaii","Wisconsin","New Hampshire","Missouri","Idaho","Connecticut","California","Oklahoma","Virginia","South Carolina","Oregon","New Jersey","Mississippi","Arizona","Maryland","Kansas","Colorado","Washington","Georgia","New Mexico","Utah","North Carolina","Indiana","Nevada","North Dakota","South Dakota","West Virginia","Vermont","Texas","Rhode Island","Puerto Rico","Kentucky","Washington DC","Multistate","Delaware","Nebraska","Republic of Palau","Guam","Commonwealth of the Northern Mariana Islands","US Virgin Islands","Republic of the Marshall Islands"]},"columns":[{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"a17db82d1afd3ea51c095753de96b561"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+---
+class: your-turn
+
+# Your Turn 4
+
+What are the different etiologies that have been recorded in this dataset, and how often do they appear in the data? Display your results in a table like the one below.
+
+<div id="htmlwidget-dab85d83c450d0ddeefb" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-dab85d83c450d0ddeefb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"etiology":["Acanthamoeba unknown","Adenovirus","Adenovirus B","Adenovirus F; Escherichia coli, Enteroaggregative","Adenovirus F; Escherichia coli, Enteropathogenic","Adenovirus F; Escherichia coli, Enteropathogenic; Clostridium difficile","Adenovirus other; Adenovirus","Adenovirus unknown","Adenovirus; Clostridium","Adenovirus; Norovirus Genogroup II","Adenovirus; Norovirus Genogroup II; Clostridium other","Alkaline Water","Amnesic shellfish poison","Anatoxin-a; Other - Chemical/Toxin","Anisakis","Arsenic","Astrovirus","Astrovirus; Norovirus","Astrovirus; Norovirus unknown","Astrovirus; Salmonella unknown","Astrovirus; Sapovirus unknown","Avian schistosomes","Bacillus","Bacillus cereus","Bacillus cereus; Bacillus other","Bacillus cereus; Bacillus subtilus; Bacillus stearothermophilus","Bacillus cereus; Clostridium perfringens","Bacillus cereus; Clostridium perfringens; Other - Bacterium","Bacillus cereus; Clostridium perfringens; Staphylococcus aureus","Bacillus cereus; Clostridium perfringens; Staphylococcus aureus; Norovirus Genogroup II","Bacillus cereus; Norovirus","Bacillus cereus; Norovirus Genogroup I","Bacillus cereus; Staphylococcus aureus","Bacillus cereus; Staphylococcus other","Bacillus other","Bacillus unknown","Bacillus; Clostridium","Bacillus; Clostridium perfringens","Bacillus; Other - Chemical/Toxin","Bacillus; Staphylococcus","Bromate; Disinfection byproducts","Bromine","Brucella","Brucella unknown","Campylobacter","Campylobacter coli","Campylobacter coli; Campylobacter jejuni","Campylobacter coli; Campylobacter jejuni; Campylobacter unknown","Campylobacter coli; Campylobacter unknown","Campylobacter coli; Escherichia coli, Enteropathogenic","Campylobacter fetus","Campylobacter jejuni","Campylobacter jejuni; Bacillus cereus","Campylobacter jejuni; Campylobacter coli","Campylobacter jejuni; Campylobacter jejuni","Campylobacter jejuni; Campylobacter lari; Cryptosporidium unknown; Helicobacter canadensis","Campylobacter jejuni; Campylobacter other","Campylobacter jejuni; Campylobacter unknown","Campylobacter jejuni; Clostridium perfringens","Campylobacter jejuni; Cryptosporidium parvum","Campylobacter jejuni; Entamoeba unknown; Giardia unknown","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing; Cryptosporidium","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing; Giardia","Campylobacter jejuni; Giardia unknown","Campylobacter jejuni; Listeria monocytogenes","Campylobacter jejuni; Norovirus other; Giardia duodenalis","Campylobacter jejuni; Norovirus unknown","Campylobacter jejuni; Plesiomonas shigelloides","Campylobacter jejuni; Salmonella enterica","Campylobacter jejuni; Salmonella enterica; Salmonella enterica","Campylobacter jejuni; Shigella unknown","Campylobacter jejuni; Shigella unknown; Blastocystis hominis; Endolimax nana; Norovirus Genogroup I","Campylobacter jejuni; Staphylococcus aureus","Campylobacter jejuni; Yersinia enterocolitica","Campylobacter lari","Campylobacter lari; Campylobacter jejuni","Campylobacter other","Campylobacter other; Campylobacter coli","Campylobacter other; Campylobacter other","Campylobacter other; Norovirus Genogroup II","Campylobacter other; Vibrio other; Vibrio cholerae","Campylobacter unknown","Campylobacter unknown; Campylobacter coli; Campylobacter jejuni","Campylobacter unknown; Campylobacter jejuni","Campylobacter unknown; Campylobacter unknown","Campylobacter unknown; Escherichia coli, Shiga toxin-producing","Campylobacter unknown; Giardia duodenalis","Campylobacter unknown; Giardia unknown","Campylobacter unknown; Salmonella enterica","Campylobacter unknown; Salmonella unknown","Campylobacter; Campylobacter","Campylobacter; Campylobacter jejuni","Campylobacter; Cryptosporidium","Campylobacter; Salmonella enterica","Campylobacter; Salmonella enterica; Escherichia coli, Shiga toxin-producing","Campylobacter; Shigella sonnei","Chloramines","Chlordane","Chlordane; Heptachlor; Toxaphene; Kerosene"],"n":[1,3,2,1,1,1,1,1,1,1,1,1,1,1,1,2,14,1,1,1,1,30,4,380,1,1,157,1,2,1,1,2,49,1,1,1,2,1,1,1,1,1,1,5,78,21,1,1,1,1,2,535,1,5,1,1,1,3,1,1,1,3,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,5,1,1,1,1,237,1,3,1,1,1,1,1,1,2,1,1,1,1,1,16,3,1]},"columns":[{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 679)"},"dataKey":"c3ff8a487114fd3a5675d1ddfeec43cb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+---
+
+## Solution 4
+
+
+```r
+outbreaks %&gt;%
+  count(etiology)
+```
+
+<div id="htmlwidget-f4b5fcf3316e1a5af390" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f4b5fcf3316e1a5af390">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"etiology":["Acanthamoeba unknown","Adenovirus","Adenovirus B","Adenovirus F; Escherichia coli, Enteroaggregative","Adenovirus F; Escherichia coli, Enteropathogenic","Adenovirus F; Escherichia coli, Enteropathogenic; Clostridium difficile","Adenovirus other; Adenovirus","Adenovirus unknown","Adenovirus; Clostridium","Adenovirus; Norovirus Genogroup II","Adenovirus; Norovirus Genogroup II; Clostridium other","Alkaline Water","Amnesic shellfish poison","Anatoxin-a; Other - Chemical/Toxin","Anisakis","Arsenic","Astrovirus","Astrovirus; Norovirus","Astrovirus; Norovirus unknown","Astrovirus; Salmonella unknown","Astrovirus; Sapovirus unknown","Avian schistosomes","Bacillus","Bacillus cereus","Bacillus cereus; Bacillus other","Bacillus cereus; Bacillus subtilus; Bacillus stearothermophilus","Bacillus cereus; Clostridium perfringens","Bacillus cereus; Clostridium perfringens; Other - Bacterium","Bacillus cereus; Clostridium perfringens; Staphylococcus aureus","Bacillus cereus; Clostridium perfringens; Staphylococcus aureus; Norovirus Genogroup II","Bacillus cereus; Norovirus","Bacillus cereus; Norovirus Genogroup I","Bacillus cereus; Staphylococcus aureus","Bacillus cereus; Staphylococcus other","Bacillus other","Bacillus unknown","Bacillus; Clostridium","Bacillus; Clostridium perfringens","Bacillus; Other - Chemical/Toxin","Bacillus; Staphylococcus","Bromate; Disinfection byproducts","Bromine","Brucella","Brucella unknown","Campylobacter","Campylobacter coli","Campylobacter coli; Campylobacter jejuni","Campylobacter coli; Campylobacter jejuni; Campylobacter unknown","Campylobacter coli; Campylobacter unknown","Campylobacter coli; Escherichia coli, Enteropathogenic","Campylobacter fetus","Campylobacter jejuni","Campylobacter jejuni; Bacillus cereus","Campylobacter jejuni; Campylobacter coli","Campylobacter jejuni; Campylobacter jejuni","Campylobacter jejuni; Campylobacter lari; Cryptosporidium unknown; Helicobacter canadensis","Campylobacter jejuni; Campylobacter other","Campylobacter jejuni; Campylobacter unknown","Campylobacter jejuni; Clostridium perfringens","Campylobacter jejuni; Cryptosporidium parvum","Campylobacter jejuni; Entamoeba unknown; Giardia unknown","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing; Cryptosporidium","Campylobacter jejuni; Escherichia coli, Shiga toxin-producing; Giardia","Campylobacter jejuni; Giardia unknown","Campylobacter jejuni; Listeria monocytogenes","Campylobacter jejuni; Norovirus other; Giardia duodenalis","Campylobacter jejuni; Norovirus unknown","Campylobacter jejuni; Plesiomonas shigelloides","Campylobacter jejuni; Salmonella enterica","Campylobacter jejuni; Salmonella enterica; Salmonella enterica","Campylobacter jejuni; Shigella unknown","Campylobacter jejuni; Shigella unknown; Blastocystis hominis; Endolimax nana; Norovirus Genogroup I","Campylobacter jejuni; Staphylococcus aureus","Campylobacter jejuni; Yersinia enterocolitica","Campylobacter lari","Campylobacter lari; Campylobacter jejuni","Campylobacter other","Campylobacter other; Campylobacter coli","Campylobacter other; Campylobacter other","Campylobacter other; Norovirus Genogroup II","Campylobacter other; Vibrio other; Vibrio cholerae","Campylobacter unknown","Campylobacter unknown; Campylobacter coli; Campylobacter jejuni","Campylobacter unknown; Campylobacter jejuni","Campylobacter unknown; Campylobacter unknown","Campylobacter unknown; Escherichia coli, Shiga toxin-producing","Campylobacter unknown; Giardia duodenalis","Campylobacter unknown; Giardia unknown","Campylobacter unknown; Salmonella enterica","Campylobacter unknown; Salmonella unknown","Campylobacter; Campylobacter","Campylobacter; Campylobacter jejuni","Campylobacter; Cryptosporidium","Campylobacter; Salmonella enterica","Campylobacter; Salmonella enterica; Escherichia coli, Shiga toxin-producing","Campylobacter; Shigella sonnei","Chloramines","Chlordane","Chlordane; Heptachlor; Toxaphene; Kerosene"],"n":[1,3,2,1,1,1,1,1,1,1,1,1,1,1,1,2,14,1,1,1,1,30,4,380,1,1,157,1,2,1,1,2,49,1,1,1,2,1,1,1,1,1,1,5,78,21,1,1,1,1,2,535,1,5,1,1,1,3,1,1,1,3,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,5,1,1,1,1,237,1,3,1,1,1,1,1,1,2,1,1,1,1,1,16,3,1]},"columns":[{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 679)"},"dataKey":"c3ff8a487114fd3a5675d1ddfeec43cb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+class: your-turn
+
+# Your Turn 5
+
+Let's turn our attention to only observations where the primary mode of infection is Food. Using that criterion, can you reproduce the table below?
+
+<div id="htmlwidget-121c320b325de0dabb61" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-121c320b325de0dabb61">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ifsac_category":["Beef","Chicken","Crustaceans","Dairy","Eggs","Fish","Fruits","Fungi","Game","Grains-Beans","Herbs","Invalid","Mollusks","Multiple","Nuts-Seeds","Oils-Sugars","Other","Other Aquatic Animals","Other Meat","Other Poultry","Pork","Root/Underground","Seeded Vegetables","Sprouts","Turkey","Unclassifiable","Vegetable Row Crops",null],"n":[723,571,111,356,197,1019,268,45,36,203,79,7,412,5984,32,12,190,12,19,12,350,86,147,54,210,440,245,11285]},"columns":[{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"3c0f17c43a4b938eeb03008041c114a6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+???
+
+---
+
+## Solution 5
+
+
+```r
+outbreaks %&gt;%
+  filter(primary_mode == "Food") %&gt;% 
+  count(ifsac_category)
+```
+
+<div id="htmlwidget-0903a25b6f0a20c7cf5f" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0903a25b6f0a20c7cf5f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ifsac_category":["Beef","Chicken","Crustaceans","Dairy","Eggs","Fish","Fruits","Fungi","Game","Grains-Beans","Herbs","Invalid","Mollusks","Multiple","Nuts-Seeds","Oils-Sugars","Other","Other Aquatic Animals","Other Meat","Other Poultry","Pork","Root/Underground","Seeded Vegetables","Sprouts","Turkey","Unclassifiable","Vegetable Row Crops",null],"n":[723,571,111,356,197,1019,268,45,36,203,79,7,412,5984,32,12,190,12,19,12,350,86,147,54,210,440,245,11285]},"columns":[{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"3c0f17c43a4b938eeb03008041c114a6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+class: your-turn
+
+# Your Turn 6
+
+.pull-left[
+Explore the relationship between `month` and the number of illnesses with a series of **boxplots** like the one to the right. Can you recreate it? 
+]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/sol-6-1.png" width="504" /&gt;
+]
+
+
+???
+
+Check documentation for use of the argument that allows you to create a new boxplot for each grouping.
+
+---
+
+## Solution 6
+
+.wide-left[
+
+```r
+outbreaks %&gt;% 
+  ggplot(aes(x = month, y = illnesses)) + 
+* geom_boxplot(aes(group = month))
+```
+]
+
+.narrow-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
+]
+
+???
+
+But outlier here makes it hard to see what's going on. Let's modify this.
+
+---
+class: your-turn
+
+# Your Turn 7
+
+Which observation in `outbreaks` is the outlier associated with such a high number of illnesses? 
+
+  * Display solely this observation in a table. 
+
+  * Then, recreate the boxplots **without** this observation.
+
+---
+class: space-saver
+
+## Solution 7
+
+.pull-left[
+
+
+```r
+outbreaks %&gt;%
+  filter(illnesses == max(illnesses))
+```
+
+]
+
+.pull-right[
+<div id="htmlwidget-7a6ac4b191a1f556948f" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7a6ac4b191a1f556948f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[1993],"month":[3],"state":["Wisconsin"],"primary_mode":["Water"],"etiology":["Cryptosporidium parvum"],"serotype_or_genotype":[null],"etiology_status":["Confirmed"],"setting":["Community/Municipality"],"illnesses":[403000],"hospitalizations":["NA"],"info_on_hospitalizations":["NA"],"deaths":[50],"info_on_deaths":["NA"],"food_vehicle":[null],"food_contaminated_ingredient":[null],"ifsac_category":[null],"water_exposure":["Drinking water"],"water_type":["Community"],"animal_type":[null],"animal_type_specify":[null],"water_status":["Reviewed"]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"50c8105a19a03ae4272f6dee734d6494"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+&lt;br&gt;
+
+]
+
+--
+
+.pull-left[
+
+```r
+outbreaks %&gt;%
+* filter(illnesses != max(illnesses)) %&gt;%
+  ggplot(aes(x = month, y = illnesses)) + 
+  geom_boxplot(aes(group = month))
+```
+]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+
+]
+
+---
+class: your-turn
+
+# Your Turn 8
+
+Which outbreaks lead to the highest number of illnesses? Display these observations in a table from greatest to fewest illnesses.
+
+---
+class: space-saver
+
+## Solution 8
+
+
+```r
+outbreaks %&gt;% arrange(desc(illnesses))
+```
+
+<div id="htmlwidget-9cb9a8bab7a172db8a8d" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9cb9a8bab7a172db8a8d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[1993,1987,1983,1991,1980,2007,1995,1978,1987,1975,1974,1971,1979,1983,1978,1996,1992,1980,2013,2005,1976,2008,1979,2007,1980,2010,1987,1981,2007,2006,2008,1980,1997,2004,1995,1975,1998,1987,2013,1991,2008,1983,2006,2018,1974,1979,2020,2018,2014,2017,1975,1990,1983,1980,2003,2002,2003,1998,2015,1989,1975,1988,2001,2003,2005,1983,2020,2001,2015,2007,2009,1998,2017,1980,1999,1980,2020,2002,2006,1978,1977,1971,1976,1983,2011,2006,2005,1980,2000,2007,2006,2008,2016,2004,1985,2002,1989,2003,2000,2012],"month":[3,1,6,8,6,5,7,3,9,8,11,7,10,8,5,8,2,7,4,6,7,6,6,7,12,2,10,3,9,5,4,8,12,7,12,4,7,7,7,6,3,7,4,1,1,10,6,1,3,4,6,5,8,6,1,9,8,6,7,4,6,5,5,11,4,5,2,1,6,6,11,4,1,9,8,6,5,7,11,5,4,11,3,7,10,3,3,8,7,6,8,9,2,1,11,3,9,7,6,5],"state":["Wisconsin","Georgia","Pennsylvania","Puerto Rico","Texas","Utah","Georgia","Colorado","Multistate","Pennsylvania","New York","California","Pennsylvania","Texas","Vermont","California","Oregon","Texas","Alaska","New York","Puerto Rico","Texas","Arizona","Idaho","Pennsylvania","Multistate","Puerto Rico","Colorado","Florida","California","Multistate","Georgia","New York","Ohio","New York","Indiana","Texas","Puerto Rico","Illinois","Michigan","Colorado","Utah","Colorado","Wisconsin","Florida","Oregon","Multistate","Massachusetts","Indiana","Nevada","Oregon","Tennessee","West Virginia","Vermont","Texas","Illinois","Multistate","Illinois","Multistate","Arizona","California","Texas","New York","Louisiana","California","Florida","Multistate","Tennessee","Missouri","Illinois","Louisiana","Ohio","Illinois","Connecticut","New York","Montana","Multistate","Massachusetts","New York","Missouri","New Hampshire","New York","New York","Washington","Georgia","Alabama","Illinois","Ohio","Wisconsin","Pennsylvania","Multistate","Multistate","Virginia","Texas","Massachusetts","Texas","Alabama","Kansas","Ohio","Texas"],"primary_mode":["Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Person-to-person","Water","Water","Water","Water","Water","Water","Food","Water","Water","Water","Food","Food","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Water","Food","Person-to-person","Water","Water","Food","Person-to-person","Person-to-person","Person-to-person","Water","Water","Water","Water","Food","Food","Food","Food","Food","Water","Water","Water","Food","Food","Food","Water","Animal Contact","Food","Person-to-person","Food","Food","Food","Person-to-person","Water","Water","Water","Food","Water","Food","Water","Water","Water","Water","Water","Person-to-person","Food","Food","Water","Food","Water","Food","Food","Person-to-person","Food","Water","Food","Water","Water","Water","Person-to-person"],"etiology":["Cryptosporidium parvum","Cryptosporidium parvum","Unknown","Unknown","Unknown","Cryptosporidium unknown","Cryptosporidium parvum; Giardia duodenalis; Unknown; Unknown","Giardia duodenalis","Norovirus other","Unknown","Giardia duodenalis","Unknown","Giardia duodenalis","Unknown","Campylobacter jejuni","Cryptosporidium parvum; Giardia duodenalis","Cryptosporidium parvum","Unknown","Norovirus Genogroup I","Cryptosporidium hominis; Cryptosporidium hominis","Shigella sonnei","Cryptosporidium hominis","Giardia duodenalis","Cryptosporidium hominis","Chlordane; Heptachlor; Toxaphene; Kerosene","Salmonella enterica","Shigella sonnei","Rotavirus","Unknown","Campylobacter jejuni","Salmonella enterica","Norovirus other","Norovirus other","Campylobacter jejuni; Norovirus other; Giardia duodenalis","Giardia duodenalis","Unknown","Cryptosporidium parvum","Escherichia coli, Enteropathogenic","Plant/Herbal toxins","Unknown","Salmonella enterica","Giardia duodenalis","Norovirus Genogroup I","Norovirus","Shigella sonnei","Unknown","Salmonella enterica","Norovirus","Shigella sonnei","Norovirus Genogroup II; Norovirus Genogroup I; Norovirus Genogroup II; Astrovirus","Escherichia coli, Enterotoxigenic","Unknown","Unknown","Unknown","Shigella sonnei","Clostridium perfringens","Hepatitis A","Escherichia coli, Enterotoxigenic","Salmonella enterica","Norovirus other","Unknown","Shigella sonnei","Shigella flexneri","Clostridium perfringens",null,"Campylobacter jejuni","Salmonella enterica","Norovirus Genogroup II","Shigella sonnei","Salmonella enterica","Clostridium perfringens",null,"Norovirus Genogroup II","Campylobacter jejuni","Escherichia coli, Shiga toxin-producing; Campylobacter jejuni","Giardia duodenalis","Cyclospora cayetanensis","Cryptosporidium unknown","Norovirus unknown","Unknown","Giardia duodenalis","Unknown","Salmonella unknown","Salmonella enterica","Shigella sonnei","Clostridium perfringens",null,"Unknown","Escherichia coli, Shiga toxin-producing","Cryptosporidium parvum","Salmonella enterica","Salmonella enterica","Norovirus",null,"Giardia duodenalis","Salmonella enterica","Unknown","Cryptosporidium hominis; Cryptosporidium hominis","Cryptosporidium parvum","Norovirus Genogroup II"],"serotype_or_genotype":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unknown",null,null,null,null,null,null,"Enteritidis",null,null,null,null,"Saintpaul",null,null,null,null,null,null,null,null,null,"Typhimurium",null,null,null,null,null,"Newport",null,"subgroup D","GII.2; unknown - ; GII.3;","O6:H16",null,null,null,null,null,null,"O6","Poona",null,null,null,"serotype 2a",null,null,null,"Hadar","unknown",null,"Heidelberg",null,null,"unknown",null,"O157:H7;",null,null,null,null,null,null,null,null,"Enteritidis",null,null,null,null,"O157:H7",null,"Tennessee","Typhimurium",null,null,null,"Enteritidis",null,null,null,"unknown"],"etiology_status":["Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Confirmed; Confirmed; Suspected; Suspected","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Confirmed; Confirmed","Confirmed","Suspected","Confirmed","Confirmed; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed; Suspected; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed; Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Confirmed; Confirmed; Confirmed; Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed",null,"Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected",null,"Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected",null,"Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected",null,"Confirmed","Confirmed","Suspected","Confirmed; Suspected","Confirmed","Suspected"],"setting":["Community/Municipality","Community/Municipality","Camp/Cabin Setting","Community/Municipality","Community/Municipality","Community/Municipality","Park - Waterpark","Community/Municipality","School/College/University; Other","Community/Municipality","Community/Municipality","Community/Municipality","Community/Municipality","Community/Municipality","Community/Municipality","Park - Waterpark; Other","Community/Municipality","Community/Municipality","School/college/university","Park - State Park","Community/Municipality","Community/Municipality","Camp/Cabin Setting","Community/Municipality","Community/Municipality","Restaurant - Sit-down dining; Restaurant - other or unknown type; Private home/residence; Banquet Facility (food prepared and served on-site); Caterer (food prepared off-site from where served)","Community/Municipality","Community/Municipality","Community/Municipality","Prison/jail",null,"Community/Municipality","Resort","Restaurant/Cafeteria; Camp/Cabin Setting; Other","Other","Community/Municipality","Subdivision/Neighborhood","Community/Municipality","Other","Camp/Cabin Setting","Community/Municipality","Community/Municipality",null,"School/college/university","Community/Municipality","Community/Municipality","Restaurant - \"Fast-food\"(drive up service or pay at counter); Restaurant - Sit-down dining; Restaurant - other or unknown type; Private home/residence; Grocery store; Long-term care/nursing home/assisted living facility; Camp; Farm/dairy","School/college/university","Other, specify","School/college/university","Park - National Park","Club (Requires Membership)","Community/Municipality","Community/Municipality","Unknown","Prison/jail","Restaurant - other or unknown type","Caterer (food prepared off-site from where served)",null,"Resort","Resort","Restaurant/Cafeteria","Restaurant - other or unknown type","Prison/jail","Prison/jail","Community/Municipality",null,"Restaurant - other or unknown type","Other, specify","Restaurant - other or unknown type; Fair, festival, other temp or mobile services",null,"Restaurant - other or unknown type","School/college/university","School/College/University","Festival/Fair","Community/Municipality","Other","Club (Requires Membership)","Restaurant - other or unknown type","Restaurant/Cafeteria","Community/Municipality","Restaurant/Cafeteria","Resort","Restaurant/Cafeteria","Other, specify","Prison/jail","School/college/university","Community/Municipality","Restaurant - other or unknown type","Community/Municipality","Other",null,"School/college/university","Unknown","Community/Municipality","Restaurant - other or unknown type","Community/Municipality","Community/Municipality","Club (Requires Membership)",null],"illnesses":[403000,13000,11400,9847,8000,5697,5449,5000,5000,5000,4800,3500,3500,3400,3000,3000,2760,2550,2500,2307,2150,2050,2000,2000,2000,1939,1800,1761,1663,1644,1500,1500,1450,1450,1449,1400,1400,1400,1341,1320,1300,1272,1200,1200,1200,1200,1132,1126,1101,1000,1000,1000,1000,990,964,950,935,916,907,900,900,900,886,880,872,871,848,811,809,802,800,800,800,800,781,780,771,767,766,750,750,750,750,750,742,741,738,738,736,730,715,714,708,707,703,700,700,700,700,699],"hospitalizations":["NA","NA",2,12,"NA",0,2,"NA","NA","NA","NA","NA","NA",2,"NA","NA","NA","NA",0,25,"NA",5,"NA","NA","NA","NA",30,"NA",0,7,308,"NA","NA",21,"NA","NA",23,9,0,"NA","NA",13,1,0,"NA","NA",167,"NA",53,0,"NA",5,"NA","NA","NA",1,"NA",7,204,1,"NA",0,22,35,0,4,179,0,0,29,0,4,0,"NA",71,"NA",39,"NA",27,"NA","NA","NA","NA",18,1,"NA",0,2,23,11,129,166,0,"NA","NA",3,1,3,0,0],"info_on_hospitalizations":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2500,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0,"NA","NA",705,0,1075,279,"NA","NA","NA","NA","NA","NA","NA","NA",720,"NA","NA","NA","NA","NA","NA","NA",524,"NA",0,"NA",800,"NA",800,"NA","NA","NA",763,"NA","NA","NA","NA","NA","NA","NA",742,"NA","NA","NA","NA","NA","NA","NA",708,"NA","NA","NA","NA","NA","NA",0],"deaths":[50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA",0,0,0,0,0,0,0,0,"NA",0,0,0,0,2,0,0,0,0,0,0,0,0,"NA",1,0,0,0,0,0,0,0,0,0,0,0,0,0,"NA",0,"NA",0,6,0,0,0,"NA",0,0,0,0,0,0,0,0,0,0,0,2,0,"NA","NA",0,0,0,0,0,0,0,"NA",0,0,1,0,0,9,0,"NA",0,0,0,0,0,0],"info_on_deaths":["NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2500,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",0,"NA","NA",708,112,1075,279,"NA","NA","NA","NA","NA","NA","NA","NA",720,"NA","NA","NA","NA","NA","NA","NA",509,"NA",0,"NA",800,"NA",800,"NA","NA","NA",0,"NA","NA","NA","NA","NA","NA","NA",742,"NA","NA","NA","NA","NA","NA","NA",708,"NA","NA","NA","NA","NA","NA",0],"food_vehicle":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"shell egg, other",null,null,null,"other milk, pasteurized","peppers, jalapeno; tomato, unspecified; peppers, serrano",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"red onion",null,null,null,null,null,null,null,null,"gravy, beef; roast beef, unspecified; potato, mashed","green onion/scallion","potato salad; macaroni salad","cucumber",null,null,null,"tomato, unspecified","corn, unspecified",null,null,null,null,null,"hummus",null,"unspecified vegetables",null,null,null,null,"salad mix, bagged",null,null,null,null,null,null,null,null,"chicken, baked",null,null,"watermelon",null,"peanut butter","peanut butter; peanut paste",null,null,null,"salsa, unspecified",null,null,null,null],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"egg",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Eggs",null,null,null,"Dairy","Seeded Vegetables",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Root/Underground",null,null,null,null,null,null,null,null,"Multiple","Vegetable Row Crops","Multiple","Seeded Vegetables",null,null,null,"Seeded Vegetables","Seeded Vegetables",null,null,null,null,null,"Multiple",null,"Multiple",null,null,null,null,"Multiple",null,null,null,null,null,null,null,null,"Chicken",null,null,"Fruits",null,"Nuts-Seeds","Nuts-Seeds",null,null,null,"Multiple",null,null,null,null],"water_exposure":["Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Recreational water -- treated","Recreational water -- treated","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Recreational water -- treated","Drinking water","Drinking water",null,"Recreational water -- treated","Drinking water","Recreational water -- treated","Drinking water","Recreational water -- treated","Drinking water",null,"Drinking water","Drinking water","Drinking water",null,null,"Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Drinking water","Recreational water -- untreated","Drinking water","Drinking water","Drinking water",null,null,"Drinking water","Drinking water",null,null,null,null,"Drinking water","Drinking water","Drinking water","Drinking water",null,null,null,null,null,"Drinking water","Drinking water","Drinking water",null,null,null,"Drinking water",null,null,null,null,null,null,null,"Drinking water","Drinking water","Drinking water",null,"Recreational water -- treated",null,"Drinking water","Drinking water","Drinking water","Drinking water","Drinking water",null,null,null,"Drinking water",null,"Recreational water -- treated",null,null,null,null,"Drinking water",null,"Drinking water","Recreational water -- treated","Recreational water -- treated",null],"water_type":["Community","Community","Other","Community","Community","Pool - Swimming Pool","Pool - Swimming Pool; Other; Pool - Wave Pool","Community","Other; Unknown","Community","Community","Community","Community","Community","Community","Pool - Swimming Pool; Other","Community","Community",null,"Fountain(s) - Interactive","Community","Other; Pool - Swimming Pool; Fountain(s) - Interactive","Other","Fountain(s) - Interactive","Community",null,"Community","Community","Community",null,null,"Community","Other","Other; Individual/Private; Unknown","Community","Community","Community","Community","Pond","Other","Community","Community",null,null,"Community","Community",null,null,null,null,"Other","Other","Community","Community",null,null,null,null,null,"Other","Other","Other",null,null,null,"Community",null,null,null,null,null,null,null,"Community","Other","Community",null,"Fountain(s) - Interactive; Spa/Whirlpool/Hot Tub; Pool - Swimming Pool; Other",null,"Other","Community","Other","Community","Community",null,null,null,"Community",null,"Pool - Swimming Pool",null,null,null,null,"Community",null,"Community","Pool - Swimming Pool; Other","Pool - Swimming Pool",null],"animal_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Baby chick or duckling",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type_specify":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"duck, chicken",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":["Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed",null,"Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed",null,"Reviewed","Reviewed","Reviewed",null,null,"Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed","Reviewed",null,null,"Reviewed","Reviewed",null,null,null,null,"Reviewed","Reviewed","Reviewed","Reviewed",null,null,null,null,null,"Reviewed","Reviewed","Reviewed",null,null,null,"Reviewed",null,null,null,null,null,null,null,"Reviewed","Reviewed","Reviewed",null,"Reviewed",null,"Reviewed","Reviewed","Reviewed","Reviewed","Reviewed",null,null,null,"Reviewed",null,"Reviewed",null,null,null,null,"Reviewed",null,"Reviewed","Reviewed","Reviewed",null]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 57,649)"},"dataKey":"7c786433427a23c165443250d7665884"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+class: your-turn
+
+# Your Turn 9
+
+How many different primary modes of illness are in this dataset? How often does each appear in the data?
+
+Order the rows so that the most common primary mode appears at the top. 
+
+---
+
+## Solution 9
+
+
+```r
+outbreaks %&gt;%
+  count(primary_mode) %&gt;% 
+  arrange(desc(n))
+```
+
+<div id="htmlwidget-861bef362cc869bb1597" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-861bef362cc869bb1597">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"primary_mode":["Person-to-person","Food","Indeterminate/Other/Unknown","Water","Animal Contact","Environmental contamination other than food/water"],"n":[26561,23105,4647,2713,512,111]},"columns":[{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"eeef47e941f5c545455b39fa7d4deac3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+???
+
+Looks like the most common primary moe for outbreaks in this particular dataset is person-to-person.
+
+---
+class: your-turn
+
+# Your Turn 10
+
+.pull-left[Can you figure out how to recreate this visualization of the **primary modes** of infection?]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
+]
+
+???
+
+---
+
+## Solution 10
+
+.pull-left[
+
+```r
+outbreaks %&gt;%
+  ggplot(aes(x = primary_mode)) + 
+  geom_bar() +
+* coord_flip()
+```
+]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
+]
+
+???
+
+Notice coord_flip()
+
+If your first inclination was to use count() then you might have come up with an answer like...
+
+---
+
+## Solution 10 - alternative
+
+.wide-left[
+
+```r
+outbreaks %&gt;%
+* count(primary_mode, name = "count") %&gt;%
+  ggplot(aes(x = primary_mode, y = count)) + 
+* geom_col() +
+  coord_flip()
+```
+]
+
+.narrow-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-28-1.png" width="504" /&gt;
+]
+
+???
+
+This one, but it's a little less efficient code-wise.
+
+---
+class: your-turn
+
+# Your Turn 11 
+
+Let's take a closer look at outbreaks associated with **Animal Contact**. 
+
+* Which *individual* states have had the most Animal Contact outbreaks -- how many has each state had? 
+
+* Create a table to answer these questions.  
+
+
+---
+
+## Solution 11
+
+One possible solution:
+
+
+```r
+outbreaks %&gt;%
+  filter(primary_mode == "Animal Contact") %&gt;% 
+  count(state) %&gt;% 
+* filter(state != "Multistate") %&gt;%
+  arrange(desc(n))
+```
+
+<div id="htmlwidget-b807255cff8857007612" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b807255cff8857007612">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"state":["Ohio","Minnesota","Idaho","Colorado","Pennsylvania","Utah","Wisconsin","Illinois","Michigan","New Hampshire","Oregon","Wyoming","Nebraska","Iowa","Kansas","Virginia","Washington","Missouri","North Carolina","Tennessee","Indiana","Massachusetts","Montana","Kentucky","West Virginia","Alaska","Arizona","Maine","Maryland","South Carolina","South Dakota","Texas","Alabama","Arkansas","Oklahoma","Vermont","Connecticut","Hawaii","Louisiana","New Mexico","New York","North Dakota","Rhode Island"],"n":[53,42,24,19,17,17,17,15,14,13,13,10,9,8,7,7,7,6,6,6,5,5,5,4,4,3,3,3,3,3,3,3,2,2,2,2,1,1,1,1,1,1,1]},"columns":[{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"n","name":"n","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"9cfa6a4334e34f5f29f23fff02e0b909"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+---
+class: your-turn
+
+# Your Turn 12
+
+.left-column35[
+Now that we know the top 3 states are **Ohio**, **Minnesota**, and **Idaho**, recreate this table:
+
+* Has only the Animal Contact outbreaks for those locations  
+
+* Column names with "animal" appear after `state`
+
+* Drop the `primary_mode` column
+]
+
+.right-column63.space-saver[
+<div id="htmlwidget-6601683924c0ca8d8cc3" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6601683924c0ca8d8cc3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2011,2011,2011,2011,2012,2012,2012,2012,2012,2012,2012,2012,2013,2013,2013,2013,2013,2013,2013,2014,2013,2012,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2017,2016,2017,2017,2017,2017,2017,2017,2018,2018,2017,2017,2017,2017,2017,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2019,2018,2018,2019,2019,2019,2019],"month":[1,4,5,5,5,8,8,3,4,8,7,8,9,9,1,2,4,5,7,7,8,11,5,6,8,6,10,10,10,1,12,7,6,7,5,7,8,9,7,10,10,6,12,3,3,4,8,8,8,9,9,7,12,11,11,3,4,4,4,5,5,6,7,7,8,6,9,3,4,3,4,7,8,9,9,1,1,11,8,5,6,5,4,6,7,6,7,6,8,8,9,11,9,2,11,11,4,5,4,5],"state":["Ohio","Ohio","Ohio","Ohio","Idaho","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Idaho","Ohio","Ohio","Ohio","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Ohio","Ohio","Idaho","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Ohio","Ohio","Ohio","Ohio","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Ohio","Minnesota","Ohio","Ohio","Minnesota","Ohio","Ohio","Ohio","Ohio","Ohio","Minnesota","Minnesota","Ohio","Ohio","Minnesota","Minnesota","Ohio","Minnesota","Ohio","Idaho","Ohio","Ohio","Minnesota","Ohio","Ohio","Idaho","Ohio","Ohio","Idaho","Idaho","Idaho","Idaho","Idaho","Ohio","Ohio","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Ohio","Ohio","Idaho","Ohio","Ohio","Minnesota","Ohio","Ohio","Ohio","Minnesota"],"animal_type":["Cattle","Pet fish","Cattle","Sheep or goats","Cat or kitten","Cattle","Cattle","Cattle","Cattle","Other poultry",null,"Sheep or goats",null,"Pet fish","Dog or Puppy","Cattle","Cattle","Other poultry","Cattle","Cattle; Sheep or goats","Other poultry","Cattle","Dog or Puppy","Cattle; Sheep or goats","Cattle","Other (specify)","Dog or Puppy","Cattle","Sheep or goats","Cattle","Turtle","Lizard","Cattle","Sheep or goats","Other small mammalian household pet","Cattle","Cattle","Pig","Other poultry","Cattle","Other reptile","Dog or Puppy","Other small mammalian household pet","Cattle","Cattle","Cattle","Cattle","Other (specify); Pig; Sheep or goats; Other small mammalian household pet; Cattle","Dog or Puppy","Cattle","Cattle","Cat or kitten","Cattle","Cattle","Cattle","Cattle","Cattle","Baby chick or duckling; Baby chick or duckling","Other small mammalian household pet","Cattle","Cattle","Other poultry","Sheep or goats","Other reptile; Baby chick or duckling","Other poultry","Cattle; Other poultry","Other small mammalian household pet",null,"Dog or Puppy","Sheep or goats",null,"Sheep or goats; Other (specify); Sheep or goats","Cattle","Cattle","Cattle","Cattle","Cattle","Dog or Puppy","Cattle","Cattle","Baby chick or duckling","Sheep or goats","Pig","Dog or Puppy",null,"Sheep or goats","Cattle","Dog or Puppy","Dog or Puppy",null,"Cattle","Cattle","Cattle","Sheep or goats","Dog or Puppy","Dog or Puppy","Dog or Puppy; Other poultry","Cattle","Other (specify)","Cattle"],"animal_type_specify":["Cattle, calf","Fish","Cattle, calf","Goat, kid","Cat, kitten","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Chicken",null,"Goat",null,"Fish","Dog, puppy","Cattle, calf","Cattle, calf","Chicken","Cattle, calf","Cattle, calf; Goat","Turkey","Cattle, calf","Dog, puppy","Cattle, calf; Goat","Calf","Raccoon","Dog, puppy","Cattle, calf","Goat","Cattle, calf","Turtle","Bearded dragon","Cattle, calf","Goat","Mouse","Cattle, calf","Cattle, calf","Pig/hog (domestic)","Turkey","Cattle, calf","Reptile, other","Dog, puppy","Guinea pig","Cattle","Cattle, calf","Cattle, calf","Cattle, calf","Yaks; Pigs; Goats; Rabbits; Calves","Dog, puppy","Cattle, calf","Cattle, calf","Cat","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Chick, baby chick; Duck, duckling","Hedgehog","Cattle, calf","Cattle, calf","Chicken","Goat","Black roughneck monitor lizard; Frozen chicks fed to reptile","Turkey","Cattle, calf; Chicken","Hedgehog",null,"Shelter dog","Goat",null,"angora goats; alpacas; sheep","Calf","Calves","calves",null,null,"puppy, strays","Cattle and Goats: Custom Slaughter workers","calves","ducklings","sheep, lambing shed",null,"animal shelter",null,"Sheep","beef calves","puppies","puppies",null,"calf","Holstein and Jersey","calves","Goats","dog","puppies","Blood Hound; Chickens","Two week old calf","calves","Calves"],"etiology":["Cryptosporidium unknown","Salmonella enterica","Cryptosporidium unknown","Cryptosporidium unknown","Campylobacter jejuni","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Cryptosporidium unknown","Cryptosporidium parvum","Campylobacter jejuni","Campylobacter jejuni","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium parvum","Campylobacter unknown","Escherichia coli, Shiga toxin-producing; Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Campylobacter jejuni","Cryptosporidium","Campylobacter jejuni","Cryptosporidium parvum","Cryptosporidium parvum","Campylobacter jejuni","Salmonella enterica; Campylobacter","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Cryptosporidium unknown","Salmonella enterica","Salmonella enterica","Campylobacter; Salmonella enterica; Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Cryptosporidium parvum","Cryptosporidium parvum","Salmonella enterica","Salmonella enterica","Cryptosporidium parvum","Salmonella enterica","Campylobacter unknown","Salmonella enterica","Salmonella enterica","Cryptosporidium unknown","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium unknown; Cryptosporidium parvum; Cryptosporidium parvum; Cryptosporidium other","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium parvum","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium unknown","Campylobacter unknown","Salmonella enterica","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Campylobacter","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Salmonella enterica","Escherichia coli, Shiga toxin-producing; Campylobacter jejuni","Salmonella enterica; Salmonella enterica","Cryptosporidium","Campylobacter jejuni; Campylobacter jejuni","Cryptosporidium","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing","Cryptosporidium parvum","Cryptosporidium","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium unknown; Campylobacter unknown","Campylobacter unknown","Salmonella enterica","Escherichia coli, Shiga toxin-producing","Campylobacter","Campylobacter","Salmonella enterica","Campylobacter jejuni","Cryptosporidium unknown","Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing","Cryptosporidium parvum","Campylobacter jejuni","Campylobacter jejuni","Cryptosporidium parvum","Cryptosporidium parvum; Cryptosporidium unknown; Salmonella enterica","Salmonella enterica; Giardia unknown; Cryptosporidium unknown","Salmonella enterica","Campylobacter jejuni","Campylobacter unknown","Campylobacter jejuni","Campylobacter jejuni","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium parvum"],"serotype_or_genotype":[null,"Paratyphi B",null,null,null,null,"O157:H7",null,null,null,null,"O157:H7","O26:H11","Paratyphi B",null,null,null,null,"O111:NM; IIaA15G2R2","O157:H7",null,null,null,null,null,null,"Typhimurium;","O157:H7","O157:H7",null,"Typhimurium","Cotham","Typhimurium; O111","O157:H7","Enteritidis",null,"IIaA15G2R1","I 4,[5],12:i:-","I 4,[5],12:i:-",null,"Pomona",null,"Braenderup","Typhimurium",null,"IIaA15G2R1","O157:H7","O157:H7",null,null,"other; ;",null,null,"IIaA15G2R1",null,null,null,null,"Typhimurium","IIaA15G2R1","O145",null,"O157:H7","Heidelberg","Uganda","O157:H7;","Typhimurium; Typhimurium",null,null,null,"IIaA15G2R1","O111; O26","IIaA15G2R1",null,null,null,null,null,"I 4,[5],12:i:-","O26",null,null,"I 4,[5],12:i:-",null,null,"O111; O111","IIaA15G2R2",null,null,"unknown","IIaA15G2R1; ; unknown","Typhimurium; ;","Heidelberg",null,null,null,null,null,null,"other"],"etiology_status":["Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Suspected; Suspected; Suspected; Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected; Suspected","Confirmed; Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected; Suspected; Suspected","Suspected; Confirmed; Suspected","Suspected","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected"],"setting":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Private home/residence",null,null,null,null,null,null,null,null,null,null,null,null,null,"Other, specify",null,null,null,null,null,null,null,"Festival/fair",null,null,null,null,null,null,"Private home/residence",null,"Other, specify",null,null,null,null,null,null,null,null,null,null,"Private home/residence",null,null,"Other, specify","Private home/residence",null,null,null,null,null,null,null,null,null,null,null,null,null],"illnesses":[4,2,3,3,2,4,3,2,9,2,2,2,2,2,3,5,31,27,10,52,2,3,11,2,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,3,9,3,5,4,72,2,4,4,2,6,2,2,6,2,6,2,21,6,5,5,4,22,3,2,2,3,2,2,3,4,5,3,2,2,2,4,3,2,7,4,2,2,12,2,5],"hospitalizations":[1,2,0,2,0,0,2,0,0,0,0,0,0,2,0,0,0,6,1,2,0,0,0,0,1,0,0,2,2,1,0,1,1,0,1,0,1,0,0,2,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,1,3,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0],"info_on_hospitalizations":[4,2,0,3,2,4,3,2,9,2,2,2,2,2,3,5,31,24,10,5,2,3,9,0,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,0,9,3,5,4,71,2,4,4,0,6,2,2,6,2,6,2,20,6,5,5,4,22,3,2,2,3,2,2,3,3,5,3,2,2,2,4,0,2,7,4,2,2,4,0,5],"deaths":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"info_on_deaths":[4,2,3,3,2,4,3,2,9,2,2,2,2,2,3,5,31,27,10,5,2,3,9,0,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,0,9,0,5,4,71,2,4,4,2,6,2,2,6,2,6,2,21,6,5,5,4,22,3,2,2,3,2,2,3,4,5,3,2,2,2,4,0,2,7,4,2,2,4,0,5],"food_vehicle":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_exposure":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 119)"},"dataKey":"f484d204504a291ab886d47abe2ecdc3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]
+
+---
+class: space-saver
+
+## Solution 12
+
+
+```r
+outbreaks %&gt;%
+  filter(
+    primary_mode == "Animal Contact", 
+    state %in% c("Ohio", "Minnesota", "Idaho")
+  ) %&gt;% 
+  relocate(
+    contains("animal"), 
+    .after = state
+  ) %&gt;% 
+  select(-primary_mode)
+```
+
+<div id="htmlwidget-b5ad3a8f5dff0aa3dff7" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b5ad3a8f5dff0aa3dff7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2011,2011,2011,2011,2012,2012,2012,2012,2012,2012,2012,2012,2013,2013,2013,2013,2013,2013,2013,2014,2013,2012,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2014,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2016,2017,2016,2017,2017,2017,2017,2017,2017,2018,2018,2017,2017,2017,2017,2017,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2019,2018,2018,2019,2019,2019,2019],"month":[1,4,5,5,5,8,8,3,4,8,7,8,9,9,1,2,4,5,7,7,8,11,5,6,8,6,10,10,10,1,12,7,6,7,5,7,8,9,7,10,10,6,12,3,3,4,8,8,8,9,9,7,12,11,11,3,4,4,4,5,5,6,7,7,8,6,9,3,4,3,4,7,8,9,9,1,1,11,8,5,6,5,4,6,7,6,7,6,8,8,9,11,9,2,11,11,4,5,4,5],"state":["Ohio","Ohio","Ohio","Ohio","Idaho","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Idaho","Ohio","Ohio","Ohio","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Ohio","Ohio","Idaho","Ohio","Minnesota","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Minnesota","Ohio","Ohio","Ohio","Ohio","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Ohio","Minnesota","Ohio","Ohio","Minnesota","Ohio","Ohio","Ohio","Ohio","Ohio","Minnesota","Minnesota","Ohio","Ohio","Minnesota","Minnesota","Ohio","Minnesota","Ohio","Idaho","Ohio","Ohio","Minnesota","Ohio","Ohio","Idaho","Ohio","Ohio","Idaho","Idaho","Idaho","Idaho","Idaho","Ohio","Ohio","Ohio","Minnesota","Minnesota","Minnesota","Ohio","Minnesota","Ohio","Ohio","Idaho","Ohio","Ohio","Minnesota","Ohio","Ohio","Ohio","Minnesota"],"animal_type":["Cattle","Pet fish","Cattle","Sheep or goats","Cat or kitten","Cattle","Cattle","Cattle","Cattle","Other poultry",null,"Sheep or goats",null,"Pet fish","Dog or Puppy","Cattle","Cattle","Other poultry","Cattle","Cattle; Sheep or goats","Other poultry","Cattle","Dog or Puppy","Cattle; Sheep or goats","Cattle","Other (specify)","Dog or Puppy","Cattle","Sheep or goats","Cattle","Turtle","Lizard","Cattle","Sheep or goats","Other small mammalian household pet","Cattle","Cattle","Pig","Other poultry","Cattle","Other reptile","Dog or Puppy","Other small mammalian household pet","Cattle","Cattle","Cattle","Cattle","Other (specify); Pig; Sheep or goats; Other small mammalian household pet; Cattle","Dog or Puppy","Cattle","Cattle","Cat or kitten","Cattle","Cattle","Cattle","Cattle","Cattle","Baby chick or duckling; Baby chick or duckling","Other small mammalian household pet","Cattle","Cattle","Other poultry","Sheep or goats","Other reptile; Baby chick or duckling","Other poultry","Cattle; Other poultry","Other small mammalian household pet",null,"Dog or Puppy","Sheep or goats",null,"Sheep or goats; Other (specify); Sheep or goats","Cattle","Cattle","Cattle","Cattle","Cattle","Dog or Puppy","Cattle","Cattle","Baby chick or duckling","Sheep or goats","Pig","Dog or Puppy",null,"Sheep or goats","Cattle","Dog or Puppy","Dog or Puppy",null,"Cattle","Cattle","Cattle","Sheep or goats","Dog or Puppy","Dog or Puppy","Dog or Puppy; Other poultry","Cattle","Other (specify)","Cattle"],"animal_type_specify":["Cattle, calf","Fish","Cattle, calf","Goat, kid","Cat, kitten","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Chicken",null,"Goat",null,"Fish","Dog, puppy","Cattle, calf","Cattle, calf","Chicken","Cattle, calf","Cattle, calf; Goat","Turkey","Cattle, calf","Dog, puppy","Cattle, calf; Goat","Calf","Raccoon","Dog, puppy","Cattle, calf","Goat","Cattle, calf","Turtle","Bearded dragon","Cattle, calf","Goat","Mouse","Cattle, calf","Cattle, calf","Pig/hog (domestic)","Turkey","Cattle, calf","Reptile, other","Dog, puppy","Guinea pig","Cattle","Cattle, calf","Cattle, calf","Cattle, calf","Yaks; Pigs; Goats; Rabbits; Calves","Dog, puppy","Cattle, calf","Cattle, calf","Cat","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Cattle, calf","Chick, baby chick; Duck, duckling","Hedgehog","Cattle, calf","Cattle, calf","Chicken","Goat","Black roughneck monitor lizard; Frozen chicks fed to reptile","Turkey","Cattle, calf; Chicken","Hedgehog",null,"Shelter dog","Goat",null,"angora goats; alpacas; sheep","Calf","Calves","calves",null,null,"puppy, strays","Cattle and Goats: Custom Slaughter workers","calves","ducklings","sheep, lambing shed",null,"animal shelter",null,"Sheep","beef calves","puppies","puppies",null,"calf","Holstein and Jersey","calves","Goats","dog","puppies","Blood Hound; Chickens","Two week old calf","calves","Calves"],"etiology":["Cryptosporidium unknown","Salmonella enterica","Cryptosporidium unknown","Cryptosporidium unknown","Campylobacter jejuni","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Cryptosporidium unknown","Cryptosporidium parvum","Campylobacter jejuni","Campylobacter jejuni","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium parvum","Campylobacter unknown","Escherichia coli, Shiga toxin-producing; Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Campylobacter jejuni","Cryptosporidium","Campylobacter jejuni","Cryptosporidium parvum","Cryptosporidium parvum","Campylobacter jejuni","Salmonella enterica; Campylobacter","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Cryptosporidium unknown","Salmonella enterica","Salmonella enterica","Campylobacter; Salmonella enterica; Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Cryptosporidium parvum","Cryptosporidium parvum","Salmonella enterica","Salmonella enterica","Cryptosporidium parvum","Salmonella enterica","Campylobacter unknown","Salmonella enterica","Salmonella enterica","Cryptosporidium unknown","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium unknown; Cryptosporidium parvum; Cryptosporidium parvum; Cryptosporidium other","Campylobacter unknown","Cryptosporidium unknown","Cryptosporidium parvum","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium unknown","Campylobacter unknown","Salmonella enterica","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing","Campylobacter","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Salmonella enterica","Escherichia coli, Shiga toxin-producing; Campylobacter jejuni","Salmonella enterica; Salmonella enterica","Cryptosporidium","Campylobacter jejuni; Campylobacter jejuni","Cryptosporidium","Cryptosporidium parvum","Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing","Cryptosporidium parvum","Cryptosporidium","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium unknown; Campylobacter unknown","Campylobacter unknown","Salmonella enterica","Escherichia coli, Shiga toxin-producing","Campylobacter","Campylobacter","Salmonella enterica","Campylobacter jejuni","Cryptosporidium unknown","Escherichia coli, Shiga toxin-producing; Escherichia coli, Shiga toxin-producing","Cryptosporidium parvum","Campylobacter jejuni","Campylobacter jejuni","Cryptosporidium parvum","Cryptosporidium parvum; Cryptosporidium unknown; Salmonella enterica","Salmonella enterica; Giardia unknown; Cryptosporidium unknown","Salmonella enterica","Campylobacter jejuni","Campylobacter unknown","Campylobacter jejuni","Campylobacter jejuni","Cryptosporidium unknown","Cryptosporidium unknown","Cryptosporidium parvum"],"serotype_or_genotype":[null,"Paratyphi B",null,null,null,null,"O157:H7",null,null,null,null,"O157:H7","O26:H11","Paratyphi B",null,null,null,null,"O111:NM; IIaA15G2R2","O157:H7",null,null,null,null,null,null,"Typhimurium;","O157:H7","O157:H7",null,"Typhimurium","Cotham","Typhimurium; O111","O157:H7","Enteritidis",null,"IIaA15G2R1","I 4,[5],12:i:-","I 4,[5],12:i:-",null,"Pomona",null,"Braenderup","Typhimurium",null,"IIaA15G2R1","O157:H7","O157:H7",null,null,"other; ;",null,null,"IIaA15G2R1",null,null,null,null,"Typhimurium","IIaA15G2R1","O145",null,"O157:H7","Heidelberg","Uganda","O157:H7;","Typhimurium; Typhimurium",null,null,null,"IIaA15G2R1","O111; O26","IIaA15G2R1",null,null,null,null,null,"I 4,[5],12:i:-","O26",null,null,"I 4,[5],12:i:-",null,null,"O111; O111","IIaA15G2R2",null,null,"unknown","IIaA15G2R1; ; unknown","Typhimurium; ;","Heidelberg",null,null,null,null,null,null,"other"],"etiology_status":["Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Suspected; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Suspected; Suspected; Suspected; Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Suspected","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Suspected; Suspected","Confirmed; Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed; Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected; Suspected; Suspected","Suspected; Confirmed; Suspected","Suspected","Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Suspected"],"setting":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Private home/residence",null,null,null,null,null,null,null,null,null,null,null,null,null,"Other, specify",null,null,null,null,null,null,null,"Festival/fair",null,null,null,null,null,null,"Private home/residence",null,"Other, specify",null,null,null,null,null,null,null,null,null,null,"Private home/residence",null,null,"Other, specify","Private home/residence",null,null,null,null,null,null,null,null,null,null,null,null,null],"illnesses":[4,2,3,3,2,4,3,2,9,2,2,2,2,2,3,5,31,27,10,52,2,3,11,2,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,3,9,3,5,4,72,2,4,4,2,6,2,2,6,2,6,2,21,6,5,5,4,22,3,2,2,3,2,2,3,4,5,3,2,2,2,4,3,2,7,4,2,2,12,2,5],"hospitalizations":[1,2,0,2,0,0,2,0,0,0,0,0,0,2,0,0,0,6,1,2,0,0,0,0,1,0,0,2,2,1,0,1,1,0,1,0,1,0,0,2,0,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,1,3,0,0,0,0,0,0,0,1,2,0,0,0,2,0,0,0,0,0,0,0,2,0,0],"info_on_hospitalizations":[4,2,0,3,2,4,3,2,9,2,2,2,2,2,3,5,31,24,10,5,2,3,9,0,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,0,9,3,5,4,71,2,4,4,0,6,2,2,6,2,6,2,20,6,5,5,4,22,3,2,2,3,2,2,3,3,5,3,2,2,2,4,0,2,7,4,2,2,4,0,5],"deaths":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"info_on_deaths":[4,2,3,3,2,4,3,2,9,2,2,2,2,2,3,5,31,27,10,5,2,3,9,0,4,18,6,7,2,4,2,3,6,15,2,2,7,4,12,13,4,3,3,3,4,3,4,2,2,19,17,2,2,6,0,9,0,5,4,71,2,4,4,2,6,2,2,6,2,6,2,21,6,5,5,4,22,3,2,2,3,2,2,3,4,5,3,2,2,2,4,0,2,7,4,2,2,4,0,5],"food_vehicle":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_exposure":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 119)"},"dataKey":"f484d204504a291ab886d47abe2ecdc3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+---
+class: your-turn
+
+# Your Turn 13
+
+.pull-left[Excluding the outlier we previously identified, visualize the relationship between **year** and number of **illnesses** with a smooth line plot.   
+
+Color each line by its primary mode.]
+
+.pull-right[
+
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
+]
+
+---
+
+## Solution 13
+
+.pull-left[
+
+```r
+outbreaks %&gt;%
+  filter(illnesses != max(illnesses)) %&gt;% 
+  ggplot(aes(y = illnesses, x = year, color = primary_mode)) + 
+  geom_smooth(se = FALSE)
+```
+]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+]
+
+
+---
+class: your-turn
+
+# Your Turn 14
+
+Visualize the number of illnesses in **Washington DC**, grouped by **primary mode** of infection. *Hint: you may need to investigate violin plot*
+
+
+```
+## Warning: Groups with fewer than two data points have been dropped.
+```
+
+&lt;img src="session01-review-slides-speaker_files/figure-html/sol-14-1.png" width="80%" /&gt;
+
+---
+
+## Solution 14
+
+
+
+```r
+outbreaks %&gt;% 
+  filter(state == "Washington DC") %&gt;%
+  ggplot(aes(x = primary_mode, y = illnesses)) +
+  geom_violin(aes(color = primary_mode)) + 
+  geom_point(alpha = 0.3) # any alpha value &lt; 1 is OK
+```
+
+
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-36-1.png" width="75%" /&gt;
+
+---
+class: your-turn
+
+# Your Turn 15
+
+Let's focus only on **Washington DC** and **food borne illnesses**. Show the most recent outbreaks in a table from most recent to least recent.
+
+---
+
+## Solution 15 
+
+.left-column40[
+
+```r
+outbreaks %&gt;% 
+  filter(
+    state == "Washington DC" &amp; 
+    primary_mode == "Food"
+  ) %&gt;%
+  arrange(desc(year), desc(month))
+```
+]
+
+.right-column55[
+<div id="htmlwidget-bdad4ff41c9c7a523ef7" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bdad4ff41c9c7a523ef7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2019,2019,2019,2018,2018,2018,2018,2017,2016,2015,2015,2008,2008,2007,2007,2007,2004,2004,2004,2004,2004,2004,2004,2004,2004,2003,2003,2003,2003,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2001,2000,2000,1998,1998],"month":[6,5,3,9,3,3,3,12,2,9,8,10,9,11,6,5,10,8,4,3,3,3,2,1,1,6,6,6,4,11,10,10,6,6,5,5,5,4,2,6,11,3,10,9],"state":["Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC"],"primary_mode":["Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food"],"etiology":["Cyclospora cayetanensis","Norovirus Genogroup II",null,null,"Norovirus Genogroup II","Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II",null,"Salmonella enterica","Ciguatoxin","Norovirus Genogroup I",null,null,"Salmonella enterica","Ciguatoxin","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I; Norovirus Genogroup II","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus Genogroup I; Adenovirus","Norovirus Genogroup I","Norovirus Genogroup I","Norovirus unknown; Norovirus Genogroup II",null,"Salmonella enterica; Escherichia coli, Enteropathogenic","Scombroid toxin",null,"Salmonella enterica",null,"Salmonella enterica","Norovirus Genogroup I; Campylobacter other","Staphylococcus aureus","Norovirus Genogroup I","Salmonella enterica",null,"Rotavirus",null,"Cryptosporidium parvum"],"serotype_or_genotype":[null,"unknown - unknown",null,null,"unknown - unknown",null,null,"unknown - unknown",null,"Enteritidis",null,"GI.1",null,null,"Newport",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Muenchen",null,null,null,null,null,"Braenderup",null,null,null,null],"etiology_status":["Confirmed","Suspected",null,null,"Confirmed","Suspected","Suspected","Confirmed",null,"Confirmed","Suspected","Confirmed",null,null,"Confirmed","Confirmed","Confirmed","Suspected","Suspected; Suspected","Confirmed","Confirmed","Suspected","Suspected","Suspected","Suspected","Suspected; Suspected","Suspected","Confirmed","Confirmed; Confirmed",null,"Confirmed; Confirmed","Suspected",null,"Confirmed",null,"Confirmed","Confirmed; Confirmed","Confirmed","Suspected","Confirmed",null,"Confirmed",null,"Confirmed"],"setting":["Restaurant - \"Fast-food\"(drive up service or pay at counter); Restaurant - Sit-down dining","Private home/residence","Restaurant - Sit-down dining","Restaurant - Buffet","Restaurant - Sit-down dining","Restaurant - Sit-down dining","Restaurant - Sit-down dining","Caterer (food prepared off-site from where served)","School/college/university","Restaurant - Sit-down dining","Office/indoor workplace",null,"School/college/university","Caterer (food prepared off-site from where served)","Restaurant - other or unknown type; Private home/residence","Private home/residence","Unknown","Restaurant - other or unknown type","Other","Unknown","Unknown","Unknown","Unknown","Hospital","Unknown","Restaurant - other or unknown type; Caterer (food prepared off-site from where served)","Restaurant - other or unknown type; Private home/residence; Caterer (food prepared off-site from where served)","Caterer (food prepared off-site from where served)","Caterer (food prepared off-site from where served); Other","School/college/university","Caterer (food prepared off-site from where served)","Restaurant - other or unknown type","Grocery store","Restaurant - other or unknown type","Restaurant - other or unknown type","Caterer (food prepared off-site from where served)","Long-term care/nursing home/assisted living facility","Other","Other","Restaurant - other or unknown type","Private home/residence","School/college/university","Restaurant - other or unknown type","Other"],"illnesses":[3,4,16,4,6,12,3,52,49,160,6,27,110,42,46,9,22,6,65,35,69,15,19,16,35,48,44,47,181,5,29,2,11,57,3,14,88,8,23,21,15,108,7,88],"hospitalizations":[0,0,0,0,0,0,0,1,0,9,"NA","NA",0,"NA","NA",0,"NA","NA",1,"NA","NA","NA","NA","NA","NA",0,"NA","NA",0,0,3,0,0,3,0,1,0,0,0,"NA",0,"NA",0,0],"info_on_hospitalizations":[3,4,14,4,5,12,3,51,0,9,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"deaths":[0,0,0,0,0,0,0,0,0,0,"NA",0,0,"NA","NA",0,"NA","NA",0,"NA","NA","NA","NA","NA","NA",0,"NA","NA",0,0,0,0,0,0,0,0,0,0,0,"NA",0,"NA",0,0],"info_on_deaths":[3,4,16,4,5,12,3,51,0,0,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"food_vehicle":["basil mayo",null,null,null,null,null,null,null,null,null,"fish, amberjack",null,null,"pasta-based salads unspecified","tomato, unspecified; avocado, unspecified; guacamole, unspecified; cilantro, unspecified","fish",null,"chicken, grilled; green salad","chicken, other; potato, mashed; caesar salad",null,null,null,null,null,null,"ice","onion, tart; mixed vegetables, unspecified; green salad","pastry, paris-brest; tomato, basil and mozzarella salad","water","quesadilla, chicken",null,"tuna, unspecified","strawberries; watermelon","pasta salad","sandwich, chicken; pork, roasted","sandwich, chicken",null,"other cheese, pasteurized; honeydew melon; potato, fried",null,"sandwich, other specialty","deviled eggs","sandwich, tuna salad; sandwich, chicken salad",null,null],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cheese; melon; root (eg. potato)",null,null,"egg",null,null,null],"ifsac_category":["Multiple",null,null,null,null,null,null,null,null,null,"Fish",null,null,"Multiple","Multiple","Fish",null,"Multiple","Multiple",null,null,null,null,null,null,"Other","Multiple","Multiple","Other","Multiple",null,"Fish","Fruits","Multiple","Multiple","Multiple",null,"Multiple",null,"Multiple","Eggs","Multiple",null,null],"water_exposure":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"animal_type_specify":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"water_status":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"e42a2241eea35a7007e610bd6ccb086a"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]
+
+---
+class: your-turn
+
+# Your Turn 16
+
+Continue to focus only on **Washington DC** and **food borne illnesses**. 
+
+Use tidyverse functions to display the unique values of `food_vehicle` as a vector.
+
+---
+## Solution 16
+
+.left-column1[
+
+```r
+outbreaks %&gt;% 
+  filter(
+    state == "Washington DC",
+    primary_mode == "Food"
+  ) %&gt;%
+  distinct(food_vehicle) %&gt;% 
+  pull()
+```
+]
+
+.right-column55[
+
+```
+##  [1] NA                                                                                        
+##  [2] "deviled eggs"                                                                            
+##  [3] "sandwich, tuna salad; sandwich, chicken salad"                                           
+##  [4] "sandwich, chicken; pork, roasted"                                                        
+##  [5] "other cheese, pasteurized; honeydew melon; potato, fried"                                
+##  [6] "sandwich, chicken"                                                                       
+##  [7] "strawberries; watermelon"                                                                
+##  [8] "pasta salad"                                                                             
+##  [9] "sandwich, other specialty"                                                               
+## [10] "quesadilla, chicken"                                                                     
+## [11] "tuna, unspecified"                                                                       
+## [12] "ice"                                                                                     
+## [13] "onion, tart; mixed vegetables, unspecified; green salad"                                 
+## [14] "water"                                                                                   
+## [15] "pastry, paris-brest; tomato, basil and mozzarella salad"                                 
+## [16] "chicken, other; potato, mashed; caesar salad"                                            
+## [17] "chicken, grilled; green salad"                                                           
+## [18] "fish"                                                                                    
+## [19] "tomato, unspecified; avocado, unspecified; guacamole, unspecified; cilantro, unspecified"
+## [20] "pasta-based salads unspecified"                                                          
+## [21] "fish, amberjack"                                                                         
+## [22] "basil mayo"
+```
+
+]
+
+
+
+
+---
+class: your-turn
+
+# Your Turn 17
+
+Find **food borne** outbreaks that resulted in at least 1 **death**. 
+
+Display the results in a table that contains only the columns from `year` to `deaths`.
+
+---
+
+## Solution
+
+
+```r
+outbreaks %&gt;% 
+  filter(
+    primary_mode == "Food", 
+    deaths &gt;= 1
+  ) %&gt;% 
+  select(year:deaths)
+```
+
+<div id="htmlwidget-bd7440df8358bbe0d315" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bd7440df8358bbe0d315">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2009,2009,2010,2010,2010,2010,2011,2009,2009,2010,2009,2011,2011,2011,2010,2011,2011,2011,2010,2011,2012,2012,2012,2011,2012,2012,2012,2011,2011,2012,2012,2013,2013,2012,2012,2012,2013,2013,2013,2013,2013,2013,2013,2013,2014,2014,2014,2014,2014,2014,2013,2014,2014,2014,2013,2015,2013,2014,2014,2005,1999,1999,1999,1998,1998,1999,1999,1999,1998,1998,1999,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,1998,1998,1998,1998,1999,2001,2002,2001,2002,2001,2001,2001,2002,2003,2003,2003,2003],"month":[7,5,2,5,6,10,3,2,8,1,10,6,3,7,11,3,9,8,3,12,5,4,6,7,4,4,7,2,10,12,11,3,3,7,7,3,2,4,9,9,9,6,5,8,2,4,6,5,8,6,6,5,4,12,9,1,9,6,10,7,1,12,9,10,12,3,4,7,8,5,8,7,7,4,5,2,9,5,6,10,10,9,2,10,6,6,2,2,4,6,1,3,11,3,11,7,2,1,1,5],"state":["Michigan","West Virginia","Illinois","Louisiana","New York","Colorado","Rhode Island","Multistate","Multistate","Texas","Multistate","New York","Pennsylvania","Oregon","Texas","Louisiana","Georgia","Michigan","Multistate","North Carolina","Connecticut","Massachusetts","Oregon","Multistate","Louisiana","North Carolina","Ohio","Multistate","Multistate","New York","California","Oregon","Maryland","Multistate","Multistate","Multistate","Multistate","Multistate","Idaho","South Carolina","Kentucky","New Mexico","Multistate","Multistate","California","New York","Massachusetts","Utah","Alaska","Multistate","Multistate","Multistate","Oregon","Oregon","Rhode Island","Kansas","Multistate","Multistate","Multistate","Colorado","New York","New Mexico","Minnesota","Multistate","Multistate","Maryland","Iowa","Hawaii","Florida","Florida","Florida","Wisconsin","South Dakota","Ohio","Multistate","Illinois","Florida","Florida","Colorado","California","California","California","California","California","New Jersey","Ohio","Texas","Ohio","Georgia","Tennessee","Florida","Florida","Texas","Louisiana","Oklahoma","California","Nevada","Florida","Florida","California"],"primary_mode":["Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food","Food"],"etiology":["Salmonella enterica","Salmonella enterica","Shigella sonnei","Clostridium perfringens","Escherichia coli, Shiga toxin-producing","Norovirus unknown","Salmonella enterica","Salmonella enterica","Escherichia coli, Shiga toxin-producing","Listeria monocytogenes","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Yersinia enterocolitica","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Other","Salmonella enterica","Listeria monocytogenes","Listeria monocytogenes",null,"Salmonella enterica","Escherichia coli, Shiga toxin-producing","Clostridium botulinum","Listeria monocytogenes","Escherichia coli, Shiga toxin-producing","Norovirus","Escherichia coli, Shiga toxin-producing","Salmonella enterica","Listeria monocytogenes","Other - Chemical/Toxin","Mycotoxins","Norovirus Genogroup II",null,"Salmonella enterica; Salmonella enterica","Salmonella enterica","Listeria monocytogenes","Salmonella enterica; Salmonella enterica","Escherichia coli, Shiga toxin-producing","Escherichia coli, Shiga toxin-producing","Vibrio cholerae","Salmonella enterica","Salmonella enterica","Listeria monocytogenes","Listeria monocytogenes","Norovirus Genogroup II","Listeria monocytogenes","Escherichia coli, Shiga toxin-producing","Campylobacter jejuni","Clostridium botulinum","Listeria monocytogenes","Salmonella enterica","Salmonella enterica","Norovirus Genogroup II","Escherichia coli, Shiga toxin-producing","Listeria monocytogenes","Norovirus Genogroup II","Listeria monocytogenes","Listeria monocytogenes","Listeria monocytogenes","Salmonella enterica","Clostridium perfringens","Salmonella enterica","Listeria monocytogenes","Listeria monocytogenes","Salmonella enterica",null,null,"Ciguatoxin",null,null,"Listeria monocytogenes","Escherichia coli, Shiga toxin-producing","Staphylococcus aureus","Clostridium botulinum","Listeria monocytogenes","Salmonella enterica","Salmonella enterica",null,"Escherichia coli, Shiga toxin-producing","Shigella sonnei","Hepatitis A","Clostridium perfringens; Bacillus cereus","Clostridium perfringens","Salmonella enterica","Salmonella enterica","Salmonella enterica","Hepatitis A","Norovirus Genogroup I","Clostridium perfringens","Salmonella enterica","Hepatitis A","Hepatitis A","Salmonella enterica","Salmonella enterica","Clostridium perfringens","Escherichia coli, Shiga toxin-producing","Norovirus Genogroup I","Rotavirus",null,null],"serotype_or_genotype":["Newport","Enteritidis",null,null,"O157:H7",null,"Heidelberg","Carrau","O157:H7",null,"O157:H7","Muenchen",null,"O157:H7","Eastbourne",null,"Javiana",null,null,null,"Enteritidis","O157:H7",null,null,"O145",null,"O157:H7","Heidelberg",null,null,null,"GII.4 Sydney",null,"Typhimurium; Newport","Newport",null,"Montevideo; Mbandaka","O157:H7","O157:H7","Other","Typhimurium","Montevideo",null,null,"GII.4 Sydney",null,"O157:H7",null,null,null,"Thompson","Newport",null,"O157",null,"GII.4 Sydney",null,null,null,"Newport",null,"Havana",null,null,"Baildon",null,null,null,null,null,null,"O157:H7",null,null,null,"Enteritidis","Javiana",null,"O157:H7",null,null,null,null,"Enteritidis","Enteritidis","Oranienburg",null,null,null,"Miami",null,null,"Typhimurium","Heidelberg",null,"O157:H7",null,null,null,null],"etiology_status":["Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed",null,"Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed",null,"Confirmed; Confirmed","Confirmed","Confirmed","Confirmed; Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed",null,null,"Confirmed",null,null,"Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected",null,"Suspected","Confirmed","Confirmed","Suspected; Suspected","Suspected","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Confirmed","Suspected",null,null],"setting":[null,null,"Restaurant - \"Fast-food\"(drive up service or pay at counter)",null,"Other","Long-term care/nursing home/assisted living facility",null,"Grocery store","Other",null,"Restaurant - Sit-down dining","Unknown","Other","Other",null,null,"Private home/residence","Restaurant - \"Fast-food\"(drive up service or pay at counter); Private home/residence","Private home/residence",null,"Long-term care/nursing home/assisted living facility",null,"Private home/residence","Private home/residence",null,null,"Private home/residence; Other",null,"Banquet Facility (food prepared and served on-site)","Private home/residence","Long-term care/nursing home/assisted living facility","Caterer (food prepared off-site from where served)","Restaurant - Sit-down dining","Private home/residence","Private home/residence","Grocery store; Other","Private home/residence","Private home/residence","Grocery store",null,"Restaurant - Sit-down dining","Private home/residence","Restaurant - Sit-down dining; Private home/residence","Private home/residence","Restaurant - Sit-down dining","Long-term care/nursing home/assisted living facility","Private home/residence","Other","Other","Private home/residence","Private home/residence","Restaurant - \"Fast-food\"(drive up service or pay at counter); Restaurant - Sit-down dining; Restaurant - other or unknown type; Private home/residence; Grocery store; Long-term care/nursing home/assisted living facility; Camp","Long-term care/nursing home/assisted living facility","Private home/residence","Restaurant - other or unknown type","Other","Private home/residence","Restaurant - other or unknown type; Unknown","Other","Unknown","Restaurant - other or unknown type","Long-term care/nursing home/assisted living facility","Restaurant - other or unknown type","Other","Long-term care/nursing home/assisted living facility; Other","Restaurant - other or unknown type","Long-term care/nursing home/assisted living facility","Private home/residence","Restaurant - other or unknown type","Restaurant - other or unknown type","Grocery store","Restaurant - other or unknown type","Long-term care/nursing home/assisted living facility","Private home/residence","Restaurant - other or unknown type; Other","Caterer (food prepared off-site from where served)","Private home/residence","Restaurant - other or unknown type","Private home/residence","Restaurant - other or unknown type","Restaurant - other or unknown type","Private home/residence; Religious facility","Private home/residence","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Other","Restaurant - other or unknown type","Other","Restaurant - other or unknown type","Restaurant - other or unknown type","Restaurant - other or unknown type","Other","Prison/jail","Restaurant - other or unknown type","Other","Unknown","Long-term care/nursing home/assisted living facility","Long-term care/nursing home/assisted living facility","Restaurant - other or unknown type","Restaurant - other or unknown type"],"illnesses":[4,21,314,54,3,21,81,53,32,10,25,6,16,15,23,3,13,2,6,60,20,2,3,147,5,81,77,181,15,2,6,16,8,261,33,23,17,14,4,3,14,11,6,8,24,2,4,99,3,2,13,275,36,12,4,61,9,5,35,24,3,4,5,101,86,2,40,4,2,2,2,736,95,3,29,36,4,3,16,221,10,14,23,4,19,22,94,60,3,178,40,16,404,93,7,2,104,10,7,8],"hospitalizations":[2,9,13,3,1,4,29,4,19,10,9,2,7,7,8,3,4,2,4,1,3,1,3,143,3,3,14,50,1,2,6,"NA",0,94,11,21,1,9,1,3,6,4,6,7,2,2,2,10,2,2,6,48,5,3,2,7,8,3,34,7,1,3,5,101,16,1,"NA",0,0,2,2,23,13,3,29,10,2,0,6,0,1,2,1,4,"NA",3,"NA",0,1,22,14,3,0,18,2,1,2,2,"NA",1],"info_on_hospitalizations":[4,21,314,54,3,21,81,"NA","NA",10,24,6,16,15,22,3,13,2,6,60,20,2,3,144,5,81,68,125,15,2,6,16,8,261,26,23,8,11,4,3,14,11,6,8,24,2,4,99,3,2,13,141,36,12,4,56,9,3,35,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"],"deaths":[1,2,1,3,1,1,2,1,2,5,1,1,1,2,1,1,1,1,1,1,1,1,1,33,1,1,1,1,1,1,4,1,1,3,1,5,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,2,7,1,1,2,1,21,3,2,1,1,2,2,1,1,2,1,7,1,1,3,1,1,1,1,1,1,2,1,1,1,1,1,1,1,4,1,2,1,1,1,7,1]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows (Total: 265)"},"dataKey":"9ef2264c0e492750aa1317b03fbe3cf4"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+---
+class: your-turn
+
+# Your Turn 18
+
+Calculate new variable for each outbreak: **`fatality_rate`** (the  number of deaths / the number of illnesses, multiplied by 100). 
+
+Then visualize the distribution of the fatality rate with a histogram.
+
+---
+
+## Solution 18
+.pull-left[
+
+```r
+outbreaks %&gt;% 
+  select(1:3, deaths, illnesses) %&gt;% 
+  mutate(
+    fatality_rate = deaths / illnesses * 100
+  ) %&gt;%
+  ggplot(aes(x = fatality_rate)) + 
+  geom_histogram()
+```
+
+```
+## Warning: Removed 7154 rows containing non-finite values (stat_bin).
+```
+]
+
+.pull-right[
+
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-42-1.png" width="504" /&gt;
+]
+
+
+---
+class: your-turn
+
+# Your Turn 19
+
+* Remove outbreaks that have a fatality rate of zero. 
+
+* What is the distribution of the fatality rate for the remaining outbreaks as shown by a **notched boxplot**?
+
+* Make the interior of your notched boxplot solid .blue[blue].
+
+---
+
+## Solution 19
+
+.pull-left[
+
+```r
+outbreaks %&gt;% 
+  select(1:3, deaths, illnesses) %&gt;% 
+  mutate(
+    fatality_rate = deaths / illnesses * 100
+  ) %&gt;%
+  filter(fatality_rate &gt; 0) %&gt;%
+  ggplot(aes(x = fatality_rate)) + 
+  geom_boxplot(
+    notch = TRUE,
+    fill = "blue" 
+  )
+```
+]
+
+.pull-right[
+&lt;img src="session01-review-slides-speaker_files/figure-html/unnamed-chunk-43-1.png" width="504" /&gt;
+]
+
+---
+class: your-turn
+
+# Your Turn 20 - last one!
+
+Find Washington DC's worst outbreak as defined by its **`hospitalization_rate`** (which you will need to calculate).
+
+* Subset the data so you display observations that are at least 60% greater than DC's mean hopsitalization rate. 
+
+* Your answer should be a tibble with the highest hospitalization rates shown at the top. 
+
+* Any ties should be broken by outbreaks that happened more recently.
+
+
+
+---
+
+## Solution 20
+
+
+```r
+outbreaks %&gt;% 
+  filter(state == "Washington DC") %&gt;% 
+  mutate(hospitalization_rate = hospitalizations / illnesses * 100) %&gt;%
+  filter(hospitalization_rate &gt;= 1.60 * mean(hospitalization_rate, na.rm = TRUE)) %&gt;% 
+  arrange(desc(hospitalization_rate), desc(year))
+```
+
+
+<div id="htmlwidget-47829adeb738f605bef4" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-47829adeb738f605bef4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"year":[2019,2015,2014,2009,2010,2019,2014,2002,2009,2010,2009,2002],"month":[3,3,2,2,12,7,2,10,3,12,2,5],"state":["Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC","Washington DC"],"primary_mode":["Environmental contamination other than food/water","Environmental contamination other than food/water","Indeterminate/Other/Unknown","Indeterminate/Other/Unknown","Person-to-person","Indeterminate/Other/Unknown","Indeterminate/Other/Unknown","Food","Indeterminate/Other/Unknown","Person-to-person","Indeterminate/Other/Unknown","Food"],"etiology":["Norovirus Genogroup II","Norovirus unknown","Norovirus Genogroup II",null,"Norovirus unknown","Norovirus unknown","Norovirus Genogroup II","Salmonella enterica; Escherichia coli, Enteropathogenic",null,"Norovirus unknown",null,"Salmonella enterica"],"serotype_or_genotype":["unknown - unknown",null,"unknown",null,null,null,"unknown",null,null,null,null,null],"etiology_status":["Confirmed","Confirmed","Suspected",null,"Suspected","Suspected","Confirmed","Confirmed; Confirmed",null,"Suspected",null,"Confirmed"],"setting":["Long-term care/nursing home/assisted living facility","Hospital","Long-term care/nursing home/assisted living facility",null,null,"School/college/university","Long-term care/nursing home/assisted living facility","Caterer (food prepared off-site from where served)",null,null,null,"Caterer (food prepared off-site from where served)"],"illnesses":[2,5,35,75,21,16,19,29,10,21,13,14],"hospitalizations":[2,5,9,12,3,2,2,3,1,2,1,1],"info_on_hospitalizations":[2,5,9,75,21,16,2,"NA",10,21,13,"NA"],"deaths":[0,0,0,0,0,0,0,0,0,0,0,0],"info_on_deaths":[2,0,0,75,21,16,0,"NA",10,0,13,"NA"],"food_vehicle":[null,null,null,null,null,null,null,null,null,null,null,"sandwich, chicken"],"food_contaminated_ingredient":[null,null,null,null,null,null,null,null,null,null,null,null],"ifsac_category":[null,null,null,null,null,null,null,null,null,null,null,"Multiple"],"water_exposure":[null,null,null,null,null,null,null,null,null,null,null,null],"water_type":[null,null,null,null,null,null,null,null,null,null,null,null],"animal_type":[null,null,null,null,null,null,null,null,null,null,null,null],"animal_type_specify":[null,null,null,null,null,null,null,null,null,null,null,null],"water_status":[null,null,null,null,null,null,null,null,null,null,null,null],"hospitalization_rate":[100,100,25.7142857142857,16,14.2857142857143,12.5,10.5263157894737,10.3448275862069,10,9.52380952380952,7.69230769230769,7.14285714285714]},"columns":[{"accessor":"year","name":"year","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"month","name":"month","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"state","name":"state","type":"character","maxWidth":400,"align":"left"},{"accessor":"primary_mode","name":"primary_mode","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology","name":"etiology","type":"character","maxWidth":400,"align":"left"},{"accessor":"serotype_or_genotype","name":"serotype_or_genotype","type":"character","maxWidth":400,"align":"left"},{"accessor":"etiology_status","name":"etiology_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"setting","name":"setting","type":"character","maxWidth":400,"align":"left"},{"accessor":"illnesses","name":"illnesses","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"hospitalizations","name":"hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_hospitalizations","name":"info_on_hospitalizations","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"deaths","name":"deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"info_on_deaths","name":"info_on_deaths","type":"numeric","maxWidth":400,"align":"left"},{"accessor":"food_vehicle","name":"food_vehicle","type":"character","maxWidth":400,"align":"left"},{"accessor":"food_contaminated_ingredient","name":"food_contaminated_ingredient","type":"character","maxWidth":400,"align":"left"},{"accessor":"ifsac_category","name":"ifsac_category","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_exposure","name":"water_exposure","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_type","name":"water_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type","name":"animal_type","type":"character","maxWidth":400,"align":"left"},{"accessor":"animal_type_specify","name":"animal_type_specify","type":"character","maxWidth":400,"align":"left"},{"accessor":"water_status","name":"water_status","type":"character","maxWidth":400,"align":"left"},{"accessor":"hospitalization_rate","name":"hospitalization_rate","type":"numeric","maxWidth":400,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"compact":true,"nowrap":true,"language":{"pageInfo":"{rowStart}-{rowEnd} of {rows} rows"},"dataKey":"fe0080c688bc25a1341f2805bdeaf486"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+---
+
+# Explore
+
++ Now, pair-up with at least one other groupmate and do something new with the `outbreaks` data (10 + minutes)
+
++ Then share with your group.
+
+---
+class: blue, middle, center
+
+# .big-text.white[The end 🚀]
+
+---
+background-image: url("https://images.unsplash.com/photo-1518541355664-6ca16f8aacf5?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1740&amp;q=80")
+background-position: left
+background-size: cover
+
+### Next up: Coffee Break
+
+Meet back here at 11:00am for Session 2
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
