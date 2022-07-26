@@ -138,9 +138,9 @@ breed_traits
 
 ???
 
-`breed_traits` is a small dataset that contains trait information on each dog breed and scores for each trait. This data comes courtesy of the American Kennel Club.
+The `breed_traits` dataset is a fun dataset that contains information on `r n_distinct(breed_traits$breed)` dog breeds, with scores (on a 1-5 scale) for `r ncol(breed_traits)` traits (e.g. how affectionate the breed is, how much it sheds, how playful it is, etc). This data comes courtesy of the American Kennel Club.
 
-We want to compare traits across terrier breeds only.
+In our analysis, want to compare traits across terrier breeds only, of which there are many types.
 
 ---
 
@@ -160,7 +160,7 @@ class: middle
 
 ???
 
-...and we want to subset the data so that we can continue our analysis on terrier breeds. Note that I don't know how many of the `r n_distinct(breed_traits$breed)` breeds in the dataset have "terrier" as part of their name.
+...and we want to subset the data so that we can continue our analysis on terrier breeds. Note that I don't know how many of the `r n_distinct(breed_traits$breed)` breeds in the dataset have "terrier" as part of their name, but I want to keep them all.
 
 (The four highlighted breeds, from top to bottom, left to right, are Scottish, Bull, Boston, and Russell terriers.)
 
@@ -181,7 +181,9 @@ breed_traits %>%
 
 When I say "subset", alarm bells are probably going off in your head that we we'll be using the `filter()` function.
 
-Using what we've already know how to do, we can scan through the paginated results in RMarkdown and find our first match — Yorkshire terriers.
+Using what we've already know how to do, we can print the `breed_traits` table and scan through the paginated results in RMarkdown to find our first match — Yorkshire terriers.
+
+We'll use the `==` operator to match the string, and get one row in the output.
 
 ---
 
@@ -199,6 +201,8 @@ breed_traits %>%
 ???
 
 And then our second match — Boston terriers.
+
+This time, we'll use the `%in%` operator to match a vector of strings, and get two rows in the output.
 
 You can where this is going...
 
@@ -289,7 +293,7 @@ decorate_chunk("big-filter-display", eval = FALSE) %>%
 
 ???
 
-And you'd be right to intuit that there's a simpler way. All we, the humans, are doing is looking for the word "Terrier" in the `breed` column. This is exactly the kind of simple but highly repetitive task that's well-suited to outsource to our computers.
+And you'd be right to intuit that there's a simpler way. All we, the humans, are doing is looking for the sequence "Terrier" in the `breed` column. This is exactly the kind of simple but highly repetitive task that's well-suited to outsource to our computers.
 
 That's where stringr comes in.
 
@@ -308,7 +312,9 @@ breed_traits %>%
 
 The `str_detect()` function searches for the presence of a pattern in a string and returns a logical vector that's `TRUE` if the pattern is detected, or `FALSE` if it's not. That makes it a very powerful function in combination with `filter()`.
 
-We can also use `str_detect()` to recode character variables using `mutate()` in combination with the new functions — `if_else()` and `case_when()` — that we learned about today.
+In the example code, we keep only the rows where the sequence "Terrier" is found in the `breed` column, and drop the rest.
+
+We can also use `str_detect()` to recode character variables using `mutate()` in combination with the new functions — `if_else()` and `case_when()` — that we learned about today. You could imagine that we might want to create a `breed_family` variable that includes all breeds with "Terrier" in the name, or "Retriever", or "Shepherd", etc.
 
 Let's take a look at a few quicker examples of what stringr can do.
 
@@ -365,6 +371,8 @@ str_to_upper("Introduction to the tidyverse")
 ???
 
 We can turn convert cases with `str_to_upper()` and turn strings into yells.
+
+These functions are called "locale-sensitive operations" because they can follow capitalization and alphabetization rules in different languages.
 
 ---
 
