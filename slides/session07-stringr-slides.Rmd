@@ -406,3 +406,15 @@ Solution: `str_subset(fruit, " ")`
 Hint: Use the `str_subset()` function.
 
 Hint: What character indicates that a string contains more than one word?
+
+---
+
+class: your-turn
+
+# Solution
+
+Use a stringr function to subset the elements of the `fruit` vector that are made up of two or more words.
+
+```{r}
+str_subset(fruit, " ")
+```
