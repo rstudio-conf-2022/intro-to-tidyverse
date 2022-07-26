@@ -9,6 +9,11 @@
   font-weight: 900;
 }
 
+.emphasis {
+  color: #E7553C;
+  font-weight: bold;
+}
+
 .white {
   color: white;
 }

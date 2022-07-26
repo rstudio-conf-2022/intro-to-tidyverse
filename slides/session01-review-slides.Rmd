@@ -4,8 +4,8 @@ subtitle: "Day 1, Session 1"
 author: "Desirée De Leon"
 date: "July 25, 2022"
 shortlink:
-  url: "https://github.com/rstudio-conf-2022/intro-to-tidyverse/tree/main/materials/session01"
-  text: ""
+  url: "https://conf22-intro-tidyverse.netlify.app/_slides/session01-review-slides.html#1"
+  text: "rstd.io/review"
 output:
   xaringan::moon_reader:
     css: ["default", "assets/academy-theme.css", "assets/session01.css"]
@@ -101,14 +101,16 @@ class: middle, agenda
 # Session 1 Agenda
 
 1. Logistics: Policies, Goals, and Schedules
+1. Tech and tooling
 1. Review: Group challenge
+
 
 ---
 class: middle chapter-slide blue
 
 .big-white-number[1.]
 
-# Policies, Goals, & Schedules
+# Policies, Goals, & Schedules 
 
 ---
 
@@ -125,13 +127,9 @@ class: inverse, middle
   <br>
 
   `r emo::ji("no_entry_sign")` `r emo::ji("camera")` 
-
-  <br>
-
-  `r emo::ji("person_in_lotus_position")` `r emo::ji("tent")`
   
   <br>
-  <br>
+
   
   `r emo::ji("face_with_medical_mask")` `r emo::ji("microbe")`
   ]
@@ -144,14 +142,10 @@ class: inverse, middle
   <br>
 
   Please do not photograph people wearing .light-red[red lanyards] 
-
-  <br>
-
-  A meditation / chill-out room is open 8am-5pm in the Potomac Dressing Room if you want quiet space to recharge.
   
-   <br>
+  <br>
    
-  Fully cover your mouth and nose at all times
+  Fully cover your mouth and nose at all times. A limited supply of masks are available upon request. Ask at registration desk.
    
 ] 
 
@@ -165,19 +159,57 @@ class: inverse, middle
 
 - CoC issues can be addressed three ways:
 
-  - In person: contact any rstudio::conf staff member or the conference registration desk
-  - By email: send a message to `conf@rstudio.com`
-  - By phone: call 844-448-1212
+  - In person: contact any rstudio::conf staff member or the conference registration desk  
   
+  - By email: send a message to `conf@rstudio.com`  
+  
+  - By phone: call 844-448-1212  
+
+---
+class: inverse, middle
+
+# Locations to note
+
+.left-column[
+
+  .center[
+
+  `r emo::ji("men_s_room")` `r emo::ji("water_closet")`
+  
+  <br>
+
+  `r emo::ji("person_in_lotus_position")` `r emo::ji("tent")`
+  
+  <br>
+  <br>
+  
+  `r emo::ji("nursing")` `r emo::ji("baby_bottle")`
+  ]
+]
+
+.right-column[
+
+  Gender neutral bathrooms are near National Harbor rooms
+
+  <br>
+
+
+  A meditation / chill-out room is open 8am - 5pm, Mon - Thurs in **National Harbor 9** if you want quiet space to recharge.
+  
+   <br>
+   
+  A lactation room is located at **Potomac Dressing Room**. Open 8am - 5pm, Mon - Thurs.
+   
+] 
   
 ---
-class: middle, center
+class: middle, center, inverse
 
 .pull-left[
 # `r fontawesome::fa("fas fa-wifi")`
 Wifi network name  
 
-`r params$wifi_network`
+.light-red[`r params$wifi_network`]
 
 ]
 
@@ -186,9 +218,64 @@ Wifi network name
 
 Wifi password
 
-`r params$wifi_password`
+.light-red[`r params$wifi_password`]
 
 ]
+
+---
+class: inverse, center, middle
+background-image: url("https://images.unsplash.com/photo-1538370965046-79c0d6907d47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2938&q=80")
+background-size: cover
+
+
+
+
+--
+
+# The `tidyverse`
+
+---
+background-image: url("https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80")
+background-size: cover
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1614935151651-0bea6508db6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1850&q=80")
+background-size: cover
+
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1584208124835-8a3d74ae211c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1084&q=80")
+background-size: cover
+
+
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80")
+background-size: cover
+
+
+
+
+---
+
+background-image: url("https://images.unsplash.com/photo-1562411052-105105232432?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80")
+background-size: cover
+
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80")
+background-size: cover
+
+
+
+---
+background-image: url("https://images.unsplash.com/photo-1500106067612-d3b2531fc762?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80")
+background-size: cover
+
 
 ---
 class: center, top
@@ -199,18 +286,6 @@ background-size: cover
 # Goals
 
 
-???
-
-Welcome to _Introduction to the Tidyverse_. This is the first in-person component we're including in an RStudio Academy course, and we're excited to pilot this with you all to allow for more group work, exposure to new project and datasets, and increased access to mentors and instructors. For the next two days, our goals are to:
-
-1. Drill old wrangling skills and explore new ones
-
-1. Learn best practices for exploring your data and report it reproducibly -- including doing this in your local RStudio IDE, outside of Academy.
-
-In short, we're using these two days to give you sanctioned time to dive deep into the skills you've been learning the past few weeks with a lot of protected time for practice. 
-
-[Will we build in opps for more learning and drilling during downtime?]
-
 --
 
 Drill old wrangling skills and explore new ones
@@ -219,15 +294,12 @@ Drill old wrangling skills and explore new ones
 
 Learn best practices for exploring your data and reporting it reproducibly 
 
-
 ---
 class: center, middle, chapter-slide red
 
 .big-text.white.center[Hello!]
 
-???
 
-And so with that, let me introduce myself...
 
 
 ---
@@ -244,6 +316,7 @@ class: speaker-slide
 [`r fontawesome::fa("twitter")` dcossyle](https://twitter.com/dcossyle)   
 [`r fontawesome::fa("link")` desiree.rbind.io](https://desiree.rbind.io)
 ]
+
 
 ---
 class: center
@@ -351,16 +424,12 @@ Laura Puckett    </div>
 
 
 
-???
-
-But there's an entire team of people behind the work and content that you're seeing today. Here are some of their faces. You'll be hearing from them as speakers today, some of them are your mentors, and of course, there are a whole host of other folks who couldn't be at the conference with us today, but whose fingerprints are all over the lessons and tech that have made the Academy experience you're going through possible. 
-
 ---
-
-
 class: middle, center
 background-image: url("images/session01/scooters.jpg")
 background-size: cover
+
+
 
 ---
 class: middle, center
@@ -369,20 +438,18 @@ background-size: cover
 
 # .big-text.white[The Lineup]
 
-???
- 
-Here is what we have lined up for you for the next couple days...
-
 
 ---
-class: middle, center
+class: middle, center 
 
 .pull-left[
 
 # Day One:
 
-### Review + Best Practices
+### Review + Best Practices 
+
 ]
+
 
 --
 
@@ -393,6 +460,8 @@ class: middle, center
 ### Transformation + Milestone  
 
 ]
+
+
 
 ---
 class: middle, center
@@ -412,13 +481,17 @@ R Markdown for reproducible results
 R Projects and your local IDE
 ]
 
---
-
 .pull-right[
-
 # Day Two:
 
 ### Transformation + Milestone  
+
+]
+
+
+--
+
+.pull-right[
 
 Summarize data and work with groups
 
@@ -432,15 +505,6 @@ Milestone presentation
 ---
 class: center
 
-???
-this is our schedule. And this is where we'll work...
-
-You'll notice that each session for the next two days has its own workspace in conf2022.rstudioacademy.com
-
-You can navigate there now...One exception is Session 4....
-
-
---
 
 .left-column1[
 
@@ -461,6 +525,8 @@ You can navigate there now...One exception is Session 4....
 ]
 ]
 
+
+
 --
 
 .right-column63[
@@ -470,11 +536,115 @@ You can navigate there now...One exception is Session 4....
 
 
 ---
-class: middle, chapter-slide green
+class: chapter-slide, tan, middle
 
 .big-white-number[2.]
 
+# Tech and tooling
+
+
+---
+class: inverse, middle, center
+.pull-left[
+  ### Presenting
+
+]
+
+
+---
+class: inverse, middle, center
+
+.pull-left[
+  
+  ### Presenting
+
+  ```{r zoom, echo = FALSE, out.width = "25%"}
+  knitr::include_graphics("images/session01/zoom.png")
+  ```
+
+]
+
+
+
+---
+class: inverse, middle, center
+
+.pull-left[
+  
+  ### Presenting
+
+  ```{r ref.label = "zoom", echo = FALSE, out.width = "25%"}
+  ```
+
+  Muted 
+  
+  No camera  
+  
+  Your group session link  
+
+]
+
+
+
+--
+
+.pull-right[
+  ### Code + Announcements
+
+  <br>
+    
+  ```{r slack, echo = FALSE, out.width = "40%"}
+  knitr::include_graphics("images/session01/slack.png")
+  ```
+
+  <br>
+  
+  Your group's slack channel  
+  
+  `#intro-to-tidyverse`
+  
+]
+
+---
+class: inverse, center, middle
+
+.pull-left[
+
+## Done! 
+
+```{r g, echo = FALSE}
+knitr::include_graphics("images/session01/green-square.png")
+```
+]
+
+
+--
+
+.pull-right[
+
+## Help! 
+
+```{r p, echo = FALSE}
+knitr::include_graphics("images/session01/pink-square.png")
+```
+]
+
+
+---
+class: middle, chapter-slide green
+
+.big-white-number[3.]
+
 # Review: Group challenge
+
+
+---
+class: inverse
+
+.big-text.white[
+# Questions?
+]
+
 
 ---
 class: title-slide
@@ -488,9 +658,6 @@ class: title-slide
   <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
 </div>
 
-???
-
-We're going to start off with some review of what we've learned for the past couple weeks.
 
 ---
 class: inverse
@@ -503,44 +670,21 @@ knitr::include_graphics("images/session01/campsite_screenshot.png")
 ```
 ]
 
-???
-
-for this session, we'll be doing our work in this part of the Academy website. 
-
-Go ahead and open up the milestone for this Session 1.
 
 ---
 
 ## `r emo::ji("rocket")` Rapid fire review 
 
-???
 
-What we'll do:
-
-I'm going to give you a few prompts and/or recreations, and you'll work with your group to recreate these. 
-
-You'll do your work in the R Markdown document you have open so you have a record of your code. You can create as many code chunks as you like in here. 
-
---
-
-.pull-left[
 ```{r label, echo = FALSE}
 knitr::include_graphics("images/session01/your-turn-example.png")
 ```
-]
 
---
 
-.pull-right[
-
-```{r solution, echo = FALSE}
-knitr::include_graphics("images/session01/your-turn-example.png")
-```
-]
 
 ---
 
-# Review game rules
+# Review challenge rules
 
 * For each prompt, the __first group with 4 or more people to have the answer correct__ (as verified by your mentor), scores a point.
 
@@ -558,11 +702,37 @@ knitr::include_graphics("images/session01/your-turn-example.png")
 
 --
 
-* Group with the most points at the end wins
+* Group with the most points at the end wins (a small prize!)
 
-???
 
-After the conference, you'll be able to see these slides (with all the prompts) linked on our website.
+---
+class: inverse, center, middle
+
+.pull-left[
+
+## Done! 
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/session01/green-square.png")
+```
+]
+
+.pull-right[
+
+## Help! 
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/session01/pink-square.png")
+```
+]
+
+
+---
+class: center, middle
+
+
+# .big-text[Questions?]
+
 
 ---
 class: center, middle
@@ -570,9 +740,6 @@ background-image: url(https://images.unsplash.com/photo-1579780864813-863e246d3b
 background-position: center
 background-size: cover
 
-???
-
-We'll be working with data about foodborne and waterborne disease outbreaks
 
 ---
 class: center, middle, inverse
@@ -590,13 +757,6 @@ readxl::read_excel("data/session01/NationalOutbreakPublicDataTool.xlsx", sheet =
 
 # .big-text[`outbreaks`]
 
-???
-
-...spread by contact with environmental sources or infected people or animals. I'll refer to this dataset as `outbreaks`. It comes from the CDC's National Outbreak Reporting System (NORS).
-
-First things first, let's take a look a what's in this dataset. 
-
-So *here* is your first prompt:
 
 ---
 class: your-turn
@@ -616,9 +776,7 @@ glimpse(outbreaks)
 ```
 ]
 
-???
 
-1 minute to read in the data and run `glimpse()`
 
 ---
 
@@ -645,7 +803,7 @@ class: your-turn
 
 # Your Turn 2
 
-What is the* **earliest year** on record in this dataset? **The latest**? 
+What is the* **earliest year** on record in this dataset? __The latest__? 
 
 Answer the questions by creating two tables that are sorted.
 
@@ -788,10 +946,6 @@ outbreaks %>%
 ```
 ]
 
-
-???
-
-Check documentation for use of the argument that allows you to create a new boxplot for each grouping.
 
 ---
 
@@ -954,12 +1108,6 @@ outbreaks %>%
 ```
 ]
 
-???
-
-Notice coord_flip()
-
-If your first inclination was to use count() then you might have come up with an answer like...
-
 ---
 
 ## Solution 10 - alternative
@@ -993,7 +1141,7 @@ Let's take a closer look at outbreaks associated with **Animal Contact**.
 
 * Which *individual* states have had the most Animal Contact outbreaks -- how many has each state had? 
 
-* Create a table that contains the answer to both of these questions.  
+* Create a table to answer these questions.  
 
 
 ---
@@ -1176,7 +1324,9 @@ class: your-turn
 
 # Your Turn 16
 
-Continue to focus only on **Washington DC** and **food borne illnesses**. Use tidyverse functions to display the unique values of `food_vehicle` as a vector.
+Continue to focus only on **Washington DC** and **food borne illnesses**. 
+
+Use tidyverse functions to display the unique values of `food_vehicle` as a vector.
 
 ---
 ## Solution 16
@@ -1208,7 +1358,9 @@ class: your-turn
 
 # Your Turn 17
 
-Find **food borne** outbreaks that resulted in at least 1 **death**. Display the results in a table that contains only the columns from `year` to `deaths`.
+Find **food borne** outbreaks that resulted in at least 1 **death**. 
+
+Display the results in a table that contains only the columns from `year` to `deaths`.
 
 ---
 
@@ -1238,7 +1390,9 @@ class: your-turn
 
 # Your Turn 18
 
-Calculate new variable for each outbreak: **`fatality_rate`** (the  number of deaths / the number of illnesses, multiplied by 100). Then visualize the distribution of the fatality rate with a histogram.
+Calculate new variable for each outbreak: **`fatality_rate`** (the  number of deaths / the number of illnesses, multiplied by 100). 
+
+Then visualize the distribution of the fatality rate with a histogram.
 
 ---
 
@@ -1356,4 +1510,7 @@ background-size: cover
 ### Next up: Coffee Break
 
 Meet back here at 11:00am for Session 2
+
+
+
 

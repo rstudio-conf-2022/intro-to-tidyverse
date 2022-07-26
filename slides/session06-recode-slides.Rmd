@@ -155,6 +155,7 @@ countdown::countdown(minutes = 4)
 We'll start by reviewing the `mutate()` function.
 
 ---
+
 class: your-turn
 
 # Review `mutate()`
@@ -270,6 +271,7 @@ countdown::countdown(minutes = 4)
 Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
 
 ---
+
 class: your-turn
 
 # Your turn 1
@@ -633,6 +635,7 @@ countdown::countdown(minutes = 4)
 Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
 
 ---
+
 class: your-turn
 
 # Your turn 3
@@ -727,6 +730,7 @@ countdown::countdown(minutes = 4)
 Practice using a catch-all condition.
 
 ---
+
 class: your-turn
 
 # Your turn 4
@@ -806,6 +810,7 @@ countdown::countdown(minutes = 4)
 Fix the code from earlier using the appropriate `NA` value.
 
 ---
+
 class: your-turn
 
 # Your turn 5
@@ -823,6 +828,7 @@ patients_2 %>%
 
 ???
 ---
+
 class: inverse
 
 # Takeaway

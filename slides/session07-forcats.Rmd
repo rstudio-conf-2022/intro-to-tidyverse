@@ -1,0 +1,260 @@
+---
+title: "Lightning Talk: `{forcats}`"
+subtitle: "Day 2, Session 7"
+author: "Daniel Chen"
+date: "July 26, 2022"
+shortlink:
+  url: https://github.com/rstudio-conf-2022/intro-to-tidyverse
+  text: repo
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/academy-theme.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+# xaringan::inf_mr() ## to auto update render
+```
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$subtitle`
+
+<div class="title-footer">
+  <img src="images/academy-logo.png">
+  <div> `r rmarkdown::metadata$author` • `r rmarkdown::metadata$date`</div>
+</div>
+
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "panelset", "share_again"))
+xaringanExtra::use_clipboard(selector = "pre > code.r, pre > code.md")
+
+if (!is.null(rmarkdown::metadata$shortlink)) {
+  shortlink <- rmarkdown::metadata$shortlink
+  if (is.character(shortlink)) {
+    shortlink <- list(url = shortlink)
+  }
+  stopifnot(!is.null(shortlink$url))
+  
+  if (is.null(shortlink$text) || !nzchar(shortlink$text)) {
+    shortlink$text <- basename(shortlink$url)
+  }
+  
+  xaringanExtra::use_banner(
+    bottom_left = htmltools::tags$a(href = shortlink$url, shortlink$text),
+    exclude = "title-slide"
+  )
+}
+```
+
+---
+class: speaker-slide
+
+# `r rmarkdown::metadata$author`
+
+<!-- You can copy the image link address from your github profile to use as the src link below --> 
+
+<img style="border-radius: 50%;" src="https://pbs.twimg.com/profile_images/1167606938726731776/45nojZYy_400x400.jpg" width="200px"/>
+
+.speaker-links[
+  [`r fontawesome::fa("github")` chendaniely](https://github.com/chendaniely)    
+  [`r fontawesome::fa("twitter")` chendaniely](https://twitter.com/chendaniely)   
+  [`r fontawesome::fa("link")` daniel.rbind.io](https://daniel.rbind.io)
+]
+
+---
+class: middle chapter-slide red
+
+.big-white-number[1.]
+
+# Categorical Data
+
+---
+class: chapter-slide red
+
+## Categorical Data
+
+```{r}
+library(tidyverse)
+library(forcats) # comes in tidyverse
+```
+
+General Social survey
+
+```{r}
+gss <- tibble(gss_cat) # read strings as factors
+```
+
+- Categorial data in R are called "factors"
+- Each category is called a "level"
+
+---
+class: chapter-slide red
+
+## General Social survey
+
+```{r}
+gss
+```
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Exploratory Data Analysis
+
+---
+class: chapter-slide blue
+
+## Hours of TV per day (continuous variable)
+
+```{r, warning=FALSE, message=FALSE}
+# something intesting about this data
+ggplot(gss, aes(x=tvhours)) +
+  geom_histogram()
+```
+
+---
+class: chapter-slide blue
+
+## Marital Status (categorical variable)
+
+```{r, warning=FALSE, message=FALSE}
+# looking at a categorical variable
+ggplot(gss, aes(x=marital)) +
+  geom_bar()
+```
+
+---
+
+## What are you trying to show?
+
+.pull-left[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(gss, aes(x=marital)) +
+  geom_bar()
+```
+]
+.pull-right[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+gss %>%
+  ggplot(aes(x = fct_infreq(marital))) +
+  geom_bar()
+```
+]
+
+---
+class: middle chapter-slide green
+
+.big-white-number[3.]
+
+# `{forcats}`
+
+---
+
+## Categorical Data is differernt
+
+.pull-left[
+```{r, results='hide', fig.keep='none'}
+# count of the factors
+gss %>%
+  count(marital) %>%
+  arrange(desc(n)) %>%
+  ggplot(
+    aes(
+      x = marital,
+      y = n
+    )
+  ) +
+  geom_bar(stat = "identity")
+```
+]
+.pull-right[
+```{r, echo=FALSE}
+gss %>%
+  count(marital) %>%
+  arrange(desc(n)) %>%
+  ggplot(aes(x = marital, y = n)) +
+  geom_bar(stat = "identity")
+```
+]
+
+---
+
+## Factors have an ordering
+
+Factors are stored with an order even if there is no inherent ordering to the meaning
+
+```{r}
+gss %>%
+  pull(marital) %>%
+  fct_unique()
+```
+
+Do not rely on default ording if it's important
+
+
+---
+class: middle chapter-slide tan
+
+.big-white-number[4.]
+
+# Sorting Factors
+
+---
+
+## `fct_infreq()`
+
+Reorder factor levels by first appearance, frequency, or numeric order
+
+https://forcats.tidyverse.org/reference/fct_inorder.html
+
+---
+
+## Example
+
+```{r}
+f <- factor(c("b", "b", "a", "c", "c", "c"))
+f
+```
+
+```{r}
+fct_infreq(f)
+```
+
+---
+
+## Sort your factors!
+
+.pull-left[
+```r
+gss %>%
+  ggplot(
+    aes(
+      x = fct_infreq(marital)
+    )
+  ) +
+  geom_bar()
+```
+]
+.pull-right[
+```{r, echo=FALSE}
+gss %>%
+  ggplot(aes(x = fct_infreq(marital))) +
+  geom_bar()
+```
+]
+
+

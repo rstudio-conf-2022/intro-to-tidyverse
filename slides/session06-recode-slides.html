@@ -140,7 +140,9 @@ class: your-turn
 1. Open the **Conf Session 6 - Recode** milestone
 1. Complete the **Mutate Review** activity
 
+
 <div class="countdown" id="timer_62e01616" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -149,6 +151,7 @@ class: your-turn
 We'll start by reviewing the `mutate()` function.
 
 ---
+
 class: your-turn
 
 # Review `mutate()`
@@ -294,7 +297,9 @@ Name this new variable `sys_status`. You do not need to save the resulting tibbl
 | Less than 130 mmHg| normal       |
 | 130 mmHg or above | high         |
 
+
 <div class="countdown" id="timer_62e01336" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -303,6 +308,7 @@ Name this new variable `sys_status`. You do not need to save the resulting tibbl
 Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
 
 ---
+
 class: your-turn
 
 # Your turn 1
@@ -513,11 +519,14 @@ Add a new variable to the `patients_interventions` dataset that calculates a 10%
 
 Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
+
 <div class="countdown" id="timer_62e01475" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
+
 
 class: your-turn
 
@@ -605,7 +614,9 @@ We previously recoded systolic blood pressure of `patients` into 2 weight catego
 | Stage 2 Hypertension            | 140 and above                     |
 
 
+
 <div class="countdown" id="timer_62e013c3" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -744,7 +755,9 @@ Name this new variable `diabetes_status`. Save the new tibble as an object calle
 | Pre-diabetic    | 100 - 125 mg/dL       |
 | Diabetic        | 126 mg/dL or above    |
 
+
 <div class="countdown" id="timer_62e01560" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -753,6 +766,7 @@ Name this new variable `diabetes_status`. Save the new tibble as an object calle
 Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
 
 ---
+
 class: your-turn
 
 # Your turn 3
@@ -848,7 +862,9 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | 2                              |
 
+
 <div class="countdown" id="timer_62e014f9" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -857,6 +873,7 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 Practice using a catch-all condition.
 
 ---
+
 class: your-turn
 
 # Your turn 4
@@ -907,10 +924,7 @@ patients_2 %&gt;%
 ```
 
 ```
-## Error in `mutate()`:
-## ! Problem while computing `followup = case_when(...)`.
-## Caused by error in `` names(message) &lt;- `*vtmp*` ``:
-## ! 'names' attribute [1] must be the same length as the vector [0]
+## Error in mutate(., followup = case_when(diabetes_status == "diabetic" ~ : object 'patients_2' not found
 ```
 
 
@@ -953,7 +967,9 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | NA                             |
 
+
 <div class="countdown" id="timer_62e0136e" style="right:0;bottom:0;" data-warnwhen="0">
+
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -962,6 +978,7 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 Fix the code from earlier using the appropriate `NA` value.
 
 ---
+
 class: your-turn
 
 # Your turn 5
@@ -997,6 +1014,7 @@ patients_2 %&gt;%
 
 ???
 ---
+
 class: inverse
 
 # Takeaway
