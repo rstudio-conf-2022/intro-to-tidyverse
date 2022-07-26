@@ -118,31 +118,48 @@ class: middle chapter-slide blue
 ---
 class: chapter-slide blue
 
+.pull-left[
 ## Hours of TV per day (continuous variable)
 
-```{r, warning=FALSE, message=FALSE}
-# something intesting about this data
+```{r, warning=FALSE, message=FALSE, fig.show='hide'}
 ggplot(gss, aes(x=tvhours)) +
   geom_histogram()
 ```
+]
+.pull-right[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(gss, aes(x=tvhours)) +
+  geom_histogram()
+```
+]
 
 ---
 class: chapter-slide blue
 
+.pull-left[
 ## Marital Status (categorical variable)
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, fig.show='hide'}
 # looking at a categorical variable
 ggplot(gss, aes(x=marital)) +
   geom_bar()
 ```
+]
+.pull-right[
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# looking at a categorical variable
+ggplot(gss, aes(x=marital)) +
+  geom_bar()
+```
+]
+
 
 ---
 
 ## What are you trying to show?
 
 .pull-left[
-```{r, warning=FALSE, message=FALSE, echo=FALSE}
+```{r, warning=FALSE, message=FALSE, fig.show='hide'}
 ggplot(gss, aes(x=marital)) +
   geom_bar()
 ```
@@ -167,7 +184,7 @@ class: middle chapter-slide green
 ## Categorical Data is differernt
 
 .pull-left[
-```{r, results='hide', fig.keep='none'}
+```{r, results='hide', fig.show='hide'}
 # count of the factors
 gss %>%
   count(marital) %>%
