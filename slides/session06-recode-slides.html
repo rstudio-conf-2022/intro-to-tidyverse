@@ -66,6 +66,13 @@ class: speaker-slide
 ]
 
 ---
+
+# Thank you
+
+These slides were adapted from materials written by Desirée De Leon. 
+Thanks, Desirée!
+
+---
 class: middle
 
 # Agenda
@@ -85,6 +92,14 @@ We'll practice:
 * Recoding a variable using multiple conditions with `case_when()`
 
 By the end of this lesson, you should be able to complete your milestone recreation using the hotels dataset. 
+
+---
+
+class: middle chapter-slide blue
+
+.big-white-number[1.]
+
+# Review `mutate()`
 
 ---
 
@@ -125,7 +140,7 @@ class: your-turn
 1. Open the **Conf Session 6 - Recode** milestone
 1. Complete the **Mutate Review** activity
 
-<div class="countdown" id="timer_62dc460b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e01616" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -168,7 +183,13 @@ patients %&gt;%
 Take a look at the solution to the `mutate()` activity and see how it compares to yours.
 
 ---
+class: middle chapter-slide blue
 
+.big-white-number[2.]
+
+# Recode with `if_else()`
+
+---
 ![](images/session06/patients_before.png)
 
 ???
@@ -262,7 +283,7 @@ Finally we'll add the value the variable should take if the condition is `false`
 ---
 class: your-turn
 
-# Your turn #1
+# Your turn 1
 
 Add a new variable to `patients` that recodes the values of systolic blood pressure into the two categories defined below: `"normal"` and `"high"`. 
 
@@ -273,7 +294,7 @@ Name this new variable `sys_status`. You do not need to save the resulting tibbl
 | Less than 130 mmHg| normal       |
 | 130 mmHg or above | high         |
 
-<div class="countdown" id="timer_62dc484a" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e01336" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -284,7 +305,7 @@ Let's do some more practice with `if_else()`. Complete the code in the chunk lab
 ---
 class: your-turn
 
-# Your turn #1
+# Your turn 1
 
 
 ```r
@@ -348,7 +369,7 @@ Any ideas about what's gone wrong here?
 
 ???
 
-Imagine that we want to identify which patients require medical intervention based on their age, weight, and blood glucose level. Patients eligible for intervention must meet three criteria.
+Imagine that we want to identify which patients require medical intervention based on their age, blood glucose level, and BMI. Patients eligible for intervention must meet these three criteria.
 
 So far you have used `if_else()` with basic logical conditions, but you can recode values based on more complex logical tests.
 
@@ -486,13 +507,13 @@ Consider the `patients_interventions` dataset we've just created. Imagine that y
 
 class: your-turn
 
-# Your turn #2
+# Your turn 2
 
 Add a new variable to the `patients_interventions` dataset that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have this variable display the patient’s current BMI. 
 
 Name the new variable `bmi_predict`. You do not need to save the resulting tibble.
 
-<div class="countdown" id="timer_62dc499e" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e01475" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -500,7 +521,7 @@ Name the new variable `bmi_predict`. You do not need to save the resulting tibbl
 
 class: your-turn
 
-# Your turn #2
+# Your turn 2
 
 
 ```r
@@ -552,7 +573,13 @@ if_else(&lt;LOGICAL TEST&gt;, &lt;DO THIS IF TRUE&gt;, &lt;DO THIS IF FALSE&gt;)
 * When using `if_else()` to recode a column in a table, it must be used within a `mutate()` call.
 
 ---
+class: middle chapter-slide blue
 
+.big-white-number[3.]
+
+# Recode with `case_when()`
+
+---
 # Multiple conditions
 
 | Blood pressure category         | Systolic Blood Pressure (mmHg)    |
@@ -578,7 +605,7 @@ We previously recoded systolic blood pressure of `patients` into 2 weight catego
 | Stage 2 Hypertension            | 140 and above                     |
 
 
-<div class="countdown" id="timer_62dc464c" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e013c3" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -705,7 +732,7 @@ Here's what that recode operation looks like with `case_when()`.
 ---
 class: your-turn
 
-# Your turn #3
+# Your turn 3
 
 Add a new variable to `patients` that recodes the values of `glucose` into the three categories defined below: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.
 
@@ -717,7 +744,7 @@ Name this new variable `diabetes_status`. Save the new tibble as an object calle
 | Pre-diabetic    | 100 - 125 mg/dL       |
 | Diabetic        | 126 mg/dL or above    |
 
-<div class="countdown" id="timer_62dc49ba" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e01560" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -728,7 +755,7 @@ Let's practice using `case_when()` with the `patients` dataset. Fasting blood gl
 ---
 class: your-turn
 
-# Your turn #3
+# Your turn 3
 
 
 ```r
@@ -737,7 +764,7 @@ patients_2 &lt;-
   mutate(
     diabetes_status = case_when(
       glucose &lt; 100                   ~ "non-diabetic",
-      glucose &gt;= 100 &amp; glucose &lt;= 125 ~ "pre-diabetic",
+      glucose &gt;= 100 &amp; glucose &lt; 126  ~ "pre-diabetic",
       glucose &gt;= 126                  ~ "diabetic"
     )
   )
@@ -809,7 +836,7 @@ When writing the logical test for everyone or everything else, replace the left 
 ---
 class: your-turn 
 
-# Your turn #4
+# Your turn 4
 
 Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. 
 
@@ -821,7 +848,7 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | 2                              |
 
-<div class="countdown" id="timer_62dc488b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e014f9" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -832,7 +859,7 @@ Practice using a catch-all condition.
 ---
 class: your-turn
 
-# Your turn #4
+# Your turn 4
 
 
 ```r
@@ -914,7 +941,7 @@ We must use a special type of `NA` value to match the other data type for the co
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn 5
 
 Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. Use the appropriate missing value in your solution (one of `NA_character_`, `NA_real_`, `NA_integer_`, `NA_complex`, or `NA`).
 
@@ -926,7 +953,7 @@ Name this new variable `followup`. You do not need to save the resulting tibble.
 | Pre-diabetic and BMI &gt;= 30 | 1.5                            |
 | All others                 | NA                             |
 
-<div class="countdown" id="timer_62dc4760" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62e0136e" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -937,7 +964,7 @@ Fix the code from earlier using the appropriate `NA` value.
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn 5
 
 
 ```r
@@ -997,7 +1024,13 @@ case_when(
 
 * When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call. Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
 ---
+class: middle chapter-slide blue
 
+.big-white-number[4.]
+
+# Conf milestone
+
+---
 class: your-turn
 
 # Your turn: `Conf Milestone`
