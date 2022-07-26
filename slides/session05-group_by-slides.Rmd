@@ -396,6 +396,7 @@ pollution
 ???
 small dataset included in your rmarkdown file for this session
 represents air pollution data for three cities in 2019 and 2020.
+data from who 
 
 ---
 # `pollution`
@@ -518,19 +519,42 @@ pollution %>%
   summarize(max = max(amount), mean = mean(amount))
 ```
 
+
 ---
 
 # Group by multiple columns
 
-```{r}
+```{r two-groups, eval=FALSE}
 pollution %>% 
-  group_by(continent, year) %>% #<<
-  summarize(median = mean(amount))
+  group_by(continent, year) #<<
+```
+
+--
+
+```{r two-groups-out, ref.label="two-groups", echo=FALSE}
 ```
 
 ???
-We can also group by multiple columns by adding additional columns to `group_by()`. Here, we find the median amount of pollution for each continent and year combination. 
+We can also group by multiple columns by adding additional columns to `group_by()`. 
+Notice we're grouped by two groups now
 
+---
+
+# Group by multiple columns
+
+```{r two-group-summarize, eval=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% #<<
+  summarize(median = mean(amount)) #<<
+```
+
+--
+
+```{r two-group-summarize-out, ref.label="two-group-summarize", echo=FALSE}
+```
+
+???
+now, when we summarize, we're going to get one median for each continent year group
 ---
 
 # `summarize()` removes a grouping variable
@@ -561,7 +585,22 @@ options(dplyr.summarise.inform = TRUE)
 
 ---
 
-# Some dplyr functions respect groups
+# What if we want to filter now?
+
+```{r eval=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) ## %>% 
+  ## filter(median == max(median))
+```
+
+???
+what if after we summarize, we find the find the row with the highest median?
+going to be...
+
+---
+
+# What if we want to filter now?
 
 ```{r echo=FALSE}
 options(dplyr.summarise.inform = FALSE)
@@ -571,7 +610,7 @@ options(dplyr.summarise.inform = FALSE)
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount)) %>% 
-  filter(median == max(median))
+  filter(median == max(median)) #<<
 ```
 
 --
@@ -587,6 +626,10 @@ pollution %>%
 
 .emphasis[But this isn't what happens!]
 
+???
+if we filter after summarize, we might think we'd just get back the row with the highest median value
+but this isn't what happens!
+
 ---
 
 # Some dplyr functions respect groups
@@ -595,15 +638,14 @@ pollution %>%
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount)) %>% 
-  filter(median == max(median))
+  filter(median == max(median)) #<<
 ```
-
---
 
 ```{r grouped-filter-out, ref.label="grouped-filter", echo=FALSE}
 ```
 
 ???
+this is what happens
 After `summarize()`, the data is still grouped by `continent`, so we get __one row per continent__. 
 
 This is important to realize because some dplyr verbs work differently with grouped data. For example, what if we filtered at this point, when the data is still grouped by continent? 
