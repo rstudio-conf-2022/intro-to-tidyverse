@@ -576,6 +576,30 @@ pollution %>%
 
 --
 
+```{r echo=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) %>% 
+  ungroup() %>% 
+  filter(median == max(median))
+```
+--
+
+.emphasis[But this isn't what happens!]
+
+---
+
+# Some dplyr functions respect groups
+
+```{r eval=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) %>% 
+  filter(median == max(median))
+```
+
+--
+
 ```{r grouped-filter-out, ref.label="grouped-filter", echo=FALSE}
 ```
 
