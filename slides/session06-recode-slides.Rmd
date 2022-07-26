@@ -90,6 +90,13 @@ class: speaker-slide
 ]
 
 ---
+
+# Thank you
+
+These slides were adapted from materials written by Desirée De Leon. 
+Thanks, Desirée!
+
+---
 class: middle
 
 # Agenda
@@ -109,6 +116,14 @@ We'll practice:
 * Recoding a variable using multiple conditions with `case_when()`
 
 By the end of this lesson, you should be able to complete your milestone recreation using the hotels dataset. 
+
+---
+
+class: middle chapter-slide blue
+
+.big-white-number[1.]
+
+# Review `mutate()`
 
 ---
 
@@ -141,6 +156,29 @@ We'll start by reviewing the `mutate()` function.
 
 ---
 
+class: your-turn
+
+# Review `mutate()`
+
+```{r}
+patients %>% 
+  mutate(
+    pulse_pressure = sys_bp - dias_bp
+  )
+```
+
+???
+
+Take a look at the solution to the `mutate()` activity and see how it compares to yours.
+
+---
+class: middle chapter-slide blue
+
+.big-white-number[2.]
+
+# Recode with `if_else()`
+
+---
 ![](images/session06/patients_before.png)
 
 ???
@@ -213,7 +251,7 @@ Finally we'll add the value the variable should take if the condition is `false`
 ---
 class: your-turn
 
-# Your turn #1
+# Your turn 1
 
 Add a new variable to `patients` that recodes the values of systolic blood pressure into the two categories defined below: `"normal"` and `"high"`. 
 
@@ -231,6 +269,23 @@ countdown::countdown(minutes = 4)
 ???
 
 Let's do some more practice with `if_else()`. Complete the code in the chunk labeled  `your-turn-1`.
+
+---
+
+class: your-turn
+
+# Your turn 1
+
+```{r your-turn-1-solution}
+patients %>% 
+  mutate(
+    sys_status = if_else(sys_bp >= 130, "high", "normal")
+  )
+```
+
+???
+
+You'll often see `if_else()` written without any arguments spelled out. Any questions?
 
 ---
 
@@ -257,7 +312,7 @@ Any ideas about what's gone wrong here?
 
 ???
 
-Imagine that we want to identify which patients require medical intervention based on their age, weight, and blood glucose level. Patients eligible for intervention must meet three criteria.
+Imagine that we want to identify which patients require medical intervention based on their age, blood glucose level, and BMI. Patients eligible for intervention must meet these three criteria.
 
 So far you have used `if_else()` with basic logical conditions, but you can recode values based on more complex logical tests.
 
@@ -390,7 +445,7 @@ Consider the `patients_interventions` dataset we've just created. Imagine that y
 
 class: your-turn
 
-# Your turn #2
+# Your turn 2
 
 Add a new variable to the `patients_interventions` dataset that calculates a 10% reduction in BMI for patients who receive intervention. For all other patients, have this variable display the patient’s current BMI. 
 
@@ -398,6 +453,23 @@ Name the new variable `bmi_predict`. You do not need to save the resulting tibbl
 
 ```{r echo = FALSE}
 countdown::countdown(minutes = 4)
+```
+
+---
+
+class: your-turn
+
+# Your turn 2
+
+```{r your-turn-2-solution}
+patients_interventions %>% 
+  mutate(
+    bmi_predict = if_else(
+      intervene == "yes", 
+      bmi * 0.90, 
+      bmi
+    )
+  )
 ```
 
 ---
@@ -420,7 +492,13 @@ if_else(<LOGICAL TEST>, <DO THIS IF TRUE>, <DO THIS IF FALSE>)
 * When using `if_else()` to recode a column in a table, it must be used within a `mutate()` call.
 
 ---
+class: middle chapter-slide blue
 
+.big-white-number[3.]
+
+# Recode with `case_when()`
+
+---
 # Multiple conditions
 
 | Blood pressure category         | Systolic Blood Pressure (mmHg)    |
@@ -536,7 +614,7 @@ Here's what that recode operation looks like with `case_when()`.
 ---
 class: your-turn
 
-# Your turn #3
+# Your turn 3
 
 Add a new variable to `patients` that recodes the values of `glucose` into the three categories defined below: `"non-diabetic"`, `"pre-diabetic"`, and `"diabetic"`.
 
@@ -555,6 +633,28 @@ countdown::countdown(minutes = 4)
 ???
 
 Let's practice using `case_when()` with the `patients` dataset. Fasting blood glucose levels can be used to test for diabetes. This table summarizes the relevant cutoffs. Use the table to recode the values of `glucose`.
+
+---
+
+class: your-turn
+
+# Your turn 3
+
+```{r your-turn-3-solution, eval = TRUE}
+patients_2 <-
+  patients %>% 
+  mutate(
+    diabetes_status = case_when(
+      glucose < 100                   ~ "non-diabetic",
+      glucose >= 100 & glucose < 126  ~ "pre-diabetic",
+      glucose >= 126                  ~ "diabetic"
+    )
+  )
+```
+
+???
+
+`case_when()` syntax can be a bit tricky to remember at first, but with more practice it will become second nature.
 
 ---
 
@@ -609,7 +709,7 @@ When writing the logical test for everyone or everything else, replace the left 
 ---
 class: your-turn 
 
-# Your turn #4
+# Your turn 4
 
 Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. 
 
@@ -628,6 +728,23 @@ countdown::countdown(minutes = 4)
 ???
 
 Practice using a catch-all condition.
+
+---
+
+class: your-turn
+
+# Your turn 4
+
+```{r your-turn-4-solution, eval = TRUE}
+patients_2 %>% 
+  mutate(
+     followup = case_when(
+       diabetes_status == "diabetic" & bmi >= 30 ~ 1, 
+       diabetes_status == "pre-diabetic" & bmi >= 30 ~ 1.5,
+       TRUE ~ 2,
+    )
+  )
+```
 
 ---
 
@@ -672,7 +789,7 @@ We must use a special type of `NA` value to match the other data type for the co
 ---
 class: your-turn
 
-# Your turn #5
+# Your turn 5
 
 Add a new variable to `patients_2` that displays the recommended number of months until follow up for each patient. Use the appropriate missing value in your solution (one of `NA_character_`, `NA_real_`, `NA_integer_`, `NA_complex`, or `NA`).
 
@@ -693,6 +810,25 @@ countdown::countdown(minutes = 4)
 Fix the code from earlier using the appropriate `NA` value.
 
 ---
+
+class: your-turn
+
+# Your turn 5
+
+```{r your-turn-5-solution}
+patients_2 %>% 
+  mutate(
+    followup = case_when(
+      diabetes_status == "diabetic" ~ 1, 
+      diabetes_status == "pre-diabetic" ~ 1.5,
+      TRUE ~ NA_real_,
+    )
+  )
+```
+
+???
+---
+
 class: inverse
 
 # Takeaway
@@ -719,7 +855,13 @@ case_when(
 
 * When using `case_when()` to recode a column in a table, it must be used within a `mutate()` call. Like `if_else()`, you can also use `case_when()` on standalone vectors. You do not *have* to use it within `mutate()`. 
 ---
+class: middle chapter-slide blue
 
+.big-white-number[4.]
+
+# Conf milestone
+
+---
 class: your-turn
 
 # Your turn: `Conf Milestone`
