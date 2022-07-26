@@ -96,9 +96,12 @@ background-size: cover
 ???
 When working with time-related information, often the first step is to get your data into a date or datetime format. 
 
-When reading you data into R, it may be expressed in a variety of formats. The lubridate functions are built to make this transformation as intuitive and flexible as possible. 
+When reading you data into R, it may be expressed in a variety of ways. The lubridate functions are built to make this transformation as intuitive and flexible as possible. 
 
-Here we have four different format to express the same date. A lubridate function called `ymd` for year/month/day can handle all of these different formats and will output the Date object shown on the right. 
+You may be trying to read in time-related information that uses dashes to separate values. Or maybe spaces, periods, or no spacing at all. 
+
+
+Lubridate functions will handle all of these formats automatically. A function called `ymd` for year/month/day can read all of these different formats and will output the Date object shown on the right. 
 ---
 
 class: top
@@ -108,7 +111,7 @@ background-size: cover
 # Creating Dates and Datetimes
 
 ???
-There are a number of functions that lubridate includes for creating a date or datetime from almost any format. Many of them are listed in this table.  
+There are a number of functions that lubridate includes for creating a date or datetime from almost any format. Many of them are listed in this table. There are many permutations on y, m, and d, that are designed to read in time-related information that is stored in different orders. 
 ---
 
 class: top
@@ -127,7 +130,7 @@ background-size: cover
 # Extract Information
 
 ???
-And, we can even extract additional information such as the quarter, week or day of the year of weekday. 
+And, we can even extract additional information such as the quarter, week of the year, day of the year, or day of the week. 
 ---
 class: top
 # Other tasks with lubridate
@@ -200,7 +203,7 @@ Now let's go through a quick example of some of these functions.
 ???
 Here is a dataset containing bicycle traffic counts that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
 
-In this form, we cannot take advantage of the many time-related tools that exist for dates and datetimes. 
+In the current form, we cannot take advantage of the many time-related tools that exist for dates and datetimes. 
 ---
 
 # Get into a `datetime` format
@@ -209,7 +212,7 @@ In this form, we cannot take advantage of the many time-related tools that exist
 ```r
 bike_traffic &lt;- 
   bike_traffic %&gt;%
-  mutate(timestamp = mdy_hms(date,tz = "US/Pacific")) 
+  mutate(timestamp = mdy_hms(date, tz = "US/Pacific")) 
 ```
 
 --
@@ -230,9 +233,9 @@ bike_traffic &lt;-
 
 ???
 
-We can use a lubridate function to turn this column into a datetime.
+So, we will use a lubridate function to turn this column into a datetime.
 
-So here our data was in the order Year-Month-Day-Hour-Minute-Second, so we used the YMD_HMS function to turn the column of values into datetimes. 
+Because our data was in the order Year-Month-Day-Hour-Minute-Second, we used the YMD_HMS function to turn the column of values into datetimes. 
 ---
 
 # Get into a `date` format
@@ -269,7 +272,7 @@ wday(labor_date, label = TRUE)
 ```
 
 ???
-And we can confirm that the day ofthe week is Monday as we expected.
+And we can confirm that the day of the week is Monday as we expected.
 ---
 
 class: top
@@ -358,7 +361,8 @@ class: top
 ]
 
 .pull-right[
- &lt;img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/&gt;
+&lt;iframe src="https://r4ds.had.co.nz/dates-and-times.html" width="100%" height="400px" data-external="1"&gt;&lt;/iframe&gt;
+ &lt;!-- &lt;img src="images/lubridate/cheatsheet_page1.png" width = "120%" height="120%"/&gt; --&gt;
 ]
 
 ???
