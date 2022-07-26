@@ -87,6 +87,17 @@ These slides are adapted from a presentation created by Garrett Grolemund. Thank
 Garrett!
 
 ---
+class: middle
+
+# Agenda
+
+1. Summarize data
+1. Summary functions
+1. Group values together
+1. Mini project `r emo::ji("book")`
+
+
+---
 class: middle chapter-slide red
 
 .big-white-number[1.]
@@ -196,7 +207,12 @@ class: your-turn
 # Your Turn 1 - Solution
 
 ```{r sara, eval=FALSE}
-
+babynames %>% 
+  filter(name == "Sara") %>% 
+  summarize(
+    total = sum(n),
+    first = min(year)
+  )
 ```
 
 --
@@ -369,7 +385,7 @@ background-image: url(images/session05/pollution-scene.jpg)
 background-size: cover
 class: bottom, left
 
-.big-text.white[Pollution dataset]
+.big-text.white[Pollution]
 ---
 # `pollution`
 
@@ -413,7 +429,7 @@ We want to _group by_ the name of the city, and calculate the average `amount`
 for each of these groups, generating three different numbers. 
 
 ---
-# `group_by()` 
+# 1. `group_by()` 
 
 .pull-left[
 ```{r eval=FALSE}
@@ -429,7 +445,7 @@ pollution %>%
 ]
 
 ---
-# `group_by()` 
+# 1. `group_by()` 
 
 .pull-left[
 ```{r eval=FALSE}
@@ -452,37 +468,33 @@ You can see these groups in the header of the tibble.
 
 ---
 
-# `group_by()` + `summarize()`
+# 2. `summarize()`
 
 --
 
-```{r eval=FALSE}
+```{r pollution-group-summarize, eval=FALSE}
 pollution %>% 
   group_by(city) %>% 
-  summarize(median = median(amount), n = n())
+  summarize(median = median(amount), n = n()) #<<
 ```
 
 --
 
-<img src="images/session05/pollution-group-summarize-1.png"/>
+```{r pollution-group-summarize-out, ref.label="pollution-group-summarize", echo=FALSE}
+```
+
 
 ???
 Our next step is `summarize()`. When applied to a grouped tibble, `summarize()` will summarize each of the groups in turn. 
 
 Now, we have three rows, each summarizing the mean amount of pollution in a single city. We've collapsed the two rows
 for each city into a single row for each city. 
-
 ---
 
-# `group_by()` + `summarize()`
+<img src="images/session05/pollution-group_by.png"/>
+---
 
-```{r eval=FALSE}
-pollution %>% 
-  group_by(city) %>% 
-  summarize(median = median(amount), n = n())
-```
-
-<img src="images/session05/pollution-group-summarize-2.png"/>
+<img src="images/session05/pollution-summarize.png"/>
 
 ---
 class: your-turn
@@ -501,7 +513,9 @@ class: your-turn
 # Your Turn 2 - Solution
 
 ```{r}
-
+pollution %>% 
+  group_by(continent) %>% 
+  summarize(max = max(amount), mean = mean(amount))
 ```
 
 ---
@@ -554,6 +568,30 @@ options(dplyr.summarise.inform = FALSE)
 ```
 
 ```{r grouped-filter, eval=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) %>% 
+  filter(median == max(median))
+```
+
+--
+
+```{r echo=FALSE}
+pollution %>% 
+  group_by(continent, year) %>% 
+  summarize(median = mean(amount)) %>% 
+  ungroup() %>% 
+  filter(median == max(median))
+```
+--
+
+.emphasis[But this isn't what happens!]
+
+---
+
+# Some dplyr functions respect groups
+
+```{r eval=FALSE}
 pollution %>% 
   group_by(continent, year) %>% 
   summarize(median = mean(amount)) %>% 
@@ -650,7 +688,10 @@ class: your-turn
 
 .pull-left-wide[
 ```{r most-popular, eval=FALSE}
-
+babynames %>% 
+  group_by(name, sex) %>% 
+  summarize(total = sum(n)) %>% 
+  arrange(desc(total))
 ```
 ]
 
@@ -732,7 +773,9 @@ class: your-turn
 
 .pull-left[
 ```{r babynames-total, eval=FALSE}
-
+babynames %>% 
+  group_by(year) %>% 
+  summarize(n = sum(n))
 ```
 ]
 
@@ -751,7 +794,11 @@ class: your-turn
 
 .pull-left[
 ```{r plot, eval=FALSE}
-
+babynames %>% 
+  group_by(year) %>% 
+  summarize(n = sum(n)) %>% 
+  ggplot(aes(year, n)) +
+  geom_line()
 ```
 ]
 
@@ -772,5 +819,5 @@ background-size: cover
 Open `books.Rmd` in Academy. 
  
 ```{r echo = FALSE}
-countdown::countdown(minutes = 25)
+countdown::countdown(minutes = 30)
 ```
