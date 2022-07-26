@@ -795,5 +795,5 @@ background-size: cover
 Open `books.Rmd` in Academy. 
  
 ```{r echo = FALSE}
-countdown::countdown(minutes = 25)
+countdown::countdown(minutes = 30)
 ```
