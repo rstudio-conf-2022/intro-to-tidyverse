@@ -13,7 +13,7 @@ output:
     lib_dir: libs
     nature:
       highlightStyle: github
-      highlightSpans: true
+      highlightSpans: false
       countIncrementalSlides: false
       ratio: "16:9"
       df_print: kable
@@ -107,11 +107,11 @@ background-size: cover
 
 ???
 
-Lubridate is a package to make it easier to work with dates and datetimes. These are two standard formats for storing time-related information. A date is what is sounds like - the information for a date, so the year, month, and day. 
+Lubridate is a package that makes it easier to work dates and datetimes. These are two standard formats for storing time-related information. A date is what is sounds like - the information for a date, so the year, month, and day. 
 
-A datetime stores all of that as well as hours, minutes, and seconds.
+A datetime stores all of that as well as hours, minutes, seconds, and time zone.
 
-Lubridate contains a lot of cool features to make it easier to work with dates and datetimes. s
+Lubridate contains a lot of neat features to make it easier to work with dates and datetimes. 
 ---
 
 class: top
@@ -144,7 +144,7 @@ background-size: cover
 # Extract Information
 
 ???
-Once we have our data in a date or datetime format, we are able to easily access all of the components used to build the object, wuch as the year, month, day, etc. 
+Once we have our data in a date or datetime format, we are able to easily access all of the components used to build the object, such as the year, month, day, etc. 
 
 ---
 
@@ -160,7 +160,7 @@ class: top
 # Other tasks with lubridate
 
 ???
-Some additional tasks that can be completed using lubridate functions are to
+Some additional tasks that can be completed using lubridate functions are to:
 
 do math with dates and datetimes, meaning we can add and subtact time-related information
 
@@ -168,7 +168,7 @@ convert between different time zones
 
 account for leap time
 
-round times to the nearest week, for example, and
+round times, for example rounding dates to the nearest week or month
 
 work with intervals of time
 
@@ -203,12 +203,20 @@ class: middle chapter-slide green
 Now let's go through a quick example of some of these functions. 
 ---
 # Bike Traffic Dataset
-```{r}
+
+```{r, include = FALSE}
 bike_traffic
 ```
 
+```{r, echo = FALSE}
+print(bike_traffic, n = 8)
+```
+
+
 ???
-Here is a dataset of bike traffic that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
+Here is a dataset containing bicycle traffic counts that we just loaded into R. The date column is stored as a factor with hours listed in AM and PM and is not currently in the standardized datetime format. 
+
+In this form, we cannot take advantage of the many time-related tools that exist for dates and datetimes. 
 ---
 
 # Get into a `datetime` format
@@ -216,8 +224,7 @@ Here is a dataset of bike traffic that we just loaded into R. The date column is
 ```{r, include = TRUE, eval = FALSE, warning = FALSE}
 bike_traffic <- 
   bike_traffic %>%
-  mutate(timestamp = `mdy_hms`(date,
-                             tz = "US/Pacific"))
+  mutate(timestamp = mdy_hms(date,tz = "US/Pacific")) 
 ```
 
 --
@@ -229,21 +236,22 @@ bike_traffic <-
                              tz = "US/Pacific")) %>%
   select(timestamp, direction, crossing, bike_count)
 
-print(bike_traffic, n = 7)
+print(bike_traffic, n = 5)
 ```
 
 ???
 
 We can use a lubridate function to turn this column into a datetime.
+
+So here our data was in the order Year-Month-Day-Hour-Minute-Second, so we used the YMD_HMS function to turn the column of values into datetimes. 
 ---
 
 # Get into a `date` format
 
 ```{r, include = TRUE, eval = FALSE}
-labor_day <- `ymd`("2015-09-07")
+labor_day <- ymd("2015-09-07")
 ```
 
---
 
 ```{r, echo = FALSE, eval = TRUE}
 labor_day <- ymd("2015-09-07")
@@ -268,7 +276,7 @@ wday(labor_day, label = TRUE)
 ```
 
 ???
-And we can confirm that the day of week is Monday as expected.
+And we can confirm that the day ofthe week is Monday as we expected.
 ---
 
 class: top
@@ -281,10 +289,12 @@ labor_day - weeks(1)
 ???
 Now we can do math with the date. If we are interested in the bike traffic within a week of labor day, we can easily add or subtract a week from the date.
 
+Here, I've shown an example where we subtract one week from our date object, labor_day, by simply using the subtract sign and the weeks function to express a unit of time equal to one week. 
+
 ---
 # Time Intervals
 ```{r interval_highighted, eval = FALSE}
-date_interval <- `interval`(labor_day - weeks(1),
+date_interval <- interval(labor_day - weeks(1),
                                labor_day + weeks(1))
 date_interval
 ```
@@ -299,11 +309,13 @@ date_interval
 
 ???
 Next, we can create an interval that will span from one week before labor day to one week after using lubridate's interval function.
+
+And now we have a date interval, denoted by the double-dashes in the middle of the two dates. 
 --
 
 ```{r filter_interval_highlighted, eval = FALSE}
 bike_traffic %>%
-  filter(`timestamp %within% date_interval`)
+  filter(timestamp %within% date_interval)
 ```
 
 ???
@@ -313,9 +325,10 @@ And finally we can filter our dataset to that time interval using an operator ca
 ```{r filter_interval, eval = TRUE, echo = FALSE}
 bike_traffic %>%
   filter(timestamp %within% date_interval) %>%
-  print(n = 13)
+  print(n = 10)
 ```
-
+???
+And here is the filtered result, which is now subset of the original data ccontaining only the records with had a timestamp within one week of labor day. 
 ---
 class: middle chapter-slide green
 
@@ -340,7 +353,7 @@ class: top
 Here are some additional resources for the lubridate package. 
 The site includes links to the cheatsheets and some examples. 
 
-Chapter 16 of R for Data Science includes an in-depth description of lubridate's many features. 
+I've also linked Chapter 16 of R for Data Science, which includes an in-depth description of lubridate's many features. 
 ---
 class: middle chapter-slide green
 
@@ -352,7 +365,11 @@ class: your-turn
 
 # Your Turn
 
-A. What day of the week was the moon landing (September 7, 1969)?
+```{r, eval = FALSE}
+library(lubridate)
+```
+
+A. What day of the week was the moon landing (July 20, 1969)?
 
 ```{r, eval = FALSE}
 ymd(____) %>%
@@ -363,7 +380,26 @@ ymd(____) %>%
 B. How many days ago was the moon landing?
 
 ```{r, eval = FALSE}
-ymd(____) ____ date(now())
+date(now()) ____ ymd(____) 
 
 ```
 
+---
+class: your-turn
+
+# Your Turn
+
+A. What day of the week was the moon landing (July 20, 1969)?
+
+```{r, eval = FALSE}
+ymd("1969-07-20") %>%
+  wday(label = TRUE)
+
+```
+
+B. How many days ago was the moon landing?
+
+```{r, eval = FALSE}
+date(now()) - ymd("1969-07-20")
+
+```
